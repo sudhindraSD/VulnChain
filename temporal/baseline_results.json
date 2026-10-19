@@ -1,0 +1,87 @@
+{
+  "protocol_version": "temporal-v1.0-preregistration",
+  "cutoff_date": "2024-07-01",
+  "population": {
+    "total_graph_packages": 12405,
+    "at_risk_train": 9992,
+    "at_risk_val": 539,
+    "at_risk_test": 1290,
+    "at_risk_pooled_val_test": 1829,
+    "pre_t_history_excluded_total": 584,
+    "unique_package_names_pooled_val_test": 1370
+  },
+  "labels": {
+    "train_positives": 346,
+    "train_base_rate": 0.034628,
+    "val_positives": 22,
+    "val_base_rate": 0.040816,
+    "test_positives": 25,
+    "test_base_rate": 0.019380,
+    "pooled_val_test_positives": 47,
+    "pooled_val_test_base_rate": 0.025697,
+    "unique_advisories_behind_positives": {
+      "train": 322,
+      "val": 65,
+      "test": 34,
+      "pooled_val_test": 95
+    },
+    "unique_package_names_behind_positives": {
+      "train": 112,
+      "val": 22,
+      "test": 15,
+      "pooled_val_test": 32
+    }
+  },
+  "baselines_pooled_val_test": {
+    "base_rate": 0.025697,
+    "ridge_on_time_safe_features": {
+      "pr_auc": 0.0514,
+      "pr_auc_95ci": [0.0286, 0.1210],
+      "roc_auc": 0.6425,
+      "roc_auc_95ci": [0.5541, 0.7559]
+    },
+    "label_propagation": {
+      "pr_auc": 0.0510,
+      "pr_auc_95ci": [0.0270, 0.0919],
+      "roc_auc": 0.6829,
+      "roc_auc_95ci": [0.5911, 0.7599]
+    },
+    "random": {
+      "pr_auc": 0.0454,
+      "pr_auc_95ci": [0.0154, 0.1057],
+      "roc_auc": 0.4288,
+      "roc_auc_95ci": [0.3547, 0.5059]
+    },
+    "descendant_count": {
+      "pr_auc": 0.0279,
+      "pr_auc_95ci": [0.0170, 0.0484],
+      "roc_auc": 0.5206,
+      "roc_auc_95ci": [0.4071, 0.6454]
+    },
+    "number_of_repos_using_package": {
+      "pr_auc": 0.0257,
+      "pr_auc_95ci": [0.0150, 0.0390],
+      "roc_auc": 0.5000,
+      "roc_auc_95ci": [0.5000, 0.5000]
+    },
+    "dependency_has_pre_t_history_count": {
+      "pr_auc": 0.0250,
+      "pr_auc_95ci": [0.0152, 0.0396],
+      "roc_auc": 0.4803,
+      "roc_auc_95ci": [0.4137, 0.5600]
+    },
+    "dependency_has_pre_t_history_binary": {
+      "pr_auc": 0.0249,
+      "pr_auc_95ci": [0.0146, 0.0383],
+      "roc_auc": 0.4824,
+      "roc_auc_95ci": [0.4146, 0.5640]
+    }
+  },
+  "pass_rule": {
+    "primary_metric": "PR-AUC on pooled val+test at-risk nodes",
+    "best_baseline": "ridge_on_time_safe_features",
+    "best_baseline_pr_auc": 0.0514,
+    "bar_condition_1": "GNN PR-AUC > 0.0514",
+    "bar_condition_2": "Paired grouped bootstrap 95% CI of (PR-AUC_GNN - PR-AUC_best) strictly excludes 0 (p2.5 > 0.0)"
+  }
+}
