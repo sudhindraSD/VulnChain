@@ -1,0 +1,118 @@
+{
+  "name": "vulnchain-demo-test",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "vulnchain-demo-test",
+      "version": "1.0.0",
+      "dependencies": {
+        "express": "^4.17.1",
+        "lodash": "4.17.15",
+        "minimist": "0.0.8",
+        "axios": "^0.21.1",
+        "socket.io": "^2.3.0",
+        "next": "^15.0.0",
+        "protobufjs": "^6.11.3",
+        "nanoid": "3.1.20",
+        "tar": "4.4.8",
+        "react": "^18.2.0"
+      }
+    },
+    "node_modules/express": {
+      "version": "4.17.1",
+      "resolved": "https://registry.npmjs.org/express/-/express-4.17.1.tgz",
+      "dependencies": {
+        "body-parser": "1.19.0",
+        "qs": "6.7.0"
+      }
+    },
+    "node_modules/body-parser": {
+      "version": "1.19.0",
+      "resolved": "https://registry.npmjs.org/body-parser/-/body-parser-1.19.0.tgz",
+      "dependencies": {
+        "qs": "6.7.0"
+      }
+    },
+    "node_modules/qs": {
+      "version": "6.7.0",
+      "resolved": "https://registry.npmjs.org/qs/-/qs-6.7.0.tgz"
+    },
+    "node_modules/lodash": {
+      "version": "4.17.15",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz"
+    },
+    "node_modules/minimist": {
+      "version": "0.0.8",
+      "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
+    },
+    "node_modules/axios": {
+      "version": "0.21.1",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
+      "dependencies": {
+        "follow-redirects": "1.14.1"
+      }
+    },
+    "node_modules/follow-redirects": {
+      "version": "1.14.1",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz"
+    },
+    "node_modules/socket.io": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/socket.io/-/socket.io-2.3.0.tgz",
+      "dependencies": {
+        "socket.io-client": "2.3.0",
+        "socket.io-parser": "3.3.0"
+      }
+    },
+    "node_modules/socket.io-client": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/socket.io-client/-/socket.io-client-2.3.0.tgz",
+      "dependencies": {
+        "socket.io-parser": "3.3.0"
+      }
+    },
+    "node_modules/socket.io-parser": {
+      "version": "3.3.0",
+      "resolved": "https://registry.npmjs.org/socket.io-parser/-/socket.io-parser-3.3.0.tgz"
+    },
+    "node_modules/next": {
+      "version": "15.0.0",
+      "resolved": "https://registry.npmjs.org/next/-/next-15.0.0.tgz",
+      "dependencies": {
+        "@google/genai": "^0.1.0"
+      }
+    },
+    "node_modules/@google/genai": {
+      "version": "0.1.0",
+      "resolved": "https://registry.npmjs.org/@google/genai/-/genai-0.1.0.tgz",
+      "dependencies": {
+        "protobufjs": "6.11.3"
+      }
+    },
+    "node_modules/protobufjs": {
+      "version": "6.11.3",
+      "resolved": "https://registry.npmjs.org/protobufjs/-/protobufjs-6.11.3.tgz",
+      "dependencies": {
+        "@protobufjs/utf8": "1.1.0"
+      }
+    },
+    "node_modules/@protobufjs/utf8": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
+    },
+    "node_modules/nanoid": {
+      "version": "3.1.20",
+      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.1.20.tgz"
+    },
+    "node_modules/tar": {
+      "version": "4.4.8",
+      "resolved": "https://registry.npmjs.org/tar/-/tar-4.4.8.tgz"
+    },
+    "node_modules/react": {
+      "version": "18.2.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
+    }
+  }
+}

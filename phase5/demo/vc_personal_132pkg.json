@@ -1,0 +1,3956 @@
+{
+  "total_packages": 132,
+  "summary": {
+    "critical": 10,
+    "high": 2,
+    "moderate": 0,
+    "safe": 120
+  },
+  "packages": [
+    {
+      "package": "express@5.2.1",
+      "name": "express",
+      "version": "5.2.1",
+      "risk_score": 0.9998049139976501,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "socket.io@4.8.3",
+      "name": "socket.io",
+      "version": "4.8.3",
+      "risk_score": 0.9824955463409424,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "body-parser@2.2.2",
+      "name": "body-parser",
+      "version": "2.2.2",
+      "risk_score": 0.9720062017440796,
+      "is_direct": false,
+      "cve": "GHSA-v422-hmwv-36x6",
+      "dependents_count": 1
+    },
+    {
+      "package": "axios@1.14.0",
+      "name": "axios",
+      "version": "1.14.0",
+      "risk_score": 0.9657545685768127,
+      "is_direct": true,
+      "cve": "GHSA-35jp-ww65-95wh",
+      "dependents_count": 0
+    },
+    {
+      "package": "concurrently@9.2.1",
+      "name": "concurrently",
+      "version": "9.2.1",
+      "risk_score": 0.9633683562278748,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "engine.io@6.6.6",
+      "name": "engine.io",
+      "version": "6.6.6",
+      "risk_score": 0.955656111240387,
+      "is_direct": false,
+      "cve": "GHSA-gr94-w7qr-f4j3",
+      "dependents_count": 1
+    },
+    {
+      "package": "socket.io-adapter@2.5.6",
+      "name": "socket.io-adapter",
+      "version": "2.5.6",
+      "risk_score": 0.9258354306221008,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "qs@6.15.0",
+      "name": "qs",
+      "version": "6.15.0",
+      "risk_score": 0.6401843428611755,
+      "is_direct": false,
+      "cve": "GHSA-4mjr-xmp4-gh2g",
+      "dependents_count": 2
+    },
+    {
+      "package": "socket.io-parser@4.2.6",
+      "name": "socket.io-parser",
+      "version": "4.2.6",
+      "risk_score": 0.5229897499084473,
+      "is_direct": false,
+      "cve": "GHSA-2m8v-j782-fhvr",
+      "dependents_count": 1
+    },
+    {
+      "package": "shell-quote@1.8.3",
+      "name": "shell-quote",
+      "version": "1.8.3",
+      "risk_score": 0.4459276497364044,
+      "is_direct": false,
+      "cve": "GHSA-w7jw-789q-3m8p",
+      "dependents_count": 1
+    },
+    {
+      "package": "follow-redirects@1.15.11",
+      "name": "follow-redirects",
+      "version": "1.15.11",
+      "risk_score": 0.3009745180606842,
+      "is_direct": false,
+      "cve": "GHSA-r4q5-vmmm-2653",
+      "dependents_count": 1
+    },
+    {
+      "package": "form-data@4.0.5",
+      "name": "form-data",
+      "version": "4.0.5",
+      "risk_score": 0.27371588349342346,
+      "is_direct": false,
+      "cve": "GHSA-hmw2-7cc7-3qxx",
+      "dependents_count": 1
+    },
+    {
+      "package": "@types/cors@2.8.19",
+      "name": "@types/cors",
+      "version": "2.8.19",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "@types/ws@8.18.1",
+      "name": "@types/ws",
+      "version": "8.18.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "accepts@2.0.0",
+      "name": "accepts",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "ansi-styles@4.3.0",
+      "name": "ansi-styles",
+      "version": "4.3.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "base64id@2.0.0",
+      "name": "base64id",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "buffer-equal-constant-time@1.0.1",
+      "name": "buffer-equal-constant-time",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "call-bound@1.0.4",
+      "name": "call-bound",
+      "version": "1.0.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "chalk@4.1.2",
+      "name": "chalk",
+      "version": "4.1.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "supports-color@7.2.0",
+      "name": "supports-color",
+      "version": "7.2.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "cliui@8.0.1",
+      "name": "cliui",
+      "version": "8.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "color-convert@2.0.1",
+      "name": "color-convert",
+      "version": "2.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "color-name@1.1.4",
+      "name": "color-name",
+      "version": "1.1.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "content-disposition@1.0.1",
+      "name": "content-disposition",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "content-type@1.0.5",
+      "name": "content-type",
+      "version": "1.0.5",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "cookie-signature@1.2.2",
+      "name": "cookie-signature",
+      "version": "1.2.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "cors@2.8.6",
+      "name": "cors",
+      "version": "2.8.6",
+      "risk_score": 0.07999999821186066,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "delayed-stream@1.0.0",
+      "name": "delayed-stream",
+      "version": "1.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "depd@2.0.0",
+      "name": "depd",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "dotenv@16.6.1",
+      "name": "dotenv",
+      "version": "16.6.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "dunder-proto@1.0.1",
+      "name": "dunder-proto",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "ecdsa-sig-formatter@1.0.11",
+      "name": "ecdsa-sig-formatter",
+      "version": "1.0.11",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "ee-first@1.1.1",
+      "name": "ee-first",
+      "version": "1.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "encodeurl@2.0.0",
+      "name": "encodeurl",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "accepts@1.3.8",
+      "name": "accepts",
+      "version": "1.3.8",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "mime-db@1.52.0",
+      "name": "mime-db",
+      "version": "1.52.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "mime-types@2.1.35",
+      "name": "mime-types",
+      "version": "2.1.35",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 6
+    },
+    {
+      "package": "negotiator@0.6.3",
+      "name": "negotiator",
+      "version": "0.6.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "es-set-tostringtag@2.1.0",
+      "name": "es-set-tostringtag",
+      "version": "2.1.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "escape-html@1.0.3",
+      "name": "escape-html",
+      "version": "1.0.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "etag@1.8.1",
+      "name": "etag",
+      "version": "1.8.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "finalhandler@2.1.1",
+      "name": "finalhandler",
+      "version": "2.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "forwarded@0.2.0",
+      "name": "forwarded",
+      "version": "0.2.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "fresh@2.0.0",
+      "name": "fresh",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "function-bind@1.1.2",
+      "name": "function-bind",
+      "version": "1.1.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "get-intrinsic@1.3.0",
+      "name": "get-intrinsic",
+      "version": "1.3.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "get-proto@1.0.1",
+      "name": "get-proto",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "http-errors@2.0.1",
+      "name": "http-errors",
+      "version": "2.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "iconv-lite@0.7.2",
+      "name": "iconv-lite",
+      "version": "0.7.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "inherits@2.0.4",
+      "name": "inherits",
+      "version": "2.0.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "ipaddr.js@1.9.1",
+      "name": "ipaddr.js",
+      "version": "1.9.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "is-promise@4.0.0",
+      "name": "is-promise",
+      "version": "4.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "jsonwebtoken@9.0.3",
+      "name": "jsonwebtoken",
+      "version": "9.0.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": true,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "jwa@2.0.1",
+      "name": "jwa",
+      "version": "2.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "jws@4.0.1",
+      "name": "jws",
+      "version": "4.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.includes@4.3.0",
+      "name": "lodash.includes",
+      "version": "4.3.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.isboolean@3.0.3",
+      "name": "lodash.isboolean",
+      "version": "3.0.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.isinteger@4.0.4",
+      "name": "lodash.isinteger",
+      "version": "4.0.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.isnumber@3.0.3",
+      "name": "lodash.isnumber",
+      "version": "3.0.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.isplainobject@4.0.6",
+      "name": "lodash.isplainobject",
+      "version": "4.0.6",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.isstring@4.0.1",
+      "name": "lodash.isstring",
+      "version": "4.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash.once@4.1.1",
+      "name": "lodash.once",
+      "version": "4.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "media-typer@1.1.0",
+      "name": "media-typer",
+      "version": "1.1.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "merge-descriptors@2.0.0",
+      "name": "merge-descriptors",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "mime-types@3.0.2",
+      "name": "mime-types",
+      "version": "3.0.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "ms@2.1.3",
+      "name": "ms",
+      "version": "2.1.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "object-assign@4.1.1",
+      "name": "object-assign",
+      "version": "4.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "on-finished@2.4.1",
+      "name": "on-finished",
+      "version": "2.4.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "once@1.4.0",
+      "name": "once",
+      "version": "1.4.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "parseurl@1.3.3",
+      "name": "parseurl",
+      "version": "1.3.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "path-to-regexp@8.4.2",
+      "name": "path-to-regexp",
+      "version": "8.4.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "proxy-addr@2.0.7",
+      "name": "proxy-addr",
+      "version": "2.0.7",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "range-parser@1.2.1",
+      "name": "range-parser",
+      "version": "1.2.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "raw-body@3.0.2",
+      "name": "raw-body",
+      "version": "3.0.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "router@2.2.0",
+      "name": "router",
+      "version": "2.2.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "rxjs@7.8.2",
+      "name": "rxjs",
+      "version": "7.8.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "safe-buffer@5.2.1",
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "semver@7.7.4",
+      "name": "semver",
+      "version": "7.7.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "send@1.2.1",
+      "name": "send",
+      "version": "1.2.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "serve-static@2.2.1",
+      "name": "serve-static",
+      "version": "2.2.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "setprototypeof@1.2.0",
+      "name": "setprototypeof",
+      "version": "1.2.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "side-channel@1.1.0",
+      "name": "side-channel",
+      "version": "1.1.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "side-channel-map@1.0.1",
+      "name": "side-channel-map",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "side-channel-weakmap@1.0.2",
+      "name": "side-channel-weakmap",
+      "version": "1.0.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "statuses@2.0.2",
+      "name": "statuses",
+      "version": "2.0.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "string-width@4.2.3",
+      "name": "string-width",
+      "version": "4.2.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "supports-color@8.1.1",
+      "name": "supports-color",
+      "version": "8.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "toidentifier@1.0.1",
+      "name": "toidentifier",
+      "version": "1.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "tree-kill@1.2.2",
+      "name": "tree-kill",
+      "version": "1.2.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "tslib@2.8.1",
+      "name": "tslib",
+      "version": "2.8.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "type-is@2.0.1",
+      "name": "type-is",
+      "version": "2.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "undici-types@7.18.2",
+      "name": "undici-types",
+      "version": "7.18.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "unpipe@1.0.0",
+      "name": "unpipe",
+      "version": "1.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "vary@1.1.2",
+      "name": "vary",
+      "version": "1.1.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "wrap-ansi@7.0.0",
+      "name": "wrap-ansi",
+      "version": "7.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "wrappy@1.0.2",
+      "name": "wrappy",
+      "version": "1.0.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "yargs@17.7.2",
+      "name": "yargs",
+      "version": "17.7.2",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "cookie@0.7.2",
+      "name": "cookie",
+      "version": "0.7.2",
+      "risk_score": 0.07663307338953018,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "has-flag@4.0.0",
+      "name": "has-flag",
+      "version": "4.0.0",
+      "risk_score": 0.0759536400437355,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "require-directory@2.1.1",
+      "name": "require-directory",
+      "version": "2.1.1",
+      "risk_score": 0.07559065520763397,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "emoji-regex@8.0.0",
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "risk_score": 0.07371365278959274,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "debug@4.4.3",
+      "name": "debug",
+      "version": "4.4.3",
+      "risk_score": 0.0732646957039833,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 9
+    },
+    {
+      "package": "is-fullwidth-code-point@3.0.0",
+      "name": "is-fullwidth-code-point",
+      "version": "3.0.0",
+      "risk_score": 0.07285294681787491,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "strip-ansi@6.0.1",
+      "name": "strip-ansi",
+      "version": "6.0.1",
+      "risk_score": 0.07235074788331985,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "@socket.io/component-emitter@3.1.2",
+      "name": "@socket.io/component-emitter",
+      "version": "3.1.2",
+      "risk_score": 0.07084588706493378,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "call-bind-apply-helpers@1.0.2",
+      "name": "call-bind-apply-helpers",
+      "version": "1.0.2",
+      "risk_score": 0.06443274021148682,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "safer-buffer@2.1.2",
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "risk_score": 0.06411293894052505,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "bytes@3.1.2",
+      "name": "bytes",
+      "version": "3.1.2",
+      "risk_score": 0.06367809325456619,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "ansi-regex@5.0.1",
+      "name": "ansi-regex",
+      "version": "5.0.1",
+      "risk_score": 0.05785239860415459,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "@types/node@25.5.2",
+      "name": "@types/node",
+      "version": "25.5.2",
+      "risk_score": 0.0573897659778595,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "get-caller-file@2.0.5",
+      "name": "get-caller-file",
+      "version": "2.0.5",
+      "risk_score": 0.05463457107543945,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "ws@8.18.3",
+      "name": "ws",
+      "version": "8.18.3",
+      "risk_score": 0.05397411063313484,
+      "is_direct": false,
+      "cve": "GHSA-96hv-2xvq-fx4p",
+      "dependents_count": 2
+    },
+    {
+      "package": "negotiator@1.0.0",
+      "name": "negotiator",
+      "version": "1.0.0",
+      "risk_score": 0.05318890139460564,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "es-object-atoms@1.1.1",
+      "name": "es-object-atoms",
+      "version": "1.1.1",
+      "risk_score": 0.05058850720524788,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "mime-db@1.54.0",
+      "name": "mime-db",
+      "version": "1.54.0",
+      "risk_score": 0.05029321834445,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 0
+    },
+    {
+      "package": "es-define-property@1.0.1",
+      "name": "es-define-property",
+      "version": "1.0.1",
+      "risk_score": 0.04678405821323395,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "math-intrinsics@1.1.0",
+      "name": "math-intrinsics",
+      "version": "1.1.0",
+      "risk_score": 0.046681977808475494,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "y18n@5.0.8",
+      "name": "y18n",
+      "version": "5.0.8",
+      "risk_score": 0.045915473252534866,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "side-channel-list@1.0.0",
+      "name": "side-channel-list",
+      "version": "1.0.0",
+      "risk_score": 0.045344799757003784,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "has-tostringtag@1.0.2",
+      "name": "has-tostringtag",
+      "version": "1.0.2",
+      "risk_score": 0.045206744223833084,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "gopd@1.2.0",
+      "name": "gopd",
+      "version": "1.2.0",
+      "risk_score": 0.04445301741361618,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "es-errors@1.3.0",
+      "name": "es-errors",
+      "version": "1.3.0",
+      "risk_score": 0.04374447464942932,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 9
+    },
+    {
+      "package": "has-symbols@1.1.0",
+      "name": "has-symbols",
+      "version": "1.1.0",
+      "risk_score": 0.04337513819336891,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 2
+    },
+    {
+      "package": "yargs-parser@21.1.1",
+      "name": "yargs-parser",
+      "version": "21.1.1",
+      "risk_score": 0.04134654253721237,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "object-inspect@1.13.4",
+      "name": "object-inspect",
+      "version": "1.13.4",
+      "risk_score": 0.038849279284477234,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 4
+    },
+    {
+      "package": "proxy-from-env@2.1.0",
+      "name": "proxy-from-env",
+      "version": "2.1.0",
+      "risk_score": 0.03865676745772362,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "combined-stream@1.0.8",
+      "name": "combined-stream",
+      "version": "1.0.8",
+      "risk_score": 0.03756113350391388,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "engine.io-parser@5.2.3",
+      "name": "engine.io-parser",
+      "version": "5.2.3",
+      "risk_score": 0.036204878240823746,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "escalade@3.2.0",
+      "name": "escalade",
+      "version": "3.2.0",
+      "risk_score": 0.03543756529688835,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    },
+    {
+      "package": "hasown@2.0.2",
+      "name": "hasown",
+      "version": "2.0.2",
+      "risk_score": 0.03464040532708168,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 3
+    },
+    {
+      "package": "asynckit@0.4.0",
+      "name": "asynckit",
+      "version": "0.4.0",
+      "risk_score": 0.025940412655472755,
+      "is_direct": false,
+      "cve": null,
+      "dependents_count": 1
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "express@5.2.1",
+        "name": "express",
+        "version": "5.2.1",
+        "type": "Package",
+        "risk_score": 0.9998049139976501,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "socket.io@4.8.3",
+        "name": "socket.io",
+        "version": "4.8.3",
+        "type": "Package",
+        "risk_score": 0.9824955463409424,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "body-parser@2.2.2",
+        "name": "body-parser",
+        "version": "2.2.2",
+        "type": "Package",
+        "risk_score": 0.9720062017440796,
+        "is_direct": false,
+        "cve": "GHSA-v422-hmwv-36x6",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-v422-hmwv-36x6",
+        "name": "GHSA-v422-hmwv-36x6",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-v422-hmwv-36x6",
+        "dependents_count": 0
+      },
+      {
+        "id": "axios@1.14.0",
+        "name": "axios",
+        "version": "1.14.0",
+        "type": "Package",
+        "risk_score": 0.9657545685768127,
+        "is_direct": true,
+        "cve": "GHSA-35jp-ww65-95wh",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-35jp-ww65-95wh",
+        "name": "GHSA-35jp-ww65-95wh",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-35jp-ww65-95wh",
+        "dependents_count": 0
+      },
+      {
+        "id": "concurrently@9.2.1",
+        "name": "concurrently",
+        "version": "9.2.1",
+        "type": "Package",
+        "risk_score": 0.9633683562278748,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "engine.io@6.6.6",
+        "name": "engine.io",
+        "version": "6.6.6",
+        "type": "Package",
+        "risk_score": 0.955656111240387,
+        "is_direct": false,
+        "cve": "GHSA-gr94-w7qr-f4j3",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-gr94-w7qr-f4j3",
+        "name": "GHSA-gr94-w7qr-f4j3",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-gr94-w7qr-f4j3",
+        "dependents_count": 0
+      },
+      {
+        "id": "socket.io-adapter@2.5.6",
+        "name": "socket.io-adapter",
+        "version": "2.5.6",
+        "type": "Package",
+        "risk_score": 0.9258354306221008,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "qs@6.15.0",
+        "name": "qs",
+        "version": "6.15.0",
+        "type": "Package",
+        "risk_score": 0.6401843428611755,
+        "is_direct": false,
+        "cve": "GHSA-4mjr-xmp4-gh2g",
+        "dependents_count": 2
+      },
+      {
+        "id": "GHSA-4mjr-xmp4-gh2g",
+        "name": "GHSA-4mjr-xmp4-gh2g",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-4mjr-xmp4-gh2g",
+        "dependents_count": 0
+      },
+      {
+        "id": "socket.io-parser@4.2.6",
+        "name": "socket.io-parser",
+        "version": "4.2.6",
+        "type": "Package",
+        "risk_score": 0.5229897499084473,
+        "is_direct": false,
+        "cve": "GHSA-2m8v-j782-fhvr",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-2m8v-j782-fhvr",
+        "name": "GHSA-2m8v-j782-fhvr",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-2m8v-j782-fhvr",
+        "dependents_count": 0
+      },
+      {
+        "id": "shell-quote@1.8.3",
+        "name": "shell-quote",
+        "version": "1.8.3",
+        "type": "Package",
+        "risk_score": 0.4459276497364044,
+        "is_direct": false,
+        "cve": "GHSA-w7jw-789q-3m8p",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-w7jw-789q-3m8p",
+        "name": "GHSA-w7jw-789q-3m8p",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-w7jw-789q-3m8p",
+        "dependents_count": 0
+      },
+      {
+        "id": "follow-redirects@1.15.11",
+        "name": "follow-redirects",
+        "version": "1.15.11",
+        "type": "Package",
+        "risk_score": 0.3009745180606842,
+        "is_direct": false,
+        "cve": "GHSA-r4q5-vmmm-2653",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-r4q5-vmmm-2653",
+        "name": "GHSA-r4q5-vmmm-2653",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-r4q5-vmmm-2653",
+        "dependents_count": 0
+      },
+      {
+        "id": "form-data@4.0.5",
+        "name": "form-data",
+        "version": "4.0.5",
+        "type": "Package",
+        "risk_score": 0.27371588349342346,
+        "is_direct": false,
+        "cve": "GHSA-hmw2-7cc7-3qxx",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-hmw2-7cc7-3qxx",
+        "name": "GHSA-hmw2-7cc7-3qxx",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-hmw2-7cc7-3qxx",
+        "dependents_count": 0
+      },
+      {
+        "id": "@types/cors@2.8.19",
+        "name": "@types/cors",
+        "version": "2.8.19",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "@types/ws@8.18.1",
+        "name": "@types/ws",
+        "version": "8.18.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "accepts@2.0.0",
+        "name": "accepts",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "ansi-styles@4.3.0",
+        "name": "ansi-styles",
+        "version": "4.3.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "base64id@2.0.0",
+        "name": "base64id",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "buffer-equal-constant-time@1.0.1",
+        "name": "buffer-equal-constant-time",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "call-bound@1.0.4",
+        "name": "call-bound",
+        "version": "1.0.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "chalk@4.1.2",
+        "name": "chalk",
+        "version": "4.1.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "supports-color@7.2.0",
+        "name": "supports-color",
+        "version": "7.2.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "cliui@8.0.1",
+        "name": "cliui",
+        "version": "8.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "color-convert@2.0.1",
+        "name": "color-convert",
+        "version": "2.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "color-name@1.1.4",
+        "name": "color-name",
+        "version": "1.1.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "content-disposition@1.0.1",
+        "name": "content-disposition",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "content-type@1.0.5",
+        "name": "content-type",
+        "version": "1.0.5",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "cookie-signature@1.2.2",
+        "name": "cookie-signature",
+        "version": "1.2.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "cors@2.8.6",
+        "name": "cors",
+        "version": "2.8.6",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "delayed-stream@1.0.0",
+        "name": "delayed-stream",
+        "version": "1.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "depd@2.0.0",
+        "name": "depd",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "dotenv@16.6.1",
+        "name": "dotenv",
+        "version": "16.6.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "dunder-proto@1.0.1",
+        "name": "dunder-proto",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "ecdsa-sig-formatter@1.0.11",
+        "name": "ecdsa-sig-formatter",
+        "version": "1.0.11",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "ee-first@1.1.1",
+        "name": "ee-first",
+        "version": "1.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "encodeurl@2.0.0",
+        "name": "encodeurl",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "accepts@1.3.8",
+        "name": "accepts",
+        "version": "1.3.8",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "mime-db@1.52.0",
+        "name": "mime-db",
+        "version": "1.52.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "mime-types@2.1.35",
+        "name": "mime-types",
+        "version": "2.1.35",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 6
+      },
+      {
+        "id": "negotiator@0.6.3",
+        "name": "negotiator",
+        "version": "0.6.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "es-set-tostringtag@2.1.0",
+        "name": "es-set-tostringtag",
+        "version": "2.1.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "escape-html@1.0.3",
+        "name": "escape-html",
+        "version": "1.0.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "etag@1.8.1",
+        "name": "etag",
+        "version": "1.8.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "finalhandler@2.1.1",
+        "name": "finalhandler",
+        "version": "2.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "forwarded@0.2.0",
+        "name": "forwarded",
+        "version": "0.2.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "fresh@2.0.0",
+        "name": "fresh",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "function-bind@1.1.2",
+        "name": "function-bind",
+        "version": "1.1.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "get-intrinsic@1.3.0",
+        "name": "get-intrinsic",
+        "version": "1.3.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "get-proto@1.0.1",
+        "name": "get-proto",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "http-errors@2.0.1",
+        "name": "http-errors",
+        "version": "2.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "iconv-lite@0.7.2",
+        "name": "iconv-lite",
+        "version": "0.7.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "inherits@2.0.4",
+        "name": "inherits",
+        "version": "2.0.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "ipaddr.js@1.9.1",
+        "name": "ipaddr.js",
+        "version": "1.9.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "is-promise@4.0.0",
+        "name": "is-promise",
+        "version": "4.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "jsonwebtoken@9.0.3",
+        "name": "jsonwebtoken",
+        "version": "9.0.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "jwa@2.0.1",
+        "name": "jwa",
+        "version": "2.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "jws@4.0.1",
+        "name": "jws",
+        "version": "4.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.includes@4.3.0",
+        "name": "lodash.includes",
+        "version": "4.3.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.isboolean@3.0.3",
+        "name": "lodash.isboolean",
+        "version": "3.0.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.isinteger@4.0.4",
+        "name": "lodash.isinteger",
+        "version": "4.0.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.isnumber@3.0.3",
+        "name": "lodash.isnumber",
+        "version": "3.0.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.isplainobject@4.0.6",
+        "name": "lodash.isplainobject",
+        "version": "4.0.6",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.isstring@4.0.1",
+        "name": "lodash.isstring",
+        "version": "4.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "lodash.once@4.1.1",
+        "name": "lodash.once",
+        "version": "4.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "media-typer@1.1.0",
+        "name": "media-typer",
+        "version": "1.1.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "merge-descriptors@2.0.0",
+        "name": "merge-descriptors",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "mime-types@3.0.2",
+        "name": "mime-types",
+        "version": "3.0.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "ms@2.1.3",
+        "name": "ms",
+        "version": "2.1.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "object-assign@4.1.1",
+        "name": "object-assign",
+        "version": "4.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "on-finished@2.4.1",
+        "name": "on-finished",
+        "version": "2.4.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "once@1.4.0",
+        "name": "once",
+        "version": "1.4.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "parseurl@1.3.3",
+        "name": "parseurl",
+        "version": "1.3.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "path-to-regexp@8.4.2",
+        "name": "path-to-regexp",
+        "version": "8.4.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "proxy-addr@2.0.7",
+        "name": "proxy-addr",
+        "version": "2.0.7",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "range-parser@1.2.1",
+        "name": "range-parser",
+        "version": "1.2.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "raw-body@3.0.2",
+        "name": "raw-body",
+        "version": "3.0.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "router@2.2.0",
+        "name": "router",
+        "version": "2.2.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "rxjs@7.8.2",
+        "name": "rxjs",
+        "version": "7.8.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "safe-buffer@5.2.1",
+        "name": "safe-buffer",
+        "version": "5.2.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "semver@7.7.4",
+        "name": "semver",
+        "version": "7.7.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "send@1.2.1",
+        "name": "send",
+        "version": "1.2.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "serve-static@2.2.1",
+        "name": "serve-static",
+        "version": "2.2.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "setprototypeof@1.2.0",
+        "name": "setprototypeof",
+        "version": "1.2.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "side-channel@1.1.0",
+        "name": "side-channel",
+        "version": "1.1.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "side-channel-map@1.0.1",
+        "name": "side-channel-map",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "side-channel-weakmap@1.0.2",
+        "name": "side-channel-weakmap",
+        "version": "1.0.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "statuses@2.0.2",
+        "name": "statuses",
+        "version": "2.0.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "string-width@4.2.3",
+        "name": "string-width",
+        "version": "4.2.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "supports-color@8.1.1",
+        "name": "supports-color",
+        "version": "8.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "toidentifier@1.0.1",
+        "name": "toidentifier",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "tree-kill@1.2.2",
+        "name": "tree-kill",
+        "version": "1.2.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "tslib@2.8.1",
+        "name": "tslib",
+        "version": "2.8.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "type-is@2.0.1",
+        "name": "type-is",
+        "version": "2.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "undici-types@7.18.2",
+        "name": "undici-types",
+        "version": "7.18.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "unpipe@1.0.0",
+        "name": "unpipe",
+        "version": "1.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "vary@1.1.2",
+        "name": "vary",
+        "version": "1.1.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "wrap-ansi@7.0.0",
+        "name": "wrap-ansi",
+        "version": "7.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "wrappy@1.0.2",
+        "name": "wrappy",
+        "version": "1.0.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "yargs@17.7.2",
+        "name": "yargs",
+        "version": "17.7.2",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "cookie@0.7.2",
+        "name": "cookie",
+        "version": "0.7.2",
+        "type": "Package",
+        "risk_score": 0.07663307338953018,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "has-flag@4.0.0",
+        "name": "has-flag",
+        "version": "4.0.0",
+        "type": "Package",
+        "risk_score": 0.0759536400437355,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "require-directory@2.1.1",
+        "name": "require-directory",
+        "version": "2.1.1",
+        "type": "Package",
+        "risk_score": 0.07559065520763397,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "emoji-regex@8.0.0",
+        "name": "emoji-regex",
+        "version": "8.0.0",
+        "type": "Package",
+        "risk_score": 0.07371365278959274,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "debug@4.4.3",
+        "name": "debug",
+        "version": "4.4.3",
+        "type": "Package",
+        "risk_score": 0.0732646957039833,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 9
+      },
+      {
+        "id": "is-fullwidth-code-point@3.0.0",
+        "name": "is-fullwidth-code-point",
+        "version": "3.0.0",
+        "type": "Package",
+        "risk_score": 0.07285294681787491,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "strip-ansi@6.0.1",
+        "name": "strip-ansi",
+        "version": "6.0.1",
+        "type": "Package",
+        "risk_score": 0.07235074788331985,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "@socket.io/component-emitter@3.1.2",
+        "name": "@socket.io/component-emitter",
+        "version": "3.1.2",
+        "type": "Package",
+        "risk_score": 0.07084588706493378,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "call-bind-apply-helpers@1.0.2",
+        "name": "call-bind-apply-helpers",
+        "version": "1.0.2",
+        "type": "Package",
+        "risk_score": 0.06443274021148682,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "safer-buffer@2.1.2",
+        "name": "safer-buffer",
+        "version": "2.1.2",
+        "type": "Package",
+        "risk_score": 0.06411293894052505,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "bytes@3.1.2",
+        "name": "bytes",
+        "version": "3.1.2",
+        "type": "Package",
+        "risk_score": 0.06367809325456619,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "ansi-regex@5.0.1",
+        "name": "ansi-regex",
+        "version": "5.0.1",
+        "type": "Package",
+        "risk_score": 0.05785239860415459,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "@types/node@25.5.2",
+        "name": "@types/node",
+        "version": "25.5.2",
+        "type": "Package",
+        "risk_score": 0.0573897659778595,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "get-caller-file@2.0.5",
+        "name": "get-caller-file",
+        "version": "2.0.5",
+        "type": "Package",
+        "risk_score": 0.05463457107543945,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "ws@8.18.3",
+        "name": "ws",
+        "version": "8.18.3",
+        "type": "Package",
+        "risk_score": 0.05397411063313484,
+        "is_direct": false,
+        "cve": "GHSA-96hv-2xvq-fx4p",
+        "dependents_count": 2
+      },
+      {
+        "id": "GHSA-96hv-2xvq-fx4p",
+        "name": "GHSA-96hv-2xvq-fx4p",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-96hv-2xvq-fx4p",
+        "dependents_count": 0
+      },
+      {
+        "id": "negotiator@1.0.0",
+        "name": "negotiator",
+        "version": "1.0.0",
+        "type": "Package",
+        "risk_score": 0.05318890139460564,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "es-object-atoms@1.1.1",
+        "name": "es-object-atoms",
+        "version": "1.1.1",
+        "type": "Package",
+        "risk_score": 0.05058850720524788,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "mime-db@1.54.0",
+        "name": "mime-db",
+        "version": "1.54.0",
+        "type": "Package",
+        "risk_score": 0.05029321834445,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "es-define-property@1.0.1",
+        "name": "es-define-property",
+        "version": "1.0.1",
+        "type": "Package",
+        "risk_score": 0.04678405821323395,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "math-intrinsics@1.1.0",
+        "name": "math-intrinsics",
+        "version": "1.1.0",
+        "type": "Package",
+        "risk_score": 0.046681977808475494,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "y18n@5.0.8",
+        "name": "y18n",
+        "version": "5.0.8",
+        "type": "Package",
+        "risk_score": 0.045915473252534866,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "side-channel-list@1.0.0",
+        "name": "side-channel-list",
+        "version": "1.0.0",
+        "type": "Package",
+        "risk_score": 0.045344799757003784,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "has-tostringtag@1.0.2",
+        "name": "has-tostringtag",
+        "version": "1.0.2",
+        "type": "Package",
+        "risk_score": 0.045206744223833084,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "gopd@1.2.0",
+        "name": "gopd",
+        "version": "1.2.0",
+        "type": "Package",
+        "risk_score": 0.04445301741361618,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "es-errors@1.3.0",
+        "name": "es-errors",
+        "version": "1.3.0",
+        "type": "Package",
+        "risk_score": 0.04374447464942932,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 9
+      },
+      {
+        "id": "has-symbols@1.1.0",
+        "name": "has-symbols",
+        "version": "1.1.0",
+        "type": "Package",
+        "risk_score": 0.04337513819336891,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 2
+      },
+      {
+        "id": "yargs-parser@21.1.1",
+        "name": "yargs-parser",
+        "version": "21.1.1",
+        "type": "Package",
+        "risk_score": 0.04134654253721237,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "object-inspect@1.13.4",
+        "name": "object-inspect",
+        "version": "1.13.4",
+        "type": "Package",
+        "risk_score": 0.038849279284477234,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 4
+      },
+      {
+        "id": "proxy-from-env@2.1.0",
+        "name": "proxy-from-env",
+        "version": "2.1.0",
+        "type": "Package",
+        "risk_score": 0.03865676745772362,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "combined-stream@1.0.8",
+        "name": "combined-stream",
+        "version": "1.0.8",
+        "type": "Package",
+        "risk_score": 0.03756113350391388,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "engine.io-parser@5.2.3",
+        "name": "engine.io-parser",
+        "version": "5.2.3",
+        "type": "Package",
+        "risk_score": 0.036204878240823746,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "escalade@3.2.0",
+        "name": "escalade",
+        "version": "3.2.0",
+        "type": "Package",
+        "risk_score": 0.03543756529688835,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "hasown@2.0.2",
+        "name": "hasown",
+        "version": "2.0.2",
+        "type": "Package",
+        "risk_score": 0.03464040532708168,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 3
+      },
+      {
+        "id": "asynckit@0.4.0",
+        "name": "asynckit",
+        "version": "0.4.0",
+        "type": "Package",
+        "risk_score": 0.025940412655472755,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "body-parser@2.2.2",
+        "target": "GHSA-v422-hmwv-36x6",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "axios@1.14.0",
+        "target": "GHSA-35jp-ww65-95wh",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "GHSA-gr94-w7qr-f4j3",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "qs@6.15.0",
+        "target": "GHSA-4mjr-xmp4-gh2g",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "socket.io-parser@4.2.6",
+        "target": "GHSA-2m8v-j782-fhvr",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "shell-quote@1.8.3",
+        "target": "GHSA-w7jw-789q-3m8p",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "follow-redirects@1.15.11",
+        "target": "GHSA-r4q5-vmmm-2653",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "GHSA-hmw2-7cc7-3qxx",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "ws@8.18.3",
+        "target": "GHSA-96hv-2xvq-fx4p",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "@types/cors@2.8.19",
+        "target": "@types/node@25.5.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "@types/node@25.5.2",
+        "target": "undici-types@7.18.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "@types/ws@8.18.1",
+        "target": "@types/node@25.5.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "accepts@2.0.0",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "accepts@2.0.0",
+        "target": "negotiator@0.6.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "ansi-styles@4.3.0",
+        "target": "color-convert@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "axios@1.14.0",
+        "target": "follow-redirects@1.15.11",
+        "type": "dependsOn"
+      },
+      {
+        "source": "axios@1.14.0",
+        "target": "form-data@4.0.5",
+        "type": "dependsOn"
+      },
+      {
+        "source": "axios@1.14.0",
+        "target": "proxy-from-env@2.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "bytes@3.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "content-type@1.0.5",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "http-errors@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "iconv-lite@0.7.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "on-finished@2.4.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "qs@6.15.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "raw-body@3.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@2.2.2",
+        "target": "type-is@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "call-bind-apply-helpers@1.0.2",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "call-bind-apply-helpers@1.0.2",
+        "target": "function-bind@1.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "call-bound@1.0.4",
+        "target": "call-bind-apply-helpers@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "call-bound@1.0.4",
+        "target": "get-intrinsic@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "chalk@4.1.2",
+        "target": "ansi-styles@4.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "chalk@4.1.2",
+        "target": "supports-color@7.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "supports-color@7.2.0",
+        "target": "has-flag@4.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "cliui@8.0.1",
+        "target": "string-width@4.2.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "cliui@8.0.1",
+        "target": "strip-ansi@6.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "cliui@8.0.1",
+        "target": "wrap-ansi@7.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "color-convert@2.0.1",
+        "target": "color-name@1.1.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "combined-stream@1.0.8",
+        "target": "delayed-stream@1.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "chalk@4.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "rxjs@7.8.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "shell-quote@1.8.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "supports-color@7.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "tree-kill@1.2.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "concurrently@9.2.1",
+        "target": "yargs@17.7.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "cors@2.8.6",
+        "target": "object-assign@4.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "cors@2.8.6",
+        "target": "vary@1.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "debug@4.4.3",
+        "target": "ms@2.1.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "dunder-proto@1.0.1",
+        "target": "call-bind-apply-helpers@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "dunder-proto@1.0.1",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "dunder-proto@1.0.1",
+        "target": "gopd@1.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "ecdsa-sig-formatter@1.0.11",
+        "target": "safe-buffer@5.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "@types/cors@2.8.19",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "@types/node@25.5.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "@types/ws@8.18.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "accepts@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "base64id@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "cookie@0.7.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "cors@2.8.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "engine.io-parser@5.2.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "engine.io@6.6.6",
+        "target": "ws@8.18.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "accepts@1.3.8",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "accepts@1.3.8",
+        "target": "negotiator@0.6.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "mime-types@2.1.35",
+        "target": "mime-db@1.52.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "es-object-atoms@1.1.1",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "es-set-tostringtag@2.1.0",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "es-set-tostringtag@2.1.0",
+        "target": "get-intrinsic@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "es-set-tostringtag@2.1.0",
+        "target": "has-tostringtag@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "es-set-tostringtag@2.1.0",
+        "target": "hasown@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "accepts@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "body-parser@2.2.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "content-disposition@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "content-type@1.0.5",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "cookie@0.7.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "cookie-signature@1.2.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "depd@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "encodeurl@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "escape-html@1.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "etag@1.8.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "finalhandler@2.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "fresh@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "http-errors@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "merge-descriptors@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "on-finished@2.4.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "once@1.4.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "parseurl@1.3.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "proxy-addr@2.0.7",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "qs@6.15.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "range-parser@1.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "router@2.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "send@1.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "serve-static@2.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "statuses@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "type-is@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@5.2.1",
+        "target": "vary@1.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "encodeurl@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "escape-html@1.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "on-finished@2.4.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "parseurl@1.3.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "finalhandler@2.1.1",
+        "target": "statuses@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "asynckit@0.4.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "combined-stream@1.0.8",
+        "type": "dependsOn"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "es-set-tostringtag@2.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "hasown@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "form-data@4.0.5",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "call-bind-apply-helpers@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "es-define-property@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "es-object-atoms@1.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "function-bind@1.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "get-proto@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "gopd@1.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "has-symbols@1.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "hasown@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-intrinsic@1.3.0",
+        "target": "math-intrinsics@1.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-proto@1.0.1",
+        "target": "dunder-proto@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "get-proto@1.0.1",
+        "target": "es-object-atoms@1.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "has-tostringtag@1.0.2",
+        "target": "has-symbols@1.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "hasown@2.0.2",
+        "target": "function-bind@1.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "http-errors@2.0.1",
+        "target": "depd@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "http-errors@2.0.1",
+        "target": "inherits@2.0.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "http-errors@2.0.1",
+        "target": "setprototypeof@1.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "http-errors@2.0.1",
+        "target": "statuses@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "http-errors@2.0.1",
+        "target": "toidentifier@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "iconv-lite@0.7.2",
+        "target": "safer-buffer@2.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "jws@4.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.includes@4.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.isboolean@3.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.isinteger@4.0.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.isnumber@3.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.isplainobject@4.0.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.isstring@4.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "lodash.once@4.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "ms@2.1.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jsonwebtoken@9.0.3",
+        "target": "semver@7.7.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jwa@2.0.1",
+        "target": "buffer-equal-constant-time@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jwa@2.0.1",
+        "target": "ecdsa-sig-formatter@1.0.11",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jwa@2.0.1",
+        "target": "safe-buffer@5.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jws@4.0.1",
+        "target": "jwa@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "jws@4.0.1",
+        "target": "safe-buffer@5.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "mime-types@3.0.2",
+        "target": "mime-db@1.52.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "on-finished@2.4.1",
+        "target": "ee-first@1.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "once@1.4.0",
+        "target": "wrappy@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "proxy-addr@2.0.7",
+        "target": "forwarded@0.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "proxy-addr@2.0.7",
+        "target": "ipaddr.js@1.9.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "qs@6.15.0",
+        "target": "side-channel@1.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "raw-body@3.0.2",
+        "target": "bytes@3.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "raw-body@3.0.2",
+        "target": "http-errors@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "raw-body@3.0.2",
+        "target": "iconv-lite@0.7.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "raw-body@3.0.2",
+        "target": "unpipe@1.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "router@2.2.0",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "router@2.2.0",
+        "target": "depd@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "router@2.2.0",
+        "target": "is-promise@4.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "router@2.2.0",
+        "target": "parseurl@1.3.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "router@2.2.0",
+        "target": "path-to-regexp@8.4.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "rxjs@7.8.2",
+        "target": "tslib@2.8.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "encodeurl@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "escape-html@1.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "etag@1.8.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "fresh@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "http-errors@2.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "ms@2.1.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "on-finished@2.4.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "range-parser@1.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "send@1.2.1",
+        "target": "statuses@2.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "serve-static@2.2.1",
+        "target": "encodeurl@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "serve-static@2.2.1",
+        "target": "escape-html@1.0.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "serve-static@2.2.1",
+        "target": "parseurl@1.3.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "serve-static@2.2.1",
+        "target": "send@1.2.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel@1.1.0",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel@1.1.0",
+        "target": "object-inspect@1.13.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel@1.1.0",
+        "target": "side-channel-list@1.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel@1.1.0",
+        "target": "side-channel-map@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel@1.1.0",
+        "target": "side-channel-weakmap@1.0.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-list@1.0.0",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-list@1.0.0",
+        "target": "object-inspect@1.13.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-map@1.0.1",
+        "target": "call-bound@1.0.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-map@1.0.1",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-map@1.0.1",
+        "target": "get-intrinsic@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-map@1.0.1",
+        "target": "object-inspect@1.13.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-weakmap@1.0.2",
+        "target": "call-bound@1.0.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-weakmap@1.0.2",
+        "target": "es-errors@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-weakmap@1.0.2",
+        "target": "get-intrinsic@1.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-weakmap@1.0.2",
+        "target": "object-inspect@1.13.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "side-channel-weakmap@1.0.2",
+        "target": "side-channel-map@1.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "accepts@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "base64id@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "cors@2.8.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "engine.io@6.6.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "socket.io-adapter@2.5.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io@4.8.3",
+        "target": "socket.io-parser@4.2.6",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io-adapter@2.5.6",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io-adapter@2.5.6",
+        "target": "ws@8.18.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io-parser@4.2.6",
+        "target": "@socket.io/component-emitter@3.1.2",
+        "type": "dependsOn"
+      },
+      {
+        "source": "socket.io-parser@4.2.6",
+        "target": "debug@4.4.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "string-width@4.2.3",
+        "target": "emoji-regex@8.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "string-width@4.2.3",
+        "target": "is-fullwidth-code-point@3.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "string-width@4.2.3",
+        "target": "strip-ansi@6.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "strip-ansi@6.0.1",
+        "target": "ansi-regex@5.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "supports-color@8.1.1",
+        "target": "has-flag@4.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "type-is@2.0.1",
+        "target": "content-type@1.0.5",
+        "type": "dependsOn"
+      },
+      {
+        "source": "type-is@2.0.1",
+        "target": "media-typer@1.1.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "type-is@2.0.1",
+        "target": "mime-types@2.1.35",
+        "type": "dependsOn"
+      },
+      {
+        "source": "wrap-ansi@7.0.0",
+        "target": "ansi-styles@4.3.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "wrap-ansi@7.0.0",
+        "target": "string-width@4.2.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "wrap-ansi@7.0.0",
+        "target": "strip-ansi@6.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "cliui@8.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "escalade@3.2.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "get-caller-file@2.0.5",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "require-directory@2.1.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "string-width@4.2.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "y18n@5.0.8",
+        "type": "dependsOn"
+      },
+      {
+        "source": "yargs@17.7.2",
+        "target": "yargs-parser@21.1.1",
+        "type": "dependsOn"
+      }
+    ]
+  },
+  "attack_paths": [
+    {
+      "id": "path-1",
+      "root": "express@5.2.1",
+      "sink": "body-parser@2.2.2",
+      "cve": "GHSA-v422-hmwv-36x6",
+      "hops": 1,
+      "chain": [
+        "express@5.2.1",
+        "body-parser@2.2.2"
+      ],
+      "root_risk": 0.9998049139976501,
+      "sink_risk": 0.9720062017440796,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-v422-hmwv-36x6 via 1 transitive hops to 'body-parser@2.2.2'."
+    },
+    {
+      "id": "path-2",
+      "root": "axios@1.14.0",
+      "sink": "axios@1.14.0",
+      "cve": "GHSA-35jp-ww65-95wh",
+      "hops": 0,
+      "chain": [
+        "axios@1.14.0"
+      ],
+      "root_risk": 0.9657545685768127,
+      "sink_risk": 0.9657545685768127,
+      "impact_summary": "Direct dependency 'axios' is exposed to GHSA-35jp-ww65-95wh via 0 transitive hops to 'axios@1.14.0'."
+    },
+    {
+      "id": "path-3",
+      "root": "socket.io@4.8.3",
+      "sink": "engine.io@6.6.6",
+      "cve": "GHSA-gr94-w7qr-f4j3",
+      "hops": 1,
+      "chain": [
+        "socket.io@4.8.3",
+        "engine.io@6.6.6"
+      ],
+      "root_risk": 0.9824955463409424,
+      "sink_risk": 0.955656111240387,
+      "impact_summary": "Direct dependency 'socket.io' is exposed to GHSA-gr94-w7qr-f4j3 via 1 transitive hops to 'engine.io@6.6.6'."
+    },
+    {
+      "id": "path-4",
+      "root": "express@5.2.1",
+      "sink": "qs@6.15.0",
+      "cve": "GHSA-4mjr-xmp4-gh2g",
+      "hops": 1,
+      "chain": [
+        "express@5.2.1",
+        "qs@6.15.0"
+      ],
+      "root_risk": 0.9998049139976501,
+      "sink_risk": 0.6401843428611755,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-4mjr-xmp4-gh2g via 1 transitive hops to 'qs@6.15.0'."
+    },
+    {
+      "id": "path-5",
+      "root": "socket.io@4.8.3",
+      "sink": "socket.io-parser@4.2.6",
+      "cve": "GHSA-2m8v-j782-fhvr",
+      "hops": 1,
+      "chain": [
+        "socket.io@4.8.3",
+        "socket.io-parser@4.2.6"
+      ],
+      "root_risk": 0.9824955463409424,
+      "sink_risk": 0.5229897499084473,
+      "impact_summary": "Direct dependency 'socket.io' is exposed to GHSA-2m8v-j782-fhvr via 1 transitive hops to 'socket.io-parser@4.2.6'."
+    },
+    {
+      "id": "path-6",
+      "root": "concurrently@9.2.1",
+      "sink": "shell-quote@1.8.3",
+      "cve": "GHSA-w7jw-789q-3m8p",
+      "hops": 1,
+      "chain": [
+        "concurrently@9.2.1",
+        "shell-quote@1.8.3"
+      ],
+      "root_risk": 0.9633683562278748,
+      "sink_risk": 0.4459276497364044,
+      "impact_summary": "Direct dependency 'concurrently' is exposed to GHSA-w7jw-789q-3m8p via 1 transitive hops to 'shell-quote@1.8.3'."
+    },
+    {
+      "id": "path-7",
+      "root": "axios@1.14.0",
+      "sink": "follow-redirects@1.15.11",
+      "cve": "GHSA-r4q5-vmmm-2653",
+      "hops": 1,
+      "chain": [
+        "axios@1.14.0",
+        "follow-redirects@1.15.11"
+      ],
+      "root_risk": 0.9657545685768127,
+      "sink_risk": 0.3009745180606842,
+      "impact_summary": "Direct dependency 'axios' is exposed to GHSA-r4q5-vmmm-2653 via 1 transitive hops to 'follow-redirects@1.15.11'."
+    },
+    {
+      "id": "path-8",
+      "root": "axios@1.14.0",
+      "sink": "form-data@4.0.5",
+      "cve": "GHSA-hmw2-7cc7-3qxx",
+      "hops": 1,
+      "chain": [
+        "axios@1.14.0",
+        "form-data@4.0.5"
+      ],
+      "root_risk": 0.9657545685768127,
+      "sink_risk": 0.27371588349342346,
+      "impact_summary": "Direct dependency 'axios' is exposed to GHSA-hmw2-7cc7-3qxx via 1 transitive hops to 'form-data@4.0.5'."
+    },
+    {
+      "id": "path-9",
+      "root": "socket.io@4.8.3",
+      "sink": "ws@8.18.3",
+      "cve": "GHSA-96hv-2xvq-fx4p",
+      "hops": 2,
+      "chain": [
+        "socket.io@4.8.3",
+        "engine.io@6.6.6",
+        "ws@8.18.3"
+      ],
+      "root_risk": 0.9824955463409424,
+      "sink_risk": 0.05397411063313484,
+      "impact_summary": "Direct dependency 'socket.io' is exposed to GHSA-96hv-2xvq-fx4p via 2 transitive hops to 'ws@8.18.3'."
+    }
+  ],
+  "project_audit": {
+    "audit_rows": [
+      {
+        "package": "body-parser@2.2.2",
+        "cve": "GHSA-v422-hmwv-36x6",
+        "unmasked_model_score": 0.9720062017440796,
+        "masked_model_score": 0.9950205087661743,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.2256932035088539,
+        "feature_shuffle_score": 0.9950205087661743,
+        "model_vs_bfs_gain": "+91.5%"
+      },
+      {
+        "package": "axios@1.14.0",
+        "cve": "GHSA-35jp-ww65-95wh",
+        "unmasked_model_score": 0.9657545685768127,
+        "masked_model_score": 0.9682226181030273,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.20444905633727709,
+        "feature_shuffle_score": 0.9682226181030273,
+        "model_vs_bfs_gain": "+88.8%"
+      },
+      {
+        "package": "engine.io@6.6.6",
+        "cve": "GHSA-gr94-w7qr-f4j3",
+        "unmasked_model_score": 0.955656111240387,
+        "masked_model_score": 0.9914904236793518,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.15272382375868884,
+        "feature_shuffle_score": 0.9914904236793518,
+        "model_vs_bfs_gain": "+91.1%"
+      },
+      {
+        "package": "qs@6.15.0",
+        "cve": "GHSA-4mjr-xmp4-gh2g",
+        "unmasked_model_score": 0.6401843428611755,
+        "masked_model_score": 0.9342153072357178,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.6839370379845301,
+        "feature_shuffle_score": 0.9342153072357178,
+        "model_vs_bfs_gain": "+85.4%"
+      },
+      {
+        "package": "socket.io-parser@4.2.6",
+        "cve": "GHSA-2m8v-j782-fhvr",
+        "unmasked_model_score": 0.5229897499084473,
+        "masked_model_score": 0.8508450984954834,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.37553537636995316,
+        "feature_shuffle_score": 0.8508450984954834,
+        "model_vs_bfs_gain": "+77.1%"
+      },
+      {
+        "package": "shell-quote@1.8.3",
+        "cve": "GHSA-w7jw-789q-3m8p",
+        "unmasked_model_score": 0.4459276497364044,
+        "masked_model_score": 0.47490477561950684,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.9633683562278748,
+        "feature_shuffle_score": 0.47490477561950684,
+        "model_vs_bfs_gain": "+39.5%"
+      },
+      {
+        "package": "follow-redirects@1.15.11",
+        "cve": "GHSA-r4q5-vmmm-2653",
+        "unmasked_model_score": 0.3009745180606842,
+        "masked_model_score": 0.19924283027648926,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.9657545685768127,
+        "feature_shuffle_score": 0.19924283027648926,
+        "model_vs_bfs_gain": "+11.9%"
+      },
+      {
+        "package": "form-data@4.0.5",
+        "cve": "GHSA-hmw2-7cc7-3qxx",
+        "unmasked_model_score": 0.27371588349342346,
+        "masked_model_score": 0.6931851506233215,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.20398275274783373,
+        "feature_shuffle_score": 0.6931851506233215,
+        "model_vs_bfs_gain": "+61.3%"
+      }
+    ],
+    "summary_claim": "VulnGAT maintains higher risk signal on masked nodes via dependency message-passing, surpassing naive BFS traversal."
+  },
+  "remediations": [
+    {
+      "package": "body-parser@2.2.2",
+      "cve": "GHSA-v422-hmwv-36x6",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade body-parser to latest patched version to mitigate GHSA-v422-hmwv-36x6.",
+      "simulated_risk_reduction_pct": 5.3
+    },
+    {
+      "package": "axios@1.14.0",
+      "cve": "GHSA-35jp-ww65-95wh",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade axios to latest patched version to mitigate GHSA-35jp-ww65-95wh.",
+      "simulated_risk_reduction_pct": 5.2
+    },
+    {
+      "package": "engine.io@6.6.6",
+      "cve": "GHSA-gr94-w7qr-f4j3",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade engine.io to latest patched version to mitigate GHSA-gr94-w7qr-f4j3.",
+      "simulated_risk_reduction_pct": 5.2
+    },
+    {
+      "package": "qs@6.15.0",
+      "cve": "GHSA-4mjr-xmp4-gh2g",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade qs to latest patched version to mitigate GHSA-4mjr-xmp4-gh2g.",
+      "simulated_risk_reduction_pct": 3.8
+    },
+    {
+      "package": "socket.io-parser@4.2.6",
+      "cve": "GHSA-2m8v-j782-fhvr",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade socket.io-parser to latest patched version to mitigate GHSA-2m8v-j782-fhvr.",
+      "simulated_risk_reduction_pct": 3.2
+    }
+  ]
+}

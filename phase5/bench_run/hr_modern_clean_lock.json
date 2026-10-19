@@ -1,0 +1,233 @@
+{
+  "total_packages": 6,
+  "summary": {
+    "critical": 1,
+    "high": 1,
+    "moderate": 0,
+    "safe": 4
+  },
+  "packages": [
+    {
+      "package": "next@15.0.0",
+      "name": "next",
+      "version": "15.0.0",
+      "risk_score": 0.6246045827865601,
+      "is_direct": true,
+      "cve": "GHSA-2xp9-vwfh-vxw4",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "postcss@8.4.47",
+      "name": "postcss",
+      "version": "8.4.47",
+      "risk_score": 0.3125707805156708,
+      "is_direct": false,
+      "cve": "GHSA-6g55-p6wh-862q",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "react@19.0.0",
+      "name": "react",
+      "version": "19.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": true,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "typescript@5.6.0",
+      "name": "typescript",
+      "version": "5.6.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": true,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "react-dom@19.0.0",
+      "name": "react-dom",
+      "version": "19.0.0",
+      "risk_score": 0.05066005513072014,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "autoprefixer@10.4.20",
+      "name": "autoprefixer",
+      "version": "10.4.20",
+      "risk_score": 0.05066005513072014,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "next@15.0.0",
+        "name": "next",
+        "version": "15.0.0",
+        "type": "Package",
+        "risk_score": 0.6246045827865601,
+        "is_direct": true,
+        "cve": "GHSA-2xp9-vwfh-vxw4",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-2xp9-vwfh-vxw4",
+        "name": "GHSA-2xp9-vwfh-vxw4",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-2xp9-vwfh-vxw4",
+        "dependents_count": 0
+      },
+      {
+        "id": "postcss@8.4.47",
+        "name": "postcss",
+        "version": "8.4.47",
+        "type": "Package",
+        "risk_score": 0.3125707805156708,
+        "is_direct": false,
+        "cve": "GHSA-6g55-p6wh-862q",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-6g55-p6wh-862q",
+        "name": "GHSA-6g55-p6wh-862q",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-6g55-p6wh-862q",
+        "dependents_count": 0
+      },
+      {
+        "id": "react@19.0.0",
+        "name": "react",
+        "version": "19.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "typescript@5.6.0",
+        "name": "typescript",
+        "version": "5.6.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": true,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "react-dom@19.0.0",
+        "name": "react-dom",
+        "version": "19.0.0",
+        "type": "Package",
+        "risk_score": 0.05066005513072014,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      },
+      {
+        "id": "autoprefixer@10.4.20",
+        "name": "autoprefixer",
+        "version": "10.4.20",
+        "type": "Package",
+        "risk_score": 0.05066005513072014,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 0
+      }
+    ],
+    "edges": [
+      {
+        "source": "next@15.0.0",
+        "target": "GHSA-2xp9-vwfh-vxw4",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "postcss@8.4.47",
+        "target": "GHSA-6g55-p6wh-862q",
+        "type": "hasVulnerability"
+      }
+    ]
+  },
+  "attack_paths": [
+    {
+      "id": "path-1",
+      "root": "next@15.0.0",
+      "sink": "next@15.0.0",
+      "cve": "GHSA-2xp9-vwfh-vxw4",
+      "hops": 0,
+      "chain": [
+        "next@15.0.0"
+      ],
+      "root_risk": 0.6246045827865601,
+      "sink_risk": 0.6246045827865601,
+      "impact_summary": "Direct dependency 'next' is exposed to GHSA-2xp9-vwfh-vxw4 via 0 transitive hops to 'next@15.0.0'."
+    }
+  ],
+  "project_audit": {
+    "audit_rows": [
+      {
+        "package": "next@15.0.0",
+        "cve": "GHSA-2xp9-vwfh-vxw4",
+        "unmasked_model_score": 0.6246045827865601,
+        "masked_model_score": 0.3117348253726959,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.08,
+        "feature_shuffle_score": 0.3117348253726959,
+        "model_vs_bfs_gain": "+23.2%"
+      },
+      {
+        "package": "postcss@8.4.47",
+        "cve": "GHSA-6g55-p6wh-862q",
+        "unmasked_model_score": 0.3125707805156708,
+        "masked_model_score": 0.26156511902809143,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.08,
+        "feature_shuffle_score": 0.26156511902809143,
+        "model_vs_bfs_gain": "+18.2%"
+      }
+    ],
+    "summary_claim": "VulnGAT maintains higher risk signal on masked nodes via dependency message-passing, surpassing naive BFS traversal."
+  },
+  "remediations": [
+    {
+      "package": "next@15.0.0",
+      "cve": "GHSA-2xp9-vwfh-vxw4",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade next to latest patched version to mitigate GHSA-2xp9-vwfh-vxw4.",
+      "simulated_risk_reduction_pct": 54.2
+    },
+    {
+      "package": "postcss@8.4.47",
+      "cve": "GHSA-6g55-p6wh-862q",
+      "affected_dependents_count": 0,
+      "recommended_action": "Upgrade postcss to latest patched version to mitigate GHSA-6g55-p6wh-862q.",
+      "simulated_risk_reduction_pct": 20.9
+    }
+  ]
+}

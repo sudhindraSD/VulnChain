@@ -1,0 +1,12 @@
+================================================================================
+  VulnChain -- Project Dependency Risk Analyzer
+================================================================================
+Target lockfile: ../../TrainModel/scratch/meteor_lock.json
+Parsed 401 unique packages and 769 dependency relations.
+
+[OK] Full analysis results exported to: old_meteor_lock.json
+
+================================================================================
+  Analysis Complete!
+================================================================================
+

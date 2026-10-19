@@ -1,0 +1,554 @@
+{
+  "total_packages": 9,
+  "summary": {
+    "critical": 5,
+    "high": 2,
+    "moderate": 0,
+    "safe": 2
+  },
+  "packages": [
+    {
+      "package": "express@4.17.1",
+      "name": "express",
+      "version": "4.17.1",
+      "risk_score": 0.9999657869338989,
+      "is_direct": true,
+      "cve": "GHSA-rv95-896h-c2vc",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "body-parser@1.19.0",
+      "name": "body-parser",
+      "version": "1.19.0",
+      "risk_score": 0.9764650464057922,
+      "is_direct": false,
+      "cve": "GHSA-v422-hmwv-36x6",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "serve-static@1.14.1",
+      "name": "serve-static",
+      "version": "1.14.1",
+      "risk_score": 0.9311448931694031,
+      "is_direct": false,
+      "cve": "GHSA-cm22-4g7w-348p",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "send@0.17.1",
+      "name": "send",
+      "version": "0.17.1",
+      "risk_score": 0.8702146410942078,
+      "is_direct": false,
+      "cve": "GHSA-m6fv-jmcg-4jfg",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "lodash@4.17.11",
+      "name": "lodash",
+      "version": "4.17.11",
+      "risk_score": 0.41123563051223755,
+      "is_direct": true,
+      "cve": "GHSA-xxjr-mmjv-4gpg",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "minimist@1.2.5",
+      "name": "minimist",
+      "version": "1.2.5",
+      "risk_score": 0.3022899031639099,
+      "is_direct": true,
+      "cve": "GHSA-xvch-5gv4-984h",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "qs@6.7.0",
+      "name": "qs",
+      "version": "6.7.0",
+      "risk_score": 0.2020530253648758,
+      "is_direct": false,
+      "cve": "GHSA-w7fw-mjwx-w883",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "debug@2.6.9",
+      "name": "debug",
+      "version": "2.6.9",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "ms@2.0.0",
+      "name": "ms",
+      "version": "2.0.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "express@4.17.1",
+        "name": "express",
+        "version": "4.17.1",
+        "type": "Package",
+        "risk_score": 0.9999657869338989,
+        "is_direct": true,
+        "cve": "GHSA-rv95-896h-c2vc",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-rv95-896h-c2vc",
+        "name": "GHSA-rv95-896h-c2vc",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-rv95-896h-c2vc",
+        "dependents_count": 0
+      },
+      {
+        "id": "body-parser@1.19.0",
+        "name": "body-parser",
+        "version": "1.19.0",
+        "type": "Package",
+        "risk_score": 0.9764650464057922,
+        "is_direct": false,
+        "cve": "GHSA-v422-hmwv-36x6",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-v422-hmwv-36x6",
+        "name": "GHSA-v422-hmwv-36x6",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-v422-hmwv-36x6",
+        "dependents_count": 0
+      },
+      {
+        "id": "serve-static@1.14.1",
+        "name": "serve-static",
+        "version": "1.14.1",
+        "type": "Package",
+        "risk_score": 0.9311448931694031,
+        "is_direct": false,
+        "cve": "GHSA-cm22-4g7w-348p",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-cm22-4g7w-348p",
+        "name": "GHSA-cm22-4g7w-348p",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-cm22-4g7w-348p",
+        "dependents_count": 0
+      },
+      {
+        "id": "send@0.17.1",
+        "name": "send",
+        "version": "0.17.1",
+        "type": "Package",
+        "risk_score": 0.8702146410942078,
+        "is_direct": false,
+        "cve": "GHSA-m6fv-jmcg-4jfg",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-m6fv-jmcg-4jfg",
+        "name": "GHSA-m6fv-jmcg-4jfg",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-m6fv-jmcg-4jfg",
+        "dependents_count": 0
+      },
+      {
+        "id": "lodash@4.17.11",
+        "name": "lodash",
+        "version": "4.17.11",
+        "type": "Package",
+        "risk_score": 0.41123563051223755,
+        "is_direct": true,
+        "cve": "GHSA-xxjr-mmjv-4gpg",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-xxjr-mmjv-4gpg",
+        "name": "GHSA-xxjr-mmjv-4gpg",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-xxjr-mmjv-4gpg",
+        "dependents_count": 0
+      },
+      {
+        "id": "minimist@1.2.5",
+        "name": "minimist",
+        "version": "1.2.5",
+        "type": "Package",
+        "risk_score": 0.3022899031639099,
+        "is_direct": true,
+        "cve": "GHSA-xvch-5gv4-984h",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-xvch-5gv4-984h",
+        "name": "GHSA-xvch-5gv4-984h",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-xvch-5gv4-984h",
+        "dependents_count": 0
+      },
+      {
+        "id": "qs@6.7.0",
+        "name": "qs",
+        "version": "6.7.0",
+        "type": "Package",
+        "risk_score": 0.2020530253648758,
+        "is_direct": false,
+        "cve": "GHSA-w7fw-mjwx-w883",
+        "dependents_count": 1
+      },
+      {
+        "id": "GHSA-w7fw-mjwx-w883",
+        "name": "GHSA-w7fw-mjwx-w883",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-w7fw-mjwx-w883",
+        "dependents_count": 0
+      },
+      {
+        "id": "debug@2.6.9",
+        "name": "debug",
+        "version": "2.6.9",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "ms@2.0.0",
+        "name": "ms",
+        "version": "2.0.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "express@4.17.1",
+        "target": "GHSA-rv95-896h-c2vc",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "body-parser@1.19.0",
+        "target": "GHSA-v422-hmwv-36x6",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "serve-static@1.14.1",
+        "target": "GHSA-cm22-4g7w-348p",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "send@0.17.1",
+        "target": "GHSA-m6fv-jmcg-4jfg",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "lodash@4.17.11",
+        "target": "GHSA-xxjr-mmjv-4gpg",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "minimist@1.2.5",
+        "target": "GHSA-xvch-5gv4-984h",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "qs@6.7.0",
+        "target": "GHSA-w7fw-mjwx-w883",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "express@4.17.1",
+        "target": "body-parser@1.19.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@4.17.1",
+        "target": "debug@2.6.9",
+        "type": "dependsOn"
+      },
+      {
+        "source": "express@4.17.1",
+        "target": "serve-static@1.14.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "body-parser@1.19.0",
+        "target": "qs@6.7.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "debug@2.6.9",
+        "target": "ms@2.0.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "serve-static@1.14.1",
+        "target": "send@0.17.1",
+        "type": "dependsOn"
+      }
+    ]
+  },
+  "attack_paths": [
+    {
+      "id": "path-1",
+      "root": "express@4.17.1",
+      "sink": "express@4.17.1",
+      "cve": "GHSA-rv95-896h-c2vc",
+      "hops": 0,
+      "chain": [
+        "express@4.17.1"
+      ],
+      "root_risk": 0.9999657869338989,
+      "sink_risk": 0.9999657869338989,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-rv95-896h-c2vc via 0 transitive hops to 'express@4.17.1'."
+    },
+    {
+      "id": "path-2",
+      "root": "express@4.17.1",
+      "sink": "body-parser@1.19.0",
+      "cve": "GHSA-v422-hmwv-36x6",
+      "hops": 1,
+      "chain": [
+        "express@4.17.1",
+        "body-parser@1.19.0"
+      ],
+      "root_risk": 0.9999657869338989,
+      "sink_risk": 0.9764650464057922,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-v422-hmwv-36x6 via 1 transitive hops to 'body-parser@1.19.0'."
+    },
+    {
+      "id": "path-3",
+      "root": "express@4.17.1",
+      "sink": "serve-static@1.14.1",
+      "cve": "GHSA-cm22-4g7w-348p",
+      "hops": 1,
+      "chain": [
+        "express@4.17.1",
+        "serve-static@1.14.1"
+      ],
+      "root_risk": 0.9999657869338989,
+      "sink_risk": 0.9311448931694031,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-cm22-4g7w-348p via 1 transitive hops to 'serve-static@1.14.1'."
+    },
+    {
+      "id": "path-4",
+      "root": "express@4.17.1",
+      "sink": "send@0.17.1",
+      "cve": "GHSA-m6fv-jmcg-4jfg",
+      "hops": 2,
+      "chain": [
+        "express@4.17.1",
+        "serve-static@1.14.1",
+        "send@0.17.1"
+      ],
+      "root_risk": 0.9999657869338989,
+      "sink_risk": 0.8702146410942078,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-m6fv-jmcg-4jfg via 2 transitive hops to 'send@0.17.1'."
+    },
+    {
+      "id": "path-5",
+      "root": "lodash@4.17.11",
+      "sink": "lodash@4.17.11",
+      "cve": "GHSA-xxjr-mmjv-4gpg",
+      "hops": 0,
+      "chain": [
+        "lodash@4.17.11"
+      ],
+      "root_risk": 0.41123563051223755,
+      "sink_risk": 0.41123563051223755,
+      "impact_summary": "Direct dependency 'lodash' is exposed to GHSA-xxjr-mmjv-4gpg via 0 transitive hops to 'lodash@4.17.11'."
+    },
+    {
+      "id": "path-6",
+      "root": "minimist@1.2.5",
+      "sink": "minimist@1.2.5",
+      "cve": "GHSA-xvch-5gv4-984h",
+      "hops": 0,
+      "chain": [
+        "minimist@1.2.5"
+      ],
+      "root_risk": 0.3022899031639099,
+      "sink_risk": 0.3022899031639099,
+      "impact_summary": "Direct dependency 'minimist' is exposed to GHSA-xvch-5gv4-984h via 0 transitive hops to 'minimist@1.2.5'."
+    },
+    {
+      "id": "path-7",
+      "root": "express@4.17.1",
+      "sink": "qs@6.7.0",
+      "cve": "GHSA-w7fw-mjwx-w883",
+      "hops": 2,
+      "chain": [
+        "express@4.17.1",
+        "body-parser@1.19.0",
+        "qs@6.7.0"
+      ],
+      "root_risk": 0.9999657869338989,
+      "sink_risk": 0.2020530253648758,
+      "impact_summary": "Direct dependency 'express' is exposed to GHSA-w7fw-mjwx-w883 via 2 transitive hops to 'qs@6.7.0'."
+    }
+  ],
+  "project_audit": {
+    "audit_rows": [
+      {
+        "package": "express@4.17.1",
+        "cve": "GHSA-rv95-896h-c2vc",
+        "unmasked_model_score": 0.9999657869338989,
+        "masked_model_score": 0.9999982118606567,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.6625366459290186,
+        "feature_shuffle_score": 0.9999982118606567,
+        "model_vs_bfs_gain": "+92.0%"
+      },
+      {
+        "package": "body-parser@1.19.0",
+        "cve": "GHSA-v422-hmwv-36x6",
+        "unmasked_model_score": 0.9764650464057922,
+        "masked_model_score": 0.988131046295166,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.6010094061493874,
+        "feature_shuffle_score": 0.988131046295166,
+        "model_vs_bfs_gain": "+90.8%"
+      },
+      {
+        "package": "serve-static@1.14.1",
+        "cve": "GHSA-cm22-4g7w-348p",
+        "unmasked_model_score": 0.9311448931694031,
+        "masked_model_score": 0.9670308828353882,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.9350902140140533,
+        "feature_shuffle_score": 0.9670308828353882,
+        "model_vs_bfs_gain": "+88.7%"
+      },
+      {
+        "package": "send@0.17.1",
+        "cve": "GHSA-m6fv-jmcg-4jfg",
+        "unmasked_model_score": 0.8702146410942078,
+        "masked_model_score": 0.9235689043998718,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.9311448931694031,
+        "feature_shuffle_score": 0.9235689043998718,
+        "model_vs_bfs_gain": "+84.4%"
+      },
+      {
+        "package": "lodash@4.17.11",
+        "cve": "GHSA-xxjr-mmjv-4gpg",
+        "unmasked_model_score": 0.41123563051223755,
+        "masked_model_score": 0.29290369153022766,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.08,
+        "feature_shuffle_score": 0.29290369153022766,
+        "model_vs_bfs_gain": "+21.3%"
+      },
+      {
+        "package": "minimist@1.2.5",
+        "cve": "GHSA-xvch-5gv4-984h",
+        "unmasked_model_score": 0.3022899031639099,
+        "masked_model_score": 0.27232933044433594,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.08,
+        "feature_shuffle_score": 0.27232933044433594,
+        "model_vs_bfs_gain": "+19.2%"
+      },
+      {
+        "package": "qs@6.7.0",
+        "cve": "GHSA-w7fw-mjwx-w883",
+        "unmasked_model_score": 0.2020530253648758,
+        "masked_model_score": 0.2706671357154846,
+        "masked_bfs_floor": 0.04,
+        "label_prop_score": 0.9764650464057922,
+        "feature_shuffle_score": 0.2706671357154846,
+        "model_vs_bfs_gain": "+19.1%"
+      }
+    ],
+    "summary_claim": "VulnGAT maintains higher risk signal on masked nodes via dependency message-passing, surpassing naive BFS traversal."
+  },
+  "remediations": [
+    {
+      "package": "express@4.17.1",
+      "cve": "GHSA-rv95-896h-c2vc",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade express to latest patched version to mitigate GHSA-rv95-896h-c2vc.",
+      "simulated_risk_reduction_pct": 19.6
+    },
+    {
+      "package": "body-parser@1.19.0",
+      "cve": "GHSA-v422-hmwv-36x6",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade body-parser to latest patched version to mitigate GHSA-v422-hmwv-36x6.",
+      "simulated_risk_reduction_pct": 19.2
+    },
+    {
+      "package": "serve-static@1.14.1",
+      "cve": "GHSA-cm22-4g7w-348p",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade serve-static to latest patched version to mitigate GHSA-cm22-4g7w-348p.",
+      "simulated_risk_reduction_pct": 18.4
+    },
+    {
+      "package": "send@0.17.1",
+      "cve": "GHSA-m6fv-jmcg-4jfg",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade send to latest patched version to mitigate GHSA-m6fv-jmcg-4jfg.",
+      "simulated_risk_reduction_pct": 17.4
+    },
+    {
+      "package": "lodash@4.17.11",
+      "cve": "GHSA-xxjr-mmjv-4gpg",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade lodash to latest patched version to mitigate GHSA-xxjr-mmjv-4gpg.",
+      "simulated_risk_reduction_pct": 9.9
+    }
+  ]
+}

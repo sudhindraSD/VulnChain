@@ -1,0 +1,150 @@
+{
+  "phase": "2a \u2014 baseline fix",
+  "protocol": {
+    "mlp": {
+      "arch": "10-64-64-1-Sigmoid (identical to archived)",
+      "seed": 42,
+      "bs": 256,
+      "lr": 0.001,
+      "wd": 1e-05,
+      "max_epochs": 500,
+      "patience": 50,
+      "selection": "val Spearman-nz (protocol fix; archived used val MSE full-batch 200 ep)"
+    },
+    "ridge_raw": {
+      "alpha_selected_on": "val MSE (archived diagnostic recipe)",
+      "alpha": 1.0
+    }
+  },
+  "ridge_raw": {
+    "train": {
+      "n": 10523,
+      "n_nonzero": 3024,
+      "mse": 0.21428723633289337,
+      "mae": 0.44037461280822754,
+      "pearson_nonzero": 0.45496809032872215,
+      "spearman_nonzero": 0.4031113965163568,
+      "spearman_all": 0.6215044840810139,
+      "ranking_accuracy": 0.8470660396646903,
+      "ranking_accuracy_nonzero": 0.6362155388471178
+    },
+    "val": {
+      "n": 541,
+      "n_nonzero": 161,
+      "mse": 0.21225517988204956,
+      "mae": 0.4398694336414337,
+      "pearson_nonzero": 0.43615236743903973,
+      "spearman_nonzero": 0.4993719902771267,
+      "spearman_all": 0.6009674230266796,
+      "ranking_accuracy": 0.8307884231536926,
+      "ranking_accuracy_nonzero": 0.6791097622660597
+    },
+    "test": {
+      "n": 1341,
+      "n_nonzero": 538,
+      "mse": 0.19973638653755188,
+      "mae": 0.42042434215545654,
+      "pearson_nonzero": 0.5758509079752367,
+      "spearman_nonzero": 0.516536919843318,
+      "spearman_all": 0.5519722913240689,
+      "ranking_accuracy": 0.7712515683814304,
+      "ranking_accuracy_nonzero": 0.6786982548701299
+    }
+  },
+  "mlp_reconverged": {
+    "selected_epoch": 11,
+    "val_spearman_nz": 0.4726166326975774,
+    "epochs_run": 62,
+    "train": {
+      "n": 10523,
+      "n_nonzero": 3024,
+      "mse": 0.028014078736305237,
+      "mae": 0.11793200671672821,
+      "pearson_nonzero": 0.5376251609179553,
+      "spearman_nonzero": 0.46604119255111626,
+      "spearman_all": 0.6276553517983265,
+      "ranking_accuracy": 0.8519730116540585,
+      "ranking_accuracy_nonzero": 0.6628320802005012
+    },
+    "val": {
+      "n": 541,
+      "n_nonzero": 161,
+      "mse": 0.03736328333616257,
+      "mae": 0.1300305426120758,
+      "pearson_nonzero": 0.4639699464966889,
+      "spearman_nonzero": 0.4726166326975774,
+      "spearman_all": 0.5930799484527078,
+      "ranking_accuracy": 0.8277944111776447,
+      "ranking_accuracy_nonzero": 0.671092564491654
+    },
+    "test": {
+      "n": 1341,
+      "n_nonzero": 538,
+      "mse": 0.03152287006378174,
+      "mae": 0.1314866840839386,
+      "pearson_nonzero": 0.6356273349280385,
+      "spearman_nonzero": 0.519801576539285,
+      "spearman_all": 0.555039694167088,
+      "ranking_accuracy": 0.7745451693851945,
+      "ranking_accuracy_nonzero": 0.6779880275974026
+    }
+  },
+  "references": {
+    "mlp_archived_phase4": {
+      "model": "FeatureMLP (no graph)",
+      "seed": 42,
+      "best_val_mse": 0.051481,
+      "train": {
+        "n": 10523,
+        "n_nonzero": 3024,
+        "mae": 0.134634,
+        "mse": 0.035908,
+        "spearman_all": 0.5325,
+        "pearson_nonzero": 0.4243,
+        "spearman_nonzero": 0.3696,
+        "ranking_accuracy": 0.7949
+      },
+      "val": {
+        "n": 541,
+        "n_nonzero": 161,
+        "mae": 0.153745,
+        "mse": 0.051481,
+        "spearman_all": 0.4645,
+        "pearson_nonzero": 0.2712,
+        "spearman_nonzero": 0.4259,
+        "ranking_accuracy": 0.751
+      },
+      "test": {
+        "n": 1341,
+        "n_nonzero": 538,
+        "mae": 0.143633,
+        "mse": 0.038266,
+        "spearman_all": 0.4426,
+        "pearson_nonzero": 0.5716,
+        "spearman_nonzero": 0.4944,
+        "ranking_accuracy": 0.7218
+      }
+    },
+    "vulngat_archived_phase4_test": {
+      "n": 1341,
+      "n_nonzero": 538,
+      "mae": 0.16765032708644867,
+      "mse": 0.05810104310512543,
+      "pearson_nonzero": 0.4262849928861418,
+      "spearman_nonzero": 0.22267617687313973,
+      "spearman_all": -0.23569738019267364,
+      "ranking_accuracy": 0.3910759096612296
+    },
+    "vulngat_hr_phase1": {
+      "n": 1341,
+      "n_nonzero": 538,
+      "mse": 0.026500921696424484,
+      "mae": 0.11001066118478775,
+      "pearson_nonzero": 0.6238608782829568,
+      "spearman_nonzero": 0.5487295442897624,
+      "spearman_all": 0.7210403049002115,
+      "ranking_accuracy": 0.8554736511919699,
+      "ranking_accuracy_nonzero": 0.6997767857142857
+    }
+  }
+}

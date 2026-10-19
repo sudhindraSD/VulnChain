@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060911" />
+    <title>VulnChain — Supply Chain Risk & Graph AI Audit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/web/styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <!-- Main Navigation Bar -->
+    <header class="nav">
+      <div class="nav-left">
+        <a class="brand" href="#/">
+          <span class="brand-badge">◈</span>
+          <span class="brand-text">Vuln<span>Chain</span></span>
+        </a>
+        <span class="app-tagline">AI Supply Chain Security & Audit</span>
+      </div>
+
+      <!-- Step-by-Step User Journey Navigation -->
+      <nav class="journey-nav">
+        <a href="#/scan" data-route="/scan" class="journey-step">
+          <span class="step-num">1</span>
+          <span class="step-label">Upload Lockfile</span>
+        </a>
+        <span class="step-sep">→</span>
+        <a href="#/results" data-route="/results" class="journey-step">
+          <span class="step-num">2</span>
+          <span class="step-label">Risk Triage</span>
+        </a>
+        <span class="step-sep">→</span>
+        <a href="#/graph" data-route="/graph" class="journey-step">
+          <span class="step-num">3</span>
+          <span class="step-label">Attack Chains</span>
+        </a>
+        <span class="step-sep">→</span>
+        <a href="#/remediation" data-route="/remediation" class="journey-step">
+          <span class="step-num">4</span>
+          <span class="step-label">Fix Roadmap</span>
+        </a>
+        <span class="step-sep">→</span>
+        <a href="#/audit" data-route="/audit" class="journey-step audit-step">
+          <span class="step-num">5</span>
+          <span class="step-label">AI Model Proof</span>
+        </a>
+      </nav>
+
+      <div class="nav-right">
+        <span class="model-badge"><i class="status-pulse"></i> VulnGAT · Active</span>
+      </div>
+    </header>
+
+    <!-- App Container -->
+    <main id="app"></main>
+
+    <script src="/web/app.js"></script>
+  </body>
+</html>

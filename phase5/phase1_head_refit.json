@@ -1,0 +1,74 @@
+{
+  "phase": "1 \u2014 VulnGAT-HR head refit (frozen encoder, MSE-only, val-Spearman selection)",
+  "protocol": {
+    "seed": 42,
+    "lr": 0.001,
+    "max_epochs": 500,
+    "patience": 50,
+    "batch_size": 32,
+    "loss": "MSE only (no InfoNCE)",
+    "selection": "val Spearman on non-zero val nodes (161)",
+    "head": "Sequential(Linear(128,1), Sigmoid) \u2014 mirrors original classifier",
+    "encoder": "vulngat_51repo.pt, frozen (requires_grad=False, eval mode)",
+    "batch_size_rationale": "orders pin lr/epochs/seed but not batch size; full-batch (=1 Adam step/epoch) under-converged (best epoch = the 500 cap, test Spear_all 0.47-0.56); bs selected among {32,64,128,256} purely on the ordered val selection metric (val Spearman-nz); all four converge to the same zone (test RankAcc-all 85.4-85.9%)"
+  },
+  "epochs_run": 230,
+  "selected_epoch": 179,
+  "best_val_spearman_nz": 0.5756787985202042,
+  "val": {
+    "n": 541,
+    "n_nonzero": 161,
+    "mse": 0.02999727800488472,
+    "mae": 0.10773267596960068,
+    "pearson_nonzero": 0.5709445236500975,
+    "spearman_nonzero": 0.5756787985202042,
+    "spearman_all": 0.6522248804953643,
+    "ranking_accuracy": 0.8637724550898204,
+    "ranking_accuracy_nonzero": 0.7143651997976732
+  },
+  "test_all": {
+    "n": 1341,
+    "n_nonzero": 538,
+    "mse": 0.026500921696424484,
+    "mae": 0.11001066118478775,
+    "pearson_nonzero": 0.6238608782829568,
+    "spearman_nonzero": 0.5487295442897624,
+    "spearman_all": 0.7210403049002115,
+    "ranking_accuracy": 0.8554736511919699,
+    "ranking_accuracy_nonzero": 0.6997767857142857
+  },
+  "test_nonzero": {
+    "n": 538,
+    "mse": 0.04207490012049675,
+    "mae": 0.15139798820018768,
+    "pearson": 0.6238608782829568,
+    "spearman": 0.5487295442897624,
+    "ranking_accuracy": 0.6997767857142857
+  },
+  "anchors": {
+    "ridge_probe_on_frozen_embeddings": {
+      "test_spearman_all": 0.7775,
+      "test_rankacc_all": 0.8854
+    },
+    "fresh_linear_head_diagnostic": {
+      "test_spearman_all": 0.7552,
+      "test_rankacc_all": 0.871
+    },
+    "archived_vulngat_as_trained": {
+      "test_spearman_all": -0.2357,
+      "test_rankacc_all": 0.3911
+    }
+  },
+  "sanity_gate": {
+    "metric": "test RankAcc, non-zero cut (538 nodes)",
+    "value": 0.6997767857142857,
+    "expected": "~0.85-0.88 (anchor zone)",
+    "threshold_fail": 0.75,
+    "passed_literal": false,
+    "interpretation": "The 85-88% anchors (ridge 88.5%, fresh linear head 87.1%) are ALL-cut numbers. Measured ceiling for any linear head on the nz cut = ridge at 72.03% (this head: 69.98% = 97.2% of the closed-form ceiling). On the comparable all cut this head lands 85.55% vs the 85-88% anchor zone. Wiring verified: ridge on the cached embeddings reproduces the 0.7775/88.54% anchor exactly (cache, masks, labels correct); convergence verified by batch-size sweep."
+  },
+  "artifacts": {
+    "embedding_cache": "C:/Users/Admin/Desktop/Major VulnChain\\phase5\\pkg_embeddings_frozen.npy",
+    "head_checkpoint": "C:/Users/Admin/Desktop/Major VulnChain\\phase5\\vulngat_hr.pt"
+  }
+}

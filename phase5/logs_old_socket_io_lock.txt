@@ -1,0 +1,12 @@
+================================================================================
+  VulnChain -- Project Dependency Risk Analyzer
+================================================================================
+Target lockfile: ../../TrainModel/scratch/socket_io_lock.json
+Parsed 1,157 unique packages and 1,920 dependency relations.
+
+[OK] Full analysis results exported to: old_socket_io_lock.json
+
+================================================================================
+  Analysis Complete!
+================================================================================
+

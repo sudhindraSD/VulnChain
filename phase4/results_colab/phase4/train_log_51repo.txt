@@ -1,0 +1,75 @@
+======================================================================
+VulnChain -- VulnGAT Training Pipeline (Stage 5)
+======================================================================
+Device: CUDA (Tesla T4 -- 14913 MB VRAM)
+Loading graph from phase4/vulnchain_graph.json...
+Loading labels from phase4/vpss_labels_51repo.json...
+Loading true repository-level split from phase4/repo_split_mapping_51repo.json...
+  Split ID check: 0 dropped (train=10523, val=541, test=1341)
+HeteroData constructed successfully:
+  Package nodes: 12405, features: torch.Size([12405, 10])
+  CVE nodes:     883, features: torch.Size([883, 769])
+  Author nodes:  3878, features: torch.Size([3878, 7])
+  Edges:
+    Package -> dependsOn -> Package:    60789
+    Package -> hasVulnerability -> CVE: 2632
+    Package -> maintainedBy -> Author:  12390
+    CVE -> introducedBy -> Author:      2632
+  Splits (Package nodes):
+    Train: 10523 (Vulnerable: 3024)
+    Val:   541 (Vulnerable: 161)
+    Test:  1341 (Vulnerable: 538)
+
+Initializing VulnGAT (3-layer HAN, 128-dim hidden, separate edge matrices)...
+Total trainable parameters: 896,001 (~3500.0 KB)
+
+----------------------------------------------------------------------
+Epoch   Train Loss    MSE         InfoNCE     Val Loss    Val MAE   LR        
+----------------------------------------------------------------------
+1       1.13266       0.34231     7.90352     0.10858     0.3044    1.00e-03  
+2       0.93498       0.14438     7.90600     0.06947     0.1972    1.00e-03  
+3       0.86597       0.07470     7.91273     0.06839     0.1607    1.00e-03  
+4       0.85357       0.06150     7.92066     0.07025     0.1464    1.00e-03  
+5       0.85263       0.05977     7.92859     0.07153     0.1396    1.00e-03  
+6       0.85260       0.06010     7.92505     0.07222     0.1358    1.00e-03  
+7       0.85255       0.06002     7.92538     0.07251     0.1335    1.00e-03  
+8       0.85094       0.05985     7.91087     0.07248     0.1319    1.00e-03  
+9       0.84874       0.05919     7.89548     0.07215     0.1306    1.00e-03  
+10      0.84708       0.05863     7.88457     0.07184     0.1299    5.00e-04  
+11      0.84551       0.05769     7.87817     0.07141     0.1292    5.00e-04  
+12      0.84182       0.05709     7.84733     0.07083     0.1285    5.00e-04  
+13      0.83916       0.05619     7.82976     0.07009     0.1277    5.00e-04  
+
+[!] Early stopping triggered at epoch 13 (no val improvement for 10 epochs).
+
+Training completed in 3.32 seconds (0.06 min).
+Saved best model weights to: phase4/models/vulngat_51repo.pt (Val MSE: 0.06839)
+
+======================================================================
+Final Model Evaluation (CISA KEV Benchmark)
+======================================================================
+
+| Metric              | Train Split | Val Split   | Test Split  |
+|---------------------|-------------|-------------|-------------|
+| MAE                 | 0.1692      | 0.1607      | 0.1677      |
+| Spearman rho (r)    | -0.2036     | -0.0445     | -0.2357     |
+| Ranking Accuracy    | 38.75     % | 48.68     % | 39.11     % |
+| Precision@10 (KEV)  | 0.00      % | 0.00      % | 10.00     % |
+
+----------------------------------------------------------------------
+Top-10 Highest Risk Predictions on Test Split:
+----------------------------------------------------------------------
+  #1  | Risk: 0.3412 | eslint-plugin-react-hooks@4.0.4                
+  #2  | Risk: 0.3339 | typescript@3.8.2                               
+  #3  | Risk: 0.3263 | @types/url-join@4.0.0                          
+  #4  | Risk: 0.3244 | core-js@2.6.12                                 
+  #5  | Risk: 0.3160 | @types/faker@4.1.8                  [CISA KEV] 
+  #6  | Risk: 0.3155 | @types/dompurify@0.0.33                        
+  #7  | Risk: 0.3143 | @types/classnames@2.2.6                        
+  #8  | Risk: 0.3127 | @types/braintree-web@3.47.0                    
+  #9  | Risk: 0.3115 | jest-svg-transformer@1.0.0                     
+  #10 | Risk: 0.3114 | eslint-plugin-simple-import-sort@7.0.0            
+
+======================================================================
+[SUCCESS] Stage 5 Training Complete! vulngat_trained.pt is ready for deployment.
+======================================================================

@@ -1,0 +1,1183 @@
+{
+  "description": "Phase 4 inference swap: VulnGAT-HR vs as-trained, RECONCILED FP decomposition",
+  "arms": {
+    "hr": "VulnGAT-HR (frozen encoder + refit head, phase5/models/vulngat_hr_full.pt)",
+    "old": "VulnGAT as-trained (51-repo epoch-3 checkpoint, phase4/results_colab/phase4/models/vulngat_51repo.pt)"
+  },
+  "thresholds": {
+    "critical": 0.4,
+    "propagation": 0.08
+  },
+  "reconciliation_summary": {
+    "comparator_bug_explanation": "The original phase4_compare.py checked if packages appeared in attack_paths. But attack_paths only includes paths ending at direct root dependencies. Transitive dependencies with vulnerable descendants that are not part of direct-root paths were misclassified as 'neither'.",
+    "pipeline_truth": "Using the cap's own runtime check (has_vuln_descendant), all packages with vulnerable descendants are recognized as propagation-only.",
+    "true_neither_survivors_count": 0
+  },
+  "comparisons": [
+    {
+      "lockfile": "legacy_app",
+      "total_packages": {
+        "hr": 9,
+        "old": 9
+      },
+      "summary": {
+        "hr": {
+          "critical": 5,
+          "high": 2,
+          "moderate": 0,
+          "safe": 2
+        },
+        "old": {
+          "critical": 2,
+          "high": 0,
+          "moderate": 5,
+          "safe": 2
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 5,
+          "own_cve": 5,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "express@4.17.1",
+            "body-parser@1.19.0",
+            "serve-static@1.14.1",
+            "send@0.17.1",
+            "lodash@4.17.11"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 2
+        },
+        "old": {
+          "flagged_total": 2,
+          "own_cve": 2,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "lodash@4.17.11",
+            "minimist@1.2.5"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 2
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 5,
+          "own_cve": 5,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 2,
+          "own_cve": 2,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.08,
+          "p25": 0.202053,
+          "p50": 0.411236,
+          "p75": 0.931145,
+          "p90": 0.981165,
+          "max": 0.999966,
+          "mean": 0.539263,
+          "std": 0.376327
+        },
+        "old": {
+          "min": 0.08,
+          "p25": 0.084352,
+          "p50": 0.175821,
+          "p75": 0.184469,
+          "p90": 0.404902,
+          "max": 0.406539,
+          "mean": 0.188048,
+          "std": 0.123781
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 9,
+        "spearman_r": 0.226891,
+        "spearman_p": 0.5571543537016606,
+        "pearson_r": -0.16082
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.7778,
+          "tp_at_10": 7,
+          "n_at_10": 9,
+          "p_at_25": 0.7778,
+          "tp_at_25": 7,
+          "n_at_25": 9
+        },
+        "old": {
+          "p_at_10": 0.7778,
+          "tp_at_10": 7,
+          "n_at_10": 9,
+          "p_at_25": 0.7778,
+          "tp_at_25": 7,
+          "n_at_25": 9
+        }
+      }
+    },
+    {
+      "lockfile": "marked",
+      "total_packages": {
+        "hr": 617,
+        "old": 617
+      },
+      "summary": {
+        "hr": {
+          "critical": 42,
+          "high": 12,
+          "moderate": 6,
+          "safe": 557
+        },
+        "old": {
+          "critical": 2,
+          "high": 6,
+          "moderate": 50,
+          "safe": 559
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 42,
+          "own_cve": 1,
+          "propagation_only": 41,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "tar@7.5.19"
+          ],
+          "propagation_only_packages": [
+            "npm@11.18.0",
+            "@npmcli/arborist@9.9.0",
+            "eslint@10.9.0",
+            "semantic-release@25.0.9",
+            "pacote@21.5.1",
+            "cacache@20.0.4",
+            "@semantic-release/npm@13.1.5",
+            "make-fetch-happen@15.0.6",
+            "libnpmexec@10.3.1",
+            "front-matter@4.0.2",
+            "minimatch@10.2.5",
+            "libnpmdiff@8.1.11",
+            "node-gyp@12.4.0",
+            "@npmcli/run-script@10.0.4",
+            "npm-registry-fetch@19.1.1",
+            "@npmcli/package-json@7.0.5",
+            "libnpmpublish@11.2.0",
+            "@npmcli/map-workspaces@5.0.3",
+            "libnpmpack@9.1.11",
+            "init-package-json@8.2.5",
+            "@npmcli/metavuln-calculator@9.0.3",
+            "libnpmsearch@9.0.1",
+            "@npmcli/config@10.12.0",
+            "libnpmaccess@10.0.3",
+            "libnpmfund@7.0.25",
+            "libnpmversion@8.0.4",
+            "cosmiconfig@9.0.0",
+            "@typescript-eslint/typescript-estree@8.57.2",
+            "npm-profile@12.0.2",
+            "npm-packlist@10.0.4",
+            "tuf-js@4.1.0",
+            "typescript-eslint@8.57.2",
+            "@typescript-eslint/eslint-plugin@8.57.2",
+            "glob@13.0.3",
+            "sigstore@4.1.1",
+            "glob@13.0.6",
+            "rimraf@6.1.3",
+            "@typescript-eslint/parser@8.57.2",
+            "@markedjs/eslint-config@1.0.14",
+            "@npmcli/agent@4.0.2",
+            "ignore-walk@8.0.0"
+          ],
+          "cap_applied_count": 308
+        },
+        "old": {
+          "flagged_total": 2,
+          "own_cve": 2,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "marked@18.0.0",
+            "undici@6.27.0"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 540
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 42,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 41,
+          "neither_rate": 0.9762,
+          "neither_packages": [
+            "npm@11.18.0",
+            "@npmcli/arborist@9.9.0",
+            "eslint@10.9.0",
+            "semantic-release@25.0.9",
+            "pacote@21.5.1",
+            "cacache@20.0.4",
+            "@semantic-release/npm@13.1.5",
+            "make-fetch-happen@15.0.6",
+            "libnpmexec@10.3.1",
+            "front-matter@4.0.2",
+            "minimatch@10.2.5",
+            "libnpmdiff@8.1.11",
+            "node-gyp@12.4.0",
+            "@npmcli/run-script@10.0.4",
+            "npm-registry-fetch@19.1.1",
+            "@npmcli/package-json@7.0.5",
+            "libnpmpublish@11.2.0",
+            "@npmcli/map-workspaces@5.0.3",
+            "libnpmpack@9.1.11",
+            "init-package-json@8.2.5",
+            "@npmcli/metavuln-calculator@9.0.3",
+            "libnpmsearch@9.0.1",
+            "@npmcli/config@10.12.0",
+            "libnpmaccess@10.0.3",
+            "libnpmfund@7.0.25",
+            "libnpmversion@8.0.4",
+            "cosmiconfig@9.0.0",
+            "@typescript-eslint/typescript-estree@8.57.2",
+            "npm-profile@12.0.2",
+            "npm-packlist@10.0.4",
+            "tuf-js@4.1.0",
+            "typescript-eslint@8.57.2",
+            "@typescript-eslint/eslint-plugin@8.57.2",
+            "glob@13.0.3",
+            "sigstore@4.1.1",
+            "glob@13.0.6",
+            "rimraf@6.1.3",
+            "@typescript-eslint/parser@8.57.2",
+            "@markedjs/eslint-config@1.0.14",
+            "@npmcli/agent@4.0.2",
+            "ignore-walk@8.0.0"
+          ],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 2,
+          "own_cve": 2,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.018566,
+          "p25": 0.05596,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 1.0,
+          "mean": 0.118442,
+          "std": 0.176505
+        },
+        "old": {
+          "min": 0.053448,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.438362,
+          "mean": 0.084876,
+          "std": 0.027334
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 617,
+        "spearman_r": 0.401534,
+        "spearman_p": 2.632169000725707e-25,
+        "pearson_r": 0.429122
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.0,
+          "tp_at_10": 0,
+          "n_at_10": 10,
+          "p_at_25": 0.04,
+          "tp_at_25": 1,
+          "n_at_25": 25
+        },
+        "old": {
+          "p_at_10": 0.4,
+          "tp_at_10": 4,
+          "n_at_10": 10,
+          "p_at_25": 0.16,
+          "tp_at_25": 4,
+          "n_at_25": 25
+        }
+      }
+    },
+    {
+      "lockfile": "meteor",
+      "total_packages": {
+        "hr": 401,
+        "old": 401
+      },
+      "summary": {
+        "hr": {
+          "critical": 24,
+          "high": 6,
+          "moderate": 0,
+          "safe": 371
+        },
+        "old": {
+          "critical": 0,
+          "high": 10,
+          "moderate": 21,
+          "safe": 370
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 24,
+          "own_cve": 2,
+          "propagation_only": 22,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "minimatch@3.1.2",
+            "@babel/core@7.29.0"
+          ],
+          "propagation_only_packages": [
+            "eslint@8.57.1",
+            "eslint-plugin-import@2.32.0",
+            "eslint-plugin-react@7.37.5",
+            "rimraf@3.0.2",
+            "eslint-plugin-jsx-a11y@6.10.2",
+            "minimatch@9.0.3",
+            "minimatch@10.2.5",
+            "@eslint/eslintrc@2.1.4",
+            "fast-glob@3.3.2",
+            "@typescript-eslint/eslint-plugin@6.21.0",
+            "globby@11.1.0",
+            "typescript-coverage-report@1.1.1",
+            "flat-cache@3.2.0",
+            "micromatch@4.0.8",
+            "@humanwhocodes/config-array@0.13.0",
+            "@typescript-eslint/typescript-estree@6.21.0",
+            "glob@7.2.3",
+            "@typescript-eslint/parser@6.21.0",
+            "file-entry-cache@6.0.1",
+            "type-coverage-core@2.29.7",
+            "@typescript-eslint/type-utils@6.21.0",
+            "@typescript-eslint/utils@6.21.0"
+          ],
+          "cap_applied_count": 189
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [],
+          "propagation_only_packages": [],
+          "cap_applied_count": 363
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 24,
+          "own_cve": 2,
+          "propagation_only": 0,
+          "neither": 22,
+          "neither_rate": 0.9167,
+          "neither_packages": [
+            "eslint@8.57.1",
+            "eslint-plugin-import@2.32.0",
+            "eslint-plugin-react@7.37.5",
+            "rimraf@3.0.2",
+            "eslint-plugin-jsx-a11y@6.10.2",
+            "minimatch@9.0.3",
+            "minimatch@10.2.5",
+            "@eslint/eslintrc@2.1.4",
+            "fast-glob@3.3.2",
+            "@typescript-eslint/eslint-plugin@6.21.0",
+            "globby@11.1.0",
+            "typescript-coverage-report@1.1.1",
+            "flat-cache@3.2.0",
+            "micromatch@4.0.8",
+            "@humanwhocodes/config-array@0.13.0",
+            "@typescript-eslint/typescript-estree@6.21.0",
+            "glob@7.2.3",
+            "@typescript-eslint/parser@6.21.0",
+            "file-entry-cache@6.0.1",
+            "type-coverage-core@2.29.7",
+            "@typescript-eslint/type-utils@6.21.0",
+            "@typescript-eslint/utils@6.21.0"
+          ],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.012708,
+          "p25": 0.049374,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.9993,
+          "mean": 0.108673,
+          "std": 0.166581
+        },
+        "old": {
+          "min": 0.052189,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.284082,
+          "mean": 0.086511,
+          "std": 0.029076
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 401,
+        "spearman_r": 0.327456,
+        "spearman_p": 1.77926719591586e-11,
+        "pearson_r": 0.763391
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.2,
+          "tp_at_10": 2,
+          "n_at_10": 10,
+          "p_at_25": 0.12,
+          "tp_at_25": 3,
+          "n_at_25": 25
+        },
+        "old": {
+          "p_at_10": 0.1,
+          "tp_at_10": 1,
+          "n_at_10": 10,
+          "p_at_25": 0.24,
+          "tp_at_25": 6,
+          "n_at_25": 25
+        }
+      }
+    },
+    {
+      "lockfile": "modern_clean",
+      "total_packages": {
+        "hr": 6,
+        "old": 6
+      },
+      "summary": {
+        "hr": {
+          "critical": 1,
+          "high": 1,
+          "moderate": 0,
+          "safe": 4
+        },
+        "old": {
+          "critical": 0,
+          "high": 2,
+          "moderate": 0,
+          "safe": 4
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "next@15.0.0"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 2
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [],
+          "propagation_only_packages": [],
+          "cap_applied_count": 4
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.05066,
+          "p25": 0.057995,
+          "p50": 0.08,
+          "p75": 0.254428,
+          "p90": 0.468588,
+          "max": 0.624605,
+          "mean": 0.199749,
+          "std": 0.2107
+        },
+        "old": {
+          "min": 0.08,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.178947,
+          "p90": 0.26938,
+          "max": 0.32683,
+          "mean": 0.143127,
+          "std": 0.095237
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 6,
+        "spearman_r": 0.870388,
+        "spearman_p": 0.02411011055139095,
+        "pearson_r": 0.994627
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.3333,
+          "tp_at_10": 2,
+          "n_at_10": 6,
+          "p_at_25": 0.3333,
+          "tp_at_25": 2,
+          "n_at_25": 6
+        },
+        "old": {
+          "p_at_10": 0.3333,
+          "tp_at_10": 2,
+          "n_at_10": 6,
+          "p_at_25": 0.3333,
+          "tp_at_25": 2,
+          "n_at_25": 6
+        }
+      }
+    },
+    {
+      "lockfile": "socket_io",
+      "total_packages": {
+        "hr": 1157,
+        "old": 1157
+      },
+      "summary": {
+        "hr": {
+          "critical": 82,
+          "high": 13,
+          "moderate": 5,
+          "safe": 1057
+        },
+        "old": {
+          "critical": 1,
+          "high": 36,
+          "moderate": 58,
+          "safe": 1062
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 82,
+          "own_cve": 12,
+          "propagation_only": 70,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "minimatch@3.1.2",
+            "@babel/core@7.24.7",
+            "minimatch@3.0.8",
+            "minimatch@5.1.6",
+            "minimatch@9.0.5",
+            "body-parser@1.20.3",
+            "tar@6.2.1",
+            "lodash@4.17.21",
+            "uuid@8.3.2",
+            "js-yaml@4.1.0",
+            "glob@10.4.5",
+            "tmp@0.0.33"
+          ],
+          "propagation_only_packages": [
+            "nyc@17.0.0",
+            "express@4.21.2",
+            "rimraf@2.7.1",
+            "webpack@5.102.1",
+            "@wdio/cli@8.46.0",
+            "rimraf@3.0.2",
+            "webdriverio@8.46.0",
+            "rimraf@6.0.0",
+            "mocha@10.6.0",
+            "globule@1.3.4",
+            "recursive-readdir@2.2.3",
+            "inquirer@9.2.12",
+            "readdir-glob@1.1.3",
+            "filelist@1.0.4",
+            "cmake-js@7.3.0",
+            "test-exclude@6.0.0",
+            "minimatch@10.0.1",
+            "readdirp@3.6.0",
+            "external-editor@3.1.0",
+            "ts-node@10.9.2",
+            "fast-glob@3.3.2",
+            "fstream@1.0.12",
+            "@wdio/runner@8.46.0",
+            "istanbul-lib-processinfo@2.0.3",
+            "@wdio/utils@8.46.0",
+            "rollup-plugin-terser@7.0.2",
+            "webdriver@8.46.0",
+            "terser-webpack-plugin@5.3.14",
+            "socket.io-client-v2@2.5.0",
+            "jest-util@29.7.0",
+            "archiver-utils@5.0.2",
+            "glob@11.0.0",
+            "engine.io-client-v3@3.5.4",
+            "engine.io-client@3.5.4",
+            "@puppeteer/browsers@1.9.1",
+            "@rollup/plugin-commonjs@26.0.1",
+            "@wdio/config@8.46.0",
+            "saucelabs@8.0.0",
+            "geckodriver@4.2.1",
+            "glob@8.1.0",
+            "ejs@3.1.10",
+            "unzipper@0.10.14",
+            "globby@11.1.0",
+            "jest-message-util@29.7.0",
+            "glob@7.1.7",
+            "micromatch@4.0.8",
+            "glob@7.2.3",
+            "@wdio/sauce-service@8.46.0",
+            "tsd@0.31.1",
+            "spawn-wrap@2.0.0",
+            "archiver@7.0.1",
+            "@wdio/mocha-framework@8.46.0",
+            "@wdio/local-runner@8.46.0",
+            "istanbul-lib-instrument@6.0.3",
+            "superagent@9.0.2",
+            "@istanbuljs/load-nyc-config@1.1.0",
+            "@fails-components/webtransport-transport-http3-quiche@1.5.1",
+            "chokidar@3.6.0",
+            "jake@10.9.1",
+            "wdio-geckodriver-service@5.0.2",
+            "zip-stream@6.0.1",
+            "@wdio/spec-reporter@8.39.0",
+            "@wdio/reporter@8.39.0",
+            "puppeteer-core@21.11.0",
+            "expect-webdriverio@4.15.4",
+            "expect@29.7.0",
+            "benchmark@2.1.4",
+            "anymatch@3.1.3",
+            "gaze@1.1.3",
+            "@rollup/plugin-babel@6.0.4"
+          ],
+          "cap_applied_count": 659
+        },
+        "old": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "diff@4.0.2"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 966
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 82,
+          "own_cve": 12,
+          "propagation_only": 0,
+          "neither": 70,
+          "neither_rate": 0.8537,
+          "neither_packages": [
+            "nyc@17.0.0",
+            "express@4.21.2",
+            "rimraf@2.7.1",
+            "webpack@5.102.1",
+            "@wdio/cli@8.46.0",
+            "rimraf@3.0.2",
+            "webdriverio@8.46.0",
+            "rimraf@6.0.0",
+            "mocha@10.6.0",
+            "globule@1.3.4",
+            "recursive-readdir@2.2.3",
+            "inquirer@9.2.12",
+            "readdir-glob@1.1.3",
+            "filelist@1.0.4",
+            "cmake-js@7.3.0",
+            "test-exclude@6.0.0",
+            "minimatch@10.0.1",
+            "readdirp@3.6.0",
+            "external-editor@3.1.0",
+            "ts-node@10.9.2",
+            "fast-glob@3.3.2",
+            "fstream@1.0.12",
+            "@wdio/runner@8.46.0",
+            "istanbul-lib-processinfo@2.0.3",
+            "@wdio/utils@8.46.0",
+            "rollup-plugin-terser@7.0.2",
+            "webdriver@8.46.0",
+            "terser-webpack-plugin@5.3.14",
+            "socket.io-client-v2@2.5.0",
+            "jest-util@29.7.0",
+            "archiver-utils@5.0.2",
+            "glob@11.0.0",
+            "engine.io-client-v3@3.5.4",
+            "engine.io-client@3.5.4",
+            "@puppeteer/browsers@1.9.1",
+            "@rollup/plugin-commonjs@26.0.1",
+            "@wdio/config@8.46.0",
+            "saucelabs@8.0.0",
+            "geckodriver@4.2.1",
+            "glob@8.1.0",
+            "ejs@3.1.10",
+            "unzipper@0.10.14",
+            "globby@11.1.0",
+            "jest-message-util@29.7.0",
+            "glob@7.1.7",
+            "micromatch@4.0.8",
+            "glob@7.2.3",
+            "@wdio/sauce-service@8.46.0",
+            "tsd@0.31.1",
+            "spawn-wrap@2.0.0",
+            "archiver@7.0.1",
+            "@wdio/mocha-framework@8.46.0",
+            "@wdio/local-runner@8.46.0",
+            "istanbul-lib-instrument@6.0.3",
+            "superagent@9.0.2",
+            "@istanbuljs/load-nyc-config@1.1.0",
+            "@fails-components/webtransport-transport-http3-quiche@1.5.1",
+            "chokidar@3.6.0",
+            "jake@10.9.1",
+            "wdio-geckodriver-service@5.0.2",
+            "zip-stream@6.0.1",
+            "@wdio/spec-reporter@8.39.0",
+            "@wdio/reporter@8.39.0",
+            "puppeteer-core@21.11.0",
+            "expect-webdriverio@4.15.4",
+            "expect@29.7.0",
+            "benchmark@2.1.4",
+            "anymatch@3.1.3",
+            "gaze@1.1.3",
+            "@rollup/plugin-babel@6.0.4"
+          ],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.020345,
+          "p25": 0.064762,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.998764,
+          "mean": 0.12067,
+          "std": 0.177698
+        },
+        "old": {
+          "min": 0.048463,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.412464,
+          "mean": 0.086662,
+          "std": 0.035821
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 1157,
+        "spearman_r": 0.238399,
+        "spearman_p": 2.0504388375281691e-16,
+        "pearson_r": 0.630886
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.0,
+          "tp_at_10": 0,
+          "n_at_10": 10,
+          "p_at_25": 0.08,
+          "tp_at_25": 2,
+          "n_at_25": 25
+        },
+        "old": {
+          "p_at_10": 0.2,
+          "tp_at_10": 2,
+          "n_at_10": 10,
+          "p_at_25": 0.12,
+          "tp_at_25": 3,
+          "n_at_25": 25
+        }
+      }
+    },
+    {
+      "lockfile": "user_package_lock",
+      "total_packages": {
+        "hr": 132,
+        "old": 132
+      },
+      "summary": {
+        "hr": {
+          "critical": 10,
+          "high": 2,
+          "moderate": 0,
+          "safe": 120
+        },
+        "old": {
+          "critical": 0,
+          "high": 5,
+          "moderate": 5,
+          "safe": 122
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 10,
+          "own_cve": 6,
+          "propagation_only": 4,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "body-parser@2.2.2",
+            "axios@1.14.0",
+            "engine.io@6.6.6",
+            "qs@6.15.0",
+            "socket.io-parser@4.2.6",
+            "shell-quote@1.8.3"
+          ],
+          "propagation_only_packages": [
+            "express@5.2.1",
+            "socket.io@4.8.3",
+            "concurrently@9.2.1",
+            "socket.io-adapter@2.5.6"
+          ],
+          "cap_applied_count": 86
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [],
+          "propagation_only_packages": [],
+          "cap_applied_count": 109
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 10,
+          "own_cve": 6,
+          "propagation_only": 4,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 0,
+          "own_cve": 0,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.02594,
+          "p25": 0.076463,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.999805,
+          "mean": 0.133638,
+          "std": 0.211148
+        },
+        "old": {
+          "min": 0.052928,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.08,
+          "p90": 0.08,
+          "max": 0.308884,
+          "mean": 0.087775,
+          "std": 0.037212
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 132,
+        "spearman_r": 0.176695,
+        "spearman_p": 0.042689226372278316,
+        "pearson_r": 0.655791
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.6,
+          "tp_at_10": 6,
+          "n_at_10": 10,
+          "p_at_25": 0.32,
+          "tp_at_25": 8,
+          "n_at_25": 25
+        },
+        "old": {
+          "p_at_10": 0.7,
+          "tp_at_10": 7,
+          "n_at_10": 10,
+          "p_at_25": 0.28,
+          "tp_at_25": 7,
+          "n_at_25": 25
+        }
+      },
+      "section_13_4_packages": {
+        "referenced_lore_packages": {
+          "@google/genai": {
+            "archived_9repo_score": 0.2453,
+            "hr_51repo_score": null,
+            "hr_51repo_pkg_id": null,
+            "hr_51repo_cve": null,
+            "old_51repo_score": null,
+            "old_51repo_pkg_id": null,
+            "old_51repo_cve": null,
+            "caveat": "Different KB (9-repo vs 51-repo); scores not directly comparable"
+          },
+          "socket.io-client": {
+            "archived_9repo_score": 0.1989,
+            "hr_51repo_score": null,
+            "hr_51repo_pkg_id": null,
+            "hr_51repo_cve": null,
+            "old_51repo_score": null,
+            "old_51repo_pkg_id": null,
+            "old_51repo_cve": null,
+            "caveat": "Different KB (9-repo vs 51-repo); scores not directly comparable"
+          },
+          "vite": {
+            "archived_9repo_score": 0.1232,
+            "hr_51repo_score": null,
+            "hr_51repo_pkg_id": null,
+            "hr_51repo_cve": null,
+            "old_51repo_score": null,
+            "old_51repo_pkg_id": null,
+            "old_51repo_cve": null,
+            "caveat": "Different KB (9-repo vs 51-repo); scores not directly comparable"
+          },
+          "protobufjs": {
+            "archived_9repo_score": 0.1229,
+            "hr_51repo_score": null,
+            "hr_51repo_pkg_id": null,
+            "hr_51repo_cve": null,
+            "old_51repo_score": null,
+            "old_51repo_pkg_id": null,
+            "old_51repo_cve": null,
+            "caveat": "Different KB (9-repo vs 51-repo); scores not directly comparable"
+          }
+        },
+        "actual_elevated_in_lockfile": {
+          "express@5.2.1": {
+            "hr_score": 0.999805,
+            "old_score": 0.258833,
+            "has_vuln_descendant": true
+          },
+          "socket.io@4.8.3": {
+            "hr_score": 0.982496,
+            "old_score": 0.308884,
+            "has_vuln_descendant": true
+          },
+          "concurrently@9.2.1": {
+            "hr_score": 0.963368,
+            "old_score": 0.252804,
+            "has_vuln_descendant": true
+          },
+          "socket.io-adapter@2.5.6": {
+            "hr_score": 0.925835,
+            "old_score": 0.063508,
+            "has_vuln_descendant": true
+          }
+        }
+      }
+    },
+    {
+      "lockfile": "vuln_test",
+      "total_packages": {
+        "hr": 11,
+        "old": 11
+      },
+      "summary": {
+        "hr": {
+          "critical": 1,
+          "high": 2,
+          "moderate": 0,
+          "safe": 8
+        },
+        "old": {
+          "critical": 1,
+          "high": 2,
+          "moderate": 1,
+          "safe": 7
+        }
+      },
+      "fp_decomposition_reconciled": {
+        "hr": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "jquery@2.2.4"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 3
+        },
+        "old": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "own_cve_packages": [
+            "jquery@2.2.4"
+          ],
+          "propagation_only_packages": [],
+          "cap_applied_count": 7
+        }
+      },
+      "quarantined_old_decomposition": {
+        "hr": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        },
+        "old": {
+          "flagged_total": 1,
+          "own_cve": 1,
+          "propagation_only": 0,
+          "neither": 0,
+          "neither_rate": 0.0,
+          "neither_packages": [],
+          "status": "QUARANTINED_COMPARATOR_BUG: attack_paths only traced direct roots to sinks"
+        }
+      },
+      "score_quantiles": {
+        "hr": {
+          "min": 0.019202,
+          "p25": 0.051434,
+          "p50": 0.08,
+          "p75": 0.160359,
+          "p90": 0.398471,
+          "max": 0.653109,
+          "mean": 0.16101,
+          "std": 0.188412
+        },
+        "old": {
+          "min": 0.08,
+          "p25": 0.08,
+          "p50": 0.08,
+          "p75": 0.193974,
+          "p90": 0.21043,
+          "max": 0.529994,
+          "mean": 0.153488,
+          "std": 0.130125
+        }
+      },
+      "rank_overlap_between_arms": {
+        "n_common": 11,
+        "spearman_r": 0.520688,
+        "spearman_p": 0.100550675289444,
+        "pearson_r": 0.896575
+      },
+      "topk_precision_descriptive": {
+        "hr": {
+          "p_at_10": 0.4,
+          "tp_at_10": 4,
+          "n_at_10": 10,
+          "p_at_25": 0.3636,
+          "tp_at_25": 4,
+          "n_at_25": 11
+        },
+        "old": {
+          "p_at_10": 0.4,
+          "tp_at_10": 4,
+          "n_at_10": 10,
+          "p_at_25": 0.3636,
+          "tp_at_25": 4,
+          "n_at_25": 11
+        }
+      }
+    }
+  ]
+}

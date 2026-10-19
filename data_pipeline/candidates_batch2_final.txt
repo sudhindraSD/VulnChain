@@ -1,0 +1,58 @@
+# VulnChain Batch 2 Final — 47 Verified OK Repos
+# Generated: 2026-09-15 via find_repos.py deep search
+# All repos verified: exist + have package-lock.json at root
+#
+# Usage: python repo_precheck.py candidates_batch2_final.txt
+
+# === TIER 1: Deliberately Vulnerable Apps (20) ===
+snoopysecurity/dvws-node
+R-s0n/Damn_Vulnerable_Node_App
+zahidoverflow/damn-vulnerable-web-university
+cr0hn/vulnerable-node
+mcibique/express-security
+Reshift-Security/durian
+vicradon/vulnerable-express-app
+mrmak419/vulnerable-node-app
+SilentBlox01/Intentionally-Vulnerable-Web-App
+mohamed-besghaier/vuln-app
+bhattmanthan/expenseflow
+RenanACS/meridian-bac-lab
+IntegerAlex/sql-injection-demo
+ikhide/Websecurity_course_3
+najeeb-karimi/owasp-zap-edu-demo
+omega-coder/Nosql-ctf-challenge
+cysec-don/XSS
+ctfsec/pwnshop-mobile
+haltacademy/Command-Injection-Docker-Lab
+akintunero/lamba-govt
+
+# === TIER 2: Notorious/Deprecated npm Packages (12) ===
+Marak/colors.js
+RIAEvangelist/node-ipc
+dominictarr/event-stream
+faisalman/ua-parser-js
+indutny/elliptic
+markedjs/marked
+isaacs/node-tar
+Trott/trim
+yargs/y18n
+yahoo/serialize-javascript
+lodash/lodash
+octokit/rest.js
+
+# === TIER 3: Stale Production Repos (15) ===
+angular-fullstack/generator-angular-fullstack
+blueimp/JavaScript-MD5
+babel/example-node-server
+spdy-http2/node-spdy
+blueimp/JavaScript-Templates
+webpro/dyson
+watson-developer-cloud/personality-insights-nodejs
+makinhs/rest-api-tutorial
+Bikranshu/express-react-boilerplate
+natalan/samsung-remote
+amkurian/simple-chat
+fazt/nodejs-mysql-restapi
+sunilksamanta/node-mongoose-setup
+FaztWeb/nodejs-sequelize-restapi-postgres
+desirekaleba/node-mysql-jwt-auth

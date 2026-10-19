@@ -1,0 +1,167 @@
+==========================================================================================
+  VulnChain -- Masked-Edge Model-Contribution Audit
+==========================================================================================
+
+  PRE-REGISTERED CONFIGURATION:
+    Random seed:          42
+    Mask ratios:          [0.1, 0.3, 0.5]
+    Own/VPSS threshold:   0.7
+    Bootstrap iterations: 1000
+    Hits@K:               10
+    Metrics:              AUC (masked-vuln vs never-vuln), Hits@10, MRR
+
+[1/7] Loading graph, labels, and model...
+Loading graph from phase4/vulnchain_graph.json...
+Loading labels from phase4/vpss_labels_51repo.json...
+Loading true repository-level split from phase4/repo_split_mapping_51repo.json...
+  Split ID check: 0 dropped (train=10523, val=541, test=1341)
+HeteroData constructed successfully:
+  Package nodes: 12405, features: torch.Size([12405, 10])
+  CVE nodes:     883, features: torch.Size([883, 769])
+  Author nodes:  3878, features: torch.Size([3878, 7])
+  Edges:
+    Package -> dependsOn -> Package:    60789
+    Package -> hasVulnerability -> CVE: 2632
+    Package -> maintainedBy -> Author:  12390
+    CVE -> introducedBy -> Author:      2632
+  Splits (Package nodes):
+    Train: 10523 (Vulnerable: 3024)
+    Val:   541 (Vulnerable: 161)
+    Test:  1341 (Vulnerable: 538)
+  Device: cuda
+  Packages: 12405, CVEs: 883
+
+[2/7] Computing own-VPSS decomposition...
+  Packages with direct CVEs: 977
+  Own-ratio distribution: mean=0.352, median=0.333, p25=0.147, p75=0.667
+[3/7] Selecting eligible packages (own/VPSS >= 0.70)...
+  Eligible packages: 645
+    Train: 577, Val: 16, Test: 52
+  Never-vulnerable packages (VPSS=0): 8682
+[4/7] Running full-graph model inference (unmasked baseline)...
+  Score range: [0.03049, 0.60711]
+
+------------------------------------------------------------------------------------------
+[5/7] MASK RATIO = 10%
+------------------------------------------------------------------------------------------
+  Masked packages: 72 (shared: 62, orphaned: 10)
+  hasVulnerability edges: 2632 -> 2479 (removed 153)
+  Running model inference on masked graph...
+  Running BFS baseline on masked graph...
+  Running label-propagation baseline on masked graph...
+  Running feature-shuffle ablation on masked graph...
+  Computing AUC (masked-vulnerable vs never-vulnerable)...
+  Computing Hits@10 and MRR (embedding-space CVE re-ranking)...
+  Done. Model mean on masked: 0.0776, Shuffle mean: 0.0776, Drop: -0.0000
+
+------------------------------------------------------------------------------------------
+[5/7] MASK RATIO = 30%
+------------------------------------------------------------------------------------------
+  Masked packages: 184 (shared: 156, orphaned: 28)
+  hasVulnerability edges: 2632 -> 2140 (removed 492)
+  Running model inference on masked graph...
+  Running BFS baseline on masked graph...
+  Running label-propagation baseline on masked graph...
+  Running feature-shuffle ablation on masked graph...
+  Computing AUC (masked-vulnerable vs never-vulnerable)...
+  Computing Hits@10 and MRR (embedding-space CVE re-ranking)...
+  Done. Model mean on masked: 0.0868, Shuffle mean: 0.0869, Drop: -0.0000
+
+------------------------------------------------------------------------------------------
+[5/7] MASK RATIO = 50%
+------------------------------------------------------------------------------------------
+  Masked packages: 314 (shared: 249, orphaned: 65)
+  hasVulnerability edges: 2632 -> 1746 (removed 886)
+  Running model inference on masked graph...
+  Running BFS baseline on masked graph...
+  Running label-propagation baseline on masked graph...
+  Running feature-shuffle ablation on masked graph...
+  Computing AUC (masked-vulnerable vs never-vulnerable)...
+  Computing Hits@10 and MRR (embedding-space CVE re-ranking)...
+  Done. Model mean on masked: 0.0825, Shuffle mean: 0.0826, Drop: -0.0001
+
+==========================================================================================
+[6/7] RESULTS TABLE
+==========================================================================================
+
+### AUC: Masked-Vulnerable vs Never-Vulnerable Packages
+
+Mask%   Stratum     Model           BFS-Masked      Label-Prop      Feat-Shuffle    N_pos   
+--------------------------------------------------------------------------------------------
+10%     overall     0.380[0.32,0.44]0.569[0.53,0.61]0.709[0.67,0.75]0.380[0.32,0.44]72      
+10%     shared      0.351[0.29,0.42]0.581[0.53,0.63]0.716[0.67,0.76]0.351[0.29,0.42]62      
+10%     orphaned    0.560[0.49,0.64]0.500[0.50,0.50]0.665[0.56,0.77]0.561[0.48,0.64]10      
+30%     overall     0.420[0.38,0.46]0.530[0.51,0.55]0.723[0.70,0.75]0.420[0.38,0.46]184     
+30%     shared      0.393[0.35,0.44]0.535[0.52,0.56]0.728[0.70,0.76]0.393[0.35,0.44]156     
+30%     orphaned    0.571[0.48,0.66]0.500[0.50,0.50]0.695[0.64,0.76]0.571[0.49,0.66]28      
+50%     overall     0.404[0.38,0.44]0.535[0.52,0.55]0.715[0.69,0.74]0.404[0.37,0.43]314     
+50%     shared      0.397[0.36,0.43]0.534[0.52,0.55]0.721[0.70,0.75]0.398[0.36,0.43]249     
+50%     orphaned    0.430[0.37,0.49]0.538[0.51,0.58]0.693[0.65,0.74]0.429[0.36,0.49]65      
+
+### Hits@10 / MRR: Embedding-Space CVE Re-Ranking
+
+Mask%   Metric      Model               Random Floor    N_queries 
+------------------------------------------------------------------
+10%     Hits@10     0.0131              N/A             153       
+10%     MRR         0.0119 [0.008,0.016]0.0011          153       
+30%     Hits@10     0.0081              N/A             492       
+30%     MRR         0.0089 [0.007,0.011]0.0011          492       
+50%     Hits@10     0.0090              N/A             886       
+50%     MRR         0.0079 [0.007,0.009]0.0011          886       
+
+### Feature-Shuffle Score Drop (semantic embedding signal)
+
+Mask%   Model Mean    Shuffle Mean  Drop        Interpretation                          
+----------------------------------------------------------------------------------------
+10%     0.0776        0.0776        -0.0000     No evidence of embedding use            
+30%     0.0868        0.0869        -0.0001     No evidence of embedding use            
+50%     0.0825        0.0826        -0.0001     No evidence of embedding use            
+
+==========================================================================================
+[7/7] INTERPRETATION
+==========================================================================================
+
+  OUTCOME 3: NO CLEAR ADVANTAGE OVER BASELINES
+
+  Model AUC:     0.3973
+  BFS AUC:       0.5341
+  Label-Prop:    0.7208
+
+  The model does not clearly beat BFS or label-propagation baselines
+  on the masked-edge evaluation. This is a sharper, more honest
+  characterization than the prior '30/70 split' -- it identifies
+  that structural propagation does not exceed what BFS recovers,
+  that learned representations do not exceed neighbor averaging,
+  under this specific edge-masking evaluation protocol.
+
+  +-------------------------------------------------------------+
+  | DISTRIBUTION-SHIFT CAVEAT                                  |
+  |                                                            |
+  | The model was NEVER trained with hasVulnerability edges     |
+  | deliberately deleted. A collapse under masking could mean:  |
+  |                                                            |
+  |   (a) The model cannot do this (architecture limitation)   |
+  |   (b) The model was never trained for this input (OOD)     |
+  |                                                            |
+  | These are DIFFERENT findings. This audit reports the       |
+  | current, as-trained model's behavior. If collapse is       |
+  | observed, it motivates (but does not itself justify) a     |
+  | follow-up: extending the existing edge-dropout             |
+  | augmentation (p=0.2 for InfoNCE) to also require VPSS     |
+  | prediction under hasVulnerability masking during training. |
+  |                                                            |
+  | Do NOT build this training-side fix in this script --       |
+  | it is a separate follow-up, only worth doing if this      |
+  | audit shows collapse.                                      |
+  +-------------------------------------------------------------+
+
+  Results saved to: phase4/masked_edge_audit_51repo.json
+  Total runtime:    167.2s
+
+==========================================================================================
+  Audit Complete.
+==========================================================================================
+
+[STDERR]
+/content/vulnchain/TrainModel/masked_edge_audit.py:146: UserWarning: Only 0 packages pass own_ratio >= 0.70. Relaxing threshold to 0.30 for statistical power.
+  warnings.warn(

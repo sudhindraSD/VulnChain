@@ -1,0 +1,55 @@
+Using compute device: cpu
+All 5 dataset files resolved cleanly:
+  1. Graph:       phase5\bench_run\vulnchain_graph.json
+  2. EPSS Labels: phase5\epss_labels_51repo.json
+  3. VPSS Labels: phase4\vpss_labels_51repo.json
+  4. Repo Split:  phase4\repo_split_mapping_51repo.json
+  5. OSV Cache:   .osv_records_cache.json
+Primary Gate Pinned Population (official masked_edge_audit.py path): 645 eligible packages vs 8682 never-vuln negatives. [ASSERTIONS PASSED]
+Secondary Gate Pinned Population: 1433 non-zero test packages (Cutoff: 2026-08-01).
+Total pre-registered runs scheduled: 35 runs.
+P3 DEBUG: full_v2 p=0.30 seed=42, 300 epochs, early stop DISABLED, CPU
+  ep  0 mse=0.17255 rank=0.6947 aux=7.38e-05 train_rho=-0.2327 val_rho=-0.2248 pred_mean=0.4567 pred_std=0.0093 [6s]
+  ep 10 mse=0.01829 rank=0.6991 aux=7.76e-04 train_rho=-0.2190 val_rho=-0.1658 pred_mean=0.1699 pred_std=0.0724 [46s]
+  ep 20 mse=0.01408 rank=0.6950 aux=1.34e-04 train_rho=-0.2070 val_rho=-0.1538 pred_mean=0.0462 pred_std=0.0550 [86s]
+  ep 30 mse=0.01496 rank=0.6939 aux=8.04e-05 train_rho=-0.1890 val_rho=-0.1368 pred_mean=0.0297 pred_std=0.0463 [132s]
+  ep 40 mse=0.01496 rank=0.6939 aux=9.32e-05 train_rho=-0.1750 val_rho=-0.1246 pred_mean=0.0291 pred_std=0.0453 [175s]
+  ep 50 mse=0.01464 rank=0.6940 aux=7.65e-05 train_rho=-0.1581 val_rho=-0.1097 pred_mean=0.0350 pred_std=0.0475 [219s]
+  ep 60 mse=0.01379 rank=0.6940 aux=1.99e-04 train_rho=-0.1257 val_rho=-0.0858 pred_mean=0.0497 pred_std=0.0519 [263s]
+  ep 70 mse=0.01157 rank=0.6931 aux=3.55e-04 train_rho=-0.0286 val_rho=+0.0030 pred_mean=0.0880 pred_std=0.0569 [307s]
+  ep 80 mse=0.01076 rank=0.6871 aux=7.02e-04 train_rho=+0.1727 val_rho=+0.1903 pred_mean=0.1311 pred_std=0.0545 [351s]
+  ep 90 mse=0.00867 rank=0.6756 aux=4.86e-04 train_rho=+0.2958 val_rho=+0.3028 pred_mean=0.1034 pred_std=0.0536 [396s]
+  ep100 mse=0.00863 rank=0.6586 aux=4.19e-04 train_rho=+0.4043 val_rho=+0.3784 pred_mean=0.0879 pred_std=0.0603 [441s]
+  ep110 mse=0.00769 rank=0.6458 aux=4.25e-04 train_rho=+0.4710 val_rho=+0.4451 pred_mean=0.0808 pred_std=0.0638 [488s]
+  ep120 mse=0.00686 rank=0.6224 aux=5.31e-04 train_rho=+0.5402 val_rho=+0.5071 pred_mean=0.0808 pred_std=0.0758 [532s]
+  ep130 mse=0.00677 rank=0.6096 aux=7.59e-04 train_rho=+0.5944 val_rho=+0.5582 pred_mean=0.0618 pred_std=0.0794 [576s]
+  ep140 mse=0.00574 rank=0.6022 aux=1.20e-03 train_rho=+0.6202 val_rho=+0.5827 pred_mean=0.0573 pred_std=0.0803 [619s]
+  ep150 mse=0.00548 rank=0.5980 aux=9.94e-04 train_rho=+0.6380 val_rho=+0.6016 pred_mean=0.0481 pred_std=0.0834 [663s]
+  ep160 mse=0.00550 rank=0.5918 aux=1.55e-03 train_rho=+0.6556 val_rho=+0.6206 pred_mean=0.0465 pred_std=0.0877 [707s]
+  ep170 mse=0.00561 rank=0.5909 aux=1.55e-03 train_rho=+0.6714 val_rho=+0.6340 pred_mean=0.0436 pred_std=0.0886 [750s]
+  ep180 mse=0.00547 rank=0.5881 aux=1.11e-03 train_rho=+0.6861 val_rho=+0.6480 pred_mean=0.0421 pred_std=0.0884 [793s]
+  ep190 mse=0.00514 rank=0.5871 aux=2.68e-03 train_rho=+0.6950 val_rho=+0.6555 pred_mean=0.0442 pred_std=0.0939 [836s]
+  ep200 mse=0.00600 rank=0.5780 aux=7.18e-04 train_rho=+0.6999 val_rho=+0.6607 pred_mean=0.0402 pred_std=0.0895 [890s]
+  ep210 mse=0.00489 rank=0.5846 aux=1.02e-03 train_rho=+0.7033 val_rho=+0.6618 pred_mean=0.0376 pred_std=0.0877 [935s]
+  ep220 mse=0.00504 rank=0.5816 aux=1.34e-03 train_rho=+0.7096 val_rho=+0.6697 pred_mean=0.0400 pred_std=0.0924 [980s]
+  ep230 mse=0.00503 rank=0.5799 aux=6.24e-04 train_rho=+0.7130 val_rho=+0.6722 pred_mean=0.0372 pred_std=0.0893 [1024s]
+  ep240 mse=0.00499 rank=0.5793 aux=1.68e-03 train_rho=+0.7193 val_rho=+0.6783 pred_mean=0.0392 pred_std=0.0944 [1068s]
+  ep250 mse=0.00527 rank=0.5775 aux=2.99e-03 train_rho=+0.7216 val_rho=+0.6780 pred_mean=0.0372 pred_std=0.0917 [1112s]
+  ep260 mse=0.00439 rank=0.5818 aux=1.48e-03 train_rho=+0.7221 val_rho=+0.6777 pred_mean=0.0343 pred_std=0.0885 [1156s]
+  ep270 mse=0.00426 rank=0.5818 aux=2.58e-03 train_rho=+0.7251 val_rho=+0.6790 pred_mean=0.0371 pred_std=0.0934 [1200s]
+  ep280 mse=0.00556 rank=0.5714 aux=1.48e-03 train_rho=+0.7255 val_rho=+0.6785 pred_mean=0.0388 pred_std=0.0966 [1246s]
+  ep290 mse=0.00566 rank=0.5715 aux=1.03e-03 train_rho=+0.7262 val_rho=+0.6798 pred_mean=0.0359 pred_std=0.0926 [1291s]
+  ep299 mse=0.00574 rank=0.5723 aux=1.71e-03 train_rho=+0.7270 val_rho=+0.6802 pred_mean=0.0369 pred_std=0.0952 [1334s]
+
+===== CROSSING POINTS =====
+  train rho > 0.00 first at epoch: 72
+  train rho > 0.10 first at epoch: 76
+  train rho > 0.30 (P3 bar) first at epoch: 91
+  val   rho > 0.00 first at epoch: 70
+  best val rho = +0.6810 at epoch 266
+  patience-15 simulation would have stopped at epoch: 281
+  final: train_rho=+0.7270 val_rho=+0.6802 mse=0.00574 pred_std=0.0952
+  constant-mean floor: Var(y_train)=0.01026  (MSE below this = signal beyond the mean)
+
+saved -> phase5/debug_p3_trajectory.json
+EXITCODE=0

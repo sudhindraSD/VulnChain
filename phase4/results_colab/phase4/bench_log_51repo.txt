@@ -1,0 +1,12 @@
+================================================================================
+  VulnChain -- Project Dependency Risk Analyzer
+================================================================================
+Target lockfile: /content/vulnchain/bench_run/NodeTestBench/package-lock.json
+Parsed 671 unique packages and 243 dependency relations.
+
+[OK] Full analysis results exported to: bench_results.json
+
+================================================================================
+  Analysis Complete!
+================================================================================
+

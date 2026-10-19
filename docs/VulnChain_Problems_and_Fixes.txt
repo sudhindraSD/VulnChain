@@ -1,0 +1,60 @@
+=== PAGE 1 ===
+VulnChain – Problems, Weak Points & Practical
+Fixes
+1. Weak Ground Truth Labels
+Problem: Training on heuristic pseudo-labels can bias the model and does not prove real-world
+correctness.
+Fix: Create 8–12 curated ground-truth incidents (e.g., Log4Shell-type cases) for validation only. Use
+ensemble pseudo-labels and train only on high-confidence examples. Add human-in-the-loop
+review for top-K outputs.
+2. Overambitious 16-Week Scope
+Problem: Supporting npm, pip, Maven + CVE aggregation + GNN + frontend is too much.
+Fix: Focus MVP on npm end-to-end. Add other ecosystems as stretch goals after core stability.
+3. Explainability Over-Reliance on Attention
+Problem: Attention weights alone may be misleading.
+Fix: Combine attention with GNNExplainer or integrated gradients. Produce 2–3 narrative case
+studies validated by reviewers.
+4. Evaluation Credibility
+Problem: Low MSE on pseudo-labels does not prove usefulness.
+Fix: Use graph-level splits, temporal holdout, 3x runs with different seeds, and ablation studies to
+validate robustness.
+5. API Rate Limits & Enrichment Failures
+Problem: NVD, GitHub, OSV rate limits can break scans.
+Fix: Implement Redis caching (24h TTL), batch queries, exponential backoff, and graceful fallback
+to cached/OSV data.
+6. Scalability Issues
+
+
+=== PAGE 2 ===
+Problem: Large graphs (thousands of nodes) may be slow.
+Fix: Add depth caps, node sampling, measure performance metrics, and include synthetic 10k-node
+stress test.
+7. Risky Remediation Suggestions
+Problem: Automated version bumps may introduce breaking changes.
+Fix: Show CVEs fixed, risk reduction estimate, and breaking-change risk level. Prefer non-breaking
+patches first.
+8. Reproducibility & Demo Fragility
+Problem: Examiners expect reproducible results.
+Fix: Provide Docker Compose setup, publish training scripts, seeds, dataset splits, and record a
+backup demo video.
+9. Missing Explainability Evaluation
+Problem: No human metric for explanation usefulness.
+Fix: Ask 3 reviewers to rate top explanations (1–5 scale) and report agreement + average score.
+10. Popularity Feature Bias
+Problem: Download metrics may bias against niche but critical packages.
+Fix: Add popularity-toggle experiments and include ablation results in the paper.
+Prioritized Action Plan
+
+Narrow MVP to npm and select 3 demo repositories (clean, medium, disaster).
+
+Create 8 curated ground-truth validation cases.
+
+Implement Redis caching + CVE batching.
+
+Build VulnGAT prototype and run sanity checks.
+
+Produce 2 explainability case studies and collect reviewer ratings.
+
+Prepare Docker Compose demo and record walkthrough video.
+
+

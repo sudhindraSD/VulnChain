@@ -1,0 +1,2610 @@
+{
+  "GHSA-22jq-vg5j-6vgg": {
+    "ghsa_id": "GHSA-22jq-vg5j-6vgg",
+    "cve_id": "CVE-2026-54272",
+    "cvss_score": 6.9,
+    "epss_score": 0.0035,
+    "epss_percentile": 0.27694,
+    "in_cisa_kev": false
+  },
+  "GHSA-23c5-xmqv-rm74": {
+    "ghsa_id": "GHSA-23c5-xmqv-rm74",
+    "cve_id": "CVE-2026-27904",
+    "cvss_score": 7.5,
+    "epss_score": 0.00472,
+    "epss_percentile": 0.388,
+    "in_cisa_kev": false
+  },
+  "GHSA-23hp-3jrh-7fpw": {
+    "ghsa_id": "GHSA-23hp-3jrh-7fpw",
+    "cve_id": "CVE-2026-59873",
+    "cvss_score": 7.5,
+    "epss_score": 0.00556,
+    "epss_percentile": 0.43899,
+    "in_cisa_kev": false
+  },
+  "GHSA-282f-qqgm-c34q": {
+    "ghsa_id": "GHSA-282f-qqgm-c34q",
+    "cve_id": "CVE-2021-23807",
+    "cvss_score": 5.6,
+    "epss_score": 0.0273,
+    "epss_percentile": 0.84963,
+    "in_cisa_kev": false
+  },
+  "GHSA-28wg-ghj8-5hjv": {
+    "ghsa_id": "GHSA-28wg-ghj8-5hjv",
+    "cve_id": "CVE-2026-67214",
+    "cvss_score": 5.9,
+    "epss_score": 0.0033,
+    "epss_percentile": 0.25417,
+    "in_cisa_kev": false
+  },
+  "GHSA-29mw-wpgm-hmr9": {
+    "ghsa_id": "GHSA-29mw-wpgm-hmr9",
+    "cve_id": "CVE-2020-28500",
+    "cvss_score": 5.3,
+    "epss_score": 0.07336,
+    "epss_percentile": 0.94031,
+    "in_cisa_kev": false
+  },
+  "GHSA-2cf5-4w76-r9qv": {
+    "ghsa_id": "GHSA-2cf5-4w76-r9qv",
+    "cve_id": null,
+    "cvss_score": 7.3,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-2g4f-4pwh-qvx6": {
+    "ghsa_id": "GHSA-2g4f-4pwh-qvx6",
+    "cve_id": "CVE-2025-69873",
+    "cvss_score": 5.5,
+    "epss_score": 0.00492,
+    "epss_percentile": 0.40117,
+    "in_cisa_kev": false
+  },
+  "GHSA-2m39-62fm-q8r3": {
+    "ghsa_id": "GHSA-2m39-62fm-q8r3",
+    "cve_id": "CVE-2018-3737",
+    "cvss_score": 7.5,
+    "epss_score": 0.01738,
+    "epss_percentile": 0.75745,
+    "in_cisa_kev": false
+  },
+  "GHSA-2m8v-j782-fhvr": {
+    "ghsa_id": "GHSA-2m8v-j782-fhvr",
+    "cve_id": "CVE-2026-69185",
+    "cvss_score": 7.5,
+    "epss_score": 0.00503,
+    "epss_percentile": 0.40805,
+    "in_cisa_kev": false
+  },
+  "GHSA-2p57-rm9w-gvfp": {
+    "ghsa_id": "GHSA-2p57-rm9w-gvfp",
+    "cve_id": "CVE-2024-29415",
+    "cvss_score": 8.1,
+    "epss_score": 0.08279,
+    "epss_percentile": 0.946,
+    "in_cisa_kev": false
+  },
+  "GHSA-2pr6-76vf-7546": {
+    "ghsa_id": "GHSA-2pr6-76vf-7546",
+    "cve_id": null,
+    "cvss_score": 5.9,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-2pr8-phx7-x9h3": {
+    "ghsa_id": "GHSA-2pr8-phx7-x9h3",
+    "cve_id": "CVE-2026-44294",
+    "cvss_score": 5.3,
+    "epss_score": 0.00431,
+    "epss_percentile": 0.35808,
+    "in_cisa_kev": false
+  },
+  "GHSA-2qvq-rjwj-gvw9": {
+    "ghsa_id": "GHSA-2qvq-rjwj-gvw9",
+    "cve_id": "CVE-2026-33916",
+    "cvss_score": 4.7,
+    "epss_score": 0.00276,
+    "epss_percentile": 0.19584,
+    "in_cisa_kev": false
+  },
+  "GHSA-2rp8-mm9q-fp49": {
+    "ghsa_id": "GHSA-2rp8-mm9q-fp49",
+    "cve_id": "CVE-2026-73651",
+    "cvss_score": 5.7,
+    "epss_score": 0.00233,
+    "epss_percentile": 0.13963,
+    "in_cisa_kev": false
+  },
+  "GHSA-2rq5-699j-x7p6": {
+    "ghsa_id": "GHSA-2rq5-699j-x7p6",
+    "cve_id": "CVE-2023-25345",
+    "cvss_score": 7.5,
+    "epss_score": 0.01042,
+    "epss_percentile": 0.61081,
+    "in_cisa_kev": false
+  },
+  "GHSA-2v37-7h3g-55p8": {
+    "ghsa_id": "GHSA-2v37-7h3g-55p8",
+    "cve_id": "CVE-2026-67213",
+    "cvss_score": 5.9,
+    "epss_score": 0.00319,
+    "epss_percentile": 0.2421,
+    "in_cisa_kev": false
+  },
+  "GHSA-2w6w-674q-4c4q": {
+    "ghsa_id": "GHSA-2w6w-674q-4c4q",
+    "cve_id": "CVE-2026-33937",
+    "cvss_score": 9.8,
+    "epss_score": 0.01704,
+    "epss_percentile": 0.75228,
+    "in_cisa_kev": false
+  },
+  "GHSA-332q-7ff2-57h2": {
+    "ghsa_id": "GHSA-332q-7ff2-57h2",
+    "cve_id": "CVE-2019-10795",
+    "cvss_score": 6.3,
+    "epss_score": 0.01089,
+    "epss_percentile": 0.6249,
+    "in_cisa_kev": false
+  },
+  "GHSA-34x7-hfp2-rc4v": {
+    "ghsa_id": "GHSA-34x7-hfp2-rc4v",
+    "cve_id": "CVE-2026-24842",
+    "cvss_score": 8.2,
+    "epss_score": 0.0055,
+    "epss_percentile": 0.43587,
+    "in_cisa_kev": false
+  },
+  "GHSA-35jh-r3h4-6jhm": {
+    "ghsa_id": "GHSA-35jh-r3h4-6jhm",
+    "cve_id": "CVE-2021-23337",
+    "cvss_score": 7.2,
+    "epss_score": 0.21333,
+    "epss_percentile": 0.97474,
+    "in_cisa_kev": false
+  },
+  "GHSA-36fh-84j7-cv5h": {
+    "ghsa_id": "GHSA-36fh-84j7-cv5h",
+    "cve_id": "CVE-2022-48285",
+    "cvss_score": 7.3,
+    "epss_score": 0.01411,
+    "epss_percentile": 0.70337,
+    "in_cisa_kev": false
+  },
+  "GHSA-378v-28hj-76wf": {
+    "ghsa_id": "GHSA-378v-28hj-76wf",
+    "cve_id": "CVE-2026-2739",
+    "cvss_score": 5.3,
+    "epss_score": 0.00467,
+    "epss_percentile": 0.38489,
+    "in_cisa_kev": false
+  },
+  "GHSA-37ch-88jc-xwx2": {
+    "ghsa_id": "GHSA-37ch-88jc-xwx2",
+    "cve_id": "CVE-2024-45296",
+    "cvss_score": 7.5,
+    "epss_score": 0.00932,
+    "epss_percentile": 0.57646,
+    "in_cisa_kev": false
+  },
+  "GHSA-395f-4hp3-45gv": {
+    "ghsa_id": "GHSA-395f-4hp3-45gv",
+    "cve_id": "CVE-2026-13311",
+    "cvss_score": 7.5,
+    "epss_score": 0.0036,
+    "epss_percentile": 0.2879,
+    "in_cisa_kev": false
+  },
+  "GHSA-3c6g-pvg8-gqw2": {
+    "ghsa_id": "GHSA-3c6g-pvg8-gqw2",
+    "cve_id": "CVE-2020-7712",
+    "cvss_score": 7.2,
+    "epss_score": 0.03112,
+    "epss_percentile": 0.86839,
+    "in_cisa_kev": false
+  },
+  "GHSA-3cqr-58rm-57f8": {
+    "ghsa_id": "GHSA-3cqr-58rm-57f8",
+    "cve_id": "CVE-2019-20920",
+    "cvss_score": 8.1,
+    "epss_score": 0.03193,
+    "epss_percentile": 0.87195,
+    "in_cisa_kev": false
+  },
+  "GHSA-3fx5-fwvr-xrjg": {
+    "ghsa_id": "GHSA-3fx5-fwvr-xrjg",
+    "cve_id": "CVE-2015-8315",
+    "cvss_score": 7.5,
+    "epss_score": 0.06824,
+    "epss_percentile": 0.93619,
+    "in_cisa_kev": false
+  },
+  "GHSA-3h5v-q93c-6h6q": {
+    "ghsa_id": "GHSA-3h5v-q93c-6h6q",
+    "cve_id": "CVE-2024-37890",
+    "cvss_score": 7.5,
+    "epss_score": 0.01357,
+    "epss_percentile": 0.69246,
+    "in_cisa_kev": false
+  },
+  "GHSA-3j8f-xvm3-ffx4": {
+    "ghsa_id": "GHSA-3j8f-xvm3-ffx4",
+    "cve_id": "CVE-2022-0624",
+    "cvss_score": 7.3,
+    "epss_score": 0.0089,
+    "epss_percentile": 0.5632,
+    "in_cisa_kev": false
+  },
+  "GHSA-3jfq-g458-7qm9": {
+    "ghsa_id": "GHSA-3jfq-g458-7qm9",
+    "cve_id": "CVE-2021-32804",
+    "cvss_score": 8.2,
+    "epss_score": 0.15014,
+    "epss_percentile": 0.96528,
+    "in_cisa_kev": false
+  },
+  "GHSA-3jxr-9vmj-r5cp": {
+    "ghsa_id": "GHSA-3jxr-9vmj-r5cp",
+    "cve_id": "CVE-2026-13149",
+    "cvss_score": 5.3,
+    "epss_score": 0.00364,
+    "epss_percentile": 0.29159,
+    "in_cisa_kev": false
+  },
+  "GHSA-3mfm-83xf-c92r": {
+    "ghsa_id": "GHSA-3mfm-83xf-c92r",
+    "cve_id": "CVE-2026-33938",
+    "cvss_score": 8.1,
+    "epss_score": 0.00709,
+    "epss_percentile": 0.50541,
+    "in_cisa_kev": false
+  },
+  "GHSA-3ppc-4f35-3m26": {
+    "ghsa_id": "GHSA-3ppc-4f35-3m26",
+    "cve_id": "CVE-2026-26996",
+    "cvss_score": 8.7,
+    "epss_score": 0.00519,
+    "epss_percentile": 0.41848,
+    "in_cisa_kev": false
+  },
+  "GHSA-3v6h-hqm4-2rg6": {
+    "ghsa_id": "GHSA-3v6h-hqm4-2rg6",
+    "cve_id": "CVE-2018-1002204",
+    "cvss_score": 5.5,
+    "epss_score": 0.15359,
+    "epss_percentile": 0.96586,
+    "in_cisa_kev": false
+  },
+  "GHSA-3v7f-55p6-f55p": {
+    "ghsa_id": "GHSA-3v7f-55p6-f55p",
+    "cve_id": "CVE-2026-33672",
+    "cvss_score": 5.3,
+    "epss_score": 0.0041,
+    "epss_percentile": 0.33958,
+    "in_cisa_kev": false
+  },
+  "GHSA-3w5v-p54c-f74x": {
+    "ghsa_id": "GHSA-3w5v-p54c-f74x",
+    "cve_id": "CVE-2017-1000228",
+    "cvss_score": 9.8,
+    "epss_score": 0.05661,
+    "epss_percentile": 0.92475,
+    "in_cisa_kev": false
+  },
+  "GHSA-3xgq-45jj-v275": {
+    "ghsa_id": "GHSA-3xgq-45jj-v275",
+    "cve_id": "CVE-2024-21538",
+    "cvss_score": 7.5,
+    "epss_score": 0.00868,
+    "epss_percentile": 0.55696,
+    "in_cisa_kev": false
+  },
+  "GHSA-42h9-826w-cgv3": {
+    "ghsa_id": "GHSA-42h9-826w-cgv3",
+    "cve_id": "CVE-2026-67313",
+    "cvss_score": 6.3,
+    "epss_score": 0.00339,
+    "epss_percentile": 0.26417,
+    "in_cisa_kev": false
+  },
+  "GHSA-4328-8hgf-7wjr": {
+    "ghsa_id": "GHSA-4328-8hgf-7wjr",
+    "cve_id": "CVE-2019-16777",
+    "cvss_score": 7.7,
+    "epss_score": 0.02043,
+    "epss_percentile": 0.7951,
+    "in_cisa_kev": false
+  },
+  "GHSA-434g-2637-qmqr": {
+    "ghsa_id": "GHSA-434g-2637-qmqr",
+    "cve_id": "CVE-2024-48949",
+    "cvss_score": 5.3,
+    "epss_score": 0.00496,
+    "epss_percentile": 0.40403,
+    "in_cisa_kev": false
+  },
+  "GHSA-43f8-2h32-f4cj": {
+    "ghsa_id": "GHSA-43f8-2h32-f4cj",
+    "cve_id": "CVE-2021-23362",
+    "cvss_score": 5.3,
+    "epss_score": 0.03612,
+    "epss_percentile": 0.88674,
+    "in_cisa_kev": false
+  },
+  "GHSA-442j-39wm-28r2": {
+    "ghsa_id": "GHSA-442j-39wm-28r2",
+    "cve_id": null,
+    "cvss_score": 3.7,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-446m-mv8f-q348": {
+    "ghsa_id": "GHSA-446m-mv8f-q348",
+    "cve_id": "CVE-2017-18214",
+    "cvss_score": 7.5,
+    "epss_score": 0.03649,
+    "epss_percentile": 0.88802,
+    "in_cisa_kev": false
+  },
+  "GHSA-44pw-h2cw-w3vq": {
+    "ghsa_id": "GHSA-44pw-h2cw-w3vq",
+    "cve_id": "CVE-2022-29167",
+    "cvss_score": 7.4,
+    "epss_score": 0.01088,
+    "epss_percentile": 0.6247,
+    "in_cisa_kev": false
+  },
+  "GHSA-45q2-34rf-mr94": {
+    "ghsa_id": "GHSA-45q2-34rf-mr94",
+    "cve_id": "CVE-2020-35149",
+    "cvss_score": 5.3,
+    "epss_score": 0.01028,
+    "epss_percentile": 0.60697,
+    "in_cisa_kev": false
+  },
+  "GHSA-48c2-rrv3-qjmp": {
+    "ghsa_id": "GHSA-48c2-rrv3-qjmp",
+    "cve_id": "CVE-2026-33532",
+    "cvss_score": 4.3,
+    "epss_score": 0.0047,
+    "epss_percentile": 0.38652,
+    "in_cisa_kev": false
+  },
+  "GHSA-49q7-c7j4-3p7m": {
+    "ghsa_id": "GHSA-49q7-c7j4-3p7m",
+    "cve_id": "CVE-2024-42461",
+    "cvss_score": 5.3,
+    "epss_score": 0.00617,
+    "epss_percentile": 0.46782,
+    "in_cisa_kev": false
+  },
+  "GHSA-4c7m-wxvm-r7gc": {
+    "ghsa_id": "GHSA-4c7m-wxvm-r7gc",
+    "cve_id": "CVE-2021-28918",
+    "cvss_score": 9.1,
+    "epss_score": 0.16657,
+    "epss_percentile": 0.96847,
+    "in_cisa_kev": false
+  },
+  "GHSA-4c8g-83qw-93j6": {
+    "ghsa_id": "GHSA-4c8g-83qw-93j6",
+    "cve_id": "CVE-2026-13676",
+    "cvss_score": 7.5,
+    "epss_score": 0.00384,
+    "epss_percentile": 0.31274,
+    "in_cisa_kev": false
+  },
+  "GHSA-4g88-fppr-53pp": {
+    "ghsa_id": "GHSA-4g88-fppr-53pp",
+    "cve_id": "CVE-2019-10747",
+    "cvss_score": 9.8,
+    "epss_score": 0.02475,
+    "epss_percentile": 0.83268,
+    "in_cisa_kev": false
+  },
+  "GHSA-4gmj-3p3h-gm8h": {
+    "ghsa_id": "GHSA-4gmj-3p3h-gm8h",
+    "cve_id": "CVE-2024-27088",
+    "cvss_score": 7.5,
+    "epss_score": 0.00535,
+    "epss_percentile": 0.42778,
+    "in_cisa_kev": false
+  },
+  "GHSA-4hpf-3wq7-5rpr": {
+    "ghsa_id": "GHSA-4hpf-3wq7-5rpr",
+    "cve_id": "CVE-2018-1107",
+    "cvss_score": 5.3,
+    "epss_score": 0.01204,
+    "epss_percentile": 0.65587,
+    "in_cisa_kev": false
+  },
+  "GHSA-4jqc-8m5r-9rpr": {
+    "ghsa_id": "GHSA-4jqc-8m5r-9rpr",
+    "cve_id": "CVE-2021-23440",
+    "cvss_score": 7.3,
+    "epss_score": 0.02457,
+    "epss_percentile": 0.83155,
+    "in_cisa_kev": false
+  },
+  "GHSA-4jwp-vfvf-657p": {
+    "ghsa_id": "GHSA-4jwp-vfvf-657p",
+    "cve_id": "CVE-2019-2391",
+    "cvss_score": 5.4,
+    "epss_score": 0.00882,
+    "epss_percentile": 0.56136,
+    "in_cisa_kev": false
+  },
+  "GHSA-4p35-cfcx-8653": {
+    "ghsa_id": "GHSA-4p35-cfcx-8653",
+    "cve_id": "CVE-2022-0722",
+    "cvss_score": 7.5,
+    "epss_score": 0.01136,
+    "epss_percentile": 0.63727,
+    "in_cisa_kev": false
+  },
+  "GHSA-4rq4-32rv-6wp6": {
+    "ghsa_id": "GHSA-4rq4-32rv-6wp6",
+    "cve_id": "CVE-2022-0144",
+    "cvss_score": 7.1,
+    "epss_score": 0.00427,
+    "epss_percentile": 0.35482,
+    "in_cisa_kev": false
+  },
+  "GHSA-4vj7-5mj6-jm8m": {
+    "ghsa_id": "GHSA-4vj7-5mj6-jm8m",
+    "cve_id": "CVE-2026-5078",
+    "cvss_score": 5.3,
+    "epss_score": 0.00332,
+    "epss_percentile": 0.25682,
+    "in_cisa_kev": false
+  },
+  "GHSA-4vrv-93c7-m92j": {
+    "ghsa_id": "GHSA-4vrv-93c7-m92j",
+    "cve_id": "CVE-2022-24441",
+    "cvss_score": 8.8,
+    "epss_score": 0.00712,
+    "epss_percentile": 0.50641,
+    "in_cisa_kev": false
+  },
+  "GHSA-4x6g-3cmx-w76r": {
+    "ghsa_id": "GHSA-4x6g-3cmx-w76r",
+    "cve_id": "CVE-2022-22984",
+    "cvss_score": 6.3,
+    "epss_score": 0.03007,
+    "epss_percentile": 0.86386,
+    "in_cisa_kev": false
+  },
+  "GHSA-4xc9-xhrj-v574": {
+    "ghsa_id": "GHSA-4xc9-xhrj-v574",
+    "cve_id": "CVE-2018-16487",
+    "cvss_score": 7.5,
+    "epss_score": 0.01553,
+    "epss_percentile": 0.72904,
+    "in_cisa_kev": false
+  },
+  "GHSA-4xcv-9jjx-gfj3": {
+    "ghsa_id": "GHSA-4xcv-9jjx-gfj3",
+    "cve_id": null,
+    "cvss_score": 5.1,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-4xrf-jv44-h6hh": {
+    "ghsa_id": "GHSA-4xrf-jv44-h6hh",
+    "cve_id": "CVE-2026-69198",
+    "cvss_score": 6.9,
+    "epss_score": 0.00346,
+    "epss_percentile": 0.27269,
+    "in_cisa_kev": false
+  },
+  "GHSA-52cp-r559-cp3m": {
+    "ghsa_id": "GHSA-52cp-r559-cp3m",
+    "cve_id": "CVE-2026-59869",
+    "cvss_score": 7.5,
+    "epss_score": 0.00544,
+    "epss_percentile": 0.43266,
+    "in_cisa_kev": false
+  },
+  "GHSA-52f5-9888-hmc6": {
+    "ghsa_id": "GHSA-52f5-9888-hmc6",
+    "cve_id": "CVE-2025-54798",
+    "cvss_score": 2.5,
+    "epss_score": 0.00338,
+    "epss_percentile": 0.26401,
+    "in_cisa_kev": false
+  },
+  "GHSA-52v5-jr5w-gjxr": {
+    "ghsa_id": "GHSA-52v5-jr5w-gjxr",
+    "cve_id": "CVE-2026-48815",
+    "cvss_score": 7.5,
+    "epss_score": 0.0019,
+    "epss_percentile": 0.08659,
+    "in_cisa_kev": false
+  },
+  "GHSA-57cf-349j-352g": {
+    "ghsa_id": "GHSA-57cf-349j-352g",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-58qx-3vcg-4xpx": {
+    "ghsa_id": "GHSA-58qx-3vcg-4xpx",
+    "cve_id": "CVE-2026-45736",
+    "cvss_score": 4.4,
+    "epss_score": 0.00745,
+    "epss_percentile": 0.51773,
+    "in_cisa_kev": false
+  },
+  "GHSA-5955-9wpr-37jh": {
+    "ghsa_id": "GHSA-5955-9wpr-37jh",
+    "cve_id": "CVE-2021-37713",
+    "cvss_score": 8.2,
+    "epss_score": 0.01263,
+    "epss_percentile": 0.6709,
+    "in_cisa_kev": false
+  },
+  "GHSA-5c6j-r48x-rmvq": {
+    "ghsa_id": "GHSA-5c6j-r48x-rmvq",
+    "cve_id": null,
+    "cvss_score": 8.1,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-5p2g-fcmc-qvqq": {
+    "ghsa_id": "GHSA-5p2g-fcmc-qvqq",
+    "cve_id": "CVE-2025-71329",
+    "cvss_score": 7.5,
+    "epss_score": 0.0043,
+    "epss_percentile": 0.3573,
+    "in_cisa_kev": false
+  },
+  "GHSA-5p4m-2wfm-xmqj": {
+    "ghsa_id": "GHSA-5p4m-2wfm-xmqj",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-5v2h-r2cx-5xgj": {
+    "ghsa_id": "GHSA-5v2h-r2cx-5xgj",
+    "cve_id": "CVE-2022-21681",
+    "cvss_score": 7.5,
+    "epss_score": 0.02743,
+    "epss_percentile": 0.85042,
+    "in_cisa_kev": false
+  },
+  "GHSA-62gr-4qp9-h98f": {
+    "ghsa_id": "GHSA-62gr-4qp9-h98f",
+    "cve_id": "CVE-2019-20922",
+    "cvss_score": 7.5,
+    "epss_score": 0.03793,
+    "epss_percentile": 0.89255,
+    "in_cisa_kev": false
+  },
+  "GHSA-64g7-mvw6-v9qj": {
+    "ghsa_id": "GHSA-64g7-mvw6-v9qj",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-664h-wqgq-64gw": {
+    "ghsa_id": "GHSA-664h-wqgq-64gw",
+    "cve_id": "CVE-2026-73562",
+    "cvss_score": 6.5,
+    "epss_score": 0.00369,
+    "epss_percentile": 0.29605,
+    "in_cisa_kev": false
+  },
+  "GHSA-66ff-xgx4-vchm": {
+    "ghsa_id": "GHSA-66ff-xgx4-vchm",
+    "cve_id": "CVE-2026-44293",
+    "cvss_score": 7.7,
+    "epss_score": 0.00407,
+    "epss_percentile": 0.33706,
+    "in_cisa_kev": false
+  },
+  "GHSA-67hx-6x53-jw92": {
+    "ghsa_id": "GHSA-67hx-6x53-jw92",
+    "cve_id": "CVE-2023-45133",
+    "cvss_score": 9.3,
+    "epss_score": 0.0052,
+    "epss_percentile": 0.4192,
+    "in_cisa_kev": false
+  },
+  "GHSA-685m-2w69-288q": {
+    "ghsa_id": "GHSA-685m-2w69-288q",
+    "cve_id": "CVE-2026-44289",
+    "cvss_score": 7.5,
+    "epss_score": 0.0058,
+    "epss_percentile": 0.45049,
+    "in_cisa_kev": false
+  },
+  "GHSA-69f9-h8f9-7vjf": {
+    "ghsa_id": "GHSA-69f9-h8f9-7vjf",
+    "cve_id": "CVE-2024-48963",
+    "cvss_score": 7.5,
+    "epss_score": 0.00442,
+    "epss_percentile": 0.36719,
+    "in_cisa_kev": false
+  },
+  "GHSA-69rr-wvh9-6c4q": {
+    "ghsa_id": "GHSA-69rr-wvh9-6c4q",
+    "cve_id": "CVE-2014-3744",
+    "cvss_score": 7.5,
+    "epss_score": 0.16957,
+    "epss_percentile": 0.96895,
+    "in_cisa_kev": false
+  },
+  "GHSA-6c3j-c64m-qhgq": {
+    "ghsa_id": "GHSA-6c3j-c64m-qhgq",
+    "cve_id": "CVE-2019-11358",
+    "cvss_score": 6.1,
+    "epss_score": 0.87218,
+    "epss_percentile": 0.99741,
+    "in_cisa_kev": false
+  },
+  "GHSA-6c8f-qphg-qjgp": {
+    "ghsa_id": "GHSA-6c8f-qphg-qjgp",
+    "cve_id": "CVE-2019-20149",
+    "cvss_score": 7.5,
+    "epss_score": 0.02342,
+    "epss_percentile": 0.82256,
+    "in_cisa_kev": false
+  },
+  "GHSA-6g33-f262-xjp4": {
+    "ghsa_id": "GHSA-6g33-f262-xjp4",
+    "cve_id": "CVE-2017-16028",
+    "cvss_score": 5.3,
+    "epss_score": 0.01534,
+    "epss_percentile": 0.7258,
+    "in_cisa_kev": false
+  },
+  "GHSA-6g55-p6wh-862q": {
+    "ghsa_id": "GHSA-6g55-p6wh-862q",
+    "cve_id": "CVE-2026-45623",
+    "cvss_score": 7.5,
+    "epss_score": 0.00587,
+    "epss_percentile": 0.45393,
+    "in_cisa_kev": false
+  },
+  "GHSA-6hwc-9h8r-3vmf": {
+    "ghsa_id": "GHSA-6hwc-9h8r-3vmf",
+    "cve_id": "CVE-2025-6624",
+    "cvss_score": 7.2,
+    "epss_score": 0.00157,
+    "epss_percentile": 0.0517,
+    "in_cisa_kev": false
+  },
+  "GHSA-6rw7-vpxm-498p": {
+    "ghsa_id": "GHSA-6rw7-vpxm-498p",
+    "cve_id": "CVE-2025-15284",
+    "cvss_score": 3.7,
+    "epss_score": 0.00456,
+    "epss_percentile": 0.37757,
+    "in_cisa_kev": false
+  },
+  "GHSA-6x77-rpqf-j6mw": {
+    "ghsa_id": "GHSA-6x77-rpqf-j6mw",
+    "cve_id": "CVE-2017-1000189",
+    "cvss_score": 7.5,
+    "epss_score": 0.02113,
+    "epss_percentile": 0.80222,
+    "in_cisa_kev": false
+  },
+  "GHSA-6xwr-q98w-rvg7": {
+    "ghsa_id": "GHSA-6xwr-q98w-rvg7",
+    "cve_id": "CVE-2022-21803",
+    "cvss_score": 7.3,
+    "epss_score": 0.01753,
+    "epss_percentile": 0.75962,
+    "in_cisa_kev": false
+  },
+  "GHSA-72fg-jqhx-c68p": {
+    "ghsa_id": "GHSA-72fg-jqhx-c68p",
+    "cve_id": "CVE-2017-16224",
+    "cvss_score": 6.1,
+    "epss_score": 0.01041,
+    "epss_percentile": 0.6107,
+    "in_cisa_kev": false
+  },
+  "GHSA-72xf-g2v4-qvf3": {
+    "ghsa_id": "GHSA-72xf-g2v4-qvf3",
+    "cve_id": "CVE-2023-26136",
+    "cvss_score": 6.5,
+    "epss_score": 0.02542,
+    "epss_percentile": 0.83742,
+    "in_cisa_kev": false
+  },
+  "GHSA-73rr-hh4g-fpgx": {
+    "ghsa_id": "GHSA-73rr-hh4g-fpgx",
+    "cve_id": "CVE-2026-24001",
+    "cvss_score": 2.7,
+    "epss_score": 0.00572,
+    "epss_percentile": 0.44702,
+    "in_cisa_kev": false
+  },
+  "GHSA-75px-5xx7-5xc7": {
+    "ghsa_id": "GHSA-75px-5xx7-5xc7",
+    "cve_id": "CVE-2026-44291",
+    "cvss_score": 8.1,
+    "epss_score": 0.005,
+    "epss_percentile": 0.40602,
+    "in_cisa_kev": false
+  },
+  "GHSA-762f-c2wg-m8c8": {
+    "ghsa_id": "GHSA-762f-c2wg-m8c8",
+    "cve_id": "CVE-2018-3738",
+    "cvss_score": 5.5,
+    "epss_score": 0.00958,
+    "epss_percentile": 0.58439,
+    "in_cisa_kev": false
+  },
+  "GHSA-765h-qjxv-5f44": {
+    "ghsa_id": "GHSA-765h-qjxv-5f44",
+    "cve_id": "CVE-2021-23383",
+    "cvss_score": 9.8,
+    "epss_score": 0.04506,
+    "epss_percentile": 0.90843,
+    "in_cisa_kev": false
+  },
+  "GHSA-76c9-3jph-rj3q": {
+    "ghsa_id": "GHSA-76c9-3jph-rj3q",
+    "cve_id": "CVE-2025-7339",
+    "cvss_score": 3.4,
+    "epss_score": 0.00175,
+    "epss_percentile": 0.07091,
+    "in_cisa_kev": false
+  },
+  "GHSA-776f-qx25-q3cc": {
+    "ghsa_id": "GHSA-776f-qx25-q3cc",
+    "cve_id": "CVE-2023-0842",
+    "cvss_score": 5.3,
+    "epss_score": 0.01404,
+    "epss_percentile": 0.70196,
+    "in_cisa_kev": false
+  },
+  "GHSA-78xj-cgh5-2h22": {
+    "ghsa_id": "GHSA-78xj-cgh5-2h22",
+    "cve_id": "CVE-2023-42282",
+    "cvss_score": 7.5,
+    "epss_score": 0.01613,
+    "epss_percentile": 0.7382,
+    "in_cisa_kev": false
+  },
+  "GHSA-7f3x-x4pr-wqhj": {
+    "ghsa_id": "GHSA-7f3x-x4pr-wqhj",
+    "cve_id": "CVE-2022-2216",
+    "cvss_score": 9.8,
+    "epss_score": 0.01647,
+    "epss_percentile": 0.74373,
+    "in_cisa_kev": false
+  },
+  "GHSA-7f5c-rpf4-86p8": {
+    "ghsa_id": "GHSA-7f5c-rpf4-86p8",
+    "cve_id": "CVE-2021-32822",
+    "cvss_score": 4.0,
+    "epss_score": 0.01178,
+    "epss_percentile": 0.6494,
+    "in_cisa_kev": false
+  },
+  "GHSA-7fh5-64p2-3v2j": {
+    "ghsa_id": "GHSA-7fh5-64p2-3v2j",
+    "cve_id": "CVE-2023-44270",
+    "cvss_score": 5.3,
+    "epss_score": 0.00822,
+    "epss_percentile": 0.54309,
+    "in_cisa_kev": false
+  },
+  "GHSA-7mc5-chhp-fmc3": {
+    "ghsa_id": "GHSA-7mc5-chhp-fmc3",
+    "cve_id": "CVE-2016-10539",
+    "cvss_score": 7.5,
+    "epss_score": 0.01364,
+    "epss_percentile": 0.69389,
+    "in_cisa_kev": false
+  },
+  "GHSA-7p7h-4mm5-852v": {
+    "ghsa_id": "GHSA-7p7h-4mm5-852v",
+    "cve_id": "CVE-2021-33623",
+    "cvss_score": 7.5,
+    "epss_score": 0.02901,
+    "epss_percentile": 0.85903,
+    "in_cisa_kev": false
+  },
+  "GHSA-7p8r-x3mc-p8w7": {
+    "ghsa_id": "GHSA-7p8r-x3mc-p8w7",
+    "cve_id": "CVE-2026-18446",
+    "cvss_score": 7.5,
+    "epss_score": 0.00221,
+    "epss_percentile": 0.12533,
+    "in_cisa_kev": false
+  },
+  "GHSA-7px7-7xjx-hxm8": {
+    "ghsa_id": "GHSA-7px7-7xjx-hxm8",
+    "cve_id": "CVE-2017-1000427",
+    "cvss_score": 6.1,
+    "epss_score": 0.01682,
+    "epss_percentile": 0.7491,
+    "in_cisa_kev": false
+  },
+  "GHSA-7q8q-rj6j-mhjq": {
+    "ghsa_id": "GHSA-7q8q-rj6j-mhjq",
+    "cve_id": "CVE-2026-67319",
+    "cvss_score": 6.3,
+    "epss_score": 0.00258,
+    "epss_percentile": 0.17219,
+    "in_cisa_kev": false
+  },
+  "GHSA-7r86-cg39-jmmj": {
+    "ghsa_id": "GHSA-7r86-cg39-jmmj",
+    "cve_id": "CVE-2026-27903",
+    "cvss_score": 7.5,
+    "epss_score": 0.00517,
+    "epss_percentile": 0.41756,
+    "in_cisa_kev": false
+  },
+  "GHSA-7wwv-vh3v-89cq": {
+    "ghsa_id": "GHSA-7wwv-vh3v-89cq",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-7xfp-9c55-5vqj": {
+    "ghsa_id": "GHSA-7xfp-9c55-5vqj",
+    "cve_id": "CVE-2017-16026",
+    "cvss_score": 5.9,
+    "epss_score": 0.02462,
+    "epss_percentile": 0.83193,
+    "in_cisa_kev": false
+  },
+  "GHSA-832h-xg76-4gv6": {
+    "ghsa_id": "GHSA-832h-xg76-4gv6",
+    "cve_id": "CVE-2017-18077",
+    "cvss_score": 7.5,
+    "epss_score": 0.02571,
+    "epss_percentile": 0.83978,
+    "in_cisa_kev": false
+  },
+  "GHSA-83g3-92jg-28cx": {
+    "ghsa_id": "GHSA-83g3-92jg-28cx",
+    "cve_id": "CVE-2026-26960",
+    "cvss_score": 7.1,
+    "epss_score": 0.00288,
+    "epss_percentile": 0.2083,
+    "in_cisa_kev": false
+  },
+  "GHSA-848j-6mx2-7j84": {
+    "ghsa_id": "GHSA-848j-6mx2-7j84",
+    "cve_id": "CVE-2025-14505",
+    "cvss_score": 5.6,
+    "epss_score": 0.00171,
+    "epss_percentile": 0.06628,
+    "in_cisa_kev": false
+  },
+  "GHSA-8687-vv9j-hgph": {
+    "ghsa_id": "GHSA-8687-vv9j-hgph",
+    "cve_id": "CVE-2019-17426",
+    "cvss_score": 9.1,
+    "epss_score": 0.0166,
+    "epss_percentile": 0.74556,
+    "in_cisa_kev": false
+  },
+  "GHSA-896r-f27r-55mw": {
+    "ghsa_id": "GHSA-896r-f27r-55mw",
+    "cve_id": "CVE-2021-3918",
+    "cvss_score": 9.8,
+    "epss_score": 0.03563,
+    "epss_percentile": 0.88527,
+    "in_cisa_kev": false
+  },
+  "GHSA-8hfj-j24r-96c4": {
+    "ghsa_id": "GHSA-8hfj-j24r-96c4",
+    "cve_id": "CVE-2022-24785",
+    "cvss_score": 7.5,
+    "epss_score": 0.0552,
+    "epss_percentile": 0.92291,
+    "in_cisa_kev": false
+  },
+  "GHSA-8j8c-7jfh-h6hx": {
+    "ghsa_id": "GHSA-8j8c-7jfh-h6hx",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-8qq5-rm4j-mr97": {
+    "ghsa_id": "GHSA-8qq5-rm4j-mr97",
+    "cve_id": "CVE-2026-23745",
+    "cvss_score": 8.2,
+    "epss_score": 0.0034,
+    "epss_percentile": 0.26624,
+    "in_cisa_kev": false
+  },
+  "GHSA-8r6j-v8pm-fqw3": {
+    "ghsa_id": "GHSA-8r6j-v8pm-fqw3",
+    "cve_id": "CVE-2023-45311",
+    "cvss_score": 9.8,
+    "epss_score": 0.01535,
+    "epss_percentile": 0.72598,
+    "in_cisa_kev": false
+  },
+  "GHSA-8x88-c5mf-7j5w": {
+    "ghsa_id": "GHSA-8x88-c5mf-7j5w",
+    "cve_id": "CVE-2026-59874",
+    "cvss_score": 7.5,
+    "epss_score": 0.00434,
+    "epss_percentile": 0.36062,
+    "in_cisa_kev": false
+  },
+  "GHSA-8xcm-r25x-g524": {
+    "ghsa_id": "GHSA-8xcm-r25x-g524",
+    "cve_id": "CVE-2026-16728",
+    "cvss_score": 4.8,
+    "epss_score": 0.00176,
+    "epss_percentile": 0.072,
+    "in_cisa_kev": false
+  },
+  "GHSA-93f3-23rq-pjfp": {
+    "ghsa_id": "GHSA-93f3-23rq-pjfp",
+    "cve_id": "CVE-2020-15095",
+    "cvss_score": 4.4,
+    "epss_score": 0.00407,
+    "epss_percentile": 0.33693,
+    "in_cisa_kev": false
+  },
+  "GHSA-93q8-gq69-wqmw": {
+    "ghsa_id": "GHSA-93q8-gq69-wqmw",
+    "cve_id": "CVE-2021-3807",
+    "cvss_score": 7.5,
+    "epss_score": 0.03552,
+    "epss_percentile": 0.88495,
+    "in_cisa_kev": false
+  },
+  "GHSA-952p-6rrq-rcjv": {
+    "ghsa_id": "GHSA-952p-6rrq-rcjv",
+    "cve_id": "CVE-2024-4067",
+    "cvss_score": 5.3,
+    "epss_score": 0.01429,
+    "epss_percentile": 0.70671,
+    "in_cisa_kev": false
+  },
+  "GHSA-957j-59c2-j692": {
+    "ghsa_id": "GHSA-957j-59c2-j692",
+    "cve_id": "CVE-2020-28282",
+    "cvss_score": 9.8,
+    "epss_score": 0.04031,
+    "epss_percentile": 0.8989,
+    "in_cisa_kev": false
+  },
+  "GHSA-95m3-7q98-8xr5": {
+    "ghsa_id": "GHSA-95m3-7q98-8xr5",
+    "cve_id": "CVE-2025-9288",
+    "cvss_score": 9.1,
+    "epss_score": 0.00676,
+    "epss_percentile": 0.49291,
+    "in_cisa_kev": false
+  },
+  "GHSA-96hv-2xvq-fx4p": {
+    "ghsa_id": "GHSA-96hv-2xvq-fx4p",
+    "cve_id": "CVE-2026-48779",
+    "cvss_score": 7.5,
+    "epss_score": 0.00812,
+    "epss_percentile": 0.53959,
+    "in_cisa_kev": false
+  },
+  "GHSA-977x-g7h5-7qgw": {
+    "ghsa_id": "GHSA-977x-g7h5-7qgw",
+    "cve_id": "CVE-2024-42460",
+    "cvss_score": 5.3,
+    "epss_score": 0.00459,
+    "epss_percentile": 0.37921,
+    "in_cisa_kev": false
+  },
+  "GHSA-9965-vmph-33xx": {
+    "ghsa_id": "GHSA-9965-vmph-33xx",
+    "cve_id": "CVE-2025-56200",
+    "cvss_score": 6.1,
+    "epss_score": 0.00302,
+    "epss_percentile": 0.22364,
+    "in_cisa_kev": false
+  },
+  "GHSA-9c47-m6qq-7p4h": {
+    "ghsa_id": "GHSA-9c47-m6qq-7p4h",
+    "cve_id": "CVE-2022-46175",
+    "cvss_score": 7.1,
+    "epss_score": 0.09304,
+    "epss_percentile": 0.95073,
+    "in_cisa_kev": false
+  },
+  "GHSA-9cx6-37pm-9jff": {
+    "ghsa_id": "GHSA-9cx6-37pm-9jff",
+    "cve_id": "CVE-2026-33939",
+    "cvss_score": 7.5,
+    "epss_score": 0.00616,
+    "epss_percentile": 0.46744,
+    "in_cisa_kev": false
+  },
+  "GHSA-9ggv-8w38-r7pm": {
+    "ghsa_id": "GHSA-9ggv-8w38-r7pm",
+    "cve_id": null,
+    "cvss_score": 5.9,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-9j49-mfvp-vmhm": {
+    "ghsa_id": "GHSA-9j49-mfvp-vmhm",
+    "cve_id": "CVE-2021-23406",
+    "cvss_score": 8.1,
+    "epss_score": 0.02863,
+    "epss_percentile": 0.85701,
+    "in_cisa_kev": false
+  },
+  "GHSA-9m93-w8w6-76hh": {
+    "ghsa_id": "GHSA-9m93-w8w6-76hh",
+    "cve_id": "CVE-2023-3696",
+    "cvss_score": 10.0,
+    "epss_score": 0.01208,
+    "epss_percentile": 0.657,
+    "in_cisa_kev": false
+  },
+  "GHSA-9ppj-qmqm-q256": {
+    "ghsa_id": "GHSA-9ppj-qmqm-q256",
+    "cve_id": "CVE-2026-31802",
+    "cvss_score": 8.2,
+    "epss_score": 0.00253,
+    "epss_percentile": 0.16531,
+    "in_cisa_kev": false
+  },
+  "GHSA-9qj9-36jm-prpv": {
+    "ghsa_id": "GHSA-9qj9-36jm-prpv",
+    "cve_id": "CVE-2017-16119",
+    "cvss_score": 7.5,
+    "epss_score": 0.01544,
+    "epss_percentile": 0.72741,
+    "in_cisa_kev": false
+  },
+  "GHSA-9r2w-394v-53qc": {
+    "ghsa_id": "GHSA-9r2w-394v-53qc",
+    "cve_id": "CVE-2021-37701",
+    "cvss_score": 8.2,
+    "epss_score": 0.03286,
+    "epss_percentile": 0.87592,
+    "in_cisa_kev": false
+  },
+  "GHSA-9vvw-cc9w-f27h": {
+    "ghsa_id": "GHSA-9vvw-cc9w-f27h",
+    "cve_id": "CVE-2017-20165",
+    "cvss_score": 7.5,
+    "epss_score": 0.02046,
+    "epss_percentile": 0.79552,
+    "in_cisa_kev": false
+  },
+  "GHSA-9wcg-jrwf-8gg7": {
+    "ghsa_id": "GHSA-9wcg-jrwf-8gg7",
+    "cve_id": "CVE-2020-7699",
+    "cvss_score": 9.8,
+    "epss_score": 0.04762,
+    "epss_percentile": 0.91273,
+    "in_cisa_kev": false
+  },
+  "GHSA-9wv6-86v2-598j": {
+    "ghsa_id": "GHSA-9wv6-86v2-598j",
+    "cve_id": "CVE-2024-45296",
+    "cvss_score": 7.5,
+    "epss_score": 0.00932,
+    "epss_percentile": 0.57646,
+    "in_cisa_kev": false
+  },
+  "GHSA-c2c7-rcm5-vvqj": {
+    "ghsa_id": "GHSA-c2c7-rcm5-vvqj",
+    "cve_id": "CVE-2026-33671",
+    "cvss_score": 7.5,
+    "epss_score": 0.00404,
+    "epss_percentile": 0.33379,
+    "in_cisa_kev": false
+  },
+  "GHSA-c2qf-rxjj-qqgw": {
+    "ghsa_id": "GHSA-c2qf-rxjj-qqgw",
+    "cve_id": "CVE-2022-25883",
+    "cvss_score": 7.5,
+    "epss_score": 0.02761,
+    "epss_percentile": 0.85157,
+    "in_cisa_kev": false
+  },
+  "GHSA-c3m8-x3cg-qm2c": {
+    "ghsa_id": "GHSA-c3m8-x3cg-qm2c",
+    "cve_id": null,
+    "cvss_score": 6.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-c429-5p7v-vgjp": {
+    "ghsa_id": "GHSA-c429-5p7v-vgjp",
+    "cve_id": "CVE-2020-36604",
+    "cvss_score": 8.1,
+    "epss_score": 0.00994,
+    "epss_percentile": 0.59624,
+    "in_cisa_kev": false
+  },
+  "GHSA-c4w7-xm78-47vh": {
+    "ghsa_id": "GHSA-c4w7-xm78-47vh",
+    "cve_id": "CVE-2020-7774",
+    "cvss_score": 7.3,
+    "epss_score": 0.69377,
+    "epss_percentile": 0.99325,
+    "in_cisa_kev": false
+  },
+  "GHSA-c6rp-wrp9-qr4q": {
+    "ghsa_id": "GHSA-c6rp-wrp9-qr4q",
+    "cve_id": "CVE-2021-4264",
+    "cvss_score": 8.8,
+    "epss_score": 0.0108,
+    "epss_percentile": 0.62246,
+    "in_cisa_kev": false
+  },
+  "GHSA-c6rq-rjc2-86v2": {
+    "ghsa_id": "GHSA-c6rq-rjc2-86v2",
+    "cve_id": "CVE-2017-18869",
+    "cvss_score": 2.5,
+    "epss_score": 0.00336,
+    "epss_percentile": 0.26176,
+    "in_cisa_kev": false
+  },
+  "GHSA-c96f-x56v-gq3h": {
+    "ghsa_id": "GHSA-c96f-x56v-gq3h",
+    "cve_id": "CVE-2026-47219",
+    "cvss_score": 7.5,
+    "epss_score": 0.00263,
+    "epss_percentile": 0.17798,
+    "in_cisa_kev": false
+  },
+  "GHSA-c9f4-xj24-8jqx": {
+    "ghsa_id": "GHSA-c9f4-xj24-8jqx",
+    "cve_id": "CVE-2015-8858",
+    "cvss_score": 7.5,
+    "epss_score": 0.02206,
+    "epss_percentile": 0.8109,
+    "in_cisa_kev": false
+  },
+  "GHSA-cf4h-3jhx-xvhq": {
+    "ghsa_id": "GHSA-cf4h-3jhx-xvhq",
+    "cve_id": "CVE-2021-23358",
+    "cvss_score": 9.8,
+    "epss_score": 0.04087,
+    "epss_percentile": 0.90015,
+    "in_cisa_kev": false
+  },
+  "GHSA-cm22-4g7w-348p": {
+    "ghsa_id": "GHSA-cm22-4g7w-348p",
+    "cve_id": "CVE-2024-43800",
+    "cvss_score": 5.0,
+    "epss_score": 0.00631,
+    "epss_percentile": 0.47449,
+    "in_cisa_kev": false
+  },
+  "GHSA-cpq7-6gpm-g9rc": {
+    "ghsa_id": "GHSA-cpq7-6gpm-g9rc",
+    "cve_id": "CVE-2025-9287",
+    "cvss_score": 9.1,
+    "epss_score": 0.00504,
+    "epss_percentile": 0.40844,
+    "in_cisa_kev": false
+  },
+  "GHSA-f23m-r3pf-42rh": {
+    "ghsa_id": "GHSA-f23m-r3pf-42rh",
+    "cve_id": "CVE-2025-13465",
+    "cvss_score": 6.5,
+    "epss_score": 0.01591,
+    "epss_percentile": 0.73485,
+    "in_cisa_kev": false
+  },
+  "GHSA-f2jv-r9rf-7988": {
+    "ghsa_id": "GHSA-f2jv-r9rf-7988",
+    "cve_id": "CVE-2021-23369",
+    "cvss_score": 9.8,
+    "epss_score": 0.07028,
+    "epss_percentile": 0.93793,
+    "in_cisa_kev": false
+  },
+  "GHSA-f38q-mgvj-vph7": {
+    "ghsa_id": "GHSA-f38q-mgvj-vph7",
+    "cve_id": "CVE-2026-54269",
+    "cvss_score": 5.3,
+    "epss_score": 0.00402,
+    "epss_percentile": 0.33195,
+    "in_cisa_kev": false
+  },
+  "GHSA-f4gw-2p7v-4548": {
+    "ghsa_id": "GHSA-f4gw-2p7v-4548",
+    "cve_id": "CVE-2026-67315",
+    "cvss_score": 6.9,
+    "epss_score": 0.00291,
+    "epss_percentile": 0.21202,
+    "in_cisa_kev": false
+  },
+  "GHSA-f52g-6jhx-586p": {
+    "ghsa_id": "GHSA-f52g-6jhx-586p",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-f5x3-32g6-xq36": {
+    "ghsa_id": "GHSA-f5x3-32g6-xq36",
+    "cve_id": "CVE-2024-28863",
+    "cvss_score": 6.5,
+    "epss_score": 0.00929,
+    "epss_percentile": 0.57534,
+    "in_cisa_kev": false
+  },
+  "GHSA-f7q4-pwc6-w24p": {
+    "ghsa_id": "GHSA-f7q4-pwc6-w24p",
+    "cve_id": "CVE-2024-42459",
+    "cvss_score": 5.3,
+    "epss_score": 0.00302,
+    "epss_percentile": 0.22277,
+    "in_cisa_kev": false
+  },
+  "GHSA-f825-f98c-gj3g": {
+    "ghsa_id": "GHSA-f825-f98c-gj3g",
+    "cve_id": "CVE-2022-2564",
+    "cvss_score": 7.0,
+    "epss_score": 0.32676,
+    "epss_percentile": 0.98261,
+    "in_cisa_kev": false
+  },
+  "GHSA-f886-m6hf-6m8v": {
+    "ghsa_id": "GHSA-f886-m6hf-6m8v",
+    "cve_id": "CVE-2026-33750",
+    "cvss_score": 6.5,
+    "epss_score": 0.0043,
+    "epss_percentile": 0.35727,
+    "in_cisa_kev": false
+  },
+  "GHSA-f8q6-p94x-37v3": {
+    "ghsa_id": "GHSA-f8q6-p94x-37v3",
+    "cve_id": "CVE-2022-3517",
+    "cvss_score": 7.5,
+    "epss_score": 0.01816,
+    "epss_percentile": 0.76798,
+    "in_cisa_kev": false
+  },
+  "GHSA-f9cm-p3w6-xvr3": {
+    "ghsa_id": "GHSA-f9cm-p3w6-xvr3",
+    "cve_id": "CVE-2014-10064",
+    "cvss_score": 7.5,
+    "epss_score": 0.01241,
+    "epss_percentile": 0.66547,
+    "in_cisa_kev": false
+  },
+  "GHSA-fc9h-whq2-v747": {
+    "ghsa_id": "GHSA-fc9h-whq2-v747",
+    "cve_id": "CVE-2024-48948",
+    "cvss_score": 4.8,
+    "epss_score": 0.00553,
+    "epss_percentile": 0.43722,
+    "in_cisa_kev": false
+  },
+  "GHSA-ff7x-qrg7-qggm": {
+    "ghsa_id": "GHSA-ff7x-qrg7-qggm",
+    "cve_id": "CVE-2020-8116",
+    "cvss_score": 7.3,
+    "epss_score": 0.03079,
+    "epss_percentile": 0.86695,
+    "in_cisa_kev": false
+  },
+  "GHSA-fhjf-83wg-r2j9": {
+    "ghsa_id": "GHSA-fhjf-83wg-r2j9",
+    "cve_id": "CVE-2019-10746",
+    "cvss_score": 9.8,
+    "epss_score": 0.03508,
+    "epss_percentile": 0.88362,
+    "in_cisa_kev": false
+  },
+  "GHSA-fjxv-7rqg-78g4": {
+    "ghsa_id": "GHSA-fjxv-7rqg-78g4",
+    "cve_id": "CVE-2025-7783",
+    "cvss_score": 9.4,
+    "epss_score": 0.01686,
+    "epss_percentile": 0.74969,
+    "in_cisa_kev": false
+  },
+  "GHSA-fvqr-27wr-82fm": {
+    "ghsa_id": "GHSA-fvqr-27wr-82fm",
+    "cve_id": "CVE-2018-3721",
+    "cvss_score": 6.5,
+    "epss_score": 0.02384,
+    "epss_percentile": 0.82574,
+    "in_cisa_kev": false
+  },
+  "GHSA-fwr7-v2mv-hh25": {
+    "ghsa_id": "GHSA-fwr7-v2mv-hh25",
+    "cve_id": "CVE-2021-43138",
+    "cvss_score": 7.8,
+    "epss_score": 0.03346,
+    "epss_percentile": 0.87814,
+    "in_cisa_kev": false
+  },
+  "GHSA-fx4w-v43j-vc45": {
+    "ghsa_id": "GHSA-fx4w-v43j-vc45",
+    "cve_id": "CVE-2022-33171",
+    "cvss_score": 9.8,
+    "epss_score": 0.20299,
+    "epss_percentile": 0.97339,
+    "in_cisa_kev": false
+  },
+  "GHSA-fx83-v9x8-x52w": {
+    "ghsa_id": "GHSA-fx83-v9x8-x52w",
+    "cve_id": "CVE-2026-44292",
+    "cvss_score": 5.3,
+    "epss_score": 0.00264,
+    "epss_percentile": 0.17937,
+    "in_cisa_kev": false
+  },
+  "GHSA-fxqj-rqcc-2cmp": {
+    "ghsa_id": "GHSA-fxqj-rqcc-2cmp",
+    "cve_id": "CVE-2026-69153",
+    "cvss_score": 6.3,
+    "epss_score": 0.00451,
+    "epss_percentile": 0.37408,
+    "in_cisa_kev": false
+  },
+  "GHSA-g2r8-wvmj-jf5w": {
+    "ghsa_id": "GHSA-g2r8-wvmj-jf5w",
+    "cve_id": "CVE-2026-54753",
+    "cvss_score": 5.9,
+    "epss_score": 0.01204,
+    "epss_percentile": 0.65588,
+    "in_cisa_kev": false
+  },
+  "GHSA-g78m-2chm-r7qv": {
+    "ghsa_id": "GHSA-g78m-2chm-r7qv",
+    "cve_id": "CVE-2020-7662",
+    "cvss_score": 8.2,
+    "epss_score": 0.03012,
+    "epss_percentile": 0.86407,
+    "in_cisa_kev": false
+  },
+  "GHSA-g7q5-pjjr-gqvp": {
+    "ghsa_id": "GHSA-g7q5-pjjr-gqvp",
+    "cve_id": "CVE-2017-15010",
+    "cvss_score": 7.5,
+    "epss_score": 0.02992,
+    "epss_percentile": 0.86313,
+    "in_cisa_kev": false
+  },
+  "GHSA-g9r4-xpmj-mj65": {
+    "ghsa_id": "GHSA-g9r4-xpmj-mj65",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-gcfj-64vw-6mp9": {
+    "ghsa_id": "GHSA-gcfj-64vw-6mp9",
+    "cve_id": "CVE-2026-67320",
+    "cvss_score": 8.3,
+    "epss_score": 0.00305,
+    "epss_percentile": 0.22617,
+    "in_cisa_kev": false
+  },
+  "GHSA-gh88-3pxp-6fm8": {
+    "ghsa_id": "GHSA-gh88-3pxp-6fm8",
+    "cve_id": "CVE-2021-23567",
+    "cvss_score": 7.5,
+    "epss_score": 0.01733,
+    "epss_percentile": 0.75661,
+    "in_cisa_kev": false
+  },
+  "GHSA-ghr5-ch3p-vcr6": {
+    "ghsa_id": "GHSA-ghr5-ch3p-vcr6",
+    "cve_id": "CVE-2024-33883",
+    "cvss_score": 4.0,
+    "epss_score": 0.00619,
+    "epss_percentile": 0.46885,
+    "in_cisa_kev": false
+  },
+  "GHSA-gqgv-6jq5-jjj9": {
+    "ghsa_id": "GHSA-gqgv-6jq5-jjj9",
+    "cve_id": "CVE-2017-1000048",
+    "cvss_score": 7.5,
+    "epss_score": 0.02203,
+    "epss_percentile": 0.81069,
+    "in_cisa_kev": false
+  },
+  "GHSA-grv7-fg5c-xmjg": {
+    "ghsa_id": "GHSA-grv7-fg5c-xmjg",
+    "cve_id": "CVE-2024-4068",
+    "cvss_score": 7.5,
+    "epss_score": 0.01471,
+    "epss_percentile": 0.71483,
+    "in_cisa_kev": false
+  },
+  "GHSA-gvwx-54wh-qm9j": {
+    "ghsa_id": "GHSA-gvwx-54wh-qm9j",
+    "cve_id": "CVE-2026-59875",
+    "cvss_score": 5.3,
+    "epss_score": 0.00507,
+    "epss_percentile": 0.41003,
+    "in_cisa_kev": false
+  },
+  "GHSA-gxpj-cx7g-858c": {
+    "ghsa_id": "GHSA-gxpj-cx7g-858c",
+    "cve_id": "CVE-2017-16137",
+    "cvss_score": 3.7,
+    "epss_score": 0.02658,
+    "epss_percentile": 0.84534,
+    "in_cisa_kev": false
+  },
+  "GHSA-gxr4-xjj5-5px2": {
+    "ghsa_id": "GHSA-gxr4-xjj5-5px2",
+    "cve_id": "CVE-2020-11022",
+    "cvss_score": 6.9,
+    "epss_score": 0.99019,
+    "epss_percentile": 0.99928,
+    "in_cisa_kev": false
+  },
+  "GHSA-h466-j336-74wx": {
+    "ghsa_id": "GHSA-h466-j336-74wx",
+    "cve_id": "CVE-2018-16490",
+    "cvss_score": 7.5,
+    "epss_score": 0.01099,
+    "epss_percentile": 0.62775,
+    "in_cisa_kev": false
+  },
+  "GHSA-h67p-54hq-rp68": {
+    "ghsa_id": "GHSA-h67p-54hq-rp68",
+    "cve_id": "CVE-2026-53550",
+    "cvss_score": 5.3,
+    "epss_score": 0.00386,
+    "epss_percentile": 0.31483,
+    "in_cisa_kev": false
+  },
+  "GHSA-h6ch-v84p-w6p9": {
+    "ghsa_id": "GHSA-h6ch-v84p-w6p9",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-h7cp-r72f-jxh6": {
+    "ghsa_id": "GHSA-h7cp-r72f-jxh6",
+    "cve_id": "CVE-2025-6545",
+    "cvss_score": 9.1,
+    "epss_score": 0.00392,
+    "epss_percentile": 0.32133,
+    "in_cisa_kev": false
+  },
+  "GHSA-h8hf-x3f4-xwgp": {
+    "ghsa_id": "GHSA-h8hf-x3f4-xwgp",
+    "cve_id": "CVE-2022-24304",
+    "cvss_score": 9.8,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-hcpx-6fm6-wx23": {
+    "ghsa_id": "GHSA-hcpx-6fm6-wx23",
+    "cve_id": "CVE-2026-67321",
+    "cvss_score": 6.9,
+    "epss_score": 0.00291,
+    "epss_percentile": 0.21202,
+    "in_cisa_kev": false
+  },
+  "GHSA-hj48-42vr-x3v9": {
+    "ghsa_id": "GHSA-hj48-42vr-x3v9",
+    "cve_id": "CVE-2021-23343",
+    "cvss_score": 5.3,
+    "epss_score": 0.02218,
+    "epss_percentile": 0.8119,
+    "in_cisa_kev": false
+  },
+  "GHSA-hmw2-7cc7-3qxx": {
+    "ghsa_id": "GHSA-hmw2-7cc7-3qxx",
+    "cve_id": "CVE-2026-12143",
+    "cvss_score": 7.5,
+    "epss_score": 0.00535,
+    "epss_percentile": 0.4281,
+    "in_cisa_kev": false
+  },
+  "GHSA-hpqj-7cj6-hfj8": {
+    "ghsa_id": "GHSA-hpqj-7cj6-hfj8",
+    "cve_id": "CVE-2022-40764",
+    "cvss_score": 7.8,
+    "epss_score": 0.00552,
+    "epss_percentile": 0.43664,
+    "in_cisa_kev": false
+  },
+  "GHSA-hrpp-h998-j3pp": {
+    "ghsa_id": "GHSA-hrpp-h998-j3pp",
+    "cve_id": "CVE-2022-24999",
+    "cvss_score": 7.5,
+    "epss_score": 0.14663,
+    "epss_percentile": 0.96463,
+    "in_cisa_kev": false
+  },
+  "GHSA-hwcf-pp87-7x6p": {
+    "ghsa_id": "GHSA-hwcf-pp87-7x6p",
+    "cve_id": "CVE-2017-1000188",
+    "cvss_score": 6.1,
+    "epss_score": 0.01564,
+    "epss_percentile": 0.73072,
+    "in_cisa_kev": false
+  },
+  "GHSA-hxm2-r34f-qmc5": {
+    "ghsa_id": "GHSA-hxm2-r34f-qmc5",
+    "cve_id": "CVE-2016-10540",
+    "cvss_score": 7.5,
+    "epss_score": 0.01699,
+    "epss_percentile": 0.75159,
+    "in_cisa_kev": false
+  },
+  "GHSA-j383-35pm-c5h4": {
+    "ghsa_id": "GHSA-j383-35pm-c5h4",
+    "cve_id": "CVE-2022-0436",
+    "cvss_score": 5.5,
+    "epss_score": 0.00566,
+    "epss_percentile": 0.44417,
+    "in_cisa_kev": false
+  },
+  "GHSA-j3f2-48v5-ccww": {
+    "ghsa_id": "GHSA-j3f2-48v5-ccww",
+    "cve_id": "CVE-2026-59877",
+    "cvss_score": 5.3,
+    "epss_score": 0.00365,
+    "epss_percentile": 0.29313,
+    "in_cisa_kev": false
+  },
+  "GHSA-j44m-qm6p-hp7m": {
+    "ghsa_id": "GHSA-j44m-qm6p-hp7m",
+    "cve_id": "CVE-2018-20834",
+    "cvss_score": 7.5,
+    "epss_score": 0.02801,
+    "epss_percentile": 0.8538,
+    "in_cisa_kev": false
+  },
+  "GHSA-j8xg-fqg3-53r7": {
+    "ghsa_id": "GHSA-j8xg-fqg3-53r7",
+    "cve_id": "CVE-2023-26115",
+    "cvss_score": 5.3,
+    "epss_score": 0.01709,
+    "epss_percentile": 0.75309,
+    "in_cisa_kev": false
+  },
+  "GHSA-j9fq-vwqv-2fm2": {
+    "ghsa_id": "GHSA-j9fq-vwqv-2fm2",
+    "cve_id": "CVE-2022-2900",
+    "cvss_score": 9.1,
+    "epss_score": 0.00995,
+    "epss_percentile": 0.5967,
+    "in_cisa_kev": false
+  },
+  "GHSA-jcpv-g9rr-qxrc": {
+    "ghsa_id": "GHSA-jcpv-g9rr-qxrc",
+    "cve_id": "CVE-2016-2515",
+    "cvss_score": 7.5,
+    "epss_score": 0.03277,
+    "epss_percentile": 0.87546,
+    "in_cisa_kev": false
+  },
+  "GHSA-jf85-cpcp-j695": {
+    "ghsa_id": "GHSA-jf85-cpcp-j695",
+    "cve_id": "CVE-2019-10744",
+    "cvss_score": 9.1,
+    "epss_score": 0.05006,
+    "epss_percentile": 0.91673,
+    "in_cisa_kev": false
+  },
+  "GHSA-jg8v-48h5-wgxg": {
+    "ghsa_id": "GHSA-jg8v-48h5-wgxg",
+    "cve_id": "CVE-2021-23413",
+    "cvss_score": 5.3,
+    "epss_score": 0.03307,
+    "epss_percentile": 0.87679,
+    "in_cisa_kev": false
+  },
+  "GHSA-jggg-4jg4-v7c6": {
+    "ghsa_id": "GHSA-jggg-4jg4-v7c6",
+    "cve_id": "CVE-2026-45740",
+    "cvss_score": 5.3,
+    "epss_score": 0.00263,
+    "epss_percentile": 0.17799,
+    "in_cisa_kev": false
+  },
+  "GHSA-jjv7-qpx3-h62q": {
+    "ghsa_id": "GHSA-jjv7-qpx3-h62q",
+    "cve_id": "CVE-2014-7191",
+    "cvss_score": 7.5,
+    "epss_score": 0.08309,
+    "epss_percentile": 0.94613,
+    "in_cisa_kev": false
+  },
+  "GHSA-jmr9-qjv8-65gv": {
+    "ghsa_id": "GHSA-jmr9-qjv8-65gv",
+    "cve_id": "CVE-2026-56876",
+    "cvss_score": 8.1,
+    "epss_score": 0.00391,
+    "epss_percentile": 0.31984,
+    "in_cisa_kev": false
+  },
+  "GHSA-jp4x-w63m-7wgm": {
+    "ghsa_id": "GHSA-jp4x-w63m-7wgm",
+    "cve_id": "CVE-2018-3728",
+    "cvss_score": 8.8,
+    "epss_score": 0.03566,
+    "epss_percentile": 0.88539,
+    "in_cisa_kev": false
+  },
+  "GHSA-jpcq-cgw6-v4j6": {
+    "ghsa_id": "GHSA-jpcq-cgw6-v4j6",
+    "cve_id": "CVE-2020-11023",
+    "cvss_score": 6.9,
+    "epss_score": 0.8383,
+    "epss_percentile": 0.99678,
+    "in_cisa_kev": true
+  },
+  "GHSA-jpp7-7chh-cf67": {
+    "ghsa_id": "GHSA-jpp7-7chh-cf67",
+    "cve_id": "CVE-2022-2218",
+    "cvss_score": 6.1,
+    "epss_score": 0.00881,
+    "epss_percentile": 0.56111,
+    "in_cisa_kev": false
+  },
+  "GHSA-jqh4-m9w3-8hp9": {
+    "ghsa_id": "GHSA-jqh4-m9w3-8hp9",
+    "cve_id": "CVE-2026-67317",
+    "cvss_score": 6.3,
+    "epss_score": 0.00359,
+    "epss_percentile": 0.28704,
+    "in_cisa_kev": false
+  },
+  "GHSA-jvwf-75h9-cwgg": {
+    "ghsa_id": "GHSA-jvwf-75h9-cwgg",
+    "cve_id": "CVE-2026-44290",
+    "cvss_score": 7.5,
+    "epss_score": 0.00374,
+    "epss_percentile": 0.30151,
+    "in_cisa_kev": false
+  },
+  "GHSA-jxxr-4gwj-5jf2": {
+    "ghsa_id": "GHSA-jxxr-4gwj-5jf2",
+    "cve_id": "CVE-2026-45149",
+    "cvss_score": 6.5,
+    "epss_score": 0.003,
+    "epss_percentile": 0.2207,
+    "in_cisa_kev": false
+  },
+  "GHSA-m2mx-rfpw-jghv": {
+    "ghsa_id": "GHSA-m2mx-rfpw-jghv",
+    "cve_id": "CVE-2020-13110",
+    "cvss_score": 7.8,
+    "epss_score": 0.00737,
+    "epss_percentile": 0.51517,
+    "in_cisa_kev": false
+  },
+  "GHSA-m5pj-vjjf-4m3h": {
+    "ghsa_id": "GHSA-m5pj-vjjf-4m3h",
+    "cve_id": "CVE-2020-7729",
+    "cvss_score": 7.1,
+    "epss_score": 0.02285,
+    "epss_percentile": 0.81754,
+    "in_cisa_kev": false
+  },
+  "GHSA-m6cx-g6qm-p2cx": {
+    "ghsa_id": "GHSA-m6cx-g6qm-p2cx",
+    "cve_id": "CVE-2019-16775",
+    "cvss_score": 7.7,
+    "epss_score": 0.03334,
+    "epss_percentile": 0.8777,
+    "in_cisa_kev": false
+  },
+  "GHSA-m6fv-jmcg-4jfg": {
+    "ghsa_id": "GHSA-m6fv-jmcg-4jfg",
+    "cve_id": "CVE-2024-43799",
+    "cvss_score": 5.0,
+    "epss_score": 0.00541,
+    "epss_percentile": 0.43121,
+    "in_cisa_kev": false
+  },
+  "GHSA-m7xq-9374-9rvx": {
+    "ghsa_id": "GHSA-m7xq-9374-9rvx",
+    "cve_id": "CVE-2024-53900",
+    "cvss_score": 9.8,
+    "epss_score": 0.03988,
+    "epss_percentile": 0.89787,
+    "in_cisa_kev": false
+  },
+  "GHSA-m8rv-5g2x-5cg5": {
+    "ghsa_id": "GHSA-m8rv-5g2x-5cg5",
+    "cve_id": "CVE-2026-15157",
+    "cvss_score": 4.2,
+    "epss_score": 0.00193,
+    "epss_percentile": 0.08979,
+    "in_cisa_kev": false
+  },
+  "GHSA-mf6x-7mm4-x2g7": {
+    "ghsa_id": "GHSA-mf6x-7mm4-x2g7",
+    "cve_id": "CVE-2018-21270",
+    "cvss_score": 7.5,
+    "epss_score": 0.03682,
+    "epss_percentile": 0.88902,
+    "in_cisa_kev": false
+  },
+  "GHSA-mh29-5h37-fv8m": {
+    "ghsa_id": "GHSA-mh29-5h37-fv8m",
+    "cve_id": "CVE-2025-64718",
+    "cvss_score": 5.3,
+    "epss_score": 0.00408,
+    "epss_percentile": 0.33741,
+    "in_cisa_kev": false
+  },
+  "GHSA-mh5c-679w-hh4r": {
+    "ghsa_id": "GHSA-mh5c-679w-hh4r",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-mh99-v99m-4gvg": {
+    "ghsa_id": "GHSA-mh99-v99m-4gvg",
+    "cve_id": "CVE-2026-14257",
+    "cvss_score": 7.5,
+    "epss_score": 0.00466,
+    "epss_percentile": 0.38358,
+    "in_cisa_kev": false
+  },
+  "GHSA-mmx7-hfxf-jppx": {
+    "ghsa_id": "GHSA-mmx7-hfxf-jppx",
+    "cve_id": "CVE-2026-67316",
+    "cvss_score": 6.3,
+    "epss_score": 0.00279,
+    "epss_percentile": 0.19949,
+    "in_cisa_kev": false
+  },
+  "GHSA-mp7j-qc5w-4988": {
+    "ghsa_id": "GHSA-mp7j-qc5w-4988",
+    "cve_id": "CVE-2026-54490",
+    "cvss_score": 6.3,
+    "epss_score": 0.00263,
+    "epss_percentile": 0.17782,
+    "in_cisa_kev": false
+  },
+  "GHSA-mwf2-3pr3-8698": {
+    "ghsa_id": "GHSA-mwf2-3pr3-8698",
+    "cve_id": "CVE-2026-67318",
+    "cvss_score": 6.3,
+    "epss_score": 0.00356,
+    "epss_percentile": 0.28367,
+    "in_cisa_kev": false
+  },
+  "GHSA-mwp4-54f8-5fhr": {
+    "ghsa_id": "GHSA-mwp4-54f8-5fhr",
+    "cve_id": "CVE-2026-69192",
+    "cvss_score": 7.7,
+    "epss_score": 0.00366,
+    "epss_percentile": 0.29366,
+    "in_cisa_kev": false
+  },
+  "GHSA-p6mc-m468-83gw": {
+    "ghsa_id": "GHSA-p6mc-m468-83gw",
+    "cve_id": "CVE-2020-8203",
+    "cvss_score": 7.4,
+    "epss_score": 0.05213,
+    "epss_percentile": 0.91946,
+    "in_cisa_kev": false
+  },
+  "GHSA-p8p7-x288-28g6": {
+    "ghsa_id": "GHSA-p8p7-x288-28g6",
+    "cve_id": "CVE-2023-28155",
+    "cvss_score": 6.1,
+    "epss_score": 0.00719,
+    "epss_percentile": 0.509,
+    "in_cisa_kev": false
+  },
+  "GHSA-p92x-r36w-9395": {
+    "ghsa_id": "GHSA-p92x-r36w-9395",
+    "cve_id": "CVE-2021-23438",
+    "cvss_score": 5.6,
+    "epss_score": 0.01723,
+    "epss_percentile": 0.75538,
+    "in_cisa_kev": false
+  },
+  "GHSA-p9pc-299p-vxgp": {
+    "ghsa_id": "GHSA-p9pc-299p-vxgp",
+    "cve_id": "CVE-2020-7608",
+    "cvss_score": 5.3,
+    "epss_score": 0.00514,
+    "epss_percentile": 0.41564,
+    "in_cisa_kev": false
+  },
+  "GHSA-p9wx-2529-fp83": {
+    "ghsa_id": "GHSA-p9wx-2529-fp83",
+    "cve_id": "CVE-2018-25110",
+    "cvss_score": 6.9,
+    "epss_score": 0.00585,
+    "epss_percentile": 0.45312,
+    "in_cisa_kev": false
+  },
+  "GHSA-pch5-whg9-qr2r": {
+    "ghsa_id": "GHSA-pch5-whg9-qr2r",
+    "cve_id": null,
+    "cvss_score": 5.3,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-pf2j-9qmp-jqr2": {
+    "ghsa_id": "GHSA-pf2j-9qmp-jqr2",
+    "cve_id": "CVE-2020-8158",
+    "cvss_score": 9.8,
+    "epss_score": 0.0212,
+    "epss_percentile": 0.80282,
+    "in_cisa_kev": false
+  },
+  "GHSA-pfrx-2q88-qq97": {
+    "ghsa_id": "GHSA-pfrx-2q88-qq97",
+    "cve_id": "CVE-2022-33987",
+    "cvss_score": 5.3,
+    "epss_score": 0.02307,
+    "epss_percentile": 0.81949,
+    "in_cisa_kev": false
+  },
+  "GHSA-ph34-pc88-72gc": {
+    "ghsa_id": "GHSA-ph34-pc88-72gc",
+    "cve_id": "CVE-2018-7408",
+    "cvss_score": 7.8,
+    "epss_score": 0.0036,
+    "epss_percentile": 0.28776,
+    "in_cisa_kev": false
+  },
+  "GHSA-ph9p-34f9-6g65": {
+    "ghsa_id": "GHSA-ph9p-34f9-6g65",
+    "cve_id": "CVE-2026-44705",
+    "cvss_score": 7.7,
+    "epss_score": 0.00434,
+    "epss_percentile": 0.36084,
+    "in_cisa_kev": false
+  },
+  "GHSA-phwq-j96m-2c2q": {
+    "ghsa_id": "GHSA-phwq-j96m-2c2q",
+    "cve_id": "CVE-2022-29078",
+    "cvss_score": 9.8,
+    "epss_score": 0.32808,
+    "epss_percentile": 0.9827,
+    "in_cisa_kev": false
+  },
+  "GHSA-pmv8-rq9r-6j72": {
+    "ghsa_id": "GHSA-pmv8-rq9r-6j72",
+    "cve_id": "CVE-2026-67312",
+    "cvss_score": 6.3,
+    "epss_score": 0.00339,
+    "epss_percentile": 0.26416,
+    "in_cisa_kev": false
+  },
+  "GHSA-pp7h-53gx-mx7r": {
+    "ghsa_id": "GHSA-pp7h-53gx-mx7r",
+    "cve_id": "CVE-2020-8244",
+    "cvss_score": 6.5,
+    "epss_score": 0.02183,
+    "epss_percentile": 0.80873,
+    "in_cisa_kev": false
+  },
+  "GHSA-pqw5-jmp5-px4v": {
+    "ghsa_id": "GHSA-pqw5-jmp5-px4v",
+    "cve_id": "CVE-2022-3224",
+    "cvss_score": 6.1,
+    "epss_score": 0.00633,
+    "epss_percentile": 0.47555,
+    "in_cisa_kev": false
+  },
+  "GHSA-pw54-mh39-w3hc": {
+    "ghsa_id": "GHSA-pw54-mh39-w3hc",
+    "cve_id": "CVE-2020-7754",
+    "cvss_score": 7.5,
+    "epss_score": 0.03481,
+    "epss_percentile": 0.88267,
+    "in_cisa_kev": false
+  },
+  "GHSA-pxg6-pf52-xh8x": {
+    "ghsa_id": "GHSA-pxg6-pf52-xh8x",
+    "cve_id": "CVE-2024-47764",
+    "cvss_score": 7.5,
+    "epss_score": 0.00744,
+    "epss_percentile": 0.51752,
+    "in_cisa_kev": false
+  },
+  "GHSA-q2c6-c6pm-g3gh": {
+    "ghsa_id": "GHSA-q2c6-c6pm-g3gh",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-q2pj-6v73-8rgj": {
+    "ghsa_id": "GHSA-q2pj-6v73-8rgj",
+    "cve_id": "CVE-2025-60542",
+    "cvss_score": 6.5,
+    "epss_score": 0.00247,
+    "epss_percentile": 0.15782,
+    "in_cisa_kev": false
+  },
+  "GHSA-q3w9-g74q-vp5f": {
+    "ghsa_id": "GHSA-q3w9-g74q-vp5f",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-q42p-pg8m-cqh6": {
+    "ghsa_id": "GHSA-q42p-pg8m-cqh6",
+    "cve_id": null,
+    "cvss_score": 7.3,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-q6wq-5p59-983w": {
+    "ghsa_id": "GHSA-q6wq-5p59-983w",
+    "cve_id": "CVE-2022-2217",
+    "cvss_score": 6.1,
+    "epss_score": 0.00982,
+    "epss_percentile": 0.59285,
+    "in_cisa_kev": false
+  },
+  "GHSA-q6x5-8v7m-xcrf": {
+    "ghsa_id": "GHSA-q6x5-8v7m-xcrf",
+    "cve_id": "CVE-2026-44288",
+    "cvss_score": 5.3,
+    "epss_score": 0.00301,
+    "epss_percentile": 0.2218,
+    "in_cisa_kev": false
+  },
+  "GHSA-qffp-2rhf-9h96": {
+    "ghsa_id": "GHSA-qffp-2rhf-9h96",
+    "cve_id": "CVE-2026-29786",
+    "cvss_score": 8.2,
+    "epss_score": 0.00439,
+    "epss_percentile": 0.3647,
+    "in_cisa_kev": false
+  },
+  "GHSA-qgmg-gppg-76g5": {
+    "ghsa_id": "GHSA-qgmg-gppg-76g5",
+    "cve_id": "CVE-2021-3765",
+    "cvss_score": 5.3,
+    "epss_score": 0.01792,
+    "epss_percentile": 0.76458,
+    "in_cisa_kev": false
+  },
+  "GHSA-qh2h-chj9-jffq": {
+    "ghsa_id": "GHSA-qh2h-chj9-jffq",
+    "cve_id": "CVE-2017-16042",
+    "cvss_score": 9.8,
+    "epss_score": 0.03812,
+    "epss_percentile": 0.89319,
+    "in_cisa_kev": false
+  },
+  "GHSA-qhv9-728r-6jqg": {
+    "ghsa_id": "GHSA-qhv9-728r-6jqg",
+    "cve_id": "CVE-2016-1000232",
+    "cvss_score": 5.3,
+    "epss_score": 0.02335,
+    "epss_percentile": 0.82197,
+    "in_cisa_kev": false
+  },
+  "GHSA-qj8w-gfj5-8c6v": {
+    "ghsa_id": "GHSA-qj8w-gfj5-8c6v",
+    "cve_id": "CVE-2026-34043",
+    "cvss_score": 5.9,
+    "epss_score": 0.00472,
+    "epss_percentile": 0.38837,
+    "in_cisa_kev": false
+  },
+  "GHSA-qpx9-hpmf-5gmw": {
+    "ghsa_id": "GHSA-qpx9-hpmf-5gmw",
+    "cve_id": "CVE-2026-27601",
+    "cvss_score": 5.9,
+    "epss_score": 0.0096,
+    "epss_percentile": 0.58489,
+    "in_cisa_kev": false
+  },
+  "GHSA-qq89-hq3f-393p": {
+    "ghsa_id": "GHSA-qq89-hq3f-393p",
+    "cve_id": "CVE-2021-37712",
+    "cvss_score": 8.2,
+    "epss_score": 0.0185,
+    "epss_percentile": 0.77248,
+    "in_cisa_kev": false
+  },
+  "GHSA-qqgx-2p2h-9c37": {
+    "ghsa_id": "GHSA-qqgx-2p2h-9c37",
+    "cve_id": "CVE-2020-7788",
+    "cvss_score": 7.3,
+    "epss_score": 0.03612,
+    "epss_percentile": 0.88674,
+    "in_cisa_kev": false
+  },
+  "GHSA-qqqw-gm93-qf6m": {
+    "ghsa_id": "GHSA-qqqw-gm93-qf6m",
+    "cve_id": "CVE-2024-48964",
+    "cvss_score": 7.5,
+    "epss_score": 0.00442,
+    "epss_percentile": 0.36719,
+    "in_cisa_kev": false
+  },
+  "GHSA-qrmc-fj45-qfc2": {
+    "ghsa_id": "GHSA-qrmc-fj45-qfc2",
+    "cve_id": "CVE-2018-16492",
+    "cvss_score": 7.5,
+    "epss_score": 0.02737,
+    "epss_percentile": 0.85004,
+    "in_cisa_kev": false
+  },
+  "GHSA-qw6h-vgh9-j6wx": {
+    "ghsa_id": "GHSA-qw6h-vgh9-j6wx",
+    "cve_id": "CVE-2024-43796",
+    "cvss_score": 5.0,
+    "epss_score": 0.00486,
+    "epss_percentile": 0.3974,
+    "in_cisa_kev": false
+  },
+  "GHSA-qwcr-r2fm-qrc7": {
+    "ghsa_id": "GHSA-qwcr-r2fm-qrc7",
+    "cve_id": "CVE-2024-45590",
+    "cvss_score": 7.5,
+    "epss_score": 0.00824,
+    "epss_percentile": 0.54378,
+    "in_cisa_kev": false
+  },
+  "GHSA-qx2v-qp2m-jg93": {
+    "ghsa_id": "GHSA-qx2v-qp2m-jg93",
+    "cve_id": "CVE-2026-41305",
+    "cvss_score": 6.1,
+    "epss_score": 0.00205,
+    "epss_percentile": 0.10438,
+    "in_cisa_kev": false
+  },
+  "GHSA-r28c-9q8g-f849": {
+    "ghsa_id": "GHSA-r28c-9q8g-f849",
+    "cve_id": "CVE-2026-73646",
+    "cvss_score": 7.5,
+    "epss_score": 0.00377,
+    "epss_percentile": 0.30459,
+    "in_cisa_kev": false
+  },
+  "GHSA-r292-9mhp-454m": {
+    "ghsa_id": "GHSA-r292-9mhp-454m",
+    "cve_id": "CVE-2026-73566",
+    "cvss_score": 5.3,
+    "epss_score": 0.0038,
+    "epss_percentile": 0.30787,
+    "in_cisa_kev": false
+  },
+  "GHSA-r5fr-rjxr-66jc": {
+    "ghsa_id": "GHSA-r5fr-rjxr-66jc",
+    "cve_id": "CVE-2021-23337",
+    "cvss_score": 8.1,
+    "epss_score": 0.21333,
+    "epss_percentile": 0.97474,
+    "in_cisa_kev": false
+  },
+  "GHSA-r5xw-q988-826m": {
+    "ghsa_id": "GHSA-r5xw-q988-826m",
+    "cve_id": null,
+    "cvss_score": 5.1,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-r628-mhmh-qjhw": {
+    "ghsa_id": "GHSA-r628-mhmh-qjhw",
+    "cve_id": "CVE-2021-32803",
+    "cvss_score": 8.2,
+    "epss_score": 0.07795,
+    "epss_percentile": 0.94317,
+    "in_cisa_kev": false
+  },
+  "GHSA-r635-g3xr-vw7x": {
+    "ghsa_id": "GHSA-r635-g3xr-vw7x",
+    "cve_id": "CVE-2026-59725",
+    "cvss_score": 7.5,
+    "epss_score": 0.00636,
+    "epss_percentile": 0.47683,
+    "in_cisa_kev": false
+  },
+  "GHSA-r6q2-hw4h-h46w": {
+    "ghsa_id": "GHSA-r6q2-hw4h-h46w",
+    "cve_id": "CVE-2026-23950",
+    "cvss_score": 8.8,
+    "epss_score": 0.00234,
+    "epss_percentile": 0.14082,
+    "in_cisa_kev": false
+  },
+  "GHSA-r9p9-mrjm-926w": {
+    "ghsa_id": "GHSA-r9p9-mrjm-926w",
+    "cve_id": "CVE-2020-28498",
+    "cvss_score": 6.8,
+    "epss_score": 0.01245,
+    "epss_percentile": 0.66661,
+    "in_cisa_kev": false
+  },
+  "GHSA-rc47-6667-2j5j": {
+    "ghsa_id": "GHSA-rc47-6667-2j5j",
+    "cve_id": "CVE-2022-25881",
+    "cvss_score": 7.5,
+    "epss_score": 0.01613,
+    "epss_percentile": 0.7382,
+    "in_cisa_kev": false
+  },
+  "GHSA-rgw5-rvv9-x895": {
+    "ghsa_id": "GHSA-rgw5-rvv9-x895",
+    "cve_id": "CVE-2026-69152",
+    "cvss_score": 7.5,
+    "epss_score": 0.00623,
+    "epss_percentile": 0.47102,
+    "in_cisa_kev": false
+  },
+  "GHSA-rhx6-c78j-4q9w": {
+    "ghsa_id": "GHSA-rhx6-c78j-4q9w",
+    "cve_id": "CVE-2024-52798",
+    "cvss_score": 7.5,
+    "epss_score": 0.00792,
+    "epss_percentile": 0.53324,
+    "in_cisa_kev": false
+  },
+  "GHSA-rm36-94g8-835r": {
+    "ghsa_id": "GHSA-rm36-94g8-835r",
+    "cve_id": "CVE-2022-1537",
+    "cvss_score": 7.0,
+    "epss_score": 0.00299,
+    "epss_percentile": 0.22016,
+    "in_cisa_kev": false
+  },
+  "GHSA-rmxg-73gg-4p98": {
+    "ghsa_id": "GHSA-rmxg-73gg-4p98",
+    "cve_id": "CVE-2015-9251",
+    "cvss_score": 6.1,
+    "epss_score": 0.30845,
+    "epss_percentile": 0.9816,
+    "in_cisa_kev": false
+  },
+  "GHSA-rrrm-qjm4-v8hf": {
+    "ghsa_id": "GHSA-rrrm-qjm4-v8hf",
+    "cve_id": "CVE-2022-21680",
+    "cvss_score": 7.5,
+    "epss_score": 0.02828,
+    "epss_percentile": 0.85527,
+    "in_cisa_kev": false
+  },
+  "GHSA-rv95-896h-c2vc": {
+    "ghsa_id": "GHSA-rv95-896h-c2vc",
+    "cve_id": "CVE-2024-29041",
+    "cvss_score": 6.1,
+    "epss_score": 0.00786,
+    "epss_percentile": 0.53128,
+    "in_cisa_kev": false
+  },
+  "GHSA-v2hh-gcrm-f6hx": {
+    "ghsa_id": "GHSA-v2hh-gcrm-f6hx",
+    "cve_id": "CVE-2026-16221",
+    "cvss_score": 7.5,
+    "epss_score": 0.00436,
+    "epss_percentile": 0.36218,
+    "in_cisa_kev": false
+  },
+  "GHSA-v3r7-h72x-cjcm": {
+    "ghsa_id": "GHSA-v3r7-h72x-cjcm",
+    "cve_id": "CVE-2026-16729",
+    "cvss_score": 4.8,
+    "epss_score": 0.00191,
+    "epss_percentile": 0.08748,
+    "in_cisa_kev": false
+  },
+  "GHSA-v422-hmwv-36x6": {
+    "ghsa_id": "GHSA-v422-hmwv-36x6",
+    "cve_id": "CVE-2026-12590",
+    "cvss_score": 3.7,
+    "epss_score": 0.00412,
+    "epss_percentile": 0.34131,
+    "in_cisa_kev": false
+  },
+  "GHSA-v62p-rq8g-8h59": {
+    "ghsa_id": "GHSA-v62p-rq8g-8h59",
+    "cve_id": "CVE-2025-6547",
+    "cvss_score": 9.1,
+    "epss_score": 0.00406,
+    "epss_percentile": 0.33599,
+    "in_cisa_kev": false
+  },
+  "GHSA-v6h2-p8h4-qcjw": {
+    "ghsa_id": "GHSA-v6h2-p8h4-qcjw",
+    "cve_id": "CVE-2025-5889",
+    "cvss_score": 3.1,
+    "epss_score": 0.00501,
+    "epss_percentile": 0.40694,
+    "in_cisa_kev": false
+  },
+  "GHSA-v88g-cgmw-v5xw": {
+    "ghsa_id": "GHSA-v88g-cgmw-v5xw",
+    "cve_id": "CVE-2020-15366",
+    "cvss_score": 5.6,
+    "epss_score": 0.02294,
+    "epss_percentile": 0.81851,
+    "in_cisa_kev": false
+  },
+  "GHSA-v8w9-2789-6hhr": {
+    "ghsa_id": "GHSA-v8w9-2789-6hhr",
+    "cve_id": "CVE-2020-7610",
+    "cvss_score": 9.8,
+    "epss_score": 0.02236,
+    "epss_percentile": 0.81356,
+    "in_cisa_kev": false
+  },
+  "GHSA-vfrc-7r7c-w9mx": {
+    "ghsa_id": "GHSA-vfrc-7r7c-w9mx",
+    "cve_id": "CVE-2020-26237",
+    "cvss_score": 5.8,
+    "epss_score": 0.01323,
+    "epss_percentile": 0.68415,
+    "in_cisa_kev": false
+  },
+  "GHSA-vfvf-mqq8-rwqc": {
+    "ghsa_id": "GHSA-vfvf-mqq8-rwqc",
+    "cve_id": "CVE-2016-10531",
+    "cvss_score": 6.1,
+    "epss_score": 0.01636,
+    "epss_percentile": 0.74205,
+    "in_cisa_kev": false
+  },
+  "GHSA-vg7j-7cwx-8wgw": {
+    "ghsa_id": "GHSA-vg7j-7cwx-8wgw",
+    "cve_id": "CVE-2025-23061",
+    "cvss_score": 9.0,
+    "epss_score": 0.07284,
+    "epss_percentile": 0.93998,
+    "in_cisa_kev": false
+  },
+  "GHSA-vghf-hv5q-vc2g": {
+    "ghsa_id": "GHSA-vghf-hv5q-vc2g",
+    "cve_id": "CVE-2025-12758",
+    "cvss_score": 7.5,
+    "epss_score": 0.00517,
+    "epss_percentile": 0.41743,
+    "in_cisa_kev": false
+  },
+  "GHSA-vh7m-p724-62c2": {
+    "ghsa_id": "GHSA-vh7m-p724-62c2",
+    "cve_id": "CVE-2020-13822",
+    "cvss_score": 7.7,
+    "epss_score": 0.02629,
+    "epss_percentile": 0.84357,
+    "in_cisa_kev": false
+  },
+  "GHSA-vh95-rmgr-6w4m": {
+    "ghsa_id": "GHSA-vh95-rmgr-6w4m",
+    "cve_id": "CVE-2020-7598",
+    "cvss_score": 5.6,
+    "epss_score": 0.01931,
+    "epss_percentile": 0.78294,
+    "in_cisa_kev": false
+  },
+  "GHSA-vjh7-7g9h-fjfh": {
+    "ghsa_id": "GHSA-vjh7-7g9h-fjfh",
+    "cve_id": null,
+    "cvss_score": 9.0,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-vmf3-w455-68vh": {
+    "ghsa_id": "GHSA-vmf3-w455-68vh",
+    "cve_id": "CVE-2026-53655",
+    "cvss_score": 6.9,
+    "epss_score": 0.00156,
+    "epss_percentile": 0.05109,
+    "in_cisa_kev": false
+  },
+  "GHSA-vp3h-ghgh-jr7g": {
+    "ghsa_id": "GHSA-vp3h-ghgh-jr7g",
+    "cve_id": "CVE-2026-71476",
+    "cvss_score": 8.7,
+    "epss_score": 0.00582,
+    "epss_percentile": 0.45167,
+    "in_cisa_kev": false
+  },
+  "GHSA-w3rx-r6r6-pgpr": {
+    "ghsa_id": "GHSA-w3rx-r6r6-pgpr",
+    "cve_id": "CVE-2025-71330",
+    "cvss_score": 7.5,
+    "epss_score": 0.0043,
+    "epss_percentile": 0.3573,
+    "in_cisa_kev": false
+  },
+  "GHSA-w457-6q6x-cgp9": {
+    "ghsa_id": "GHSA-w457-6q6x-cgp9",
+    "cve_id": "CVE-2019-19919",
+    "cvss_score": 9.8,
+    "epss_score": 0.07066,
+    "epss_percentile": 0.93822,
+    "in_cisa_kev": false
+  },
+  "GHSA-w4m6-x6c2-j5c9": {
+    "ghsa_id": "GHSA-w4m6-x6c2-j5c9",
+    "cve_id": "CVE-2022-27261",
+    "cvss_score": 7.5,
+    "epss_score": 0.01359,
+    "epss_percentile": 0.69295,
+    "in_cisa_kev": false
+  },
+  "GHSA-w573-4hg7-7wgq": {
+    "ghsa_id": "GHSA-w573-4hg7-7wgq",
+    "cve_id": "CVE-2022-38900",
+    "cvss_score": 7.5,
+    "epss_score": 0.24928,
+    "epss_percentile": 0.97801,
+    "in_cisa_kev": false
+  },
+  "GHSA-w5hq-g745-h8pq": {
+    "ghsa_id": "GHSA-w5hq-g745-h8pq",
+    "cve_id": "CVE-2026-41907",
+    "cvss_score": 7.5,
+    "epss_score": 0.0035,
+    "epss_percentile": 0.27657,
+    "in_cisa_kev": false
+  },
+  "GHSA-w7fw-mjwx-w883": {
+    "ghsa_id": "GHSA-w7fw-mjwx-w883",
+    "cve_id": "CVE-2026-2391",
+    "cvss_score": 3.7,
+    "epss_score": 0.00478,
+    "epss_percentile": 0.39192,
+    "in_cisa_kev": false
+  },
+  "GHSA-w7jw-789q-3m8p": {
+    "ghsa_id": "GHSA-w7jw-789q-3m8p",
+    "cve_id": "CVE-2026-9277",
+    "cvss_score": 8.1,
+    "epss_score": 0.00848,
+    "epss_percentile": 0.5507,
+    "in_cisa_kev": false
+  },
+  "GHSA-w8wr-v893-vjvp": {
+    "ghsa_id": "GHSA-w8wr-v893-vjvp",
+    "cve_id": "CVE-2026-59871",
+    "cvss_score": 5.3,
+    "epss_score": 0.00644,
+    "epss_percentile": 0.47992,
+    "in_cisa_kev": false
+  },
+  "GHSA-w9mr-4mfr-499f": {
+    "ghsa_id": "GHSA-w9mr-4mfr-499f",
+    "cve_id": "CVE-2017-20162",
+    "cvss_score": 5.3,
+    "epss_score": 0.00981,
+    "epss_percentile": 0.59247,
+    "in_cisa_kev": false
+  },
+  "GHSA-wc69-rhjr-hc9g": {
+    "ghsa_id": "GHSA-wc69-rhjr-hc9g",
+    "cve_id": "CVE-2022-31129",
+    "cvss_score": 7.5,
+    "epss_score": 0.04923,
+    "epss_percentile": 0.91523,
+    "in_cisa_kev": false
+  },
+  "GHSA-wcpc-wj8m-hjx6": {
+    "ghsa_id": "GHSA-wcpc-wj8m-hjx6",
+    "cve_id": "CVE-2026-48712",
+    "cvss_score": 7.5,
+    "epss_score": 0.0046,
+    "epss_percentile": 0.38001,
+    "in_cisa_kev": false
+  },
+  "GHSA-wg6g-ppvx-927h": {
+    "ghsa_id": "GHSA-wg6g-ppvx-927h",
+    "cve_id": "CVE-2021-23518",
+    "cvss_score": 7.3,
+    "epss_score": 0.01943,
+    "epss_percentile": 0.78422,
+    "in_cisa_kev": false
+  },
+  "GHSA-wm7h-9275-46v2": {
+    "ghsa_id": "GHSA-wm7h-9275-46v2",
+    "cve_id": "CVE-2022-24434",
+    "cvss_score": 7.5,
+    "epss_score": 0.03425,
+    "epss_percentile": 0.88077,
+    "in_cisa_kev": false
+  },
+  "GHSA-wpg9-53fq-2r8h": {
+    "ghsa_id": "GHSA-wpg9-53fq-2r8h",
+    "cve_id": "CVE-2026-42334",
+    "cvss_score": 7.5,
+    "epss_score": 0.00274,
+    "epss_percentile": 0.19357,
+    "in_cisa_kev": false
+  },
+  "GHSA-wrvr-8mpx-r7pp": {
+    "ghsa_id": "GHSA-wrvr-8mpx-r7pp",
+    "cve_id": "CVE-2017-16138",
+    "cvss_score": 7.5,
+    "epss_score": 0.01963,
+    "epss_percentile": 0.78662,
+    "in_cisa_kev": false
+  },
+  "GHSA-x55w-vjjp-222r": {
+    "ghsa_id": "GHSA-x55w-vjjp-222r",
+    "cve_id": "CVE-2021-3820",
+    "cvss_score": 7.5,
+    "epss_score": 0.01222,
+    "epss_percentile": 0.66086,
+    "in_cisa_kev": false
+  },
+  "GHSA-x5pg-88wf-qq4p": {
+    "ghsa_id": "GHSA-x5pg-88wf-qq4p",
+    "cve_id": "CVE-2017-16114",
+    "cvss_score": 7.5,
+    "epss_score": 0.01689,
+    "epss_percentile": 0.7502,
+    "in_cisa_kev": false
+  },
+  "GHSA-x5rq-j2xg-h7qm": {
+    "ghsa_id": "GHSA-x5rq-j2xg-h7qm",
+    "cve_id": "CVE-2019-1010266",
+    "cvss_score": 6.5,
+    "epss_score": 0.03076,
+    "epss_percentile": 0.86684,
+    "in_cisa_kev": false
+  },
+  "GHSA-x6fg-f45m-jf5q": {
+    "ghsa_id": "GHSA-x6fg-f45m-jf5q",
+    "cve_id": "CVE-2015-8855",
+    "cvss_score": 7.5,
+    "epss_score": 0.0583,
+    "epss_percentile": 0.92674,
+    "in_cisa_kev": false
+  },
+  "GHSA-x8qc-rrcw-4r46": {
+    "ghsa_id": "GHSA-x8qc-rrcw-4r46",
+    "cve_id": "CVE-2019-16776",
+    "cvss_score": 7.7,
+    "epss_score": 0.03412,
+    "epss_percentile": 0.8804,
+    "in_cisa_kev": false
+  },
+  "GHSA-x9w5-v3q2-3rhw": {
+    "ghsa_id": "GHSA-x9w5-v3q2-3rhw",
+    "cve_id": "CVE-2023-46234",
+    "cvss_score": 7.5,
+    "epss_score": 0.00508,
+    "epss_percentile": 0.41169,
+    "in_cisa_kev": false
+  },
+  "GHSA-xc7v-wxcw-j472": {
+    "ghsa_id": "GHSA-xc7v-wxcw-j472",
+    "cve_id": null,
+    "cvss_score": 7.5,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-xcpc-8h2w-3j85": {
+    "ghsa_id": "GHSA-xcpc-8h2w-3j85",
+    "cve_id": "CVE-2026-39244",
+    "cvss_score": 7.5,
+    "epss_score": 0.00609,
+    "epss_percentile": 0.4642,
+    "in_cisa_kev": false
+  },
+  "GHSA-xf7w-r453-m56c": {
+    "ghsa_id": "GHSA-xf7w-r453-m56c",
+    "cve_id": "CVE-2019-13173",
+    "cvss_score": 7.5,
+    "epss_score": 0.02142,
+    "epss_percentile": 0.80496,
+    "in_cisa_kev": false
+  },
+  "GHSA-xgh6-85xh-479p": {
+    "ghsa_id": "GHSA-xgh6-85xh-479p",
+    "cve_id": "CVE-2020-7754",
+    "cvss_score": 7.5,
+    "epss_score": 0.03481,
+    "epss_percentile": 0.88267,
+    "in_cisa_kev": false
+  },
+  "GHSA-xhpv-hc6g-r9c6": {
+    "ghsa_id": "GHSA-xhpv-hc6g-r9c6",
+    "cve_id": "CVE-2026-33940",
+    "cvss_score": 8.1,
+    "epss_score": 0.00703,
+    "epss_percentile": 0.50343,
+    "in_cisa_kev": false
+  },
+  "GHSA-xj6q-8x83-jv6g": {
+    "ghsa_id": "GHSA-xj6q-8x83-jv6g",
+    "cve_id": "CVE-2026-67314",
+    "cvss_score": 6.3,
+    "epss_score": 0.00366,
+    "epss_percentile": 0.29329,
+    "in_cisa_kev": false
+  },
+  "GHSA-xjpj-3mr7-gcpf": {
+    "ghsa_id": "GHSA-xjpj-3mr7-gcpf",
+    "cve_id": "CVE-2026-33941",
+    "cvss_score": 8.2,
+    "epss_score": 0.00291,
+    "epss_percentile": 0.21145,
+    "in_cisa_kev": false
+  },
+  "GHSA-xq3m-2v4x-88gg": {
+    "ghsa_id": "GHSA-xq3m-2v4x-88gg",
+    "cve_id": "CVE-2026-41242",
+    "cvss_score": 9.8,
+    "epss_score": 0.00745,
+    "epss_percentile": 0.51777,
+    "in_cisa_kev": false
+  },
+  "GHSA-xv26-6w52-cph6": {
+    "ghsa_id": "GHSA-xv26-6w52-cph6",
+    "cve_id": "CVE-2026-54466",
+    "cvss_score": 9.2,
+    "epss_score": 0.00221,
+    "epss_percentile": 0.12533,
+    "in_cisa_kev": false
+  },
+  "GHSA-xvch-5gv4-984h": {
+    "ghsa_id": "GHSA-xvch-5gv4-984h",
+    "cve_id": "CVE-2021-44906",
+    "cvss_score": 9.8,
+    "epss_score": 0.04581,
+    "epss_percentile": 0.90968,
+    "in_cisa_kev": false
+  },
+  "GHSA-xx4c-jj58-r7x6": {
+    "ghsa_id": "GHSA-xx4c-jj58-r7x6",
+    "cve_id": null,
+    "cvss_score": 5.3,
+    "epss_score": null,
+    "epss_percentile": null,
+    "in_cisa_kev": false
+  },
+  "GHSA-xxjr-mmjv-4gpg": {
+    "ghsa_id": "GHSA-xxjr-mmjv-4gpg",
+    "cve_id": "CVE-2025-13465",
+    "cvss_score": 6.5,
+    "epss_score": 0.01591,
+    "epss_percentile": 0.73485,
+    "in_cisa_kev": false
+  },
+  "GHSA-xxvw-45rp-3mj2": {
+    "ghsa_id": "GHSA-xxvw-45rp-3mj2",
+    "cve_id": "CVE-2013-4660",
+    "cvss_score": 7.5,
+    "epss_score": 0.17321,
+    "epss_percentile": 0.96944,
+    "in_cisa_kev": false
+  }
+}

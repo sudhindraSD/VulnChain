@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETE",
+  "counts": {
+    "total_packages": 12405,
+    "definition_a_closure_derived_nonzero": 3691,
+    "definition_a_with_own_cve": 958,
+    "definition_a_closure_only": 2733,
+    "definition_b_own_cve_total": 977,
+    "definition_b_own_cve_with_nonzero_epss": 958,
+    "zero_epss": 8714,
+    "passes_cmd6_gate_closure": true,
+    "passes_cmd6_gate_own_cve": false
+  },
+  "advisory_dates": {
+    "total_resolved": 883,
+    "earliest": "2017-10-24",
+    "latest": "2026-09-17",
+    "quartiles": {
+      "q1": "2022-01-21",
+      "q2": "2025-05-19",
+      "q3": "2026-05-14"
+    },
+    "year_distribution": {
+      "2017": 11,
+      "2018": 35,
+      "2019": 34,
+      "2020": 49,
+      "2021": 76,
+      "2022": 105,
+      "2023": 52,
+      "2024": 57,
+      "2025": 72,
+      "2026": 392
+    }
+  }
+}

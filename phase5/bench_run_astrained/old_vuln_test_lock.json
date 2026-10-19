@@ -1,0 +1,479 @@
+{
+  "total_packages": 11,
+  "summary": {
+    "critical": 1,
+    "high": 2,
+    "moderate": 1,
+    "safe": 7
+  },
+  "packages": [
+    {
+      "package": "jquery@2.2.4",
+      "name": "jquery",
+      "version": "2.2.4",
+      "risk_score": 0.5299944877624512,
+      "is_direct": true,
+      "cve": "GHSA-rmxg-73gg-4p98",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "tar@4.4.8",
+      "name": "tar",
+      "version": "4.4.8",
+      "risk_score": 0.21043027937412262,
+      "is_direct": true,
+      "cve": "GHSA-w8wr-v893-vjvp",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "handlebars@4.0.5",
+      "name": "handlebars",
+      "version": "4.0.5",
+      "risk_score": 0.20337551832199097,
+      "is_direct": true,
+      "cve": "GHSA-xjpj-3mr7-gcpf",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "js-yaml@3.13.1",
+      "name": "js-yaml",
+      "version": "3.13.1",
+      "risk_score": 0.18457253277301788,
+      "is_direct": true,
+      "cve": "GHSA-mh29-5h37-fv8m",
+      "has_own_cve": true,
+      "cap_applied": false,
+      "has_vuln_descendant": false,
+      "dependents_count": 0
+    },
+    {
+      "package": "uglify-js@3.4.0",
+      "name": "uglify-js",
+      "version": "3.4.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "argparse@1.0.10",
+      "name": "argparse",
+      "version": "1.0.10",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "esprima@4.0.1",
+      "name": "esprima",
+      "version": "4.0.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "chownr@1.1.4",
+      "name": "chownr",
+      "version": "1.1.4",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "minipass@2.9.0",
+      "name": "minipass",
+      "version": "2.9.0",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "minizlib@1.3.3",
+      "name": "minizlib",
+      "version": "1.3.3",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    },
+    {
+      "package": "yallist@3.1.1",
+      "name": "yallist",
+      "version": "3.1.1",
+      "risk_score": 0.07999999821186066,
+      "is_direct": false,
+      "cve": null,
+      "has_own_cve": false,
+      "cap_applied": true,
+      "has_vuln_descendant": false,
+      "dependents_count": 1
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "jquery@2.2.4",
+        "name": "jquery",
+        "version": "2.2.4",
+        "type": "Package",
+        "risk_score": 0.5299944877624512,
+        "is_direct": true,
+        "cve": "GHSA-rmxg-73gg-4p98",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-rmxg-73gg-4p98",
+        "name": "GHSA-rmxg-73gg-4p98",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-rmxg-73gg-4p98",
+        "dependents_count": 0
+      },
+      {
+        "id": "tar@4.4.8",
+        "name": "tar",
+        "version": "4.4.8",
+        "type": "Package",
+        "risk_score": 0.21043027937412262,
+        "is_direct": true,
+        "cve": "GHSA-w8wr-v893-vjvp",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-w8wr-v893-vjvp",
+        "name": "GHSA-w8wr-v893-vjvp",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-w8wr-v893-vjvp",
+        "dependents_count": 0
+      },
+      {
+        "id": "handlebars@4.0.5",
+        "name": "handlebars",
+        "version": "4.0.5",
+        "type": "Package",
+        "risk_score": 0.20337551832199097,
+        "is_direct": true,
+        "cve": "GHSA-xjpj-3mr7-gcpf",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-xjpj-3mr7-gcpf",
+        "name": "GHSA-xjpj-3mr7-gcpf",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-xjpj-3mr7-gcpf",
+        "dependents_count": 0
+      },
+      {
+        "id": "js-yaml@3.13.1",
+        "name": "js-yaml",
+        "version": "3.13.1",
+        "type": "Package",
+        "risk_score": 0.18457253277301788,
+        "is_direct": true,
+        "cve": "GHSA-mh29-5h37-fv8m",
+        "dependents_count": 0
+      },
+      {
+        "id": "GHSA-mh29-5h37-fv8m",
+        "name": "GHSA-mh29-5h37-fv8m",
+        "type": "CVE",
+        "risk_score": 1.0,
+        "is_direct": false,
+        "cve": "GHSA-mh29-5h37-fv8m",
+        "dependents_count": 0
+      },
+      {
+        "id": "uglify-js@3.4.0",
+        "name": "uglify-js",
+        "version": "3.4.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "argparse@1.0.10",
+        "name": "argparse",
+        "version": "1.0.10",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "esprima@4.0.1",
+        "name": "esprima",
+        "version": "4.0.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "chownr@1.1.4",
+        "name": "chownr",
+        "version": "1.1.4",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "minipass@2.9.0",
+        "name": "minipass",
+        "version": "2.9.0",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "minizlib@1.3.3",
+        "name": "minizlib",
+        "version": "1.3.3",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      },
+      {
+        "id": "yallist@3.1.1",
+        "name": "yallist",
+        "version": "3.1.1",
+        "type": "Package",
+        "risk_score": 0.07999999821186066,
+        "is_direct": false,
+        "cve": null,
+        "dependents_count": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "jquery@2.2.4",
+        "target": "GHSA-rmxg-73gg-4p98",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "tar@4.4.8",
+        "target": "GHSA-w8wr-v893-vjvp",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "handlebars@4.0.5",
+        "target": "GHSA-xjpj-3mr7-gcpf",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "js-yaml@3.13.1",
+        "target": "GHSA-mh29-5h37-fv8m",
+        "type": "hasVulnerability"
+      },
+      {
+        "source": "handlebars@4.0.5",
+        "target": "uglify-js@3.4.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "js-yaml@3.13.1",
+        "target": "argparse@1.0.10",
+        "type": "dependsOn"
+      },
+      {
+        "source": "js-yaml@3.13.1",
+        "target": "esprima@4.0.1",
+        "type": "dependsOn"
+      },
+      {
+        "source": "tar@4.4.8",
+        "target": "chownr@1.1.4",
+        "type": "dependsOn"
+      },
+      {
+        "source": "tar@4.4.8",
+        "target": "minipass@2.9.0",
+        "type": "dependsOn"
+      },
+      {
+        "source": "tar@4.4.8",
+        "target": "minizlib@1.3.3",
+        "type": "dependsOn"
+      },
+      {
+        "source": "tar@4.4.8",
+        "target": "yallist@3.1.1",
+        "type": "dependsOn"
+      }
+    ]
+  },
+  "attack_paths": [
+    {
+      "id": "path-1",
+      "root": "jquery@2.2.4",
+      "sink": "jquery@2.2.4",
+      "cve": "GHSA-rmxg-73gg-4p98",
+      "hops": 0,
+      "chain": [
+        "jquery@2.2.4"
+      ],
+      "root_risk": 0.5299944877624512,
+      "sink_risk": 0.5299944877624512,
+      "impact_summary": "Direct dependency 'jquery' is exposed to GHSA-rmxg-73gg-4p98 via 0 transitive hops to 'jquery@2.2.4'."
+    },
+    {
+      "id": "path-2",
+      "root": "tar@4.4.8",
+      "sink": "tar@4.4.8",
+      "cve": "GHSA-w8wr-v893-vjvp",
+      "hops": 0,
+      "chain": [
+        "tar@4.4.8"
+      ],
+      "root_risk": 0.21043027937412262,
+      "sink_risk": 0.21043027937412262,
+      "impact_summary": "Direct dependency 'tar' is exposed to GHSA-w8wr-v893-vjvp via 0 transitive hops to 'tar@4.4.8'."
+    },
+    {
+      "id": "path-3",
+      "root": "handlebars@4.0.5",
+      "sink": "handlebars@4.0.5",
+      "cve": "GHSA-xjpj-3mr7-gcpf",
+      "hops": 0,
+      "chain": [
+        "handlebars@4.0.5"
+      ],
+      "root_risk": 0.20337551832199097,
+      "sink_risk": 0.20337551832199097,
+      "impact_summary": "Direct dependency 'handlebars' is exposed to GHSA-xjpj-3mr7-gcpf via 0 transitive hops to 'handlebars@4.0.5'."
+    },
+    {
+      "id": "path-4",
+      "root": "js-yaml@3.13.1",
+      "sink": "js-yaml@3.13.1",
+      "cve": "GHSA-mh29-5h37-fv8m",
+      "hops": 0,
+      "chain": [
+        "js-yaml@3.13.1"
+      ],
+      "root_risk": 0.18457253277301788,
+      "sink_risk": 0.18457253277301788,
+      "impact_summary": "Direct dependency 'js-yaml' is exposed to GHSA-mh29-5h37-fv8m via 0 transitive hops to 'js-yaml@3.13.1'."
+    }
+  ],
+  "project_audit": {
+    "audit_rows": [
+      {
+        "package": "jquery@2.2.4",
+        "cve": "GHSA-rmxg-73gg-4p98",
+        "unmasked_model_score": 0.5299944877624512,
+        "masked_model_score": 0.6750951409339905,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.08,
+        "feature_shuffle_score": 0.6750951409339905,
+        "model_vs_bfs_gain": "+59.5%"
+      },
+      {
+        "package": "tar@4.4.8",
+        "cve": "GHSA-w8wr-v893-vjvp",
+        "unmasked_model_score": 0.21043027937412262,
+        "masked_model_score": 0.28443652391433716,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.07999999821186066,
+        "feature_shuffle_score": 0.28443652391433716,
+        "model_vs_bfs_gain": "+20.4%"
+      },
+      {
+        "package": "handlebars@4.0.5",
+        "cve": "GHSA-xjpj-3mr7-gcpf",
+        "unmasked_model_score": 0.20337551832199097,
+        "masked_model_score": 0.27011367678642273,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.07999999821186066,
+        "feature_shuffle_score": 0.27011367678642273,
+        "model_vs_bfs_gain": "+19.0%"
+      },
+      {
+        "package": "js-yaml@3.13.1",
+        "cve": "GHSA-mh29-5h37-fv8m",
+        "unmasked_model_score": 0.18457253277301788,
+        "masked_model_score": 0.20990212261676788,
+        "masked_bfs_floor": 0.08,
+        "label_prop_score": 0.07999999821186066,
+        "feature_shuffle_score": 0.20990212261676788,
+        "model_vs_bfs_gain": "+13.0%"
+      }
+    ],
+    "summary_claim": "VulnGAT maintains higher risk signal on masked nodes via dependency message-passing, surpassing naive BFS traversal."
+  },
+  "remediations": [
+    {
+      "package": "jquery@2.2.4",
+      "cve": "GHSA-rmxg-73gg-4p98",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade jquery to latest patched version to mitigate GHSA-rmxg-73gg-4p98.",
+      "simulated_risk_reduction_pct": 34.0
+    },
+    {
+      "package": "tar@4.4.8",
+      "cve": "GHSA-w8wr-v893-vjvp",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade tar to latest patched version to mitigate GHSA-w8wr-v893-vjvp.",
+      "simulated_risk_reduction_pct": 18.9
+    },
+    {
+      "package": "handlebars@4.0.5",
+      "cve": "GHSA-xjpj-3mr7-gcpf",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade handlebars to latest patched version to mitigate GHSA-xjpj-3mr7-gcpf.",
+      "simulated_risk_reduction_pct": 18.5
+    },
+    {
+      "package": "js-yaml@3.13.1",
+      "cve": "GHSA-mh29-5h37-fv8m",
+      "affected_dependents_count": 1,
+      "recommended_action": "Upgrade js-yaml to latest patched version to mitigate GHSA-mh29-5h37-fv8m.",
+      "simulated_risk_reduction_pct": 17.6
+    }
+  ]
+}

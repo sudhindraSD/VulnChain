@@ -1,0 +1,131 @@
+{
+  "phase": "3 -- EPSS rebuild + decision matrix",
+  "validity_gate": {
+    "status": "PASS",
+    "n_packages": 5578,
+    "n_nonzero": 889
+  },
+  "closure_derivation": {
+    "nonzero_epss": 889,
+    "has_vuln_edges": 301,
+    "nz_with_own_cve": 301,
+    "nz_closure_only": 588,
+    "is_closure_derived": true
+  },
+  "labels_51repo": {
+    "n_packages": 12405,
+    "n_nonzero": 3303
+  },
+  "counts_both_definitions": {
+    "total_packages": 12405,
+    "definition_a_closure_derived_nonzero": 3303,
+    "definition_a_with_own_cve": 751,
+    "definition_a_closure_only": 2552,
+    "definition_b_own_cve_total": 977,
+    "definition_b_own_cve_with_nonzero_epss": 751,
+    "zero_epss": 9102
+  },
+  "advisory_date_distribution": {
+    "total_cves_with_date": 883,
+    "total_cves": 883,
+    "missing_dates": 0,
+    "date_range": {
+      "earliest": "2017-10-24",
+      "latest": "2026-09-17"
+    },
+    "year_distribution": {
+      "2017": 11,
+      "2018": 35,
+      "2019": 34,
+      "2020": 49,
+      "2021": 76,
+      "2022": 105,
+      "2023": 52,
+      "2024": 57,
+      "2025": 72,
+      "2026": 392
+    },
+    "quartiles": {
+      "q1": "2022-01-21",
+      "q2": "2025-05-19",
+      "q3": "2026-05-14"
+    }
+  },
+  "decision_matrix": {
+    "timestamp": "2026-09-20T02:15:44.183905",
+    "status": "HARD_STOP -- awaiting Brain decision",
+    "closure_confirmation": {
+      "nonzero_epss": 889,
+      "has_vuln_edges": 301,
+      "nz_with_own_cve": 301,
+      "nz_closure_only": 588,
+      "is_closure_derived": true
+    },
+    "counts": {
+      "total_packages": 12405,
+      "definition_a_closure_derived_nonzero": 3303,
+      "definition_a_with_own_cve": 751,
+      "definition_a_closure_only": 2552,
+      "definition_b_own_cve_total": 977,
+      "definition_b_own_cve_with_nonzero_epss": 751,
+      "zero_epss": 9102
+    },
+    "advisory_date_distribution": {
+      "total_cves_with_date": 883,
+      "total_cves": 883,
+      "missing_dates": 0,
+      "date_range": {
+        "earliest": "2017-10-24",
+        "latest": "2026-09-17"
+      },
+      "year_distribution": {
+        "2017": 11,
+        "2018": 35,
+        "2019": 34,
+        "2020": 49,
+        "2021": 76,
+        "2022": 105,
+        "2023": 52,
+        "2024": 57,
+        "2025": 72,
+        "2026": 392
+      },
+      "quartiles": {
+        "q1": "2022-01-21",
+        "q2": "2025-05-19",
+        "q3": "2026-05-14"
+      }
+    },
+    "options": {
+      "A": {
+        "definition": "Run on closure-derived labels (definition a)",
+        "nonzero_count": 3303,
+        "passes_cmd6_gate": true,
+        "issue": "closure-decayed-sum + exposure + Hill(K=1) = the label => Spearman ~= 1.0 => 'beat closure' unsatisfiable by construction (GNN never sees EPSS input)",
+        "reframe": "GNN vs formula oracle (headline reframed)"
+      },
+      "B": {
+        "definition": "Run on own-CVE only (definition b)",
+        "nonzero_count": 751,
+        "passes_cmd6_gate": false,
+        "issue": "<=977 non-zero = the 889-regime that failed at 9 repos (Commandment 6). Not recommended."
+      },
+      "C": {
+        "definition": "Dual-track",
+        "description": "(a) as continuity + validity gate, (b) as clearly-labeled underpowered exploratory arm, no claims"
+      }
+    },
+    "precommitted_arm_design": {
+      "temporal_split": "By each package's newest-contributing-CVE published date",
+      "cutoff": "Pre-registered for >=150 non-zero test nodes (B5 precedent)",
+      "shared_cve_overlap": "Report residual shared-CVE train/test overlap",
+      "epss_snapshot_limitation": "Current EPSS scores for all CVEs -- tests advisory-recency generalization, not true EPSS drift",
+      "seeds": "5 seeds on GNN head (deterministic baselines report std=0)",
+      "metrics": "P@k with k=10, recall over true top decile, both on nz-cut",
+      "definitions_precommitted": true
+    },
+    "hard_stop_enforced": true,
+    "no_arms_trained": true,
+    "no_notebook_generated": true
+  }
+}

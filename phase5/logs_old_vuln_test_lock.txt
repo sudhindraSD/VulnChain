@@ -1,0 +1,12 @@
+================================================================================
+  VulnChain -- Project Dependency Risk Analyzer
+================================================================================
+Target lockfile: ../../TrainModel/scratch/vuln_test_lock.json
+Parsed 11 unique packages and 7 dependency relations.
+
+[OK] Full analysis results exported to: old_vuln_test_lock.json
+
+================================================================================
+  Analysis Complete!
+================================================================================
+

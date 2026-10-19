@@ -1,0 +1,7 @@
+populations: packages=12405 cves=883 authors=3878
+train_fit=1807 val=451 test=1433 eligible=0 never_vuln=8682
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\Major VulnChain\phase5\autopsy_behavior.py", line 163, in <module>
+    logit = (emb @ sd['classifier.3.weight'].T).squeeze(-1).numpy() + sd['classifier.3.bias'].item()
+             ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (12405x128 and 64x1)

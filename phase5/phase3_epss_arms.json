@@ -1,0 +1,108 @@
+{
+  "temporal_split": {
+    "cutoff": "2026-08-01",
+    "train_fit_count": 1809,
+    "val_count": 452,
+    "test_count": 1430,
+    "shared_cve_overlap_count": 385,
+    "shared_cve_overlap_rate": 0.5259562841530054,
+    "limitation": "Current snapshot EPSS scores used for all CVEs -- tests advisory-recency generalization, not true historical EPSS drift"
+  },
+  "arms": {
+    "arm_a_closure_max": {
+      "description": "closure-max (Hill K=1)",
+      "spearman_mean": 0.9462882238475105,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 1.0,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.7202797202797203,
+      "recall_top10pct_std": 0.0
+    },
+    "arm_b_closure_decayed_sum_oracle": {
+      "description": "closure-decayed-sum (ORACLE ceiling)",
+      "spearman_mean": 0.9999999999999999,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 1.0,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 1.0,
+      "recall_top10pct_std": 0.0
+    },
+    "arm_c_ridge_raw": {
+      "description": "ridge-raw -> EPSS",
+      "spearman_mean": 0.6370667416189287,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 0.5,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.38461538461538464,
+      "recall_top10pct_std": 0.0
+    },
+    "arm_d_hr_head_epss": {
+      "description": "HR head on frozen embeddings -> EPSS (5 seeds)",
+      "spearman_mean": 0.561416978038259,
+      "spearman_std": 0.0014498567093172066,
+      "p_at_10_mean": 0.2,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.4111888111888112,
+      "recall_top10pct_std": 0.006851719560232671,
+      "seeds": {
+        "42": {
+          "spearman": 0.5627016050539154,
+          "p_at_10": 0.2,
+          "recall_top10pct": 0.4125874125874126,
+          "val_spearman": 0.48579297658134807
+        },
+        "123": {
+          "spearman": 0.56033745257167,
+          "p_at_10": 0.2,
+          "recall_top10pct": 0.3986013986013986,
+          "val_spearman": 0.4868609764732862
+        },
+        "456": {
+          "spearman": 0.5634071184338183,
+          "p_at_10": 0.2,
+          "recall_top10pct": 0.4195804195804196,
+          "val_spearman": 0.4865397383236395
+        },
+        "789": {
+          "spearman": 0.5595055456032497,
+          "p_at_10": 0.2,
+          "recall_top10pct": 0.4125874125874126,
+          "val_spearman": 0.48677215516451455
+        },
+        "1024": {
+          "spearman": 0.5611331685286409,
+          "p_at_10": 0.2,
+          "recall_top10pct": 0.4125874125874126,
+          "val_spearman": 0.48510267842158955
+        }
+      }
+    },
+    "arm_e1_cross_vpss_head_on_epss_test": {
+      "description": "VPSS-trained HR head evaluated on EPSS test labels (no retraining)",
+      "spearman_mean": 0.46777023057086686,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 0.3,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.3986013986013986,
+      "recall_top10pct_std": 0.0
+    },
+    "arm_e2_cross_epss_head_on_vpss_test": {
+      "description": "EPSS-trained HR head evaluated on VPSS test labels (no retraining)",
+      "spearman_mean": 0.39476386677548386,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 0.2,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.3706293706293706,
+      "recall_top10pct_std": 0.0
+    },
+    "arm_f_exploratory_own_cve": {
+      "description": "EXPLORATORY own-CVE cut (N=262 pkgs, clearly labeled, no claims)",
+      "spearman_mean": 0.6023767619160088,
+      "spearman_std": 0.0,
+      "p_at_10_mean": 0.4,
+      "p_at_10_std": 0.0,
+      "recall_top10pct_mean": 0.2222222222222222,
+      "recall_top10pct_std": 0.0
+    }
+  }
+}

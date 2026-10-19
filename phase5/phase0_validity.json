@@ -1,0 +1,169 @@
+{
+  "phase": "0 \u2014 validity gate (local CPU reproduction of archived Colab run)",
+  "reproduced": {
+    "train": {
+      "metrics": {
+        "n": 10523,
+        "n_nonzero": 3024,
+        "mae": 0.1692115217447281,
+        "mse": 0.06116212159395218,
+        "pearson_nonzero": 0.26318342466568106,
+        "spearman_nonzero": 0.16069858684850866,
+        "spearman_all": -0.20358654947197422,
+        "ranking_accuracy": 0.3875485585769781
+      },
+      "diffs_vs_archived": {
+        "n": {
+          "expected": 10523,
+          "got": 10523
+        },
+        "n_nonzero": {
+          "expected": 3024,
+          "got": 3024
+        },
+        "mae": {
+          "expected": 0.1692115217447281,
+          "got": 0.1692115217447281,
+          "abs_diff": 0.0
+        },
+        "mse": {
+          "expected": 0.06116212159395218,
+          "got": 0.06116212159395218,
+          "abs_diff": 0.0
+        },
+        "pearson_nonzero": {
+          "expected": 0.2631834325299811,
+          "got": 0.26318342466568106,
+          "abs_diff": 7.864300044513328e-09
+        },
+        "spearman_nonzero": {
+          "expected": 0.16069864333228495,
+          "got": 0.16069858684850866,
+          "abs_diff": 5.6483776295079835e-08
+        },
+        "spearman_all": {
+          "expected": -0.2035864498428364,
+          "got": -0.20358654947197422,
+          "abs_diff": 9.962913782857186e-08
+        },
+        "ranking_accuracy": {
+          "expected": 0.3875485585769781,
+          "got": 0.3875485585769781,
+          "abs_diff": 0.0
+        }
+      }
+    },
+    "val": {
+      "metrics": {
+        "n": 541,
+        "n_nonzero": 161,
+        "mae": 0.16072878241539001,
+        "mse": 0.06838894635438919,
+        "pearson_nonzero": 0.13935661677711444,
+        "spearman_nonzero": 0.09812656139687505,
+        "spearman_all": -0.04446783376147555,
+        "ranking_accuracy": 0.48677644710578843
+      },
+      "diffs_vs_archived": {
+        "n": {
+          "expected": 541,
+          "got": 541
+        },
+        "n_nonzero": {
+          "expected": 161,
+          "got": 161
+        },
+        "mae": {
+          "expected": 0.16072878241539001,
+          "got": 0.16072878241539001,
+          "abs_diff": 0.0
+        },
+        "mse": {
+          "expected": 0.06838894635438919,
+          "got": 0.06838894635438919,
+          "abs_diff": 0.0
+        },
+        "pearson_nonzero": {
+          "expected": 0.13935664106515297,
+          "got": 0.13935661677711444,
+          "abs_diff": 2.428803852483341e-08
+        },
+        "spearman_nonzero": {
+          "expected": 0.09812656139687505,
+          "got": 0.09812656139687505,
+          "abs_diff": 0.0
+        },
+        "spearman_all": {
+          "expected": -0.04446783460399309,
+          "got": -0.04446783376147555,
+          "abs_diff": 8.425175418436126e-10
+        },
+        "ranking_accuracy": {
+          "expected": 0.48677644710578843,
+          "got": 0.48677644710578843,
+          "abs_diff": 0.0
+        }
+      }
+    },
+    "test": {
+      "metrics": {
+        "n": 1341,
+        "n_nonzero": 538,
+        "mae": 0.16765032708644867,
+        "mse": 0.05810104310512543,
+        "pearson_nonzero": 0.42628494143949625,
+        "spearman_nonzero": 0.22267617687313973,
+        "spearman_all": -0.23569738019267364,
+        "ranking_accuracy": 0.3910759096612296
+      },
+      "diffs_vs_archived": {
+        "n": {
+          "expected": 1341,
+          "got": 1341
+        },
+        "n_nonzero": {
+          "expected": 538,
+          "got": 538
+        },
+        "mae": {
+          "expected": 0.16765032708644867,
+          "got": 0.16765032708644867,
+          "abs_diff": 0.0
+        },
+        "mse": {
+          "expected": 0.05810104310512543,
+          "got": 0.05810104310512543,
+          "abs_diff": 0.0
+        },
+        "pearson_nonzero": {
+          "expected": 0.4262849928861418,
+          "got": 0.42628494143949625,
+          "abs_diff": 5.144664555478684e-08
+        },
+        "spearman_nonzero": {
+          "expected": 0.22267617687313973,
+          "got": 0.22267617687313973,
+          "abs_diff": 0.0
+        },
+        "spearman_all": {
+          "expected": -0.23569738019267364,
+          "got": -0.23569738019267364,
+          "abs_diff": 0.0
+        },
+        "ranking_accuracy": {
+          "expected": 0.3910759096612296,
+          "got": 0.3910759096612296,
+          "abs_diff": 0.0
+        }
+      }
+    }
+  },
+  "prediction_comparison": {
+    "pkg_ids_order_match": true,
+    "max_abs_diff": 8.940696716308594e-08,
+    "mean_abs_diff": 1.2836260259367679e-08,
+    "gate": "pkg_id order identical AND max|pred - archived| <= 1e-6",
+    "passed": true
+  },
+  "verdict": "PASS \u2014 local rebuild reproduces the archived Colab run; wiring is valid."
+}

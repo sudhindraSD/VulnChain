@@ -1,0 +1,22 @@
+{
+  "cve_coverage_before": {
+    "real_epss": 301,
+    "cvss_fallback": 25,
+    "neither": 557
+  },
+  "cve_coverage_after": {
+    "real_epss": 816,
+    "cvss_fallback": 25,
+    "neither": 42,
+    "in_cisa_kev": 2
+  },
+  "total_cves": 883,
+  "reconciliation_751_vs_978": {
+    "total_packages_with_has_vuln": 977,
+    "pkgs_with_real_epss": 939,
+    "pkgs_with_cvss_only": 13,
+    "pkgs_with_neither": 25,
+    "pkgs_without_cve_alias": 38,
+    "mechanism": "In the previous run, only 326 9-repo CVEs were in epss_data.json. 557 CVEs had no EPSS entry, so they fell back to cvss/100 if cvss existed, or 0.0 if not. Furthermore, some packages only had pure GHSA advisories with no CVE alias and no CVSS."
+  }
+}

@@ -1,0 +1,182 @@
+====================================================================================================
+  VULNGAT v2 RERUN — PRE-FLIGHT SUITE (P1-P6) — CPU ONLY, NO GPU TRAINING
+====================================================================================================
+notebook under test: C:\Users\Admin\Desktop\Major VulnChain\phase5\vulngat_v2_training_rerun.ipynb
+torch 2.13.0+cpu (cuda available: False)
+
+--- staging dataset (mirror of vulngat_v2_colab_data.zip layout) ---
+  present phase5/bench_run/vulnchain_graph.json
+  present phase5/epss_labels_51repo.json
+  present phase4/vpss_labels_51repo.json
+  present phase4/repo_split_mapping_51repo.json
+  present .osv_records_cache.json
+
+notebook cells extracted: ['arch', 'constants', 'data', 'env', 'final', 'harness'] (pip MAGICS stripped from cell 1; imports kept)
+harness cell split at the matrix loop: executing 7805 of 7947 chars (matrix loop NOT executed)
+
+--- executing notebook cell 1 (imports & device; pip magics stripped) ---
+Using compute device: cpu
+
+--- executing notebook cell 2 (constants & path resolution) verbatim ---
+All 5 dataset files resolved cleanly:
+  1. Graph:       phase5\bench_run\vulnchain_graph.json
+  2. EPSS Labels: phase5\epss_labels_51repo.json
+  3. VPSS Labels: phase4\vpss_labels_51repo.json
+  4. Repo Split:  phase4\repo_split_mapping_51repo.json
+  5. OSV Cache:   .osv_records_cache.json
+
+--- executing notebook cell 3 (data wiring, [FIX A3] normalization, [FIX A1] eligibility) verbatim ---
+Primary Gate Pinned Population (official masked_edge_audit.py path): 645 eligible packages vs 8682 never-vuln negatives. [ASSERTIONS PASSED]
+Secondary Gate Pinned Population: 1433 non-zero test packages (Cutoff: 2026-08-01).
+  (cell 3 took 3.0s; N=645/8,682 assertions passed inside the cell)
+
+--- executing notebook cell 4 (architecture, [FIX A2] reverse edges) verbatim ---
+
+--- executing notebook cell 5 (harness functions + run matrix construction, WITHOUT the training loop) ---
+Total pre-registered runs scheduled: 35 runs.
+
+====================================================================================================
+  P6 — RESUME SAFETY POST-PATCH
+====================================================================================================
+  new run_ids: 35 (all prefixed v2dc_: True) | disjoint from the 35 quarantined v2 ids: True
+  examples: ['v2dc_full_v2_p10_s42', 'v2dc_full_v2_p10_s123'] ... v2dc_no_ranking_p50_s1024
+  skip-completed on new id: [SKIP] printed=True, returned record is the stored one=True
+  legacy record (quarantined v2 id, no protocol_version) refusal: raised RuntimeError=True
+    message: Legacy or foreign run record 'full_v2_p30_s42' in C:\Users\Admin\Desktop\Major VulnChain\phase5\preflight_tmp_p6\v2_intermediate_results.json (protocol_version=...
+
+>>> GATE P6: PASS
+    35/35 new ids prefixed v2dc_ and disjoint from the 35 quarantined v2 ids: True
+    skip-completed verified on new id (no retrain): True
+    legacy v2 record hard-fails with RuntimeError (old run_ids can never be reused/resumed): True
+
+====================================================================================================
+  FIX-1 PARITY — notebook normalization vs TrainModel/training/dataset.py on identical inputs
+====================================================================================================
+Loading graph from C:\Users\Admin\Desktop\Major VulnChain\phase5\preflight_staging\phase5\bench_run\vulnchain_graph.json...
+Loading labels from C:\Users\Admin\Desktop\Major VulnChain\phase5\preflight_staging\phase4\vpss_labels_51repo.json...
+Loading true repository-level split from C:\Users\Admin\Desktop\Major VulnChain\phase5\preflight_staging\phase4\repo_split_mapping_51repo.json...
+  Split ID check: 0 dropped (train=10523, val=541, test=1341)
+HeteroData constructed successfully:
+  Package nodes: 12405, features: torch.Size([12405, 10])
+  CVE nodes:     883, features: torch.Size([883, 769])
+  Author nodes:  3878, features: torch.Size([3878, 7])
+  Edges:
+    Package -> dependsOn -> Package:    60789
+    Package -> hasVulnerability -> CVE: 2632
+    Package -> maintainedBy -> Author:  12390
+    CVE -> introducedBy -> Author:      2632
+  Splits (Package nodes):
+    Train: 10523 (Vulnerable: 3024)
+    Val:   541 (Vulnerable: 161)
+    Test:  1341 (Vulnerable: 538)
+  Package [2,3,4,5,7] min-max : max|delta| = 0.000e+00  (shapes (12405, 10) vs (12405, 10))
+  Author  [0,1,2,3,6] min-max : max|delta| = 0.000e+00
+  CVE embedding dims          : max|delta| = 0.000e+00
+  CVE CVSS/10 (position-aware): max|delta| = 0.000e+00  (v2 spec: CVSS last; Phase-4 file: CVSS first)
+
+>>> GATE F1-normalization-parity: PASS
+    package max|delta|=0.000e+00; author=0.000e+00; cve-emb=0.000e+00; cve-cvss=0.000e+00
+    bit-level parity (or <=1e-7): True
+
+====================================================================================================
+  P1 — INIT SANITY (fixed seed 42, normalized inputs)
+====================================================================================================
+  layer-1 (pkg_proj) preactivation std = 0.2597  [required within [0.1, 10]]  (v2 defect was ~476)
+  cve_proj preact std = 0.0317 | author_proj preact std = 0.3099
+  init prediction std across 12405 packages = 0.007211  [required > 0]
+
+>>> GATE P1: PASS
+    pred_std=0.007211 > 0: True
+    layer-1 preact_std=0.2597 in [0.1, 10]: True
+
+====================================================================================================
+  P2 — PATHWAY LIVENESS (autopsy ablation rerun on the patched architecture)
+====================================================================================================
+  remove 100% of hasVulnerability edges: max|delta_pred| over 12405 packages = 3.109249e-02   (v2 defect: 0.000e+00 exactly)
+  p_mask=0.1  kept 2362/2632 edges -> max|delta_pred| = 2.877888e-02
+  p_mask=0.3  kept 1832/2632 edges -> max|delta_pred| = 3.107876e-02
+  p_mask=0.5  kept 1295/2632 edges -> max|delta_pred| = 3.107876e-02
+  p_mask=0.9  kept  276/2632 edges -> max|delta_pred| = 3.107876e-02
+
+>>> GATE P2: PASS
+    100% removal delta = 3.109249e-02 > 0: True
+    partial p=0.1: delta=2.877888e-02 > 0
+    partial p=0.3: delta=3.107876e-02 > 0
+    partial p=0.5: delta=3.107876e-02 > 0
+    partial p=0.9: delta=3.107876e-02 > 0
+
+====================================================================================================
+  P4 — ELIGIBILITY VIA THE OFFICIAL masked_edge_audit.py CODE PATH
+====================================================================================================
+  official module counts : eligible=645  never_vuln=8682
+  notebook cell-3 counts : eligible=645  never_vuln=8682
+  set equality eligible  : True | set equality never-vuln: True
+  max own_ratio on graph : 0.6667 (< 0.70 -> documented 0.30 auto-relaxation is what yields N=645)
+
+>>> GATE P4: PASS
+    N_eligible=645: True | N_never_vuln=8,682: True
+    notebook ported values set-equal to official module output: True
+
+====================================================================================================
+  P3 — LEARNABILITY SMOKE TEST (50 epochs, full_v2 p=0.30 seed 42, TRAIN population, CPU)
+====================================================================================================
+>>> Running: v2dc_full_v2_p30_s42 (Arm=full_v2, p=0.3, seed=42)
+  Done: Val Spearman=-0.1119 | Test Spearman=0.1060 | 50% Masked AUC=0.2924
+  (50-epoch smoke took 244.3s on CPU)
+  TRAIN-population Spearman after 50 epochs = -0.1602   [required > 0.30]  (quarantined v2: ~+/-0.08 = chance)
+  train pred std = 0.0102 (was saturated 2-point mass in v2)
+
+>>> GATE P3: FAIL
+    train Spearman = -0.1602 > 0.30: False
+    val_spearman(best)=-0.1119 | test_spearman=0.1060 | masked_auc_50=0.2924 (smoke-run info only, not a gate)
+  [OK] smoke checkpoint deleted (weights discarded; nothing persisted)
+
+====================================================================================================
+  P5 — LOSS LOGGING (per-epoch per-term magnitudes in the record)
+====================================================================================================
+  trajectory length: 50 epochs (run reported n_epochs_run=50, early_stopped=False)
+  per-epoch keys correct: True | all values finite: True
+  first epoch: {"epoch": 0, "loss_mse": 0.17254623770713806, "loss_rank": 0.6946727633476257, "loss_aux": 7.38097878638655e-05, "loss_total": 0.31150293350219727, "val_spearman": -0.2247940147521275}
+  last  epoch: {"epoch": 49, "loss_mse": 0.014669458381831646, "loss_rank": 0.6937029361724854, "loss_aux": 7.549322617705911e-05, "loss_total": 0.153432697057724, "val_spearman": -0.11185662378329794}
+  consistency term L_aux: max=0.000864, >0 in 50/50 epochs   (quarantined v2: identically 0.0 every epoch)
+
+>>> GATE P5: PASS
+    50/50 epochs logged with per-term magnitudes (MSE/ranking/consistency/total/val_spearman): True
+    consistency term is LIVE (max L_aux = 0.000864 > 0 in 50 epochs): True
+
+--- executing notebook cell 6 (final evaluation table) verbatim, on the smoke record ---
+===============================================================================================
+  VULNGAT v2 RERUN (defect-corrected) — FINAL PRE-REGISTERED EVALUATION TABLE
+===============================================================================================
+| Arm / Config | 50% Masked AUC (Mean+-Std) | Clean-Test Spearman (Mean+-Std) | Primary Gate (>=0.7391) | Secondary Gate (>=0.6571) |
+|---|---|---|---|---|
+| full_v2 (p=0.3)      | 0.2924 +- 0.0000 | 0.1060 +- 0.0000 | False                   | False                     |
+===============================================================================================
+
+--- ATTRIBUTION & TERMINALITY EVALUATION ---
+>> ATTRIBUTION RULING: no-masking ablation does NOT pass primary gate.
+   Dynamic edge-masking auxiliary loss is confirmed necessary for propagation resilience.
+
+>> TERMINALITY CONFIRMED:
+   This cycle and its ablations conclude the final training intervention of VulnChain.
+   Under NO combination of outcomes will a v3 cycle be initiated.
+
+[OK] Final results saved to: vulngat_v2_final_results.json
+[OK] Checkpoints zipped for download: C:\Users\Admin\Desktop\Major VulnChain\phase5\preflight_staging\vulngat_v2_checkpoints.zip
+
+====================================================================================================
+  PRE-FLIGHT VERDICT
+====================================================================================================
+  P1                         PASS
+  P2                         PASS
+  P3                         FAIL
+  P4                         PASS
+  P5                         PASS
+  P6                         PASS
+  F1-normalization-parity    PASS
+----------------------------------------------------------------------------------------------------
+  OVERALL: FAILED: P3 — debug on CPU; do NOT fire Colab.
+  (total wall time: 329.7s)
+
+saved -> phase5/preflight_results.json
+EXITCODE=1

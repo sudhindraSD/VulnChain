@@ -1,0 +1,873 @@
+{
+  "source": "You.com Deep Search (30 queries x 20 results)",
+  "total_harvested": 404,
+  "curated_checked": 118,
+  "ok_count": 58,
+  "risky_count": 1,
+  "ok_repos": [
+    {
+      "repo": "xuezzou/Vulnerable-nodejs",
+      "status": "OK",
+      "stars": 46,
+      "language": "CSS",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-12-09T00:51:25Z",
+      "archived": false,
+      "description": "A vulnerable nodejs web app with expresss and MongoDB for final project of cyber security course "
+    },
+    {
+      "repo": "SirAppSec/vuln-node.js-express.js-app",
+      "status": "OK",
+      "stars": 45,
+      "language": "HTML",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-08-26T22:48:45Z",
+      "archived": false,
+      "description": "A Very Vulnerable Node.js Express.js Web Application and API. Used for testing Security tools, Application security and "
+    },
+    {
+      "repo": "VitthalS/ivna",
+      "status": "OK",
+      "stars": 21,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-04-09T12:32:27Z",
+      "archived": false,
+      "description": "Intentionally Vulnerable Nodejs Application & APIs"
+    },
+    {
+      "repo": "cr0hn/vulnerable-node",
+      "status": "OK",
+      "stars": 488,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-08T17:25:51Z",
+      "archived": false,
+      "description": "Vulnerable Nodejs \u2014 a real shop (NodeBazaar) intentionally full of security bugs. 14 labs, OWASP Top 10:2025, SAST bench"
+    },
+    {
+      "repo": "kaakaww/vuln_node_express",
+      "status": "OK",
+      "stars": 21,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-03-27T08:42:44Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "payatu/vuln-nodejs-app",
+      "status": "OK",
+      "stars": 31,
+      "language": "EJS",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-08-07T04:40:55Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "snoopysecurity/dvws-node",
+      "status": "OK",
+      "stars": 519,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-07T10:56:09Z",
+      "archived": false,
+      "description": "Damn Vulnerable Web Services is a vulnerable application with a web service and an API that can be used to learn about w"
+    },
+    {
+      "repo": "asecurityguru/vulnerablenodejsapplication",
+      "status": "OK",
+      "stars": 0,
+      "language": "CSS",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-05-29T08:36:17Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "MendDemoOrg/VulnerableJS",
+      "status": "OK",
+      "stars": 0,
+      "language": "HTML",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-15T15:41:04Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "shieldfy/vulnerable-nodejs-project",
+      "status": "OK",
+      "stars": 12,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-07-06T16:05:26Z",
+      "archived": false,
+      "description": "Demo for vulnerable Nodejs project"
+    },
+    {
+      "repo": "CassandraGoose/Fortified-NodeGoat",
+      "status": "OK",
+      "stars": 0,
+      "language": "HTML",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-11T18:27:44Z",
+      "archived": false,
+      "description": "This is my secured version of the vulnerable OWASP NodeGoat application. Checkout my project board, PRs, and README to l"
+    },
+    {
+      "repo": "C0oki3s/ssrf",
+      "status": "OK",
+      "stars": 1,
+      "language": "HTML",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-05-20T16:06:51Z",
+      "archived": false,
+      "description": "This is a Nodejs Module To prevent SSRF based attack's. Blocks request to Private IP and mitigate from further Bypass"
+    },
+    {
+      "repo": "kimmobrunfeldt/lodash-merge-pollution-example",
+      "status": "OK",
+      "stars": 5,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2021-05-11T13:44:48Z",
+      "archived": true,
+      "description": "Demonstration of _.merge prototype pollution vulnerability"
+    },
+    {
+      "repo": "fredrik-stigsson/prototype-pollution-rce-api",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2025-10-24T10:19:20Z",
+      "archived": false,
+      "description": "Vulnerable API with prototype pollution and RCE"
+    },
+    {
+      "repo": "brettgervasoni/pollute_api",
+      "status": "OK",
+      "stars": 2,
+      "language": "HCL",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2021-05-25T06:51:17Z",
+      "archived": false,
+      "description": "Pollute API is a purposely vulnerable Node.js application for understanding prototype pollution vulnerabilities. Its mea"
+    },
+    {
+      "repo": "Serhatcck/server-side-prototype-pollution",
+      "status": "OK",
+      "stars": 9,
+      "language": "CSS",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-03-03T13:16:04Z",
+      "archived": false,
+      "description": "A website developed with Nodejs. This website includes server side prototype pollution vulnerability"
+    },
+    {
+      "repo": "klezVirus/deser-node",
+      "status": "OK",
+      "stars": 8,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-05-08T06:12:47Z",
+      "archived": false,
+      "description": "NodeJS Deserialization Payload Generator"
+    },
+    {
+      "repo": "clevernyyyy/zip-slip-poc",
+      "status": "OK",
+      "stars": 5,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2020-11-14T06:41:18Z",
+      "archived": false,
+      "description": "Quick and Dirty POC for Zip Slip"
+    },
+    {
+      "repo": "ashnehete/ctf-nodejs",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-04-21T02:39:21Z",
+      "archived": false,
+      "description": "A CTF challenge created for CTFd"
+    },
+    {
+      "repo": "omega-coder/Nosql-ctf-challenge",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-12-22T13:33:21Z",
+      "archived": false,
+      "description": "An intentionally left vulnerable app, built with nodejs express and mongodb."
+    },
+    {
+      "repo": "blairsec/ctfjs",
+      "status": "OK",
+      "stars": 2,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-04-26T23:27:22Z",
+      "archived": false,
+      "description": "CTF platform backend written in Node.js"
+    },
+    {
+      "repo": "kOaDT/oss-oopssec-store",
+      "status": "OK",
+      "stars": 44,
+      "language": "TypeScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-13T20:13:52Z",
+      "archived": false,
+      "description": "Security training for the apps you actually ship. Open your browser and start hacking."
+    },
+    {
+      "repo": "mcibique/express-security",
+      "status": "OK",
+      "stars": 49,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-12-10T16:06:37Z",
+      "archived": false,
+      "description": "nodejs + express security and performance boilerplate."
+    },
+    {
+      "repo": "NLHPNS/Web-Security-Lab",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-15T15:02:27Z",
+      "archived": false,
+      "description": "A website for security test"
+    },
+    {
+      "repo": "dominictarr/event-stream",
+      "status": "OK",
+      "stars": 2174,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2018-11-27T10:44:39Z",
+      "archived": true,
+      "description": "EventStream is like functional programming meets IO"
+    },
+    {
+      "repo": "RIAEvangelist/node-ipc",
+      "status": "OK",
+      "stars": 65,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-07T23:43:08Z",
+      "archived": false,
+      "description": "A nodejs module for local and remote Inter Process Communication (IPC), Neural Networking, and able to facilitate machin"
+    },
+    {
+      "repo": "faisalman/ua-parser-js",
+      "status": "OK",
+      "stars": 10190,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-01T14:34:53Z",
+      "archived": false,
+      "description": "UAParser.js - The Essential Web Development Tool for User-Agent Detection. Detect Browsers, OS, Devices, Bots, Apps, AI "
+    },
+    {
+      "repo": "OpenZeppelin/damn-vulnerable-defi",
+      "status": "OK",
+      "stars": 754,
+      "language": "Solidity",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-07-25T14:03:11Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "cthackers/adm-zip",
+      "status": "OK",
+      "stars": 2182,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-11T10:30:51Z",
+      "archived": false,
+      "description": "A Javascript implementation of zip for nodejs. Allows user to create or extract zip files both in memory or to/from disk"
+    },
+    {
+      "repo": "richardgirges/express-fileupload",
+      "status": "OK",
+      "stars": 1558,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2025-07-05T13:33:32Z",
+      "archived": false,
+      "description": "Simple express file upload middleware that wraps around busboy "
+    },
+    {
+      "repo": "kentcdodds/cross-env",
+      "status": "OK",
+      "stars": 6523,
+      "language": "TypeScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2025-11-16T14:11:37Z",
+      "archived": true,
+      "description": "\ud83d\udd00 Cross platform setting of environment scripts"
+    },
+    {
+      "repo": "hugeglass/flatmap-stream",
+      "status": "OK",
+      "stars": 13,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2019-07-04T10:49:22Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "achrinza/node-ipc",
+      "status": "OK",
+      "stars": 41,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2025-12-21T12:35:38Z",
+      "archived": false,
+      "description": "Drop-in fork of `node-ipc`."
+    },
+    {
+      "repo": "tjenkinson/redos-detector",
+      "status": "OK",
+      "stars": 55,
+      "language": "TypeScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-15T11:33:20Z",
+      "archived": false,
+      "description": "A CLI and library which tests helps score how vulnerable a regex pattern is to ReDoS attacks. Supported in the browser, "
+    },
+    {
+      "repo": "y-mehta/ssrf-req-filter",
+      "status": "OK",
+      "stars": 22,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-08-04T16:02:36Z",
+      "archived": false,
+      "description": "Module to prevent SSRF when sending requests in NodeJS. Blocks request to local and private IP addresses"
+    },
+    {
+      "repo": "nodejs/is-my-node-vulnerable",
+      "status": "OK",
+      "stars": 327,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-01-30T19:28:59Z",
+      "archived": false,
+      "description": "package that checks if your Node.js installation is vulnerable to known security vulnerabilities"
+    },
+    {
+      "repo": "lirantal/dependency-confusion-demo",
+      "status": "OK",
+      "stars": 6,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-06-12T09:42:13Z",
+      "archived": false,
+      "description": "Demo for practicing Dependency Confusion supply chain attacks"
+    },
+    {
+      "repo": "bradtraversy/vanilla-node-rest-api",
+      "status": "OK",
+      "stars": 378,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-01-08T08:04:47Z",
+      "archived": false,
+      "description": "REST API using Node.js without a framework"
+    },
+    {
+      "repo": "adnanrahic/nodejs-restful-api",
+      "status": "OK",
+      "stars": 329,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-09-10T14:16:01Z",
+      "archived": false,
+      "description": "How to create a RESTful CRUD API using Nodejs?"
+    },
+    {
+      "repo": "storyblok/storyblok-express-boilerplate",
+      "status": "OK",
+      "stars": 11,
+      "language": "CSS",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-12-11T08:05:00Z",
+      "archived": false,
+      "description": "Node.js Express boilerplate"
+    },
+    {
+      "repo": "mdn/express-locallibrary-tutorial",
+      "status": "OK",
+      "stars": 1275,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-14T15:16:46Z",
+      "archived": false,
+      "description": "Local Library website written in NodeJS/Express; example for the MDN server-side development NodeJS module: https://deve"
+    },
+    {
+      "repo": "codeship-library/node-express-basic",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2017-10-06T02:34:24Z",
+      "archived": false,
+      "description": "Sample application for Codeship Basic using NodeJS Express https://codeship.com/features/basic"
+    },
+    {
+      "repo": "ExpressGateway/express-gateway",
+      "status": "OK",
+      "stars": 3030,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-05-14T10:22:42Z",
+      "archived": false,
+      "description": "A microservices API Gateway built on top of Express.js"
+    },
+    {
+      "repo": "NomicFoundation/hardhat-boilerplate",
+      "status": "OK",
+      "stars": 1149,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2024-06-28T04:13:03Z",
+      "archived": false,
+      "description": ""
+    },
+    {
+      "repo": "sandorTuranszky/production-ready-expressjs-server",
+      "status": "OK",
+      "stars": 237,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-02-14T08:57:32Z",
+      "archived": false,
+      "description": "Express.js server that implements production-ready error handling and logging following latest best practices."
+    },
+    {
+      "repo": "libeyondea/backend-node-express",
+      "status": "OK",
+      "stars": 49,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-11-27T20:05:06Z",
+      "archived": false,
+      "description": "RESTful APIs using Node.js, Express, Passport and Mongoose"
+    },
+    {
+      "repo": "rwieruch/node-express-server",
+      "status": "OK",
+      "stars": 37,
+      "language": "JavaScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-02-20T11:56:31Z",
+      "archived": false,
+      "description": "Basic Node with Express Server"
+    },
+    {
+      "repo": "afteracademy/nodejs-backend-architecture-typescript",
+      "status": "OK",
+      "stars": 3072,
+      "language": "TypeScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-07-02T05:39:57Z",
+      "archived": false,
+      "description": "Node.js Backend Architecture Typescript - Learn to build a backend server for production ready blogging platform like Me"
+    },
+    {
+      "repo": "jamj2000/tiendabackend",
+      "status": "OK",
+      "stars": 18,
+      "language": "HTML",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-03-04T05:48:19Z",
+      "archived": false,
+      "description": "Backend de ejemplo. API REST con node.js + express + mongodb."
+    },
+    {
+      "repo": "IBM/nodejs-web-app",
+      "status": "OK",
+      "stars": 3,
+      "language": "HTML",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2020-01-03T20:24:52Z",
+      "archived": true,
+      "description": "WARNING: This repository is no longer maintained \u26a0\ufe0f This repository will not be updated. "
+    },
+    {
+      "repo": "web-push-libs/web-push",
+      "status": "OK",
+      "stars": 3544,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-14T03:22:49Z",
+      "archived": false,
+      "description": "Web Push library for Node.js"
+    },
+    {
+      "repo": "twray/hotel-bookings-rest-api",
+      "status": "OK",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2019-05-02T16:35:30Z",
+      "archived": false,
+      "description": "A simple REST API for displaying and managing hotel reservations, to be used as part of a teaching course Frameworks and"
+    },
+    {
+      "repo": "nodemailer/nodemailer",
+      "status": "OK",
+      "stars": 17677,
+      "language": "TypeScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-14T12:54:42Z",
+      "archived": false,
+      "description": "\u2709\ufe0f Send e-mails with Node.JS \u2013 easy as cake!"
+    },
+    {
+      "repo": "yakyak/yakyak",
+      "status": "OK",
+      "stars": 3752,
+      "language": "CoffeeScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2025-09-30T16:44:14Z",
+      "archived": false,
+      "description": "Desktop chat client for Google Hangouts"
+    },
+    {
+      "repo": "saleor/saleor-storefront",
+      "status": "OK",
+      "stars": 774,
+      "language": "TypeScript",
+      "lockfile_version": 1,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2022-06-25T07:59:19Z",
+      "archived": true,
+      "description": "A GraphQL-powered, NextJs-based, PWA storefront for Saleor. IMPORTANT: This project is [DEPRECATED] in favor of saleor/r"
+    },
+    {
+      "repo": "GoogleChromeLabs/squoosh",
+      "status": "OK",
+      "stars": 25887,
+      "language": "TypeScript",
+      "lockfile_version": 2,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-09-14T13:37:31Z",
+      "archived": false,
+      "description": "Make images smaller using best-in-class codecs, right in the browser."
+    },
+    {
+      "repo": "practicajs/practica",
+      "status": "OK",
+      "stars": 1674,
+      "language": "TypeScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2026-02-14T14:40:18Z",
+      "archived": false,
+      "description": "Node.js solution starter boilerplate that is production-ready, packed with \u2705  best practices and built with simplicity i"
+    },
+    {
+      "repo": "makenew/nodejs-app",
+      "status": "OK",
+      "stars": 4,
+      "language": "JavaScript",
+      "lockfile_version": 3,
+      "has_yarn": false,
+      "has_pnpm": false,
+      "pushed_at": "2023-02-16T02:23:01Z",
+      "archived": true,
+      "description": "Depreciated: use makenew/nodejs-server for new Node.js apps. "
+    }
+  ],
+  "risky_repos": [
+    {
+      "repo": "fernandobd42/testable-api-nodejs",
+      "status": "RISKY",
+      "stars": 0,
+      "language": "JavaScript",
+      "lockfile_version": 1,
+      "has_yarn": true,
+      "has_pnpm": false,
+      "pushed_at": "2017-06-29T00:35:09Z",
+      "archived": false,
+      "description": ""
+    }
+  ],
+  "no_lockfile": [
+    {
+      "repo": "djadmin/vulnerable-app",
+      "stars": 10
+    },
+    {
+      "repo": "samoylenko/vulnerable-app-nodejs-express",
+      "stars": 4
+    },
+    {
+      "repo": "clarkio/vulnerable-app",
+      "stars": 83
+    },
+    {
+      "repo": "acc4pentester/vulnerable-app-javascript",
+      "stars": 0
+    },
+    {
+      "repo": "vst212/vulnerable-app-js",
+      "stars": 0
+    },
+    {
+      "repo": "dsolaborg/vulnerable-node",
+      "stars": 0
+    },
+    {
+      "repo": "nawien-sharma/dvna-sqlite",
+      "stars": 1
+    },
+    {
+      "repo": "Tim-Demo/dvna-js",
+      "stars": 0
+    },
+    {
+      "repo": "ajinabraham/dvna",
+      "stars": 3
+    },
+    {
+      "repo": "invicticoreteam/dvna",
+      "stars": 0
+    },
+    {
+      "repo": "sudo-vin/vulnerable-node-2",
+      "stars": 0
+    },
+    {
+      "repo": "dubniczky/Prototype-Pollution",
+      "stars": 0
+    },
+    {
+      "repo": "Serhatcck/zip-slip",
+      "stars": 6
+    },
+    {
+      "repo": "Tusabras/nodejs-ctf",
+      "stars": 0
+    },
+    {
+      "repo": "ericjiang97/node-ctf",
+      "stars": 0
+    },
+    {
+      "repo": "easyctf/JS-CTF-Platform",
+      "stars": 24
+    },
+    {
+      "repo": "mde/ejs",
+      "stars": 8125
+    },
+    {
+      "repo": "luin/serialize",
+      "stars": 77
+    },
+    {
+      "repo": "commenthol/serialize-to-js",
+      "stars": 26
+    },
+    {
+      "repo": "auth0/node-jsonwebtoken",
+      "stars": 18196
+    },
+    {
+      "repo": "snyk-labs/node-ipc-goof",
+      "stars": 4
+    },
+    {
+      "repo": "jagracey/RegEx-DoS",
+      "stars": 182
+    },
+    {
+      "repo": "micromatch/micromatch",
+      "stars": 3039
+    },
+    {
+      "repo": "welefen/ssrf-agent",
+      "stars": 19
+    },
+    {
+      "repo": "snyk-schmidtty/dependency-confusion-npm",
+      "stars": 0
+    },
+    {
+      "repo": "JeppW/npm-dependency-confusion-poc",
+      "stars": 11
+    },
+    {
+      "repo": "moment/moment",
+      "stars": 47912
+    },
+    {
+      "repo": "hagopj13/node-express-boilerplate",
+      "stars": 7669
+    },
+    {
+      "repo": "vercel/pkg",
+      "stars": 24342
+    },
+    {
+      "repo": "vercel/serve",
+      "stars": 9899
+    },
+    {
+      "repo": "IBM/nodejs-backend-for-frontend",
+      "stars": 77
+    },
+    {
+      "repo": "sendgrid/sendgrid-nodejs",
+      "stars": 3052
+    },
+    {
+      "repo": "mercadopago/sdk-nodejs",
+      "stars": 486
+    },
+    {
+      "repo": "cypress-io/cypress",
+      "stars": 51018
+    },
+    {
+      "repo": "chartjs/Chart.js",
+      "stars": 67696
+    },
+    {
+      "repo": "s-yadav/react-number-format",
+      "stars": 4098
+    },
+    {
+      "repo": "uber-archive/node-flame",
+      "stars": 29
+    }
+  ],
+  "not_found": [
+    "substack/safe-regex",
+    "microsoft/TypeScript-Node-Starter"
+  ]
+}

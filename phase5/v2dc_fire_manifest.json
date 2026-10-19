@@ -1,0 +1,13 @@
+{
+  "artifact": "phase5/vulngat_v2_training_rerun.ipynb",
+  "role": "VulnGAT v2 defect-corrected rerun notebook \u2014 THE FIRED ARTIFACT",
+  "sha256": "aeaeae83c2c3afe91fdf5f1768ef0e6cfc329644099bf490f130c6e6a440372d",
+  "md5": "c4c04f8a974d96359ff43900d1d31f19",
+  "size_bytes": 48072,
+  "generated_by": "phase5/generate_v2_notebook_rerun.py",
+  "protocol_version": "v2.1-defect-corrected",
+  "run_id_prefix": "v2dc_",
+  "pre_flight": "P1/P2/P4/P5/P6 + F1 PASS; P3 PASS under D10-corrected budget-matched horizon (bar crossed at epoch 91; train rho = +0.4043 at the pre-registered 100-epoch cap)",
+  "authorization": "D10 \u2014 PRE-FLIGHT PASSES under corrected P3. Colab fire AUTHORIZED by the Brain. Protocol frozen. No further changes of any kind permitted.",
+  "hash_recorded_utc": "2026-09-20 09:13:24 UTC"
+}

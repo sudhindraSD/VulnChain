@@ -1,0 +1,143 @@
+pops: train_fit=1807 val=451 test=1433 | eligible(notebook)=0 eligible(official 0.30-relaxed)=645 never_vuln=8682
+
+===== full_v2_p10_s42 =====
+  dist from seed-42 INIT weights: max|Δw|=5.592e-03  L2=4.500e-01
+  train n= 1807 spearman=-0.0730 mse=0.061816 predmean=0.145569 predstd=2.19e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  val   n=  451 spearman=-0.0680 mse=0.063855 predmean=0.155536 predstd=2.23e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  test  n= 1433 spearman=+0.0548 mse=0.078568 predmean=0.226277 predstd=2.37e-01 q=[0.0, 0.0, 0.0, 2.16e-05, 0.4744143, 0.4744143, 0.4744143]
+  official-645 strata: std=2.02e-01 mean=0.112394
+  never-vuln-8682:     std=2.04e-01 mean=0.117641
+  global pred: std=2.14e-01 unique@1e-6=199 exact-unique=1039/12405
+  vs init predictions: max|Δpred|=0.000e+00 spearman(init,trained)=+0.3812
+  act 1_pkg_proj   std=  476.5459 mean=   +8.1862 absmax=   1762.51 dead=0.518
+  act 2_conv1_Pkg  std=  291.6358 mean=  +22.0304 absmax=   2098.73 dead=0.499
+  act 3_conv2_Pkg  std=  199.7924 mean=  -10.5114 absmax=   1605.03 dead=0.481
+  act 4_cls_lin    std=  128.1519 mean=   -0.0096 absmax=    829.32 dead=0.544
+  act 5_logit      std=  119.5277 mean= -132.4576 absmax=    531.71 dead=1.000
+
+===== full_v2_p30_s42 =====
+  dist from seed-42 INIT weights: max|Δw|=5.592e-03  L2=4.501e-01
+  train n= 1807 spearman=-0.0730 mse=0.061816 predmean=0.145569 predstd=2.19e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  val   n=  451 spearman=-0.0680 mse=0.063855 predmean=0.155536 predstd=2.23e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  test  n= 1433 spearman=+0.0548 mse=0.078568 predmean=0.226277 predstd=2.37e-01 q=[0.0, 0.0, 0.0, 2.16e-05, 0.4744143, 0.4744143, 0.4744143]
+  official-645 strata: std=2.02e-01 mean=0.112394
+  never-vuln-8682:     std=2.04e-01 mean=0.117641
+  global pred: std=2.14e-01 unique@1e-6=199 exact-unique=1038/12405
+  vs init predictions: max|Δpred|=0.000e+00 spearman(init,trained)=+0.3812
+  act 1_pkg_proj   std=  476.5459 mean=   +8.1862 absmax=   1762.51 dead=0.518
+  act 2_conv1_Pkg  std=  291.5772 mean=  +22.0678 absmax=   2098.73 dead=0.499
+  act 3_conv2_Pkg  std=  199.7925 mean=  -10.5113 absmax=   1605.03 dead=0.481
+  act 4_cls_lin    std=  128.1520 mean=   -0.0096 absmax=    829.32 dead=0.544
+  act 5_logit      std=  119.5278 mean= -132.4579 absmax=    531.71 dead=1.000
+
+===== full_v2_p50_s42 =====
+  dist from seed-42 INIT weights: max|Δw|=5.592e-03  L2=4.500e-01
+  train n= 1807 spearman=-0.0730 mse=0.061816 predmean=0.145569 predstd=2.19e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  val   n=  451 spearman=-0.0680 mse=0.063855 predmean=0.155536 predstd=2.23e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4735143, 0.4744143, 0.4744143]
+  test  n= 1433 spearman=+0.0548 mse=0.078568 predmean=0.226277 predstd=2.37e-01 q=[0.0, 0.0, 0.0, 2.16e-05, 0.4744143, 0.4744143, 0.4744143]
+  official-645 strata: std=2.02e-01 mean=0.112394
+  never-vuln-8682:     std=2.04e-01 mean=0.117641
+  global pred: std=2.14e-01 unique@1e-6=199 exact-unique=1042/12405
+  vs init predictions: max|Δpred|=0.000e+00 spearman(init,trained)=+0.3812
+  act 1_pkg_proj   std=  476.5459 mean=   +8.1862 absmax=   1762.51 dead=0.518
+  act 2_conv1_Pkg  std=  291.6045 mean=  +22.0499 absmax=   2098.73 dead=0.499
+  act 3_conv2_Pkg  std=  199.7926 mean=  -10.5114 absmax=   1605.03 dead=0.481
+  act 4_cls_lin    std=  128.1521 mean=   -0.0096 absmax=    829.32 dead=0.544
+  act 5_logit      std=  119.5278 mean= -132.4579 absmax=    531.71 dead=1.000
+
+===== no_masking_s42 =====
+  dist from seed-42 INIT weights: max|Δw|=4.041e-03  L2=3.738e-01
+  train n= 1807 spearman=-0.0732 mse=0.062289 predmean=0.146169 predstd=2.20e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4755914, 0.4761941, 0.4761941]
+  val   n=  451 spearman=-0.0712 mse=0.064354 predmean=0.156173 predstd=2.23e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4755914, 0.4761941, 0.4761941]
+  test  n= 1433 spearman=+0.0544 mse=0.079200 predmean=0.227191 predstd=2.38e-01 q=[0.0, 0.0, 0.0, 2.87e-05, 0.4761941, 0.4761941, 0.4761941]
+  official-645 strata: std=2.02e-01 mean=0.112864
+  never-vuln-8682:     std=2.05e-01 mean=0.118203
+  global pred: std=2.15e-01 unique@1e-6=205 exact-unique=1058/12405
+  vs init predictions: max|Δpred|=0.000e+00 spearman(init,trained)=+0.3810
+  act 1_pkg_proj   std=  476.2833 mean=   +8.2351 absmax=   1756.84 dead=0.518
+  act 2_conv1_Pkg  std=  291.1247 mean=  +20.6460 absmax=   2154.66 dead=0.490
+  act 3_conv2_Pkg  std=  197.3542 mean=  -10.1748 absmax=   1621.89 dead=0.483
+  act 4_cls_lin    std=  123.5143 mean=   +3.0424 absmax=    849.07 dead=0.542
+  act 5_logit      std=  115.9154 mean= -128.4354 absmax=    516.06 dead=1.000
+
+===== no_ranking_p10_s42 =====
+  dist from seed-42 INIT weights: max|Δw|=5.075e-03  L2=4.240e-01
+  train n= 1807 spearman=-0.0711 mse=0.061973 predmean=0.145767 predstd=2.19e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4741911, 0.4750229, 0.4750229]
+  val   n=  451 spearman=-0.0680 mse=0.064021 predmean=0.155747 predstd=2.23e-01 q=[0.0, 0.0, 0.0, 0.0, 0.4741911, 0.4750229, 0.4750229]
+  test  n= 1433 spearman=+0.0562 mse=0.078778 predmean=0.226580 predstd=2.37e-01 q=[0.0, 0.0, 0.0, 1.75e-05, 0.4750229, 0.4750229, 0.4750229]
+  official-645 strata: std=2.02e-01 mean=0.112549
+  never-vuln-8682:     std=2.04e-01 mean=0.117803
+  global pred: std=2.14e-01 unique@1e-6=199 exact-unique=997/12405
+  vs init predictions: max|Δpred|=0.000e+00 spearman(init,trained)=+0.3828
+  act 1_pkg_proj   std=  476.2751 mean=   +8.3255 absmax=   1774.97 dead=0.518
+  act 2_conv1_Pkg  std=  300.4935 mean=  +20.5239 absmax=   2153.67 dead=0.495
+  act 3_conv2_Pkg  std=  203.1324 mean=  -11.4695 absmax=   1637.68 dead=0.488
+  act 4_cls_lin    std=  130.1266 mean=   +0.5021 absmax=    852.26 dead=0.543
+  act 5_logit      std=  123.4925 mean= -137.8286 absmax=    537.93 dead=1.000
+
+===== full_v2_p30_s123 =====
+  dist from seed-42 INIT weights: max|Δw|=7.967e-01  L2=6.424e+01
+  train n= 1807 spearman=+0.0545 mse=0.619179 predmean=0.804543 predstd=2.74e-01 q=[0.0, 0.0, 0.5172719, 1.0, 1.0, 1.0, 1.0]
+  val   n=  451 spearman=+0.0609 mse=0.605962 predmean=0.796813 predstd=2.76e-01 q=[0.0, 0.0, 0.5172719, 1.0, 1.0, 1.0, 1.0]
+  test  n= 1433 spearman=-0.0169 mse=0.465396 predmean=0.723035 predstd=2.58e-01 q=[0.0, 0.0, 0.5172719, 0.5172719, 1.0, 1.0, 1.0]
+  official-645 strata: std=2.71e-01 mean=0.830589
+  never-vuln-8682:     std=2.53e-01 mean=0.829859
+  global pred: std=2.60e-01 unique@1e-6=1239 exact-unique=1512/12405
+  vs init predictions: max|Δpred|=1.000e+00 spearman(init,trained)=-0.2437
+  act 1_pkg_proj   std=  440.7660 mean=  -45.1778 absmax=   1929.32 dead=0.549
+  act 2_conv1_Pkg  std=  247.6902 mean=  +11.7917 absmax=   1676.46 dead=0.492
+  act 3_conv2_Pkg  std=  142.6832 mean=   -6.7725 absmax=   1140.40 dead=0.480
+  act 4_cls_lin    std=   85.4802 mean=   +2.7562 absmax=    662.83 dead=0.517
+  act 5_logit      std=   24.0889 mean=  +20.2727 absmax=    116.47 dead=0.038
+
+===== full_v2_p30_s789 =====
+  dist from seed-42 INIT weights: max|Δw|=7.857e-01  L2=6.429e+01
+  train n= 1807 spearman=+0.0719 mse=0.652557 predmean=0.839616 predstd=2.38e-01 q=[0.4834973, 0.4834973, 0.4835453, 1.0, 1.0, 1.0, 1.0]
+  val   n=  451 spearman=+0.0818 mse=0.635233 predmean=0.829386 predstd=2.42e-01 q=[0.4834973, 0.4834973, 0.4835453, 1.0, 1.0, 1.0, 1.0]
+  test  n= 1433 spearman=-0.0076 mse=0.489431 predmean=0.745666 predstd=2.53e-01 q=[0.4834973, 0.4834973, 0.4835453, 0.8596236, 1.0, 1.0, 1.0]
+  official-645 strata: std=2.19e-01 mean=0.874342
+  never-vuln-8682:     std=2.21e-01 mean=0.860323
+  global pred: std=2.32e-01 unique@1e-6=740 exact-unique=814/12405
+  vs init predictions: max|Δpred|=1.000e+00 spearman(init,trained)=-0.3640
+  act 1_pkg_proj   std=  445.7097 mean=  +36.8843 absmax=   1901.32 dead=0.417
+  act 2_conv1_Pkg  std=  315.5610 mean=  -24.4880 absmax=   2113.61 dead=0.568
+  act 3_conv2_Pkg  std=  173.3553 mean=  +20.4128 absmax=   1812.25 dead=0.428
+  act 4_cls_lin    std=  105.0379 mean=   -1.6421 absmax=    742.99 dead=0.505
+  act 5_logit      std=   28.7185 mean=  +29.7692 absmax=    181.11 dead=0.286
+
+===== p_mask inertness (weights: full_v2_p30_s42; drop ALL hasVuln edges) =====
+  remove ALL 100% hasVulnerability edges -> max|Δpred| over 12,405 packages = 0.000e+00
+  p_mask=0.1   kept  2362 edges -> max|Δpred| = 0.000e+00
+  p_mask=0.3   kept  1847 edges -> max|Δpred| = 0.000e+00
+  p_mask=0.5   kept  1336 edges -> max|Δpred| = 0.000e+00
+  p_mask=0.9   kept   256 edges -> max|Δpred| = 0.000e+00
+
+===== NaN-AUC mechanism (empty eligible -> single-class y_true) =====
+  roc_auc_score(all-negative y) returned: nan
+
+===== INPUT FEATURE STATS (raw, exactly as v2 consumed them) =====
+  Package (raw):
+    dim 0 0 pkg_type_flag          min=      0.000 max=      1.000 mean=      0.098 std=      0.297
+    dim 1 1 is_app                 min=      0.000 max=      1.000 mean=      0.544 std=      0.498
+    dim 2 2 out_degree             min=      0.000 max=    123.000 mean=      2.575 std=      5.122
+    dim 3 3 depth_in_tree          min=      0.000 max=      7.000 mean=      1.307 std=      0.540
+    dim 4 4 version_recency_days   min=      5.000 max=   5595.000 mean=   2143.587 std=   1254.355
+    dim 5 5 versions_behind_latest min=      0.000 max=   4002.000 mean=     42.019 std=    193.846
+    dim 6 6 binary?                min=      0.000 max=      1.000 mean=      0.079 std=      0.269
+    dim 7 7 weekly_downloads_log   min=      0.000 max=      8.454 mean=      0.560 std=      1.909
+    dim 8 8 ?                      min=      0.000 max=      1.000 mean=      0.050 std=      0.218
+    dim 9 9 ?                      min=      0.000 max=      1.000 mean=      0.048 std=      0.214
+  CVE[0:768] embedding: std=0.0361 absmax=0.204
+  CVE[768] CVSS raw:    min=1.7 max=10.0 std=1.695  (Phase 4 divided by 10; v2 did not)
+  Author (raw):
+    dim0 min=     13.000 max=   6807.000 std=    828.414
+    dim1 min=      1.000 max=   1209.000 std=     36.262
+    dim2 min=      0.000 max=      7.000 std=      0.318
+    dim3 min=      0.000 max=   5531.000 std=   1252.560
+    dim4 min=      0.000 max=      1.000 std=      0.493
+    dim5 min=      0.000 max=      0.000 std=      0.000
+    dim6 min=      0.120 max=      1.000 std=      0.206
+  labels y: min=0.000000 max=0.760239 mean=0.026711 std=0.075008
+  -> pkg_proj preactivation at INIT: mean=8.186 std=476.546 absmax=1762.5 (Kaiming-uniform init)
+
+saved -> phase5/autopsy_behavior_results.json

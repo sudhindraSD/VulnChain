@@ -1,0 +1,35 @@
+{
+  "model": "FeatureMLP (no graph)",
+  "seed": 42,
+  "best_val_mse": 0.051481,
+  "train": {
+    "n": 10523,
+    "n_nonzero": 3024,
+    "mae": 0.134634,
+    "mse": 0.035908,
+    "spearman_all": 0.5325,
+    "pearson_nonzero": 0.4243,
+    "spearman_nonzero": 0.3696,
+    "ranking_accuracy": 0.7949
+  },
+  "val": {
+    "n": 541,
+    "n_nonzero": 161,
+    "mae": 0.153745,
+    "mse": 0.051481,
+    "spearman_all": 0.4645,
+    "pearson_nonzero": 0.2712,
+    "spearman_nonzero": 0.4259,
+    "ranking_accuracy": 0.751
+  },
+  "test": {
+    "n": 1341,
+    "n_nonzero": 538,
+    "mae": 0.143633,
+    "mse": 0.038266,
+    "spearman_all": 0.4426,
+    "pearson_nonzero": 0.5716,
+    "spearman_nonzero": 0.4944,
+    "ranking_accuracy": 0.7218
+  }
+}

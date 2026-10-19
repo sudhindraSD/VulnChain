@@ -1,0 +1,12 @@
+================================================================================
+  VulnChain -- Project Dependency Risk Analyzer
+================================================================================
+Target lockfile: ../../TrainModel/scratch/modern_clean_lock.json
+Parsed 6 unique packages and 0 dependency relations.
+
+[OK] Full analysis results exported to: old_modern_clean_lock.json
+
+================================================================================
+  Analysis Complete!
+================================================================================
+

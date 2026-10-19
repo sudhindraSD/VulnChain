@@ -1,0 +1,521 @@
+# VulnChain — Everything Explained in Simple Language
+
+> Read this before your PPT. Every term, every concept, in the easiest words possible.
+
+---
+
+## PART 1: The Problem (Why VulnChain Exists)
+
+### What is a "dependency"?
+
+When you build an app, you don't write everything from scratch. You use **other people's code** (packages/libraries).
+
+**Example:** You're building a website with Node.js. You install `express` to handle web requests. That `express` is your **dependency** — your project *depends* on it to work.
+
+```
+Your App → uses Express → uses body-parser → uses bytes
+```
+
+- `express` = **Direct dependency** (you chose to install it)
+- `body-parser` = **Transitive dependency** (Express needs it, you never installed it manually)
+- `bytes` = **Deep transitive dependency** (body-parser needs it, 2 levels away from you)
+
+### How many dependencies does a real project have?
+
+A typical React app has **500-1500+ packages** in its `node_modules` folder. You installed maybe 10-20 directly. The other 1000+ came along as transitive dependencies. **You have no idea what most of them are.**
+
+### What is a "vulnerability" (CVE)?
+
+A **CVE** (Common Vulnerabilities and Exposures) is a **known security bug** in a software package. Think of it like a recall notice for a car — "this model has a brake defect."
+
+Each CVE gets an ID like `CVE-2021-44228` (this is Log4Shell — the most famous one ever).
+
+### What is CVSS?
+
+**CVSS** (Common Vulnerability Scoring System) = a **severity rating from 0 to 10** for each CVE.
+
+| Score | Severity | Example |
+|-------|----------|---------|
+| 0-3.9 | Low | Minor info leak, hard to exploit |
+| 4.0-6.9 | Medium | Needs specific conditions to exploit |
+| 7.0-8.9 | High | Serious, but needs some access |
+| 9.0-10.0 | Critical | Anyone on the internet can hack you |
+
+### Why is CVSS alone not enough?
+
+**Because it ignores WHERE the vulnerability sits.**
+
+Imagine two scenarios:
+- **Scenario A:** CVSS 9.8 vulnerability in a library your app uses directly, every time, in production → **EXTREMELY DANGEROUS** ☠️
+- **Scenario B:** CVSS 9.8 vulnerability in a library that's 6 levels deep, only used during testing, never in production → **Almost zero real risk** ✅
+
+CVSS gives both the **same score (9.8)**. That's dumb. **VulnChain fixes this** by considering the position in the dependency tree.
+
+### What is a "Software Supply Chain Attack"?
+
+Your app is like a chain:
+```
+You → Your Dependencies → Their Dependencies → Their Dependencies...
+```
+
+If an attacker poisons **any link** in this chain, they can attack everyone using it. That's a **supply chain attack**.
+
+**Real disasters:**
+- **Log4Shell (2021):** One tiny Java logging library (`log4j`) had a critical bug. It was hidden deep in millions of apps. Companies like Apple, Amazon, Microsoft were vulnerable. Cost: **billions of dollars**.
+- **XZ Utils (2024):** A hacker spent **2 years** gaining trust of a Linux utility, then added a secret backdoor. Almost compromised SSH on every Linux server on Earth.
+- **SolarWinds (2020):** Russian hackers infiltrated a network monitoring tool used by the U.S. government. 18,000+ organizations compromised.
+
+**VulnChain's goal:** Detect these hidden risks BEFORE they become disasters.
+
+---
+
+## PART 2: What VulnChain Does (The Solution)
+
+### One-line explanation:
+> VulnChain scans a GitHub repo, builds a map of all its dependencies, checks which ones have known vulnerabilities, and uses AI to calculate how much risk each vulnerability poses to YOUR project specifically.
+
+### Step-by-step flow (in plain English):
+
+```
+Step 1:  You paste a GitHub URL (e.g., github.com/juice-shop/juice-shop)
+Step 2:  VulnChain downloads ONLY the package files (package.json, package-lock.json)
+Step 3:  It reads those files and builds a TREE of every dependency
+Step 4:  For EACH package, it asks 3 databases: "Does this package have any known bugs?"
+Step 5:  It collects 10 facts about each package (CVSS score, depth, popularity, etc.)
+Step 6:  It feeds the entire tree into the AI model (VulnGAT)
+Step 7:  The AI gives each package a RISK SCORE from 0.0 to 1.0
+Step 8:  It shows you a beautiful interactive graph — green nodes = safe, red nodes = dangerous
+Step 9:  You can click any red node to see: WHY is this risky? What's the fix?
+```
+
+---
+
+## PART 3: The Tech Stack (What Tools We Use & Why)
+
+### Frontend (What the user sees)
+
+| Tool | What it does | Simple analogy |
+|------|-------------|----------------|
+| **React** | Builds the user interface (buttons, pages, forms) | Like the body of a car — what you see and touch |
+| **TypeScript** | JavaScript with type checking — catches errors early | Like spell-check for code |
+| **D3.js** | Draws the interactive dependency graph with nodes and edges | Like Google Maps but for your code's dependencies |
+| **TailwindCSS** | Makes everything look pretty quickly | Pre-made Lego bricks for UI design |
+| **React Query** | Fetches data from backend smartly (caching, retries) | Smart postman who remembers what he already delivered |
+| **Zustand** | Stores app state (what page you're on, filters selected) | Like the app's short-term memory |
+
+### Backend (The brain behind the scenes)
+
+| Tool | What it does | Simple analogy |
+|------|-------------|----------------|
+| **FastAPI (Python)** | Handles all requests from frontend, runs the logic | Like the engine of a car |
+| **Uvicorn** | Runs the FastAPI server | Like the ignition key — starts the engine |
+| **Pydantic** | Validates data — makes sure inputs are correct format | Like a bouncer checking IDs at a club |
+| **SQLAlchemy** | Talks to the database using Python (instead of raw SQL) | Like a translator between Python and PostgreSQL |
+| **Alembic** | Manages database schema changes (migrations) | Like version control but for your database structure |
+| **Celery** | Runs long tasks in the background (scanning is slow) | Like a worker in a factory — does heavy lifting while you wait |
+| **httpx** | Makes HTTP requests to external APIs (NVD, OSV, etc.) | Like a web browser that the backend uses to fetch data |
+| **Redis** | Super-fast temporary storage — caches CVE data | Like a sticky note pad — quick to write, quick to read, but temporary |
+
+### AI / Machine Learning
+
+| Tool | What it does | Simple analogy |
+|------|-------------|----------------|
+| **PyTorch** | The main AI framework — builds and trains neural networks | Like the gym where the AI works out |
+| **PyTorch Geometric** | Extension of PyTorch specifically for GNNs (Graph Neural Networks) | Like specialized gym equipment for graph-shaped data |
+| **NetworkX** | Builds and analyzes graph data structures in Python | Like a blueprint tool for drawing networks |
+
+### Data & Infrastructure
+
+| Tool | What it does | Simple analogy |
+|------|-------------|----------------|
+| **PostgreSQL** | Main database — stores scan results permanently | Like a filing cabinet — organized, permanent storage |
+| **Redis** | Cache — stores CVE data temporarily (24h) so we don't keep asking APIs | Like a whiteboard — fast but gets erased |
+| **Docker** | Packages everything into containers for easy deployment | Like shipping containers — everything the app needs packed in one box |
+| **gitpython** | Clones GitHub repos programmatically | Like `git clone` but controlled by Python code |
+
+---
+
+## PART 4: The 3 Vulnerability Databases (Where We Get CVE Data)
+
+### 1. NVD (National Vulnerability Database) — by NIST (U.S. Government)
+- **What:** The "gold standard" — most comprehensive CVE database in the world
+- **API:** `services.nvd.nist.gov/rest/json/cves/2.0`
+- **Rate limit:** 50 requests per 30 seconds (with API key)
+- **Analogy:** Like the official government records office — most reliable but busy
+
+### 2. OSV.dev (Open Source Vulnerabilities) — by Google
+- **What:** Focused specifically on open-source packages
+- **API:** `api.osv.dev/v1/query`
+- **Rate limit:** Very generous, no key needed
+- **Analogy:** Like Google Search for vulnerabilities — easy to use, great for open-source
+
+### 3. GitHub Advisory Database
+- **What:** GitHub's own database of security advisories
+- **API:** `api.github.com/advisories`
+- **Rate limit:** 5000 requests/hr with token
+- **Analogy:** Like GitHub's own security bulletin board
+
+### Why use all 3?
+No single database has everything. NVD might miss a new npm vulnerability that OSV catches. GitHub might have an advisory that NVD hasn't indexed yet. **Using all 3 gives maximum coverage.**
+
+---
+
+## PART 5: The GNN — Explained Like You're 10 Years Old
+
+### What is a Neural Network?
+
+A neural network is a computer program that **learns patterns from examples**.
+
+- You show it 1000 photos of cats and dogs with labels
+- It learns: *"pointy ears + whiskers = cat, floppy ears + snout = dog"*
+- Now it can identify NEW photos it's never seen
+
+### What is a Graph?
+
+Not a bar chart or pie chart. In CS, a **graph** = **nodes connected by edges**.
+
+```
+    [Express] ──→ [body-parser] ──→ [bytes]
+        │
+        └──→ [qs] ──→ [side-channel]
+```
+
+Each box = **node** (a package). Each arrow = **edge** (A depends on B).
+
+Your dependency tree IS a graph. Every project has a different-shaped graph.
+
+### What is a Graph Neural Network (GNN)?
+
+A neural network that works **directly on graphs**.
+
+Normal neural networks need data as a table (rows and columns). But dependency trees are NOT tables — they're messy, different-sized networks. **GNN can handle this.**
+
+### How does GNN learn? (Message Passing)
+
+Imagine each node (package) is a person at a party:
+
+```
+Round 1: Each person asks their neighbors: "Hey, what do you know?"
+         Everyone collects info from their direct neighbors.
+
+Round 2: Same thing again. Now each person knows what their 
+         neighbors' neighbors know (2 hops away).
+
+Round 3: One more time. Now each person has info from 3 hops away.
+```
+
+After 3 rounds, **every node knows about its local neighborhood** in the graph. This is called **message passing** — the key idea behind ALL GNNs.
+
+In VulnChain:
+- Round 1: Each package learns about its direct dependencies' vulnerabilities
+- Round 2: Each package now knows about vulnerabilities 2 levels deep
+- Round 3: Each package now understands risk from 3 levels deep
+
+### What is GAT (Graph Attention Network)?
+
+GAT is a **specific type of GNN** that adds **attention**.
+
+Regular GNN: *"All my neighbors are equally important."*
+GAT: *"Some neighbors matter MORE than others. Let me learn which ones."*
+
+**Analogy:** You're at a party (again). Regular GNN listens to everyone equally. GAT pays MORE attention to the person talking about something important (like a security threat) and LESS attention to someone talking about the weather.
+
+**How attention works technically:**
+```
+For each pair of connected nodes (A → B):
+  1. Take A's features and B's features
+  2. Pass them through a small neural network
+  3. Get a score: "How much should A pay attention to B?"
+  4. Higher score = B influences A's risk score more
+```
+
+**Why this is great for VulnChain:**
+- A runtime dependency with a critical CVE gets **high attention weight** → strongly influences the parent's risk
+- A dev-only dependency with a low CVE gets **low attention weight** → barely affects the parent
+
+**AND** — those attention weights are your **explainability for free**! You can say: *"This package is risky because it paid 73% attention to vulnerable-child-X and 20% to risky-child-Y."*
+
+### What is "Multi-Head Attention"?
+
+Instead of one attention mechanism, you run **4 in parallel** (4 "heads"). Each head might learn to focus on different things:
+- Head 1 might focus on CVSS severity
+- Head 2 might focus on whether it's a runtime dependency
+- Head 3 might focus on how many packages depend on it
+- Head 4 might focus on exploit availability
+
+Then you **combine all 4 opinions** for a richer understanding.
+
+**Analogy:** Instead of one security expert assessing risk, you have 4 experts, each looking at a different angle. Then you combine their assessments.
+
+---
+
+## PART 6: VulnGAT Architecture (The Model Design)
+
+### The 10 Features We Feed Into the Model
+
+For each package in the dependency tree, we compute 10 numbers:
+
+| # | Feature | What it means | Example |
+|---|---------|---------------|---------|
+| 1 | `cvss_max` | Highest severity score among all CVEs for this package | 9.8 |
+| 2 | `cvss_avg` | Average severity across all CVEs | 7.2 |
+| 3 | `cve_count` | How many known vulnerabilities does it have? | 3 |
+| 4 | `depth` | How far from your project? (direct=1, transitive=2+) | 4 |
+| 5 | `dependents_count` | How many packages rely on this one? | 45 |
+| 6 | `downloads_monthly` | How popular is it? (from npm registry) | 50,000,000 |
+| 7 | `days_since_update` | When was it last updated? (old = possibly abandoned) | 180 |
+| 8 | `is_dev_dependency` | Is it only for development? (0 or 1) | 0 |
+| 9 | `has_known_exploit` | Is there a known active exploit in the wild? (0 or 1) | 1 |
+| 10 | `scope` | Runtime (1.0), Build (0.5), Test (0.2) | 1.0 |
+
+### The Model Layers (How Data Flows Through)
+
+```
+INPUT: 10 numbers per package
+  ↓
+GAT Layer 1: 10 → 128 dimensions (4 attention heads × 32 each)
+  ↓ ReLU activation + Dropout (0.3)
+GAT Layer 2: 128 → 128 dimensions (4 attention heads × 32 each)  
+  ↓ ReLU activation + Dropout (0.3)
+GAT Layer 3: 128 → 32 dimensions (2 attention heads × 16 each)
+  ↓ ReLU activation
+Linear Layer: 32 → 1 number
+  ↓ Sigmoid activation
+OUTPUT: 1 number between 0.0 and 1.0 (the risk score)
+```
+
+### Key terms explained:
+
+- **ReLU:** A simple function: if the number is negative, make it 0. If positive, keep it. Helps the network learn complex patterns.
+  - *Analogy:* A filter that removes negative thoughts — only positive signals pass through.
+
+- **Dropout (0.3):** During training, randomly "turn off" 30% of neurons. Prevents the model from memorizing instead of learning.
+  - *Analogy:* Like studying for an exam by covering random parts of your notes — forces you to actually understand.
+
+- **Sigmoid:** Squashes any number into the range 0 to 1. Perfect for our risk score.
+  - *Analogy:* Like a dimmer switch — converts any input into a value between "fully off" (0) and "fully on" (1).
+
+- **Over-smoothing:** If you add too many GNN layers, all nodes start looking the same (because info spreads too far). We prevent this with only 3 layers + dropout.
+  - *Analogy:* Like mixing paint colors — mix 2 colors, you get something interesting. Mix 20 colors, you get brownish mush.
+
+---
+
+## PART 7: Training — The Cold Start Problem
+
+### The problem:
+To train any AI, you need **correct answers** (labels). For VulnChain, the "correct answer" for each package should be: *"This package poses X% risk to the project."*
+
+But **nobody has ever defined these risk scores!** There's no dataset in the world that says *"lodash@4.17.15 poses exactly 0.73 risk to project X."* This is called the **cold start problem**.
+
+### The solution: Heuristic Pseudo-Labels
+
+We **make up reasonable labels** using a formula:
+
+```
+risk_label = (cvss_score / 10) × (0.85 ^ depth) × scope_multiplier
+
+Where:
+- cvss_score / 10 → normalize to 0-1 range
+- 0.85 ^ depth → deeper = less risk (0.85 × 0.85 × 0.85... gets smaller)
+- scope: runtime = 1.0, build = 0.5, test = 0.2
+- dev dependencies get 50% reduction
+```
+
+**Example:**
+```
+Package: lodash @ depth 1, CVSS 9.8, runtime, has exploit
+risk = (9.8 / 10) × (0.85^1) × 1.0 = 0.98 × 0.85 = 0.833 → HIGH RISK ✅
+
+Package: some-test-lib @ depth 5, CVSS 6.0, test-only, no exploit  
+risk = (6.0 / 10) × (0.85^5) × 0.2 = 0.6 × 0.444 × 0.2 = 0.053 → LOW RISK ✅
+```
+
+### Why this works:
+The formula gives **reasonable starting labels**. The GNN then learns to **go beyond** these labels by understanding the graph structure — which the formula cannot capture.
+
+### Self-supervised learning:
+This approach is called **self-supervised learning** — the model creates its own training signal from the data structure, rather than requiring human-annotated labels.
+
+---
+
+## PART 8: The 5 Baselines (What We Compare Against)
+
+### Why compare?
+To prove VulnGAT is worth it, we show it beats simpler methods. Like proving your new car is faster by racing it against 5 other cars.
+
+### Baseline 1: Raw CVSS Max
+```python
+risk = max_cvss_score / 10
+```
+- Just takes the highest CVSS and normalizes it
+- **Problem:** A CVSS 9.8 at depth 6 gets the same score as CVSS 9.8 at depth 1
+- **Analogy:** Judging how dangerous a tiger is without knowing if it's in your room or in a zoo 5000 km away
+
+### Baseline 2: CVSS + Depth Decay
+```python
+risk = (cvss / 10) × (0.85 ^ depth)
+```
+- Adds depth penalty — deeper = less risky
+- **Problem:** Still ignores the graph. Doesn't know if the path from vulnerability to your project goes through runtime or test dependencies
+- **Analogy:** Knowing the tiger is far away, but not knowing if there's a fence between you
+
+### Baseline 3: PageRank
+```python
+risk = networkx.pagerank(dependency_graph)
+```
+- PageRank = Google's algorithm for ranking web pages by importance
+- Applied to dependency graph: more connections = higher score
+- **Problem:** Measures **popularity, not risk**. A perfectly safe but popular package (like React) gets a high score. That's wrong.
+- **Analogy:** Ranking people by how many friends they have, not by how dangerous they are
+
+### Baseline 4: Weighted Sum
+```python
+risk = 0.3×cvss + 0.2×depth_decay + 0.15×exploit + 0.1×scope + ...
+```
+- Hand-crafted formula with manually chosen weights
+- **Problem:** You (the human) have to guess the right weights. No learning happens.
+- **Analogy:** A recipe where you eyeball ingredients instead of measuring
+
+### Baseline 5: Random Forest
+```python
+# sklearn Random Forest trained on the same 10 features
+rf = RandomForestClassifier()
+rf.fit(features, labels)
+```
+- Traditional ML model, trained on the same 10 features
+- **Problem:** Treats each package **independently**. Doesn't know Package A is connected to Package B.
+- **This is the closest competitor to GNN** — it learns from data (unlike baselines 1-4), but it can't see the graph structure.
+- **Analogy:** 10 doctors each examining a patient in isolation vs. a team of doctors discussing the case together (GNN)
+
+### Where VulnGAT wins:
+```
+Shallow vulnerabilities (depth 1-2):
+  Random Forest ≈ VulnGAT  (both good, features are enough)
+
+Deep transitive vulnerabilities (depth 4+):
+  Random Forest << VulnGAT  (GNN sees the path, RF is blind)
+```
+
+---
+
+## PART 9: Evaluation Metrics (How We Measure "Better")
+
+### MSE (Mean Squared Error)
+- **What:** Average of (predicted - actual)² across all packages
+- **Simple:** How far off are our predictions on average?
+- **Good if:** Close to 0 (predictions match labels)
+- **Target:** < 0.05
+
+### Pearson Correlation
+- **What:** Are our scores linearly related to the true labels? (do they go up and down together?)
+- **Simple:** If our labels say "high risk," do our predictions also say "high risk?"
+- **Range:** -1 to +1 (1 = perfect match)
+- **Target:** > 0.85
+
+### Spearman Rank Correlation
+- **What:** Even if the exact numbers differ, is the **ranking** correct?
+- **Simple:** Did we rank the TOP 10 riskiest packages in the right order?
+- **Range:** -1 to +1
+- **Target:** > 0.80
+- **Why this matters:** For a security tool, getting the ORDER right (most dangerous first) is more important than the exact score
+
+### Top-K Precision
+- **What:** Of the top 10 packages our model flagged as "most risky," how many actually are risky?
+- **Simple:** If the AI says "these 10 are dangerous," how many really are?
+- **Target:** > 80% (at least 8 out of 10 correct)
+
+### Coverage
+- **What:** What % of truly vulnerable packages did we assign a score > 0.5?
+- **Simple:** Did we catch all the dangerous packages, or did some slip through?
+- **Target:** > 90%
+
+---
+
+## PART 10: Key Components Explained
+
+### What is an API?
+**Application Programming Interface** — a way for programs to talk to each other.
+
+When VulnChain asks NVD: *"Does lodash@4.17.15 have any CVEs?"*, it sends an **API request** (like a letter). NVD sends back an **API response** (like a reply) with the CVE data.
+
+### What is REST API?
+**REST** = a set of rules for how APIs should work. Uses standard HTTP methods:
+- `GET /scan/123` → Give me the results of scan 123
+- `POST /scan` → Start a new scan
+- `DELETE /scan/123` → Delete scan 123
+
+FastAPI creates these REST APIs automatically.
+
+### What is Redis? Why cache?
+**Redis** = an in-memory database. Stores data in RAM (not disk), so it's **extremely fast**.
+
+**Why cache CVE data?** The NVD API has rate limits (50 requests per 30 seconds). If 10 scans ask about `express`, we shouldn't ask NVD 10 times. We ask once, store the answer in Redis for 24 hours, and serve the cached result for subsequent requests.
+
+### What is Celery?
+**Celery** = a task queue for running background jobs in Python.
+
+Scanning a repo takes 30-60 seconds. You don't want the user to stare at a frozen screen. So:
+1. User clicks "Scan" → Backend creates a Celery task
+2. User sees a progress bar (via WebSocket updates)
+3. Celery worker processes the scan in the background
+4. When done, result appears on dashboard
+
+### What is WebSocket?
+Normal HTTP: *Client asks, server replies.* One-way, client always initiates.
+
+WebSocket: **Two-way real-time connection.** Server can push updates to client without being asked.
+
+Used for: *"Scan 20% complete... 50% complete... 80%... done!"* — live progress bar updates.
+
+### What is Docker?
+**Docker** = packages your entire application into a container.
+
+**Without Docker:** *"Works on my machine but not yours. Install Python 3.11, PostgreSQL 15, Redis 7, Node.js 18..."*
+
+**With Docker:** `docker compose up` → Everything starts. Same on every machine. One command.
+
+### What is SARIF?
+**SARIF** (Static Analysis Results Interchange Format) = a standard file format for security scan results.
+
+GitHub, Azure DevOps, and VS Code can all read SARIF files. If VulnChain exports results as SARIF, they appear directly in GitHub's Security tab. This enables **CI/CD integration** — automatic scanning on every pull request.
+
+### What is DAG?
+**DAG** = Directed Acyclic Graph
+- **Directed:** Arrows have a direction (A → B, not just A—B)
+- **Acyclic:** No loops (A → B → C → A would be a cycle — this can't happen in a dependency tree because that would be circular)
+- **Graph:** Nodes connected by edges
+
+Your dependency tree IS a DAG.
+
+### What is SBOM?
+**SBOM** (Software Bill of Materials) = a complete list of every component in your software.
+
+Like the ingredients list on food packaging — tells you exactly what's inside. Governments (EU, US) are starting to **legally require** SBOMs for critical software.
+
+---
+
+## PART 11: Quick-Fire Viva Answers
+
+**Q: What is VulnChain in one sentence?**
+> An AI platform that uses Graph Neural Networks to analyze how vulnerabilities propagate through software dependency trees, giving context-aware risk scores instead of flat CVSS numbers.
+
+**Q: Why GNN and not Random Forest?**
+> Dependencies form a graph. Random Forest treats each package independently — it can't see how a vulnerability flows from package A through B to C. GNN is designed for graph data — it learns by passing messages between connected nodes.
+
+**Q: What makes this different from Snyk?**
+> Snyk does binary detection (has CVE or doesn't). VulnChain does risk propagation — it tells you HOW MUCH risk a deep transitive vulnerability actually poses to YOUR project, considering the path topology.
+
+**Q: What's your novel contribution?**
+> Three things: (1) GNN-based risk propagation for dependency graphs, (2) comparative study showing GNN outperforms 5 baselines on transitive vulnerabilities, (3) attention-based explainability — the model tells you WHY something is risky.
+
+**Q: What are the limitations?**
+> Four honest ones: (1) No ground-truth labels — we use heuristic pseudo-labels; (2) Snapshot analysis — we analyze one point in time; (3) Three ecosystems only — npm, pip, Maven; (4) Popularity bias — download counts favor popular packages.
+
+**Q: How do you handle API rate limits?**
+> Redis caching with 24-hour TTL, batch queries grouped by ecosystem, exponential backoff on failures, and fallback to OSV.dev if NVD is throttled.
+
+**Q: What is over-smoothing?**
+> When too many GNN layers make all nodes look identical — like mixing every paint color into brown. We prevent it with only 3 layers, dropout (0.3), and multi-head attention.
+
+**Q: Why 3 GAT layers specifically?**
+> 3 layers = 3 hops of message passing. Most dependency vulnerabilities propagate within 3-4 levels. Adding more layers would cause over-smoothing and wouldn't add useful information.

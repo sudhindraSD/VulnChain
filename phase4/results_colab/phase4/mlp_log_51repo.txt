@@ -1,0 +1,36 @@
+Device: cuda
+Loading graph from phase4/vulnchain_graph.json...
+Loading labels from phase4/vpss_labels_51repo.json...
+Loading true repository-level split from phase4/repo_split_mapping_51repo.json...
+  Split ID check: 0 dropped (train=10523, val=541, test=1341)
+HeteroData constructed successfully:
+  Package nodes: 12405, features: torch.Size([12405, 10])
+  CVE nodes:     883, features: torch.Size([883, 769])
+  Author nodes:  3878, features: torch.Size([3878, 7])
+  Edges:
+    Package -> dependsOn -> Package:    60789
+    Package -> hasVulnerability -> CVE: 2632
+    Package -> maintainedBy -> Author:  12390
+    CVE -> introducedBy -> Author:      2632
+  Splits (Package nodes):
+    Train: 10523 (Vulnerable: 3024)
+    Val:   541 (Vulnerable: 161)
+    Test:  1341 (Vulnerable: 538)
+Packages: 12405 | train 10523, val 541, test 1341 (test non-zero: 538)
+  epoch  20 | train MSE 0.13808 | val MSE 0.13883
+  epoch  40 | train MSE 0.07129 | val MSE 0.07818
+  epoch  60 | train MSE 0.05301 | val MSE 0.06163
+  epoch  80 | train MSE 0.04749 | val MSE 0.05842
+  epoch 100 | train MSE 0.04296 | val MSE 0.05667
+  epoch 120 | train MSE 0.04107 | val MSE 0.05614
+  epoch 140 | train MSE 0.03996 | val MSE 0.05553
+  epoch 160 | train MSE 0.03880 | val MSE 0.05445
+  epoch 180 | train MSE 0.03748 | val MSE 0.05311
+  epoch 200 | train MSE 0.03599 | val MSE 0.05148
+
+=== Feature-Only MLP Baseline Results ===
+train: MAE 0.1346 | MSE 0.0359 | Spearman(all) 0.5325 | Pearson(nz) 0.4243 (n=3024) | RankAcc 79.49%
+  val: MAE 0.1537 | MSE 0.0515 | Spearman(all) 0.4645 | Pearson(nz) 0.2712 (n=161) | RankAcc 75.10%
+ test: MAE 0.1436 | MSE 0.0383 | Spearman(all) 0.4426 | Pearson(nz) 0.5716 (n=538) | RankAcc 72.18%
+
+wrote phase4/mlp_baseline_results_51repo.json

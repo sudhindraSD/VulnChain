@@ -1,0 +1,49 @@
+{
+  "suite": "v2-rerun pre-flight P1-P6 (Commandment 15)",
+  "date": "2026-09-20",
+  "notebook_under_test": "phase5/vulngat_v2_training_rerun.ipynb",
+  "device": "cpu (no GPU training; P3 smoke weights discarded)",
+  "gates": {
+    "P6": {
+      "pass": true,
+      "detail": "35/35 new ids prefixed v2dc_ and disjoint from the 35 quarantined v2 ids: True\nskip-completed verified on new id (no retrain): True\nlegacy v2 record hard-fails with RuntimeError (old run_ids can never be reused/resumed): True"
+    },
+    "F1-normalization-parity": {
+      "pass": true,
+      "detail": "package max|delta|=0.000e+00; author=0.000e+00; cve-emb=0.000e+00; cve-cvss=0.000e+00\nbit-level parity (or <=1e-7): True"
+    },
+    "P1": {
+      "pass": true,
+      "detail": "pred_std=0.007211 > 0: True\nlayer-1 preact_std=0.2597 in [0.1, 10]: True"
+    },
+    "P2": {
+      "pass": true,
+      "detail": "100% removal delta = 3.109249e-02 > 0: True\npartial p=0.1: delta=2.877888e-02 > 0\npartial p=0.3: delta=3.107876e-02 > 0\npartial p=0.5: delta=3.107876e-02 > 0\npartial p=0.9: delta=3.107876e-02 > 0"
+    },
+    "P4": {
+      "pass": true,
+      "detail": "N_eligible=645: True | N_never_vuln=8,682: True\nnotebook ported values set-equal to official module output: True"
+    },
+    "P3": {
+      "pass": false,
+      "detail": "train Spearman = -0.1602 > 0.30: False\nval_spearman(best)=-0.1119 | test_spearman=0.1060 | masked_auc_50=0.2924 (smoke-run info only, not a gate)"
+    },
+    "P5": {
+      "pass": true,
+      "detail": "50/50 epochs logged with per-term magnitudes (MSE/ranking/consistency/total/val_spearman): True\nconsistency term is LIVE (max L_aux = 0.000864 > 0 in 50 epochs): True"
+    }
+  },
+  "p3_smoke_record_summary": {
+    "run_id": "v2dc_full_v2_p30_s42",
+    "arm": "full_v2",
+    "p_mask": 0.3,
+    "seed": 42,
+    "val_spearman": -0.11185662378329794,
+    "test_spearman": 0.10598849811206916,
+    "masked_auc_50": 0.29235684616042157,
+    "n_epochs_run": 50,
+    "early_stopped": false
+  },
+  "p3_train_spearman": -0.16017790774324978,
+  "overall_pass": false
+}

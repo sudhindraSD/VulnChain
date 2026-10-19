@@ -1,0 +1,811 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "handlebars": {
+      "name": "handlebars",
+      "severity": "critical",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1086648,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Arbitrary Code Execution in handlebars",
+          "url": "https://github.com/advisories/GHSA-q2c6-c6pm-g3gh",
+          "severity": "high",
+          "cwe": [],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.0.0 <4.5.3"
+        },
+        {
+          "source": 1086650,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Prototype Pollution in handlebars",
+          "url": "https://github.com/advisories/GHSA-g9r4-xpmj-mj65",
+          "severity": "high",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.0.0 <4.5.3"
+        },
+        {
+          "source": 1086668,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Denial of Service in handlebars",
+          "url": "https://github.com/advisories/GHSA-f52g-6jhx-586p",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.0.0 <4.4.5"
+        },
+        {
+          "source": 1095063,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Remote code execution in handlebars when compiling templates",
+          "url": "https://github.com/advisories/GHSA-f2jv-r9rf-7988",
+          "severity": "critical",
+          "cwe": [
+            "CWE-94"
+          ],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<4.7.7"
+        },
+        {
+          "source": 1095064,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Arbitrary Code Execution in Handlebars",
+          "url": "https://github.com/advisories/GHSA-3cqr-58rm-57f8",
+          "severity": "high",
+          "cwe": [
+            "CWE-94"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:L"
+          },
+          "range": ">=4.0.0 <4.5.3"
+        },
+        {
+          "source": 1095067,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Prototype Pollution in handlebars",
+          "url": "https://github.com/advisories/GHSA-q42p-pg8m-cqh6",
+          "severity": "high",
+          "cwe": [
+            "CWE-471"
+          ],
+          "cvss": {
+            "score": 7.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+          },
+          "range": ">=4.0.0 <4.0.14"
+        },
+        {
+          "source": 1095069,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Regular Expression Denial of Service in Handlebars",
+          "url": "https://github.com/advisories/GHSA-62gr-4qp9-h98f",
+          "severity": "high",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=4.0.0 <4.4.5"
+        },
+        {
+          "source": 1096404,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Arbitrary Code Execution in handlebars",
+          "url": "https://github.com/advisories/GHSA-2cf5-4w76-r9qv",
+          "severity": "high",
+          "cwe": [
+            "CWE-94"
+          ],
+          "cvss": {
+            "score": 7.3,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:H/A:L"
+          },
+          "range": ">=4.0.0 <4.5.2"
+        },
+        {
+          "source": 1102332,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Prototype Pollution in handlebars",
+          "url": "https://github.com/advisories/GHSA-w457-6q6x-cgp9",
+          "severity": "critical",
+          "cwe": [
+            "CWE-74",
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0 <4.3.0"
+        },
+        {
+          "source": 1102335,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Prototype Pollution in handlebars",
+          "url": "https://github.com/advisories/GHSA-765h-qjxv-5f44",
+          "severity": "critical",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<4.7.7"
+        },
+        {
+          "source": 1115538,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @partial-block",
+          "url": "https://github.com/advisories/GHSA-3mfm-83xf-c92r",
+          "severity": "high",
+          "cwe": [
+            "CWE-94",
+            "CWE-843"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        },
+        {
+          "source": 1115539,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has JavaScript Injection via AST Type Confusion",
+          "url": "https://github.com/advisories/GHSA-2w6w-674q-4c4q",
+          "severity": "critical",
+          "cwe": [
+            "CWE-94",
+            "CWE-843"
+          ],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        },
+        {
+          "source": 1115544,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has Prototype Pollution Leading to XSS through Partial Template Injection",
+          "url": "https://github.com/advisories/GHSA-2qvq-rjwj-gvw9",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79",
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 4.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": ">=4.0.0 <4.7.9"
+        },
+        {
+          "source": 1115589,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has a Property Access Validation Bypass in container.lookup",
+          "url": "https://github.com/advisories/GHSA-442j-39wm-28r2",
+          "severity": "low",
+          "cwe": [
+            "CWE-367"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        },
+        {
+          "source": 1115693,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has JavaScript Injection via AST Type Confusion when passing an object as dynamic partial",
+          "url": "https://github.com/advisories/GHSA-xhpv-hc6g-r9c6",
+          "severity": "high",
+          "cwe": [
+            "CWE-94",
+            "CWE-843"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        },
+        {
+          "source": 1115694,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template Compilation",
+          "url": "https://github.com/advisories/GHSA-9cx6-37pm-9jff",
+          "severity": "high",
+          "cwe": [
+            "CWE-754"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        },
+        {
+          "source": 1117465,
+          "name": "handlebars",
+          "dependency": "handlebars",
+          "title": "Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names and Options",
+          "url": "https://github.com/advisories/GHSA-xjpj-3mr7-gcpf",
+          "severity": "high",
+          "cwe": [
+            "CWE-79",
+            "CWE-94",
+            "CWE-116"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0 <=4.7.8"
+        }
+      ],
+      "effects": [],
+      "range": "<=4.7.8",
+      "nodes": [
+        "node_modules/handlebars"
+      ],
+      "fixAvailable": {
+        "name": "handlebars",
+        "version": "4.7.9",
+        "isSemVerMajor": false
+      }
+    },
+    "jquery": {
+      "name": "jquery",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1094143,
+          "name": "jquery",
+          "dependency": "jquery",
+          "title": "Cross-Site Scripting (XSS) in jquery",
+          "url": "https://github.com/advisories/GHSA-rmxg-73gg-4p98",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": ">=1.12.3 <3.0.0"
+        },
+        {
+          "source": 1100396,
+          "name": "jquery",
+          "dependency": "jquery",
+          "title": "XSS in jQuery as used in Drupal, Backdrop CMS, and other products",
+          "url": "https://github.com/advisories/GHSA-6c3j-c64m-qhgq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79",
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 6.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": ">=1.1.4 <3.4.0"
+        },
+        {
+          "source": 1109145,
+          "name": "jquery",
+          "dependency": "jquery",
+          "title": "Potential XSS vulnerability in jQuery",
+          "url": "https://github.com/advisories/GHSA-jpcq-cgw6-v4j6",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 6.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N/E:H"
+          },
+          "range": ">=1.0.3 <3.5.0"
+        },
+        {
+          "source": 1122850,
+          "name": "jquery",
+          "dependency": "jquery",
+          "title": "Potential XSS vulnerability in jQuery",
+          "url": "https://github.com/advisories/GHSA-gxr4-xjj5-5px2",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 6.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N"
+          },
+          "range": ">=1.12.0 <3.5.0"
+        }
+      ],
+      "effects": [],
+      "range": "<=3.4.1",
+      "nodes": [
+        "node_modules/jquery"
+      ],
+      "fixAvailable": {
+        "name": "jquery",
+        "version": "4.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "js-yaml": {
+      "name": "js-yaml",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1112714,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml has prototype pollution in merge (<<)",
+          "url": "https://github.com/advisories/GHSA-mh29-5h37-fv8m",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<3.14.2"
+        },
+        {
+          "source": 1121859,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+          "url": "https://github.com/advisories/GHSA-h67p-54hq-rp68",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<3.15.0"
+        },
+        {
+          "source": 1123912,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+          "url": "https://github.com/advisories/GHSA-52cp-r559-cp3m",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.0"
+        },
+        {
+          "source": 1138114,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u00e2\u20ac\u201d CVE-2026-59870 fix not backported",
+          "url": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj",
+          "severity": "high",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.1"
+        },
+        {
+          "source": 1193726,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources",
+          "url": "https://github.com/advisories/GHSA-2883-xcg3-v3hh",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.2"
+        }
+      ],
+      "effects": [],
+      "range": "<=3.15.1",
+      "nodes": [
+        "node_modules/js-yaml"
+      ],
+      "fixAvailable": {
+        "name": "js-yaml",
+        "version": "3.15.2",
+        "isSemVerMajor": false
+      }
+    },
+    "tar": {
+      "name": "tar",
+      "severity": "critical",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1089684,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization",
+          "url": "https://github.com/advisories/GHSA-3jfq-g458-7qm9",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+          },
+          "range": ">=4.0.0 <4.4.14"
+        },
+        {
+          "source": 1095117,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization",
+          "url": "https://github.com/advisories/GHSA-5955-9wpr-37jh",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+          },
+          "range": "<4.4.18"
+        },
+        {
+          "source": 1096309,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning",
+          "url": "https://github.com/advisories/GHSA-r628-mhmh-qjhw",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-23",
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+          },
+          "range": ">=4.0.0 <4.4.15"
+        },
+        {
+          "source": 1096376,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning using symbolic links",
+          "url": "https://github.com/advisories/GHSA-9r2w-394v-53qc",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+          },
+          "range": ">=3.0.0 <4.4.16"
+        },
+        {
+          "source": 1096411,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning using symbolic links",
+          "url": "https://github.com/advisories/GHSA-qq89-hq3f-393p",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+          },
+          "range": ">=3.0.0 <4.4.18"
+        },
+        {
+          "source": 1097493,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Denial of service while parsing a tar file due to lack of folders count validation",
+          "url": "https://github.com/advisories/GHSA-f5x3-32g6-xq36",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.2.1"
+        },
+        {
+          "source": 1112659,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+          "url": "https://github.com/advisories/GHSA-34x7-hfp2-rc4v",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 8.2,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N"
+          },
+          "range": "<7.5.7"
+        },
+        {
+          "source": 1113300,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+          "url": "https://github.com/advisories/GHSA-8qq5-rm4j-mr97",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=7.5.2"
+        },
+        {
+          "source": 1113375,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+          "url": "https://github.com/advisories/GHSA-83g3-92jg-28cx",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 7.1,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+          },
+          "range": "<7.5.8"
+        },
+        {
+          "source": 1114200,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+          "url": "https://github.com/advisories/GHSA-qffp-2rhf-9h96",
+          "severity": "high",
+          "cwe": [
+            "CWE-22",
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=7.5.9"
+        },
+        {
+          "source": 1114302,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+          "url": "https://github.com/advisories/GHSA-9ppj-qmqm-q256",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=7.5.10"
+        },
+        {
+          "source": 1114680,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+          "url": "https://github.com/advisories/GHSA-r6q2-hw4h-h46w",
+          "severity": "high",
+          "cwe": [
+            "CWE-176",
+            "CWE-367"
+          ],
+          "cvss": {
+            "score": 8.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L"
+          },
+          "range": "<=7.5.3"
+        },
+        {
+          "source": 1120782,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation differential (file smuggling)",
+          "url": "https://github.com/advisories/GHSA-vmf3-w455-68vh",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=7.5.15"
+        },
+        {
+          "source": 1123939,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar: Process crash via PAX numeric path type confusion",
+          "url": "https://github.com/advisories/GHSA-w8wr-v893-vjvp",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-704"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=7.5.17"
+        },
+        {
+          "source": 1123940,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar: Decompression/parse DoS via unlimited input",
+          "url": "https://github.com/advisories/GHSA-23hp-3jrh-7fpw",
+          "severity": "critical",
+          "cwe": [
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=7.5.18"
+        },
+        {
+          "source": 1123941,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar: Negative tar entry size causes infinite loop in archive replace",
+          "url": "https://github.com/advisories/GHSA-8x88-c5mf-7j5w",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=7.5.17"
+        },
+        {
+          "source": 1123942,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+          "url": "https://github.com/advisories/GHSA-gvwx-54wh-qm9j",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-248"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=7.5.16"
+        },
+        {
+          "source": 1145647,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar with member selection",
+          "url": "https://github.com/advisories/GHSA-r292-9mhp-454m",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=7.5.20"
+        }
+      ],
+      "effects": [],
+      "range": "<=7.5.20",
+      "nodes": [
+        "node_modules/tar"
+      ],
+      "fixAvailable": {
+        "name": "tar",
+        "version": "7.5.22",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 1,
+      "critical": 2,
+      "total": 4
+    },
+    "dependencies": {
+      "prod": 12,
+      "dev": 0,
+      "optional": 0,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 11
+    }
+  }
+}

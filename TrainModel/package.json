@@ -1,0 +1,9 @@
+{
+  "name": "vulnchain-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local web dashboard for the VulnGAT supply-chain risk model.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

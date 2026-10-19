@@ -1,0 +1,803 @@
+{
+  "generated": "2026-09-20T01:55:51.269619",
+  "model": "VulnGAT-HR (phase5/models/vulngat_hr_full.pt)",
+  "comparisons": [
+    {
+      "lockfile_name": "personal_132pkg",
+      "lockfile_path": "C:\\Users\\Admin\\Desktop\\Major VulnChain\\TrainModel\\user_package_lock.json",
+      "vulnchain": {
+        "total_packages": 132,
+        "summary": {
+          "critical": 10,
+          "high": 2,
+          "moderate": 0,
+          "safe": 120
+        },
+        "flagged_count": 10,
+        "own_cve_flags": 6,
+        "propagation_only_flags": 4,
+        "attack_paths_found": 9,
+        "top10_ranked": [
+          {
+            "rank": 1,
+            "package": "express@5.2.1",
+            "risk_score": 0.9998,
+            "cve": null,
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "express@5.2.1 -> body-parser@2.2.2",
+                "hops": 1,
+                "cve": "GHSA-v422-hmwv-36x6"
+              },
+              {
+                "chain": "express@5.2.1 -> qs@6.15.0",
+                "hops": 1,
+                "cve": "GHSA-4mjr-xmp4-gh2g"
+              }
+            ]
+          },
+          {
+            "rank": 2,
+            "package": "socket.io@4.8.3",
+            "risk_score": 0.9825,
+            "cve": null,
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "socket.io@4.8.3 -> engine.io@6.6.6",
+                "hops": 1,
+                "cve": "GHSA-gr94-w7qr-f4j3"
+              },
+              {
+                "chain": "socket.io@4.8.3 -> socket.io-parser@4.2.6",
+                "hops": 1,
+                "cve": "GHSA-2m8v-j782-fhvr"
+              },
+              {
+                "chain": "socket.io@4.8.3 -> engine.io@6.6.6 -> ws@8.18.3",
+                "hops": 2,
+                "cve": "GHSA-96hv-2xvq-fx4p"
+              }
+            ]
+          },
+          {
+            "rank": 3,
+            "package": "body-parser@2.2.2",
+            "risk_score": 0.972,
+            "cve": "GHSA-v422-hmwv-36x6",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@5.2.1 -> body-parser@2.2.2",
+                "hops": 1,
+                "cve": "GHSA-v422-hmwv-36x6"
+              }
+            ]
+          },
+          {
+            "rank": 4,
+            "package": "axios@1.14.0",
+            "risk_score": 0.9658,
+            "cve": "GHSA-35jp-ww65-95wh",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "axios@1.14.0",
+                "hops": 0,
+                "cve": "GHSA-35jp-ww65-95wh"
+              },
+              {
+                "chain": "axios@1.14.0 -> follow-redirects@1.15.11",
+                "hops": 1,
+                "cve": "GHSA-r4q5-vmmm-2653"
+              },
+              {
+                "chain": "axios@1.14.0 -> form-data@4.0.5",
+                "hops": 1,
+                "cve": "GHSA-hmw2-7cc7-3qxx"
+              }
+            ]
+          },
+          {
+            "rank": 5,
+            "package": "concurrently@9.2.1",
+            "risk_score": 0.9634,
+            "cve": null,
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "concurrently@9.2.1 -> shell-quote@1.8.3",
+                "hops": 1,
+                "cve": "GHSA-w7jw-789q-3m8p"
+              }
+            ]
+          },
+          {
+            "rank": 6,
+            "package": "engine.io@6.6.6",
+            "risk_score": 0.9557,
+            "cve": "GHSA-gr94-w7qr-f4j3",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "socket.io@4.8.3 -> engine.io@6.6.6",
+                "hops": 1,
+                "cve": "GHSA-gr94-w7qr-f4j3"
+              }
+            ]
+          },
+          {
+            "rank": 7,
+            "package": "socket.io-adapter@2.5.6",
+            "risk_score": 0.9258,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 8,
+            "package": "qs@6.15.0",
+            "risk_score": 0.6402,
+            "cve": "GHSA-4mjr-xmp4-gh2g",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@5.2.1 -> qs@6.15.0",
+                "hops": 1,
+                "cve": "GHSA-4mjr-xmp4-gh2g"
+              }
+            ]
+          },
+          {
+            "rank": 9,
+            "package": "socket.io-parser@4.2.6",
+            "risk_score": 0.523,
+            "cve": "GHSA-2m8v-j782-fhvr",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "socket.io@4.8.3 -> socket.io-parser@4.2.6",
+                "hops": 1,
+                "cve": "GHSA-2m8v-j782-fhvr"
+              }
+            ]
+          },
+          {
+            "rank": 10,
+            "package": "shell-quote@1.8.3",
+            "risk_score": 0.4459,
+            "cve": "GHSA-w7jw-789q-3m8p",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "concurrently@9.2.1 -> shell-quote@1.8.3",
+                "hops": 1,
+                "cve": "GHSA-w7jw-789q-3m8p"
+              }
+            ]
+          }
+        ]
+      },
+      "npm_audit": {
+        "total_dependencies": 138,
+        "total_vulnerabilities": 11,
+        "severity_breakdown": {
+          "critical": 2,
+          "high": 5,
+          "moderate": 3,
+          "low": 1,
+          "info": 0,
+          "total": 11
+        },
+        "affected_packages": [
+          {
+            "package": "axios",
+            "severity": "high",
+            "via": [
+              "Axios has a NO_PROXY Hostname Normalization Bypass that Leads to SSRF",
+              "Axios: Authentication Bypass via Prototype Pollution Gadget in `validateStatus` Merge Strategy",
+              "Axios: Incomplete Fix for CVE-2025-62718 \u00e2\u20ac\u201d NO_PROXY Protection Bypassed via RFC 1122 Loopback Subnet (127.0.0.0/8) in Axios 1.15.0",
+              "Axios: Invisible JSON Response Tampering via Prototype Pollution Gadget in `parseReviver`",
+              "Axios: Null Byte Injection via Reverse-Encoding in AxiosURLSearchParams",
+              "Axios: CRLF Injection in multipart/form-data body via unsanitized blob.type in formDataToStream",
+              "Axios: no_proxy bypass via IP alias allows SSRF",
+              "Axios' HTTP adapter-streamed uploads bypass maxBodyLength when maxRedirects: 0",
+              "Axios: HTTP adapter streamed responses bypass maxContentLength",
+              "Axios: Prototype Pollution Gadgets - Response Tampering, Data Exfiltration, and Request Hijacking",
+              "Axios: Header Injection via Prototype Pollution",
+              "Axios: XSRF Token Cross-Origin Leakage via Prototype Pollution Gadget in `withXSRFToken` Boolean Coercion",
+              "Axios has prototype pollution read-side gadgets in HTTP adapter that allow credential injection and request hijacking",
+              "Axios has Unrestricted Cloud Metadata Exfiltration via Header Injection Chain",
+              "Axios: unbounded recursion in toFormData causes DoS via deeply nested request data",
+              "Axios: Regular Expression Denial of Service (ReDoS) via Cookie Name Injection",
+              "Allocation of Resources Without Limits or Throttling in Axios",
+              "Axios: Proxy-Authorization Credential Leak to Origin Server Across HTTP-to-HTTPS Redirect in Axios Node.js HTTP Adapter",
+              "Axios: Proxy-Authorization header leaks to redirect target when proxy is re-evaluated to direct connection",
+              "axios Vulnerable to Credential Theft and Response Hijacking via Prototype Pollution Gadget in Config Merge",
+              "axios Vulnerable to Full Man-in-the-Middle via Prototype Pollution Gadget in `config.proxy`",
+              "axios has DoS & Header Injection via Prototype Pollution Read-Side Gadgets in axios merge functions",
+              "Axios: Prototype pollution gadgets can alter axios request construction",
+              "Axios: Deep formToJSON Key Recursion Can Cause Denial of Service",
+              "Axios: HTTP/2 streamed uploads bypass `maxBodyLength`",
+              "Axios: Nested axios option objects can consume polluted prototype values",
+              "Axios: Fetch adapter `ReadableStream` uploads bypass `maxBodyLength`",
+              "Axios: Excessive recursion in formDataToJSON can cause denial of service"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "body-parser",
+            "severity": "low",
+            "via": [
+              "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "concurrently",
+            "severity": "critical",
+            "via": [
+              "shell-quote"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "engine.io",
+            "severity": "high",
+            "via": [
+              "Socket.IO: Engine.IO Polling Transport Connection Exhaustion",
+              "Socket.IO: Engine.IO WebTransport SID DoS",
+              "ws"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "follow-redirects",
+            "severity": "moderate",
+            "via": [
+              "follow-redirects leaks Custom Authentication Headers to Cross-Domain Redirect Targets"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "form-data",
+            "severity": "high",
+            "via": [
+              "form-data: CRLF injection in form-data via unescaped multipart field names and filenames"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "qs",
+            "severity": "moderate",
+            "via": [
+              "qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/undefined entries in comma-format arrays when encodeValuesOnly is set",
+              "qs array-limit bypass via bracket-key comma parsing",
+              "qs: Denial of Service via Attacker Controlled isBuffer"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "shell-quote",
+            "severity": "critical",
+            "via": [
+              "shell-quote quote() does not escape newlines in object .op values",
+              "shell-quote: Quadratic-complexity Denial of Service in `parse()` (CWE-407)"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "socket.io-adapter",
+            "severity": "moderate",
+            "via": [
+              "ws"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "socket.io-parser",
+            "severity": "high",
+            "via": [
+              "Socket.IO: Zero-attachment Memory Exhaustion"
+            ],
+            "fix_available": true
+          },
+          {
+            "package": "ws",
+            "severity": "high",
+            "via": [
+              "ws: Uninitialized memory disclosure",
+              "ws: Memory exhaustion DoS from tiny fragments and data chunks"
+            ],
+            "fix_available": true
+          }
+        ],
+        "flat_advisory_count": 11
+      }
+    },
+    {
+      "lockfile_name": "vuln_test",
+      "lockfile_path": "C:\\Users\\Admin\\Desktop\\Major VulnChain\\TrainModel\\scratch\\vuln_test_lock.json",
+      "vulnchain": {
+        "total_packages": 11,
+        "summary": {
+          "critical": 1,
+          "high": 2,
+          "moderate": 0,
+          "safe": 8
+        },
+        "flagged_count": 1,
+        "own_cve_flags": 1,
+        "propagation_only_flags": 0,
+        "attack_paths_found": 4,
+        "top10_ranked": [
+          {
+            "rank": 1,
+            "package": "jquery@2.2.4",
+            "risk_score": 0.6531,
+            "cve": "GHSA-rmxg-73gg-4p98",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "jquery@2.2.4",
+                "hops": 0,
+                "cve": "GHSA-rmxg-73gg-4p98"
+              }
+            ]
+          },
+          {
+            "rank": 2,
+            "package": "js-yaml@3.13.1",
+            "risk_score": 0.3985,
+            "cve": "GHSA-mh29-5h37-fv8m",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "js-yaml@3.13.1",
+                "hops": 0,
+                "cve": "GHSA-mh29-5h37-fv8m"
+              }
+            ]
+          },
+          {
+            "rank": 3,
+            "package": "tar@4.4.8",
+            "risk_score": 0.2407,
+            "cve": "GHSA-w8wr-v893-vjvp",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "tar@4.4.8",
+                "hops": 0,
+                "cve": "GHSA-w8wr-v893-vjvp"
+              }
+            ]
+          },
+          {
+            "rank": 4,
+            "package": "argparse@1.0.10",
+            "risk_score": 0.08,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 5,
+            "package": "minipass@2.9.0",
+            "risk_score": 0.08,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 6,
+            "package": "yallist@3.1.1",
+            "risk_score": 0.08,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 7,
+            "package": "esprima@4.0.1",
+            "risk_score": 0.0763,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 8,
+            "package": "chownr@1.1.4",
+            "risk_score": 0.057,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 9,
+            "package": "minizlib@1.3.3",
+            "risk_score": 0.0459,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 10,
+            "package": "handlebars@4.0.5",
+            "risk_score": 0.0404,
+            "cve": "GHSA-xjpj-3mr7-gcpf",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "handlebars@4.0.5",
+                "hops": 0,
+                "cve": "GHSA-xjpj-3mr7-gcpf"
+              }
+            ]
+          }
+        ]
+      },
+      "npm_audit": {
+        "total_dependencies": 11,
+        "total_vulnerabilities": 4,
+        "severity_breakdown": {
+          "critical": 2,
+          "high": 1,
+          "moderate": 1,
+          "low": 0,
+          "info": 0,
+          "total": 4
+        },
+        "affected_packages": [
+          {
+            "package": "handlebars",
+            "severity": "critical",
+            "via": [
+              "Arbitrary Code Execution in handlebars",
+              "Prototype Pollution in handlebars",
+              "Denial of Service in handlebars",
+              "Remote code execution in handlebars when compiling templates",
+              "Arbitrary Code Execution in Handlebars",
+              "Prototype Pollution in handlebars",
+              "Regular Expression Denial of Service in Handlebars",
+              "Arbitrary Code Execution in handlebars",
+              "Prototype Pollution in handlebars",
+              "Prototype Pollution in handlebars",
+              "Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @partial-block",
+              "Handlebars.js has JavaScript Injection via AST Type Confusion",
+              "Handlebars.js has Prototype Pollution Leading to XSS through Partial Template Injection",
+              "Handlebars.js has a Property Access Validation Bypass in container.lookup",
+              "Handlebars.js has JavaScript Injection via AST Type Confusion when passing an object as dynamic partial",
+              "Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template Compilation",
+              "Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names and Options"
+            ],
+            "fix_available": {
+              "name": "handlebars",
+              "version": "4.7.9",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "jquery",
+            "severity": "moderate",
+            "via": [
+              "Cross-Site Scripting (XSS) in jquery",
+              "XSS in jQuery as used in Drupal, Backdrop CMS, and other products",
+              "Potential XSS vulnerability in jQuery",
+              "Potential XSS vulnerability in jQuery"
+            ],
+            "fix_available": {
+              "name": "jquery",
+              "version": "4.0.0",
+              "isSemVerMajor": true
+            }
+          },
+          {
+            "package": "js-yaml",
+            "severity": "high",
+            "via": [
+              "js-yaml has prototype pollution in merge (<<)",
+              "JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+              "js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+              "JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) \u00e2\u20ac\u201d CVE-2026-59870 fix not backported",
+              "js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources"
+            ],
+            "fix_available": {
+              "name": "js-yaml",
+              "version": "3.15.2",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "tar",
+            "severity": "critical",
+            "via": [
+              "Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization",
+              "Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization",
+              "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning",
+              "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning using symbolic links",
+              "Arbitrary File Creation/Overwrite via insufficient symlink protection due to directory cache poisoning using symbolic links",
+              "Denial of service while parsing a tar file due to lack of folders count validation",
+              "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal",
+              "node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization",
+              "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction",
+              "tar has Hardlink Path Traversal via Drive-Relative Linkpath",
+              "node-tar Symlink Path Traversal via Drive-Relative Linkpath",
+              "Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS",
+              "node-tar applies PAX size override to intermediary GNU long-name/long-link headers, causing tar parser interpretation differential (file smuggling)",
+              "node-tar: Process crash via PAX numeric path type confusion",
+              "node-tar: Decompression/parse DoS via unlimited input",
+              "node-tar: Negative tar entry size causes infinite loop in archive replace",
+              "node-tar: Uncaught Exception DoS via NUL byte in PAX path/linkpath records",
+              "node-tar: Uncontrolled recursion in mapHas/filesFilter allows uncatchable stack-overflow DoS via crafted long-path tar with member selection"
+            ],
+            "fix_available": {
+              "name": "tar",
+              "version": "7.5.22",
+              "isSemVerMajor": true
+            }
+          }
+        ],
+        "flat_advisory_count": 4
+      }
+    },
+    {
+      "lockfile_name": "legacy_app",
+      "lockfile_path": "C:\\Users\\Admin\\Desktop\\Major VulnChain\\TrainModel\\scratch\\legacy_app_lock.json",
+      "vulnchain": {
+        "total_packages": 9,
+        "summary": {
+          "critical": 5,
+          "high": 2,
+          "moderate": 0,
+          "safe": 2
+        },
+        "flagged_count": 5,
+        "own_cve_flags": 5,
+        "propagation_only_flags": 0,
+        "attack_paths_found": 7,
+        "top10_ranked": [
+          {
+            "rank": 1,
+            "package": "express@4.17.1",
+            "risk_score": 1.0,
+            "cve": "GHSA-rv95-896h-c2vc",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "express@4.17.1",
+                "hops": 0,
+                "cve": "GHSA-rv95-896h-c2vc"
+              },
+              {
+                "chain": "express@4.17.1 -> body-parser@1.19.0",
+                "hops": 1,
+                "cve": "GHSA-v422-hmwv-36x6"
+              },
+              {
+                "chain": "express@4.17.1 -> serve-static@1.14.1",
+                "hops": 1,
+                "cve": "GHSA-cm22-4g7w-348p"
+              }
+            ]
+          },
+          {
+            "rank": 2,
+            "package": "body-parser@1.19.0",
+            "risk_score": 0.9765,
+            "cve": "GHSA-v422-hmwv-36x6",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@4.17.1 -> body-parser@1.19.0",
+                "hops": 1,
+                "cve": "GHSA-v422-hmwv-36x6"
+              }
+            ]
+          },
+          {
+            "rank": 3,
+            "package": "serve-static@1.14.1",
+            "risk_score": 0.9311,
+            "cve": "GHSA-cm22-4g7w-348p",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@4.17.1 -> serve-static@1.14.1",
+                "hops": 1,
+                "cve": "GHSA-cm22-4g7w-348p"
+              }
+            ]
+          },
+          {
+            "rank": 4,
+            "package": "send@0.17.1",
+            "risk_score": 0.8702,
+            "cve": "GHSA-m6fv-jmcg-4jfg",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@4.17.1 -> serve-static@1.14.1 -> send@0.17.1",
+                "hops": 2,
+                "cve": "GHSA-m6fv-jmcg-4jfg"
+              }
+            ]
+          },
+          {
+            "rank": 5,
+            "package": "lodash@4.17.11",
+            "risk_score": 0.4112,
+            "cve": "GHSA-xxjr-mmjv-4gpg",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "lodash@4.17.11",
+                "hops": 0,
+                "cve": "GHSA-xxjr-mmjv-4gpg"
+              }
+            ]
+          },
+          {
+            "rank": 6,
+            "package": "minimist@1.2.5",
+            "risk_score": 0.3023,
+            "cve": "GHSA-xvch-5gv4-984h",
+            "is_direct": true,
+            "propagation_paths": [
+              {
+                "chain": "minimist@1.2.5",
+                "hops": 0,
+                "cve": "GHSA-xvch-5gv4-984h"
+              }
+            ]
+          },
+          {
+            "rank": 7,
+            "package": "qs@6.7.0",
+            "risk_score": 0.2021,
+            "cve": "GHSA-w7fw-mjwx-w883",
+            "is_direct": false,
+            "propagation_paths": [
+              {
+                "chain": "express@4.17.1 -> body-parser@1.19.0 -> qs@6.7.0",
+                "hops": 2,
+                "cve": "GHSA-w7fw-mjwx-w883"
+              }
+            ]
+          },
+          {
+            "rank": 8,
+            "package": "debug@2.6.9",
+            "risk_score": 0.08,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          },
+          {
+            "rank": 9,
+            "package": "ms@2.0.0",
+            "risk_score": 0.08,
+            "cve": null,
+            "is_direct": false,
+            "propagation_paths": []
+          }
+        ]
+      },
+      "npm_audit": {
+        "total_dependencies": 9,
+        "total_vulnerabilities": 7,
+        "severity_breakdown": {
+          "critical": 2,
+          "high": 2,
+          "moderate": 1,
+          "low": 2,
+          "info": 0,
+          "total": 7
+        },
+        "affected_packages": [
+          {
+            "package": "body-parser",
+            "severity": "high",
+            "via": [
+              "body-parser vulnerable to denial of service when url encoding is enabled",
+              "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+              "qs"
+            ],
+            "fix_available": {
+              "name": "express",
+              "version": "4.22.3",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "express",
+            "severity": "moderate",
+            "via": [
+              "express vulnerable to XSS via response.redirect()",
+              "Express.js Open Redirect in malformed URLs",
+              "body-parser",
+              "serve-static"
+            ],
+            "fix_available": {
+              "name": "express",
+              "version": "4.22.3",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "lodash",
+            "severity": "critical",
+            "via": [
+              "Command Injection in lodash",
+              "Prototype Pollution in lodash",
+              "Prototype Pollution in lodash",
+              "Regular Expression Denial of Service (ReDoS) in lodash",
+              "lodash vulnerable to Code Injection via `_.template` imports key names",
+              "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+              "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions"
+            ],
+            "fix_available": {
+              "name": "lodash",
+              "version": "4.18.1",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "minimist",
+            "severity": "critical",
+            "via": [
+              "Prototype Pollution in minimist"
+            ],
+            "fix_available": {
+              "name": "minimist",
+              "version": "1.2.8",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "qs",
+            "severity": "high",
+            "via": [
+              "qs vulnerable to Prototype Pollution",
+              "qs's arrayLimit bypass in comma parsing allows denial of service",
+              "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+              "qs: Denial of Service via Attacker Controlled isBuffer"
+            ],
+            "fix_available": {
+              "name": "express",
+              "version": "4.22.3",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "send",
+            "severity": "low",
+            "via": [
+              "send vulnerable to template injection that can lead to XSS"
+            ],
+            "fix_available": {
+              "name": "express",
+              "version": "4.22.3",
+              "isSemVerMajor": false
+            }
+          },
+          {
+            "package": "serve-static",
+            "severity": "low",
+            "via": [
+              "serve-static vulnerable to template injection that can lead to XSS",
+              "send"
+            ],
+            "fix_available": {
+              "name": "express",
+              "version": "4.22.3",
+              "isSemVerMajor": false
+            }
+          }
+        ],
+        "flat_advisory_count": 7
+      }
+    }
+  ]
+}

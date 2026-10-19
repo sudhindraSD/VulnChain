@@ -1,0 +1,533 @@
+{
+  "config": {
+    "seed": 42,
+    "mask_ratios": [
+      0.1,
+      0.3,
+      0.5
+    ],
+    "own_vpss_threshold": 0.7,
+    "bootstrap_iters": 1000,
+    "hits_k": 10
+  },
+  "summary": {
+    "eligible_packages": 645,
+    "never_vuln_packages": 8682,
+    "outcome": 3
+  },
+  "results": [
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.7002,
+      "CI_low": 0.635,
+      "CI_high": 0.7627,
+      "n_positive": 72,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5694,
+      "CI_low": 0.5347,
+      "CI_high": 0.6111,
+      "n_positive": 72,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.7087,
+      "CI_low": 0.6699,
+      "CI_high": 0.7472,
+      "n_positive": 72,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6991,
+      "CI_low": 0.6387,
+      "CI_high": 0.7661,
+      "n_positive": 72,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.7249,
+      "CI_low": 0.6561,
+      "CI_high": 0.7899,
+      "n_positive": 62,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5806,
+      "CI_low": 0.5403,
+      "CI_high": 0.629,
+      "n_positive": 62,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.7158,
+      "CI_low": 0.6734,
+      "CI_high": 0.7566,
+      "n_positive": 62,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.7237,
+      "CI_low": 0.6532,
+      "CI_high": 0.7884,
+      "n_positive": 62,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.547,
+      "CI_low": 0.4304,
+      "CI_high": 0.6833,
+      "n_positive": 10,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5,
+      "CI_low": 0.5,
+      "CI_high": 0.5,
+      "n_positive": 10,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.6648,
+      "CI_low": 0.5528,
+      "CI_high": 0.7688,
+      "n_positive": 10,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.5467,
+      "CI_low": 0.4387,
+      "CI_high": 0.6806,
+      "n_positive": 10,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "Hits@10",
+      "method": "model",
+      "value": 0.0131,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 153
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "model",
+      "value": 0.0119,
+      "CI_low": 0.0082,
+      "CI_high": 0.0166,
+      "n_queries": 153
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "random_floor",
+      "value": 0.0011,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 153
+    },
+    {
+      "mask_ratio": 0.1,
+      "stratum": "overall",
+      "metric": "mean_score_drop_shuffle",
+      "method": "model_vs_shuffle",
+      "value": 0.000532,
+      "model_mean": 0.112743,
+      "shuffle_mean": 0.112211
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.6501,
+      "CI_low": 0.6126,
+      "CI_high": 0.6848,
+      "n_positive": 184,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5299,
+      "CI_low": 0.5136,
+      "CI_high": 0.5462,
+      "n_positive": 184,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.7233,
+      "CI_low": 0.6958,
+      "CI_high": 0.7512,
+      "n_positive": 184,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6522,
+      "CI_low": 0.621,
+      "CI_high": 0.6857,
+      "n_positive": 184,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.6783,
+      "CI_low": 0.6421,
+      "CI_high": 0.7154,
+      "n_positive": 156,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5353,
+      "CI_low": 0.516,
+      "CI_high": 0.5577,
+      "n_positive": 156,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.7283,
+      "CI_low": 0.7001,
+      "CI_high": 0.758,
+      "n_positive": 156,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6814,
+      "CI_low": 0.6444,
+      "CI_high": 0.7182,
+      "n_positive": 156,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.4925,
+      "CI_low": 0.4106,
+      "CI_high": 0.5771,
+      "n_positive": 28,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5,
+      "CI_low": 0.5,
+      "CI_high": 0.5,
+      "n_positive": 28,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.6952,
+      "CI_low": 0.6282,
+      "CI_high": 0.7624,
+      "n_positive": 28,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.4894,
+      "CI_low": 0.4056,
+      "CI_high": 0.5739,
+      "n_positive": 28,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "Hits@10",
+      "method": "model",
+      "value": 0.0081,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 492
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "model",
+      "value": 0.0089,
+      "CI_low": 0.0072,
+      "CI_high": 0.0113,
+      "n_queries": 492
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "random_floor",
+      "value": 0.0011,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 492
+    },
+    {
+      "mask_ratio": 0.3,
+      "stratum": "overall",
+      "metric": "mean_score_drop_shuffle",
+      "method": "model_vs_shuffle",
+      "value": -0.000477,
+      "model_mean": 0.090996,
+      "shuffle_mean": 0.091473
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.6423,
+      "CI_low": 0.6135,
+      "CI_high": 0.673,
+      "n_positive": 314,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.535,
+      "CI_low": 0.5223,
+      "CI_high": 0.5494,
+      "n_positive": 314,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.715,
+      "CI_low": 0.692,
+      "CI_high": 0.7382,
+      "n_positive": 314,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6426,
+      "CI_low": 0.6119,
+      "CI_high": 0.67,
+      "n_positive": 314,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.6472,
+      "CI_low": 0.6142,
+      "CI_high": 0.6801,
+      "n_positive": 249,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5341,
+      "CI_low": 0.5201,
+      "CI_high": 0.5522,
+      "n_positive": 249,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.7208,
+      "CI_low": 0.6947,
+      "CI_high": 0.7445,
+      "n_positive": 249,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "shared",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6474,
+      "CI_low": 0.618,
+      "CI_high": 0.6783,
+      "n_positive": 249,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "model",
+      "value": 0.6237,
+      "CI_low": 0.5649,
+      "CI_high": 0.6815,
+      "n_positive": 65,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "bfs_baseline",
+      "value": 0.5385,
+      "CI_low": 0.5077,
+      "CI_high": 0.5769,
+      "n_positive": 65,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "label_prop",
+      "value": 0.6925,
+      "CI_low": 0.6472,
+      "CI_high": 0.7359,
+      "n_positive": 65,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "orphaned",
+      "metric": "AUC",
+      "method": "feat_shuffle",
+      "value": 0.6244,
+      "CI_low": 0.5634,
+      "CI_high": 0.6835,
+      "n_positive": 65,
+      "n_negative": 8682
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "Hits@10",
+      "method": "model",
+      "value": 0.009,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 886
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "model",
+      "value": 0.0079,
+      "CI_low": 0.0067,
+      "CI_high": 0.0093,
+      "n_queries": 886
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "MRR",
+      "method": "random_floor",
+      "value": 0.0011,
+      "CI_low": null,
+      "CI_high": null,
+      "n_queries": 886
+    },
+    {
+      "mask_ratio": 0.5,
+      "stratum": "overall",
+      "metric": "mean_score_drop_shuffle",
+      "method": "model_vs_shuffle",
+      "value": -7e-05,
+      "model_mean": 0.086406,
+      "shuffle_mean": 0.086476
+    }
+  ]
+}
