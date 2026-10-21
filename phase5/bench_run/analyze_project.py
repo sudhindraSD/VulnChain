@@ -99,7 +99,7 @@ def parse_package_lock(lock_path: str):
     return packages, edges_depends_on
 
 
-def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_path: str = None):
+def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_path: str = None, offline: bool = False):
     """
     Constructs normalized feature tensors and edge indices for VulnGAT inference.
     
@@ -163,11 +163,34 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
         if pid not in pkg_depth:
             pkg_depth[pid] = 2  # reasonable default for disconnected nodes
 
-    # ── Fix 2: Live OSV lookup for unknown CVEs ──
+    # ── Fix 2: Live OSV lookup for unknown CVEs with on-disk cache ──
     live_cve_lookups = {}
+    cache_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "osv_cache.json")
+    osv_cache = {}
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                osv_cache = json.load(f)
+        except Exception:
+            osv_cache = {}
+
+    cache_dirty = False
     unknown_pkgs = [pid for pid in packages if pid not in kb_has_vuln and pid not in kb_pkg_features]
-    
-    if unknown_pkgs:
+
+    # First check on-disk cache for unknown packages
+    needs_network = []
+    for pid in unknown_pkgs:
+        if pid in osv_cache:
+            entry = osv_cache[pid]
+            if entry and entry.get("cve_id"):
+                live_cve_lookups[pid] = {
+                    "cve_id": entry["cve_id"],
+                    "cvss": float(entry.get("cvss", 5.0))
+                }
+        else:
+            needs_network.append(pid)
+
+    if needs_network and not offline:
         try:
             import urllib.request
             import ssl
@@ -176,9 +199,9 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
             ctx.verify_mode = ssl.CERT_NONE
             
             # Batch check top packages via OSV API (limit to avoid slowdown)
-            check_limit = min(len(unknown_pkgs), 50)
+            check_limit = min(len(needs_network), 50)
             consecutive_failures = 0
-            for pid in unknown_pkgs[:check_limit]:
+            for pid in needs_network[:check_limit]:
                 name = packages[pid]["name"]
                 version = packages[pid]["version"]
                 try:
@@ -189,10 +212,10 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                         result = json.loads(resp.read().decode("utf-8"))
                         vulns = result.get("vulns", [])
                         consecutive_failures = 0
+                        best_ghsa = None
+                        best_cvss = 0.0
                         if vulns:
                             # Take highest severity CVE
-                            best_ghsa = None
-                            best_cvss = 0.0
                             for v in vulns:
                                 vid = v.get("id", "")
                                 severity = v.get("database_specific", {}).get("severity", "")
@@ -209,11 +232,13 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                                     best_cvss = cvss_val
                                     best_ghsa = vid
                             
-                            if best_ghsa:
-                                live_cve_lookups[pid] = {
-                                    "cve_id": best_ghsa,
-                                    "cvss": best_cvss
-                                }
+                        if best_ghsa:
+                            lookup_val = {"cve_id": best_ghsa, "cvss": best_cvss}
+                            live_cve_lookups[pid] = lookup_val
+                            osv_cache[pid] = lookup_val
+                        else:
+                            osv_cache[pid] = {"cve_id": None, "cvss": 0.0}
+                        cache_dirty = True
                 except Exception:
                     consecutive_failures += 1
                     if consecutive_failures >= 3:
@@ -221,6 +246,13 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                         break
         except ImportError:
             pass  # No urllib available, skip live lookups
+
+    if cache_dirty:
+        try:
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(osv_cache, f, indent=2)
+        except Exception as e:
+            print(f"[WARN] Failed to write OSV cache: {e}")
 
     pkg_list = list(packages.keys())
     pkg_id_to_idx = {pkg_id: idx for idx, pkg_id in enumerate(pkg_list)}
@@ -332,7 +364,7 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
     return x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree
 
 
-def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = None):
+def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = None, offline: bool = False):
     if model_path is None:
         local_model = os.path.join(os.path.abspath(os.path.dirname(__file__)), "models", "vulngat_trained.pt")
         model_path = local_model if os.path.exists(local_model) else "models/vulngat_trained.pt"
@@ -355,7 +387,7 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
         return
 
     # 2. Build Tensors (with BFS depth + live CVE lookups)
-    x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree = build_analysis_tensors(packages, edges_depends)
+    x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree = build_analysis_tensors(packages, edges_depends, offline=offline)
 
     # 3. Load Trained VulnGAT
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -616,6 +648,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Analyze any project lockfile with VulnGAT")
     parser.add_argument("lockfile", help="Path to package-lock.json file to analyze")
     parser.add_argument("--json", dest="output_json", help="Optional path to export JSON results", default=None)
+    parser.add_argument("--offline", action="store_true", help="Use local OSV cache only; make no network calls", default=False)
     args = parser.parse_args()
 
-    analyze_lockfile(args.lockfile, output_json=args.output_json)
+    analyze_lockfile(args.lockfile, output_json=args.output_json, offline=args.offline)

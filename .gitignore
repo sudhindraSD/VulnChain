@@ -29,6 +29,7 @@ node_modules/
 # API Caches (OSV, GitHub, EPSS, npm registry caches)
 # ------------------------------------------------------------------------------
 *_cache.json
+!phase5/bench_run/osv_cache.json
 .*_cache.json
 *cache*/
 .cache/
