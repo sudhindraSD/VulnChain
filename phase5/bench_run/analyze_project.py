@@ -177,6 +177,7 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
             
             # Batch check top packages via OSV API (limit to avoid slowdown)
             check_limit = min(len(unknown_pkgs), 50)
+            consecutive_failures = 0
             for pid in unknown_pkgs[:check_limit]:
                 name = packages[pid]["name"]
                 version = packages[pid]["version"]
@@ -184,9 +185,10 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                     body = json.dumps({"version": version, "package": {"name": name, "ecosystem": "npm"}}).encode("utf-8")
                     req = urllib.request.Request("https://api.osv.dev/v1/query", data=body,
                                                 headers={"Content-Type": "application/json", "User-Agent": "VulnGAT/1.0"})
-                    with urllib.request.urlopen(req, timeout=5, context=ctx) as resp:
+                    with urllib.request.urlopen(req, timeout=3, context=ctx) as resp:
                         result = json.loads(resp.read().decode("utf-8"))
                         vulns = result.get("vulns", [])
+                        consecutive_failures = 0
                         if vulns:
                             # Take highest severity CVE
                             best_ghsa = None
@@ -212,8 +214,11 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                                     "cve_id": best_ghsa,
                                     "cvss": best_cvss
                                 }
-                except:
-                    pass  # Skip on timeout/error — don't block inference
+                except Exception:
+                    consecutive_failures += 1
+                    if consecutive_failures >= 3:
+                        print("[WARN] OSV unreachable (3 consecutive failures); skipping remaining live lookups.")
+                        break
         except ImportError:
             pass  # No urllib available, skip live lookups
 
