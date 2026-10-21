@@ -224,7 +224,8 @@ main { flex: 1; }
 .chip.tier-chip-critical.active { border-color: var(--critical); color: var(--critical); }
 .chip.tier-chip-high.active { border-color: var(--high); color: var(--high); }
 .chip.tier-chip-moderate.active { border-color: var(--moderate); color: var(--moderate); }
-.chip.tier-chip-safe.active { border-color: var(--safe); color: var(--safe); }
+.chip.tier-chip-safe.active,
+.chip.tier-chip-no_known_risk.active { border-color: var(--safe); color: var(--safe); }
 
 .search {
   margin-left: auto;
@@ -273,7 +274,8 @@ main { flex: 1; }
 .summary-card.tier-critical { --tier-color: var(--critical); }
 .summary-card.tier-high { --tier-color: var(--high); }
 .summary-card.tier-moderate { --tier-color: var(--moderate); }
-.summary-card.tier-safe { --tier-color: var(--safe); }
+.summary-card.tier-safe,
+.summary-card.tier-no_known_risk { --tier-color: var(--safe); }
 
 .summary-count {
   display: block;
@@ -405,12 +407,14 @@ main { flex: 1; }
 .tier-text-critical { color: var(--critical); }
 .tier-text-high { color: var(--high); }
 .tier-text-moderate { color: var(--moderate); }
-.tier-text-safe { color: var(--safe); }
+.tier-text-safe,
+.tier-text-no_known_risk { color: var(--safe); }
 
 .tier-bg-critical { background: var(--critical); }
 .tier-bg-high { background: var(--high); }
 .tier-bg-moderate { background: var(--moderate); }
-.tier-bg-safe { background: var(--safe); }
+.tier-bg-safe,
+.tier-bg-no_known_risk { background: var(--safe); }
 
 .risk-track {
   display: inline-block;
@@ -438,7 +442,8 @@ main { flex: 1; }
 .tier-badge-critical { color: var(--critical); background: rgba(255, 82, 82, 0.13); border: 1px solid rgba(255, 82, 82, 0.35); }
 .tier-badge-high { color: var(--high); background: rgba(255, 152, 56, 0.12); border: 1px solid rgba(255, 152, 56, 0.35); }
 .tier-badge-moderate { color: var(--moderate); background: rgba(245, 217, 10, 0.1); border: 1px solid rgba(245, 217, 10, 0.32); }
-.tier-badge-safe { color: var(--safe); background: rgba(47, 214, 123, 0.11); border: 1px solid rgba(47, 214, 123, 0.32); }
+.tier-badge-safe,
+.tier-badge-no_known_risk { color: var(--safe); background: rgba(47, 214, 123, 0.11); border: 1px solid rgba(47, 214, 123, 0.32); }
 
 .cell-dep { color: var(--dim); white-space: nowrap; }
 .dep-label.direct { color: var(--text); font-weight: 600; }

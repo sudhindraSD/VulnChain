@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { tierOf, TIER_ORDER, TIER_RANK, compareVersions, formatRisk } from '../tiers.js';
+import { tierOf, TIER_ORDER, TIER_RANK, TIER_LABELS, compareVersions, formatRisk } from '../tiers.js';
 
 const COLUMNS = [
   { id: 'name', label: 'Package', sortable: true },
@@ -145,7 +145,7 @@ export default function PackageTable({ packages, summary, totalPackages }) {
               className={`chip tier-chip-${tier} ${tierFilter === tier ? 'active' : ''}`}
               onClick={() => setTierFilter(tierFilter === tier ? 'all' : tier)}
             >
-              {tier[0].toUpperCase() + tier.slice(1)} <span className="chip-count">{summary[tier] ?? 0}</span>
+              {TIER_LABELS[tier] || (tier[0].toUpperCase() + tier.slice(1))} <span className="chip-count">{(summary[tier] ?? (tier === 'no_known_risk' ? summary.safe : 0)) ?? 0}</span>
             </button>
           ))}
         </div>
@@ -218,7 +218,7 @@ export default function PackageTable({ packages, summary, totalPackages }) {
                       </span>
                     </td>
                     <td className="cell-tier">
-                      <span className={`tier-badge tier-badge-${tier}`}>{tier}</span>
+                      <span className={`tier-badge tier-badge-${tier}`}>{TIER_LABELS[tier] || tier}</span>
                     </td>
                     <td className="cell-dep">
                       <span className={`dep-label ${pkg.is_direct ? 'direct' : ''}`}>

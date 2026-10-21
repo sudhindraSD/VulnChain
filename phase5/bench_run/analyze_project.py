@@ -410,7 +410,7 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
     critical_count = sum(1 for r in results if r["risk_score"] >= 0.40)
     high_count = sum(1 for r in results if 0.20 <= r["risk_score"] < 0.40)
     moderate_count = sum(1 for r in results if 0.08 <= r["risk_score"] < 0.20)
-    safe_count = sum(1 for r in results if r["risk_score"] < 0.08)
+    no_known_risk_count = sum(1 for r in results if r["risk_score"] < 0.08)
 
     # 7. Build Full Graph Topology Payload for Interactive Visualizer
     graph_nodes = []
@@ -579,7 +579,8 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
                     "critical": critical_count,
                     "high": high_count,
                     "moderate": moderate_count,
-                    "safe": safe_count
+                    "no_known_risk": no_known_risk_count,
+                    "safe": no_known_risk_count
                 },
                 "packages": results,
                 "graph": {
@@ -594,6 +595,12 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
                 "remediations": remediations
             }, f, indent=2)
         print(f"\n[OK] Full analysis results exported to: {output_json}")
+
+    print("\nRisk Tier Summary:")
+    print(f"  Critical:      {critical_count}")
+    print(f"  High:          {high_count}")
+    print(f"  Moderate:      {moderate_count}")
+    print(f"  No known risk: {no_known_risk_count}")
 
     print("\n" + "=" * 80)
     print("  Analysis Complete!")

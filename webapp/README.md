@@ -38,7 +38,7 @@ model (~1 min on this CPU-only machine for ~130 packages), explore results.
 | `server.py` | FastAPI wrapper: validation, subprocess, timeout, static hosting |
 | `requirements.txt` | fastapi, uvicorn, python-multipart |
 | `start.bat` / `start.sh` | one-command launch |
-| `frontend/src/tiers.js` | tier cutoffs **mirrored verbatim** from the script (≥0.40 critical, ≥0.20 high, ≥0.08 moderate, else safe) |
+| `frontend/src/tiers.js` | tier cutoffs **mirrored verbatim** from the script (≥0.40 critical, ≥0.20 high, ≥0.08 moderate, else no known risk) |
 | `frontend/src/api.js` | upload client + client-side pre-validation |
 | `frontend/src/App.jsx` | phase machine: upload → loading → results / error |
 | `frontend/src/components/` | UploadZone, LoadingView, ErrorPanel, SummaryBar, PackageTable, ResultsView |

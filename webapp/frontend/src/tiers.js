@@ -3,7 +3,7 @@
 //   critical: risk_score >= 0.40
 //   high:     0.20 <= risk_score < 0.40
 //   moderate: 0.08 <= risk_score < 0.20
-//   safe:     risk_score < 0.08
+//   no_known_risk: risk_score < 0.08
 // The summary counts come from the backend verbatim; this function only derives
 // a per-row tier label using those same cutoffs, as required. Do not change one
 // without the other.
@@ -13,16 +13,24 @@ export const TIER_CUTOFFS = {
   moderate: 0.08,
 };
 
+export const TIER_LABELS = {
+  critical: 'Critical',
+  high: 'High',
+  moderate: 'Moderate',
+  no_known_risk: 'No known risk',
+  safe: 'No known risk',
+};
+
 export function tierOf(riskScore) {
   if (riskScore >= TIER_CUTOFFS.critical) return 'critical';
   if (riskScore >= TIER_CUTOFFS.high) return 'high';
   if (riskScore >= TIER_CUTOFFS.moderate) return 'moderate';
-  return 'safe';
+  return 'no_known_risk';
 }
 
-export const TIER_ORDER = ['critical', 'high', 'moderate', 'safe'];
+export const TIER_ORDER = ['critical', 'high', 'moderate', 'no_known_risk'];
 
-export const TIER_RANK = { critical: 0, high: 1, moderate: 2, safe: 3 };
+export const TIER_RANK = { critical: 0, high: 1, moderate: 2, no_known_risk: 3, safe: 3 };
 
 // Compare version strings numerically per segment ("2.2.2" < "10.0.0").
 export function compareVersions(a, b) {
