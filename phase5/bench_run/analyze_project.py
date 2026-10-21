@@ -99,7 +99,7 @@ def parse_package_lock(lock_path: str):
     return packages, edges_depends_on
 
 
-def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_path: str = "vulnchain_graph.json"):
+def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_path: str = None):
     """
     Constructs normalized feature tensors and edge indices for VulnGAT inference.
     
@@ -108,6 +108,10 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
     2. Live OSV API lookup for CVEs not in KB cache
     3. Returns vulnerability subtree info for post-hoc calibration
     """
+    if cached_graph_path is None:
+        local_graph = os.path.join(os.path.abspath(os.path.dirname(__file__)), "vulnchain_graph.json")
+        cached_graph_path = local_graph if os.path.exists(local_graph) else "vulnchain_graph.json"
+
     # 1. Load training feature bounds and Knowledge Base
     pkg_mins = np.array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], dtype=np.float32)
     pkg_maxs = np.array([1., 1., 82., 7., 5700., 2577., 1., 8.4542, 1., 1.], dtype=np.float32)
@@ -323,7 +327,11 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
     return x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree
 
 
-def analyze_lockfile(lock_path: str, model_path: str = "models/vulngat_trained.pt", output_json: str = None):
+def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = None):
+    if model_path is None:
+        local_model = os.path.join(os.path.abspath(os.path.dirname(__file__)), "models", "vulngat_trained.pt")
+        model_path = local_model if os.path.exists(local_model) else "models/vulngat_trained.pt"
+
     print("=" * 80)
     print("  VulnChain -- Project Dependency Risk Analyzer")
     print("=" * 80)
