@@ -46,6 +46,19 @@ function sortRows(rows, sort) {
   return sorted;
 }
 
+function renderAdvisoryBadge(pkg) {
+  if (pkg.cve || pkg.has_own_cve) {
+    return <span className="badge-advisory advisory-known">Known advisory</span>;
+  }
+  if (pkg.not_checked) {
+    return <span className="badge-advisory advisory-not-checked">Not checked</span>;
+  }
+  if (pkg.risk_score >= 0.08) {
+    return <span className="badge-advisory advisory-inherited">Inherited risk</span>;
+  }
+  return null;
+}
+
 function ExpandedDetail({ pkg }) {
   let statusClass, statusIcon, statusText;
   if (pkg.has_own_cve) {
@@ -170,6 +183,10 @@ export default function PackageTable({ packages, summary, totalPackages }) {
         />
       </div>
 
+      <p className="table-caption">
+        Score = exposure via dependencies, not CVE severity.
+      </p>
+
       <div className="table-scroll">
         <table className="pkg-table">
           <thead>
@@ -209,7 +226,12 @@ export default function PackageTable({ packages, summary, totalPackages }) {
                     <td className="chevron-col" aria-hidden="true">
                       <span className={`chevron ${isOpen ? 'rotated' : ''}`}>▸</span>
                     </td>
-                    <td className="cell-name">{pkg.name}</td>
+                    <td className="cell-name">
+                      <div className="name-with-badge">
+                        <span className="pkg-name-text">{pkg.name}</span>
+                        {renderAdvisoryBadge(pkg)}
+                      </div>
+                    </td>
                     <td className="cell-version">{pkg.version}</td>
                     <td className="cell-risk">
                       <span className={`risk-value tier-text-${tier}`}>{formatRisk(pkg.risk_score)}</span>

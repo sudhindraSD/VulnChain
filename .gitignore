@@ -65,7 +65,6 @@ tmp/
 *.log
 phase5/preflight_staging/
 webapp/server.log
-webapp/frontend/dist/
 webapp/frontend/.vite/
 vite.config.js.timestamp-*
 

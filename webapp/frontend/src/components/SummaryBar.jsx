@@ -4,21 +4,34 @@ import { TIER_ORDER, TIER_LABELS } from '../tiers.js';
 // Renders report.summary VERBATIM — counts come straight from analyze_project.py,
 // never recomputed on the frontend.
 export default function SummaryBar({ summary, totalPackages }) {
+  const notChecked = summary?.not_checked ?? 0;
+  const reasons = summary?.not_checked_reasons
+    ? Object.entries(summary.not_checked_reasons).map(([r, n]) => `${n} ${r}`).join(', ')
+    : '';
+
   return (
-    <section className="summary" aria-label="Risk summary">
-      {TIER_ORDER.map((tier) => {
-        const count = (summary[tier] ?? (tier === 'no_known_risk' ? summary.safe : 0)) ?? 0;
-        const share = totalPackages > 0 ? Math.round((count / totalPackages) * 100) : 0;
-        return (
-          <div key={tier} className={`summary-card tier-${tier} ${count === 0 ? 'is-zero' : ''}`}>
-            <span className="summary-count">{count}</span>
-            <span className="summary-label">{TIER_LABELS[tier] || tier}</span>
-            <div className="summary-track" aria-hidden="true">
-              <div className="summary-fill" style={{ width: `${share}%` }} />
+    <div className="summary-wrapper">
+      <section className="summary" aria-label="Risk summary">
+        {TIER_ORDER.map((tier) => {
+          const count = (summary[tier] ?? (tier === 'no_known_risk' ? summary.safe : 0)) ?? 0;
+          const share = totalPackages > 0 ? Math.round((count / totalPackages) * 100) : 0;
+          return (
+            <div key={tier} className={`summary-card tier-${tier} ${count === 0 ? 'is-zero' : ''}`}>
+              <span className="summary-count">{count}</span>
+              <span className="summary-label">{TIER_LABELS[tier] || tier}</span>
+              <div className="summary-track" aria-hidden="true">
+                <div className="summary-fill" style={{ width: `${share}%` }} />
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+      {notChecked > 0 && (
+        <div className="not-checked-banner" role="status">
+          <span className="not-checked-title">Not checked: <strong>{notChecked}</strong></span>
+          {reasons && <span className="not-checked-reasons">({reasons})</span>}
+        </div>
+      )}
+    </div>
   );
 }
