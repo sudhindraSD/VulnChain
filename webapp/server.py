@@ -16,6 +16,7 @@ Run:  python server.py   (serves API on :8000 and the built frontend from fronte
 
 import asyncio
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -63,8 +64,11 @@ def _looks_like_npm_lockfile(data) -> str | None:
 
 async def _run_analyzer(lock_path: Path, out_path: Path) -> dict:
     """Run analyze_project.py as a subprocess and return its parsed --json output."""
+    cmd = [sys.executable, str(ANALYZE_PY), str(lock_path), "--json", str(out_path)]
+    if os.environ.get("VULNCHAIN_OFFLINE") == "1":
+        cmd.append("--offline")
     proc = await asyncio.create_subprocess_exec(
-        sys.executable, str(ANALYZE_PY), str(lock_path), "--json", str(out_path),
+        *cmd,
         cwd=str(BENCH_RUN),
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
