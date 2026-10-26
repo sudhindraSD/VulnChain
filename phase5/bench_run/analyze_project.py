@@ -176,6 +176,7 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
 
     cache_dirty = False
     unknown_pkgs = [pid for pid in packages if pid not in kb_has_vuln and pid not in kb_pkg_features]
+    not_checked_pkgs = {}
 
     # First check on-disk cache for unknown packages
     needs_network = []
@@ -190,7 +191,14 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
         else:
             needs_network.append(pid)
 
-    if needs_network and not offline:
+    if offline:
+        for pid in needs_network:
+            not_checked_pkgs[pid] = "offline"
+    elif needs_network:
+        # Packages past the 50-package cap
+        for pid in needs_network[50:]:
+            not_checked_pkgs[pid] = "cap"
+
         try:
             import urllib.request
             import ssl
@@ -201,7 +209,11 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
             # Batch check top packages via OSV API (limit to avoid slowdown)
             check_limit = min(len(needs_network), 50)
             consecutive_failures = 0
+            breaker_tripped = False
             for pid in needs_network[:check_limit]:
+                if breaker_tripped:
+                    not_checked_pkgs[pid] = "breaker"
+                    continue
                 name = packages[pid]["name"]
                 version = packages[pid]["version"]
                 try:
@@ -241,11 +253,13 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                         cache_dirty = True
                 except Exception:
                     consecutive_failures += 1
+                    not_checked_pkgs[pid] = "breaker"
                     if consecutive_failures >= 3:
+                        breaker_tripped = True
                         print("[WARN] OSV unreachable (3 consecutive failures); skipping remaining live lookups.")
-                        break
         except ImportError:
-            pass  # No urllib available, skip live lookups
+            for pid in needs_network:
+                not_checked_pkgs[pid] = "offline"
 
     if cache_dirty:
         try:
@@ -361,7 +375,7 @@ def build_analysis_tensors(packages: dict, edges_depends: list, cached_graph_pat
                     visited.add(parent)
                     bfs_queue.append(parent)
 
-    return x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree
+    return x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree, not_checked_pkgs
 
 
 def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = None, offline: bool = False):
@@ -387,7 +401,7 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
         return
 
     # 2. Build Tensors (with BFS depth + live CVE lookups)
-    x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree = build_analysis_tensors(packages, edges_depends, offline=offline)
+    x_dict, edge_index_dict, pkg_list, all_has_vuln, has_vuln_subtree, not_checked_pkgs = build_analysis_tensors(packages, edges_depends, offline=offline)
 
     # 3. Load Trained VulnGAT
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -439,15 +453,21 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
             "has_own_cve": has_own_cve_dict[pkg_id],
             "cap_applied": cap_applied_dict[pkg_id],
             "has_vuln_descendant": has_vuln_descendant_dict[pkg_id],
-            "dependents_count": dependents_count
+            "dependents_count": dependents_count,
+            "not_checked": bool(pkg_id in not_checked_pkgs),
+            "not_checked_reason": not_checked_pkgs.get(pkg_id, None)
         })
 
     results.sort(key=lambda r: r["risk_score"], reverse=True)
 
-    critical_count = sum(1 for r in results if r["risk_score"] >= 0.40)
-    high_count = sum(1 for r in results if 0.20 <= r["risk_score"] < 0.40)
-    moderate_count = sum(1 for r in results if 0.08 <= r["risk_score"] < 0.20)
-    no_known_risk_count = sum(1 for r in results if r["risk_score"] < 0.08)
+    from collections import Counter
+    reason_counts = Counter(not_checked_pkgs.values())
+    not_checked_count = sum(1 for r in results if r["not_checked"])
+
+    critical_count = sum(1 for r in results if r["risk_score"] >= 0.40 and not r["not_checked"])
+    high_count = sum(1 for r in results if 0.20 <= r["risk_score"] < 0.40 and not r["not_checked"])
+    moderate_count = sum(1 for r in results if 0.08 <= r["risk_score"] < 0.20 and not r["not_checked"])
+    no_known_risk_count = sum(1 for r in results if r["risk_score"] < 0.08 and not r["not_checked"])
 
     # 7. Build Full Graph Topology Payload for Interactive Visualizer
     graph_nodes = []
@@ -609,16 +629,21 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
 
     # 11. Optional JSON Output
     if output_json:
+        summary_payload = {
+            "critical": critical_count,
+            "high": high_count,
+            "moderate": moderate_count,
+            "no_known_risk": no_known_risk_count,
+            "safe": no_known_risk_count,
+            "not_checked": not_checked_count,
+        }
+        if not_checked_count > 0:
+            summary_payload["not_checked_reasons"] = dict(reason_counts)
+
         with open(output_json, "w", encoding="utf-8") as f:
             json.dump({
                 "total_packages": len(results),
-                "summary": {
-                    "critical": critical_count,
-                    "high": high_count,
-                    "moderate": moderate_count,
-                    "no_known_risk": no_known_risk_count,
-                    "safe": no_known_risk_count
-                },
+                "summary": summary_payload,
                 "packages": results,
                 "graph": {
                     "nodes": graph_nodes,
@@ -638,6 +663,11 @@ def analyze_lockfile(lock_path: str, model_path: str = None, output_json: str = 
     print(f"  High:          {high_count}")
     print(f"  Moderate:      {moderate_count}")
     print(f"  No known risk: {no_known_risk_count}")
+    if not_checked_count > 0:
+        reasons_breakdown = ", ".join(f"{cnt} {r}" for r, cnt in reason_counts.items())
+        print(f"  Not checked:   {not_checked_count} ({reasons_breakdown})")
+    else:
+        print(f"  Not checked:   0")
 
     print("\n" + "=" * 80)
     print("  Analysis Complete!")
