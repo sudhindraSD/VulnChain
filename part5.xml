@@ -1,0 +1,1504 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: phase5/V22_SANITY.md, phase5/verify_and_recompute_all.py, phase5/VULNGAT_V2_PREREGISTRATION.md, phase5/WORKER_REPORT_PHASE5.md
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+phase5/
+  V22_SANITY.md
+  verify_and_recompute_all.py
+  VULNGAT_V2_PREREGISTRATION.md
+  WORKER_REPORT_PHASE5.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="phase5/V22_SANITY.md">
+# V2.2 SANITY DIAGNOSTIC & PROJECT CLOSE-OUT RECORD
+**Status:** COMPLETE — Sanity Passed; Matrix Trigger Failed; Final Training Closure Enacted  
+**Date:** 2026-09-20  
+**Scope:** Sanity diagnostic of the population-fixed VulnGAT v2.2 on CPU (Seed 42, `full_v2`, $p=0.3$, 100 epochs frozen + 300 epochs exploratory), evaluation against pre-committed decision rules, and final close-out package for the thesis and faculty review.  
+**Standing Rules:** Fixed seed. No threshold or gate changes. No code changes beyond the two authorized ones. Report every failure verbatim. Do not claim any pass/fail beyond what the numbers show. All original v2 and v2.1 artifacts remain untouched.
+
+---
+
+## 0. Pre-Committed Decision Rules & Protocol Amendments
+
+### 0.1 Pre-Committed Decision Rules (Frozen Before Running)
+1. **Sanity Pass Criterion:**
+   $$\text{sanity pass} := \text{clean AUC (dim-6-zeroed)} \ge \max(0.60, \text{HR\_clean\_zeroed} - 0.05)$$
+   Given the empirical baseline for VulnGAT-HR with dim-6-zeroed globally of **0.7879** (and 0.7716 eligible-only):
+   $$\text{Sanity Bar Target} = \max(0.60, 0.7879 - 0.05) = \mathbf{0.7379}$$
+2. **Matrix Trigger Criterion:**
+   $$\text{matrix trigger} := \text{sanity pass} \land \text{masked-50} \ge 0.65$$
+   - The matrix trigger requires both clean-graph sanity ($\ge 0.7379$) and masked-edge AUC $\ge 0.65$. All masked variants (Notebook fully live, Official masked-zeroed, Globally zeroed) are reported side-by-side.
+3. **Exploratory 300-Epoch Trigger Rule:**
+   - A 300-epoch exploratory run alongside a 100-epoch fail constitutes empirical evidence that the **100-step full-batch optimization budget was the binding constraint**.
+   - It is reported strictly as a **single-seed exploratory finding and deviation decision for the human researcher**, NEVER as a gate pass, and NEVER as a matrix trigger.
+4. **Default Action:** If the 100-epoch run fails the sanity pass or matrix trigger, recommend **formal project training close-out**.
+
+---
+
+## 1. Step 1: Forensic Verifications of the 35-Run v2.1 Execution
+
+### 1.1 Fact (a): Construction of `train_mask` (Confirmed Nonzero-Only)
+In `phase5/generate_v2_notebook_rerun.py` and `vulngat_v2_training_rerun.ipynb` (Cell 3 verbatim):
+```python
+nz_pkgs = [pid for pid in pkg_id_to_idx if epss_labels[pid]['epss_risk'] > 0]
+train_pkgs = [pid for pid in nz_pkgs if pkg_newest_date.get(pid, '2000-01-01') < TEMPORAL_CUTOFF]
+test_pkgs = [pid for pid in nz_pkgs if pkg_newest_date.get(pid, '2000-01-01') >= TEMPORAL_CUTOFF]
+
+random.seed(42)
+shuffled_train = list(train_pkgs)
+random.shuffle(shuffled_train)
+val_cut = int(0.20 * len(shuffled_train))
+val_pkgs = shuffled_train[:val_cut]
+train_fit_pkgs = shuffled_train[val_cut:]
+
+train_mask = torch.zeros(num_packages, dtype=torch.bool)
+val_mask = torch.zeros(num_packages, dtype=torch.bool)
+test_mask = torch.zeros(num_packages, dtype=torch.bool)
+
+for pid in train_fit_pkgs:
+    train_mask[pkg_id_to_idx[pid]] = True
+for pid in val_pkgs:
+    val_mask[pkg_id_to_idx[pid]] = True
+for pid in test_pkgs:
+    test_mask[pkg_id_to_idx[pid]] = True
+```
+- **Finding:** `train_mask` was constructed exclusively from `nz_pkgs` ($N=1{,}807$).
+- **Defect A4 Confirmed:** All zero-label packages ($N=8{,}714$), including the 8,682 never-vulnerable packages that form the negative stratum of the primary gate, were **completely excluded from the training loss**.
+- **Consequence:** The model was never penalized for predicting high risk on safe packages. When evaluated on the clean graph, trained models assigned *higher* risk to never-vulnerable packages (mean 0.1070) than to eligible vulnerable packages (mean 0.0600), resulting in an inverted clean AUC of **0.2078–0.2222**.
+
+### 1.2 Fact (b): 35-Run Early Stopping Breakdown
+Full inspection of `phase5/v2dc_final_results.json` (`raw_runs` across all 35 executions):
+
+| Arm | Seed 42 | Seed 123 | Seed 456 | Seed 789 | Seed 1024 |
+|---|---|---|---|---|---|
+| **full_v2 (p=0.1)** | 100 ep (Full, best ep 99) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 100 ep (Full, best ep 99) | 21 ep (ES, best ep 5) |
+| **full_v2 (p=0.3)** | 100 ep (Full, best ep 99) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 100 ep (Full, best ep 99) | 21 ep (ES, best ep 5) |
+| **full_v2 (p=0.5)** | 100 ep (Full, best ep 99) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 100 ep (Full, best ep 99) | 21 ep (ES, best ep 5) |
+| **no_masking (p=0.0)** | 100 ep (Full, best ep 99) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 100 ep (Full, best ep 99) | 21 ep (ES, best ep 5) |
+| **no_ranking (p=0.1)** | 21 ep (ES, best ep 5) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 21 ep (ES, best ep 5) | 21 ep (ES, best ep 5) |
+| **no_ranking (p=0.3)** | 21 ep (ES, best ep 5) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 21 ep (ES, best ep 5) | 21 ep (ES, best ep 5) |
+| **no_ranking (p=0.5)** | 21 ep (ES, best ep 5) | 16 ep (ES, best ep 0) | 16 ep (ES, best ep 0) | 21 ep (ES, best ep 5) | 21 ep (ES, best ep 5) |
+
+- **Early Stopping Mechanism (A5):** The harness initialized `best_val_sp = -1.0` with `patience = 15`. In seeds 123 and 456, epoch 0 had a slightly negative Spearman (-0.0101 and -0.0595) which became `best_val_sp`. During subsequent epochs, as the model entered mean-fitting, val Spearman drifted further negative, failing to beat epoch 0 within 15 epochs. Early stopping triggered at epoch 16, and the harness restored `best_state` — **saving the near-epoch-0 checkpoint**.
+- **Seed 1024:** Recorded peak val Spearman at epoch 5 (-0.0662), and early stopping triggered at epoch 21, **saving epoch 5**.
+- **Trained Seeds (42 & 789):** Did not early stop in `full_v2` and `no_masking`. At the 100-epoch cutoff, val Spearman was **actively climbing** (seed 42: -0.11 at ep 50, +0.17 at ep 80, +0.37 at ep 99). Full-batch training meant only 1 optimizer step per epoch, so the model only experienced 100 gradient steps total.
+
+### 1.3 Fact (c): Package Feature Dim 6 in Masked Eval (Confirmed Not Zeroed)
+In `vulngat_v2_training_rerun.ipynb` Cell 5 (`evaluate_masked_auc_50`):
+```python
+masked_edge_index = copy.copy(data.edge_index_dict)
+masked_edge_index[('Package', 'hasVulnerability', 'CVE')] = edges[:, keep_mask].to(device)
+
+model.eval()
+with torch.no_grad():
+    scores, _ = model(data.x_dict, masked_edge_index)
+```
+- **Confirmed:** `data.x_dict` was passed unmodified. Feature dim 6 was **never zeroed** during training or masked evaluation in the v2 or v2.1 notebooks.
+- **The Apples-to-Oranges Discrepancy in v2.1:** The v2.1 notebook's masked evaluation was fully dim-6-live, whereas the pre-registered 0.7391 bar was calibrated on the official zeroed path (`TrainModel/masked_edge_audit.py`). This represents an additional apples-to-oranges defect that rendered the v2.1 primary gate uninterpretable.
+
+### 1.4 Fact (d): Feature Order and Identity of Dim 6
+In `merge_graph.py` lines 60–71 and 218–235:
+```python
+PACKAGE_FEATURE_ORDER = [
+    "is_direct_dependency",      # 0
+    "is_dev_dependency",         # 1
+    "out_degree",                # 2
+    "depth_in_tree",             # 3
+    "version_recency_days",      # 4
+    "versions_behind_latest",    # 5
+    "has_known_cve_history",     # 6 <-- LABEL SHORTCUT
+    "weekly_downloads_log",      # 7
+    "is_deprecated",             # 8
+    "license_risk_flag",         # 9
+]
+```
+Step 4 of `merge_graph.py` explicitly populates dim 6:
+```python
+vuln_pkg_ids = set(e["source"] for e in hv_edges)
+for node_id, node in pkg_nodes.items():
+    if node_id in vuln_pkg_ids:
+        node["features"][6] = 1
+```
+- **Finding:** Package dim 6 is **literally an indicator of whether a package has at least one vulnerability edge in the graph**. Leaving dim 6 live during masked evaluation allows the model to read vulnerability history directly from node features rather than inferring it from topological propagation.
+
+---
+
+## 2. Step 2: Reference Baseline Measurements (VulnGAT-HR)
+
+Evaluated on `phase5/models/vulngat_hr_full.pt` using the official $N=645$ eligible vs $N=8{,}682$ never-vulnerable strata:
+
+| Metric / Configuration | Dim 6 Treatment | Seed 42 | 5-Seed Mean $\pm$ Std |
+|---|---|---|---|
+| **Clean Graph AUC** | Live (as trained) | 0.9292 | 0.9292 (deterministic) |
+| **Clean Graph AUC** | Zeroed Globally | 0.7879 | 0.7879 (deterministic) |
+| **Clean Graph AUC** | Zeroed Eligible-Only | 0.7716 | 0.7716 (deterministic) |
+| **Masked-50% AUC** | Fully Live (Notebook style) | 0.8774 | 0.8804 $\pm$ 0.0029 |
+| **Masked-50% AUC** | Official (Zeroed for Masked pkgs per C2) | 0.6254 | 0.6315 $\pm$ 0.0045 |
+| **Masked-50% AUC** | Zeroed Globally | 0.6334 | 0.6410 $\pm$ 0.0056 |
+
+- **Clean Graph Score Dispersion (HR):**
+  - Dim 6 Live: Eligible mean `0.2106` $\pm$ `0.1240` vs Never-vuln mean `0.0571` $\pm$ `0.0712`.
+  - Dim 6 Zeroed Globally: Eligible mean `0.1254` $\pm$ `0.1036` vs Never-vuln mean `0.0593` $\pm$ `0.0723`.
+- **Sanity Bar Calculation:**
+  $$\text{Sanity Bar} = \max(0.60, 0.7879 - 0.05) = \mathbf{0.7379}$$
+
+---
+
+## 3. Reconciliation of Non-Zero Test Population ($N=1{,}430$ vs $1{,}433$)
+
+- **Pre-registration derivation (`check_temporal_split.py`):**
+  In line 72 of `check_temporal_split.py`, the BFS traversal from packages to CVEs checks:
+  `if cve_epss.get(c, 0.0) > 0:`
+  Filtering contributing CVEs to those with positive EPSS published dates yields:
+  $$\text{Train (pre-2026-08-01)} = 2{,}261 \quad (\text{Val } = 452, \text{ Train\_fit } = 1{,}809), \quad \text{Test} = 1{,}430$$
+- **Executed notebook (`vulngat_v2_training_rerun.ipynb`, Cell 3):**
+  The BFS collected published dates of *all* direct and transitive CVEs in OSV cache without checking `cve_epss > 0`. Exactly 3 packages had newest CVE published dates shifted across the 2026-08-01 cutoff date when non-EPSS CVEs were included:
+  $$\text{Train (pre-2026-08-01)} = 2{,}258 \quad (\text{Val } = 451, \text{ Train\_fit } = 1{,}807), \quad \text{Test} = 1{,}433$$
+- **Reconciliation:** Total nonzero packages is identical ($2{,}261 + 1{,}430 = 3{,}691 = 2{,}258 + 1{,}433$). The 3-package shift is documented as a minor BFS date-filtering discrepancy that does not affect statistical power or outcome interpretation.
+- **Ridge 0.637 Baseline Provenance:**
+  - Value: $r_s = 0.6371$
+  - Metric: Spearman Rho
+  - Population: Temporal nonzero test cut ($N=1{,}430$ prereg / $N=1{,}433$ executed)
+  - Labels: EPSS closure labels (`phase5/epss_labels_51repo.json`, field: `epss_risk`)
+  - Dim-6 State: Live (trained on 10 features with dim 6 live)
+  - Source / Script: `phase5/VULNGAT_V2_PREREGISTRATION.md` / `phase5/phase3_epss_arms.json` (arm c), produced by `phase5/part_c_masked_edge_multiseed.py`.
+- **VulnGAT-HR Label Distribution Comparison:**
+  - VulnGAT-HR was **TRAINED on Phase 4 VPSS labels** (`phase4/vpss_labels_51repo.json`, repo-split training mask).
+  - Its temporal-cut Spearman score ($0.4678$ live / $0.4493$ zeroed, $N=1{,}433$) was **SCORED against EPSS closure labels** (`epss_risk`).
+  - Because the training target (CVSS-based VPSS) and the test target (EPSS probability closure) represent different label distributions: **Not comparable to v2 secondary gate**. (On its native in-distribution Phase 4 VPSS target, HR achieves Spearman $0.6285$ zeroed / $0.7210$ live).
+
+---
+
+## 4. Headline Metrics & Dim 6 Confound Audit (Phase 4 Population: $N=1{,}341$)
+
+Evaluated on `phase5/models/vulngat_hr_full.pt`, `phase5/mlp_reconverged.pt`, and Ridge-raw on Phase 4's repo-split test set ($N=1{,}341$ all, $N=538$ nonzero):
+
+| Model | Dim 6 Condition | RankAcc (All $N=1{,}341$) | RankAcc (NZ $N=538$) | Spearman (All $N=1{,}341$) | Spearman (NZ $N=538$) | Margin vs Ridge | Margin vs MLP |
+|---|---|---|---|---|---|---|---|
+| **VulnGAT-HR** | **LIVE** | **85.55%** | 69.98% | **0.7210** | 0.5487 | +8.42 pp | +8.10 pp |
+| **VulnGAT-HR** | **ZEROED (at inf)** | **80.59%** | 69.45% | **0.6285** | 0.4914 | +6.78 pp | +6.20 pp |
+| **Ridge-Raw** | LIVE | 77.13% | 67.87% | 0.5520 | 0.5165 | — | — |
+| **Ridge-Raw** | ZEROED (at inf) | 73.81% | 67.39% | 0.4888 | 0.5443 | — | — |
+| **Ridge-Raw** | **REFIT (9-d, no dim 6)**| 73.34% | 67.84% | 0.4778 | 0.5405 | — | — |
+| **MLP Reconverged** | LIVE | 77.45% | 67.80% | 0.5550 | 0.5198 | — | — |
+| **MLP Reconverged** | ZEROED (at inf) | 74.39% | 67.58% | 0.4984 | 0.5279 | — | — |
+| **MLP Reconverged** | **REFIT (9-d, no dim 6)**| 68.23% | 67.62% | 0.3624 | 0.5697 | — | — |
+| *Exploratory Refit Head* | **HR Head Refit on Z_zeroed** | **83.98%** | 70.12% | **0.6902** | 0.5207 | +10.64 pp vs Ridge | +15.75 pp vs MLP |
+
+- **Headline Comparison & Nonzero Strata Breakdown:**
+  - **All Packages ($N=1{,}341$):** VulnGAT-HR achieves **80.59%** RankAcc (zeroed) and **85.55%** (live) vs Ridge **73.34%–73.81%** (zeroed/refit) and **77.13%** (live) vs MLP **74.39%** (zeroed at inf) and **77.45%** (live). All-package Spearman is **0.6285** (zeroed) / **0.7210** (live) for HR vs **0.4888 / 0.5520** for Ridge.
+  - **Nonzero Cut ($N=538$):** RankAcc is **69.5–70.0%** (HR: 69.45% zeroed / 69.98% live) vs **67.4–67.9%** (Ridge: 67.39% zeroed / 67.84% refit / 67.87% live) vs **67.6–67.8%** (MLP: 67.58% zeroed / 67.62% refit / 67.80% live). Spearman is **0.49 zeroed / 0.55 live** (HR: 0.4914 zeroed / 0.5487 live) vs **0.54 / 0.52** (Ridge: 0.5443 zeroed / 0.5165 live).
+  - **Interpretation:** The all-package ranking margin (+6.8 to +8.4 pp vs Ridge; +6.2 to +8.1 pp vs MLP) comes **mostly from vulnerable-vs-clean separation**. Within vulnerable packages alone ($N=538$), VulnGAT-HR is **roughly on par with Ridge** (RankAcc 69.5% vs 67.8%; Spearman 0.49 vs 0.54 zeroed).
+  - **Capping MLP Margin:** The MLP margin is capped at **+6.2 pp** (the refit MLP on 9 dimensions is under-converged at 68.23%, lower than the 74.39% achieved by the 10-d MLP evaluated with dim 6 zeroed at inference).
+
+- **How Dim 6 is populated at inference (`phase5/bench_run/analyze_project.py:239-245`):**
+  ```python
+  if pkg_id in kb_pkg_features:
+      feat = list(kb_pkg_features[pkg_id])
+  else:
+      out_degree = sum(1 for e in edges_depends if e["source"] == pkg_id)
+      has_vuln = 1 if pkg_id in all_has_vuln else 0
+      feat = [info["is_direct"], info["is_dev"], out_degree, depth, 500, 0, has_vuln, 0.0, 0, 0]
+  ```
+  Where `kb_pkg_features` comes from `vulnchain_graph.json`, and `all_has_vuln` comes from KB `hasVulnerability` edges + live OSV lookups. Dim 6 is directly 1 for vulnerable packages and 0 for non-vulnerable packages.
+
+- **Re-Score at Threshold $\ge 0.40$:**
+  - **Dim 6 LIVE (capped, reported in Phase 5):** Flagged = 41 | **31 TP / 10 FP / 46 FN / 584 TN** | **Precision = 75.6%** | **Recall = 40.3%**
+  - **Dim 6 LIVE (raw, uncapped):** Flagged = 92 | 31 TP / 61 FP / 46 FN / 533 TN | Precision = 33.7% | Recall = 40.3%
+  - **Dim 6 ZEROED (capped):** Flagged = 28 | **20 TP / 8 FP / 57 FN / 586 TN** | **Precision = 71.4%** | **Recall = 26.0%**
+  - **Dim 6 ZEROED (raw, uncapped):** Flagged = 81 | 20 TP / 61 FP / 57 FN / 533 TN | Precision = 24.7% | Recall = 26.0%
+
+---
+
+## 6. VulnGAT v2.2 Empirical Results
+
+Both runs executed on CPU via [run_v22_sanity.py](file:///c:/Users/Admin/Desktop/Major%20VulnChain/phase5/run_v22_sanity.py) using Seed 42, `full_v2`, $p=0.3$:
+- **Authorized Change 1:** Train mask includes all $N=8{,}714$ zero-label packages ($N_{\text{train}} = 10{,}521$). Validation ($N=451$) and test ($N=1{,}433$) cuts strictly preserve the nonzero temporal evaluation.
+- **Authorized Change 2:** No early stopping; full scheduled epochs; evaluation on the final checkpoint.
+
+### 6.1 Side-by-Side Results Table
+
+| Metric | VulnGAT-HR (Phase 4 Checkpoint) | v2.1 Rerun (Quarantined) | VulnGAT v2.2 (100 Epochs) | Exploratory Arm (300 Epochs, Single-Seed) | Threshold / Target Bar |
+|---|---|---|---|---|---|
+| **Clean AUC (dim 6 LIVE)** | 0.9292 | 0.2078 (Inverted) | **0.9927** | 0.7822 | — |
+| **Clean AUC (dim 6 ZEROED global)** | **0.7879** | ~0.21 | **0.9936** | **0.8069** | **$\ge 0.7379$ (Sanity Bar)** |
+| **Clean AUC (dim 6 ZEROED elig)** | 0.7716 | ~0.21 | 0.9935 | 0.8044 | — |
+| **Eligible Mean (Clean live)** | 0.2106 $\pm$ 0.1240 | 0.0600 | 0.1683 $\pm$ 0.1373 | 0.0970 $\pm$ 0.2100 | — |
+| **Never-Vuln Mean (Clean live)** | 0.0571 $\pm$ 0.0712 | 0.1070 | 0.0031 $\pm$ 0.0153 | 0.0016 $\pm$ 0.0143 | — |
+| **Eligible Mean (Clean zeroed)** | 0.1254 $\pm$ 0.1036 | — | 0.1747 $\pm$ 0.1375 | 0.0957 $\pm$ 0.1996 | — |
+| **Never-Vuln Mean (Clean zeroed)**| 0.0593 $\pm$ 0.0723 | — | 0.0032 $\pm$ 0.0153 | 0.0019 $\pm$ 0.0157 | — |
+| **Masked-50 AUC (Fully Live, Notebook eval path)** | 0.8774 (s42) / 0.8804 $\pm$ 0.0029 (mean) | 0.4031 $\pm$ 0.1009 (arm mean; 0.3376 s42) | **0.3503** | **0.3167** | **$\ge 0.7391$ (Primary Gate)** |
+| **Masked-50 AUC (Official path: masked zeroed per C2 / HR calib)** | 0.6254 (s42) / 0.6315 $\pm$ 0.0045 (mean) | 0.4286 $\pm$ 0.0483 (arm mean; 0.3342 s42) | **0.3791** | **0.3416** | **$\ge 0.7391$ (Primary Gate)** |
+| **Masked-50 AUC (Globally Zeroed)** | 0.6334 (s42) / 0.6410 $\pm$ 0.0056 (mean) | — | 0.4034 | 0.3456 | — |
+| **Val Spearman (Nonzero cut, N=451)** | 0.4614 (zeroed) / 0.4782 (live) | 0.3701 (ep 99) | 0.0907 | 0.7224 | — |
+| **Test Spearman (Nonzero cut, N=1,433)** | **0.4493** (zeroed) / **0.4678** (live) | 0.1503 $\pm$ 0.1118 (arm mean; 0.2794 s42) | 0.1221 | **0.6702** (single-seed exploratory) | **$\ge 0.6571$ (Secondary Gate)** |
+| **Test Spearman (Phase 4 cut, N=1,341 all / 538 nz)**| **0.6285** / 0.4914 (zeroed); **0.7210** / 0.5487 (live) | — | — | — | — |
+| **Optimization Budget** | 200 epochs (head refit) | 100 full-batch steps | 100 full-batch steps | 300 full-batch steps | — |
+| **Wall Clock Time (CPU)** | — | — | 348.9s (5.8 min) | 994.9s (16.6 min) | — |
+
+*Note on Clean AUC:* The clean AUC of ~0.99 is measured mostly on training-population packages (since zero-label packages were incorporated into `train_mask`). It confirms that the baseline instrument defect (A4) is cured and the model is no longer inverted, but should not be interpreted as out-of-distribution generalization.
+*Note on Traced 0.642:* The earlier reported value of 0.642 was a mislabeled entry from HR's masked-50 AUC (0.6423). Recomputation on the temporal nonzero test cut ($N=1{,}433$) yields Spearman = 0.4493 (zeroed) and 0.4678 (live).
+
+---
+
+## 7. Evaluation Against Pre-Committed Decision Rules
+
+### 7.1 Sanity Pass Evaluation (100 Epochs)
+$$\text{Sanity Metric} = \text{Clean AUC (dim-6-zeroed)} = \mathbf{0.9936}$$
+$$\text{Sanity Bar Target} = \max(0.60, 0.7879 - 0.05) = \mathbf{0.7379}$$
+$$\mathbf{0.9936 \ge 0.7379 \implies \text{SANITY PASS: PASS}}$$
+- **Diagnosis:** Introducing zero-label packages into `train_mask` completely eliminated the baseline inversion (A4). Safe packages are predicted near zero (`0.0031`), while vulnerable packages average `0.1683`. The clean-graph discriminative instrument is completely rehabilitated.
+
+### 7.2 Matrix Trigger Evaluation (100 Epochs)
+$$\text{Trigger Criterion} := \text{Sanity Pass} \land (\text{Masked-50 AUC} \ge 0.65)$$
+$$\text{Masked-50 AUC (Official Path)} = \mathbf{0.3791 < 0.65 \implies \text{MATRIX TRIGGER: FAIL}}$$
+$$\text{Masked-50 AUC (Fully Live)} = \mathbf{0.3503 < 0.65 \implies \text{MATRIX TRIGGER: FAIL}}$$
+- A single-seed diagnostic under the corrected population scored **0.35 to 0.40 vs the 0.7391 bar; the full 35-run matrix was not run per the pre-committed trigger**.
+- **Pre-Committed Action:** Sanity passed, but primary masked gate fails decisively across all variants. **No further matrix execution on Colab. Project training close-out enacted.**
+
+### 7.3 Exploratory 300-Epoch Analysis (Single-Seed Budget vs Edge-Masking Breakdown)
+1. **Secondary Gate (Spearman) Confirmation (Single-Seed Exploratory):**
+   - In 100 epochs, Spearman on the test cut reached only `0.1221` because full-batch training provided only 100 optimizer steps.
+   - In 300 epochs, Val Spearman reached `0.7224`, and Test Spearman reached **`0.6702` (single-seed, exploratory; the gates are defined on the 5-seed mean)**, crossing the `0.6571` numerical threshold and beating the Ridge baseline (`0.637`).
+   - Because VPSS and EPSS-closure labels are graph-deterministic, this high rank correlation represents successful closed-form formula recovery on the clean graph, confirming that the 100-step budget was indeed the binding constraint on regression fitting.
+2. **The Masked-Edge Inversion Finding:**
+   - Under 50% edge removal, masked-edge AUC did not improve (0.3503 to 0.3167 on live path; 0.3791 to 0.3416 on zeroed path — a 0.034 difference vs v2.1 seed std ~0.09, so within noise).
+   - Under edge removal, the trained GNN consistently ranks masked vulnerable packages below never-vulnerable packages.
+   - **Conclusion:** Models trained with this recipe do not survive edge masking; the objective never asked them to (the auxiliary consistency loss pulled masked outputs toward the model's own clean predictions rather than toward $y_{\text{true}}$). Simple label propagation ($0.719$) beats VulnGAT-HR (0.632) and all v2 checkpoints (0.31-0.43).
+
+---
+
+## 8. Ledger Entries, Decisions & Retractions
+
+- **D12 (Finding A4 — Zero-Label Loss Exclusion Confirmed & Resolved):** v2.1 excluded all zero-label packages from `train_mask`, creating an inverted baseline (clean AUC 0.2078). In v2.2, incorporating zero-label packages resolved the inversion (clean AUC 0.9936). The v2.1 primary gate quarantine is upheld as a confounded instrument.
+- **D13 (Finding A5 — 100-Step Budget & Early-Stopping Horizon):** Confirmed that full-batch training with patience 15 caused seeds 123/456 to save epoch 0 and seed 1024 to save epoch 5. The single-seed exploratory 300-epoch run confirmed that the 100-step budget was the binding constraint for continuous ranking (Test Spearman rose from 0.1221 at ep 100 to 0.6702 at ep 300).
+- **Brain Error #6 (Spec Defect — Population Exclusion):** Acknowledged the omission of zero-label negative packages from `train_mask` in the pre-registered v2 training specification.
+- **Brain Error #7 (Spec Defect — Step Budget & Convergence Conflation):** Acknowledged the conflation of 100 full-batch epochs with sufficient convergence iterations, resulting in early stopping cutoffs during the initial plateau.
+- **Protocol Deviations Logged:**
+  - V2.2 population fix (adding zero-label packages to `train_mask`).
+  - Removal of early stopping (full 100 epochs evaluated on the final checkpoint).
+  - Exploratory 300-epoch run logged strictly as single-seed non-gate-bearing research evidence.
+</file>
+
+<file path="phase5/verify_and_recompute_all.py">
+"""
+phase5/verify_and_recompute_all.py -- Comprehensive verification and recomputation script
+Executes Steps 1, 2, 3, and 4 strictly without model re-training (only inference forward passes
+plus the fast CPU baseline refits for Step 2b and exploratory head refit for Step 2d).
+"""
+
+import os
+import sys
+import json
+import copy
+import zipfile
+from pathlib import Path
+from collections import defaultdict, deque
+
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from scipy import stats as scipy_stats
+from sklearn.metrics import roc_auc_score
+from sklearn.linear_model import Ridge
+
+PROJECT_ROOT = Path(r"C:\Users\Admin\Desktop\Major VulnChain")
+sys.path.insert(0, str(PROJECT_ROOT / "TrainModel"))
+
+from core.model.vulngat import VulnGAT
+from training.dataset import load_vulnchain_dataset
+from training.evaluate import compute_ranking_accuracy, compute_spearman_rho, compute_mae
+import masked_edge_audit as mea
+
+device = torch.device("cpu")
+print(f"Device: {device}")
+
+# Paths
+GRAPH_FILE = str(PROJECT_ROOT / "phase5" / "bench_run" / "vulnchain_graph.json")
+LABELS_VPSS = str(PROJECT_ROOT / "phase4" / "vpss_labels_51repo.json")
+LABELS_EPSS = str(PROJECT_ROOT / "phase5" / "epss_labels_51repo.json")
+SPLIT_FILE = str(PROJECT_ROOT / "phase4" / "repo_split_mapping_51repo.json")
+OSV_CACHE = str(PROJECT_ROOT / ".osv_records_cache.json")
+HR_MODEL_FILE = str(PROJECT_ROOT / "phase5" / "models" / "vulngat_hr_full.pt")
+MLP_MODEL_FILE = str(PROJECT_ROOT / "phase5" / "mlp_reconverged.pt")
+V2DC_RESULTS_FILE = str(PROJECT_ROOT / "phase5" / "v2dc_final_results.json")
+V2DC_ZIP = str(PROJECT_ROOT / "phase5" / "v2dc_checkpoints.zip")
+
+print("=" * 80)
+print("STEP 1: Trace HR Test Spearman & Recompute on Temporal Cut")
+print("=" * 80)
+
+# Load graph and labels
+with open(GRAPH_FILE, "r", encoding="utf-8") as f:
+    graph_json = json.load(f)
+with open(LABELS_VPSS, "r", encoding="utf-8") as f:
+    vpss_labels = json.load(f)
+with open(LABELS_EPSS, "r", encoding="utf-8") as f:
+    epss_labels = json.load(f)
+with open(OSV_CACHE, "r", encoding="utf-8") as f:
+    osv_data = json.load(f)
+
+# 1.1 Temporal non-zero test cut (N=1,433 and N=1,430)
+pkg_nodes = graph_json["nodes"]["Package"]
+pkg_id_to_idx = {n["id"]: i for i, n in enumerate(pkg_nodes)}
+cve_id_to_idx = {n["id"]: i for i, n in enumerate(graph_json["nodes"]["CVE"])}
+
+pkg_to_cves = defaultdict(list)
+for edge in graph_json["edges"]["hasVulnerability"]:
+    pkg_to_cves[edge["source"]].append(edge["target"])
+
+cve_dates = {c["id"]: osv_data[c["id"]]["published"][:10] for c in graph_json["nodes"]["CVE"] if c["id"] in osv_data and osv_data[c["id"]].get("published")}
+deps_of = defaultdict(list)
+for e in graph_json["edges"]["dependsOn"]:
+    deps_of[e["source"]].append(e["target"])
+
+pkg_newest_date = {}
+for pid in pkg_id_to_idx:
+    visited = {pid: 0}
+    q = deque([pid])
+    contrib_dates = []
+    while q:
+        cur = q.popleft()
+        d = visited[cur]
+        if cur in pkg_to_cves:
+            for cve in pkg_to_cves[cur]:
+                if cve in cve_dates:
+                    contrib_dates.append(cve_dates[cve])
+        if d < 5:
+            for nxt in deps_of.get(cur, ()):
+                if nxt not in visited and nxt in pkg_id_to_idx:
+                    visited[nxt] = d + 1
+                    q.append(nxt)
+    if contrib_dates:
+        pkg_newest_date[pid] = max(contrib_dates)
+
+nz_pkgs = [pid for pid in pkg_id_to_idx if epss_labels[pid]["epss_risk"] > 0]
+test_pkgs_1433 = [pid for pid in nz_pkgs if pkg_newest_date.get(pid, "2000-01-01") >= "2026-08-01"]
+test_idx_1433 = [pkg_id_to_idx[pid] for pid in test_pkgs_1433]
+
+# Load VulnGAT-HR
+data_hr, mappings, masks_phase4 = load_vulnchain_dataset(
+    graph_path=GRAPH_FILE, labels_path=LABELS_VPSS, repo_split_path=SPLIT_FILE
+)
+hr_model = VulnGAT()
+hr_model.load_state_dict(torch.load(HR_MODEL_FILE, map_location=device))
+hr_model.to(device)
+hr_model.eval()
+
+# Forward pass on clean graph with dim 6 LIVE
+with torch.no_grad():
+    x_dict_live = {ntype: data_hr[ntype].x.to(device) for ntype in data_hr.node_types}
+    edge_index_dict = {k: data_hr[k].edge_index.to(device) for k in data_hr.edge_types}
+    preds_hr_live = hr_model(x_dict_live, edge_index_dict).cpu().numpy()
+
+# Forward pass on clean graph with dim 6 ZEROED
+with torch.no_grad():
+    x_dict_zeroed = copy.copy(x_dict_live)
+    pkg_x_z = x_dict_live["Package"].clone()
+    pkg_x_z[:, 6] = 0.0
+    x_dict_zeroed["Package"] = pkg_x_z
+    preds_hr_zeroed = hr_model(x_dict_zeroed, edge_index_dict).cpu().numpy()
+
+# Ground truth EPSS targets for temporal test cut
+targets_epss = np.array([epss_labels[n["id"]]["epss_risk"] for n in pkg_nodes], dtype=np.float32)
+
+sp_temporal_1433_live, _ = scipy_stats.spearmanr(targets_epss[test_idx_1433], preds_hr_live[test_idx_1433])
+sp_temporal_1433_zeroed, _ = scipy_stats.spearmanr(targets_epss[test_idx_1433], preds_hr_zeroed[test_idx_1433])
+
+print(f"VulnGAT-HR on Temporal Nonzero Test Cut (N=1,433, EPSS targets):")
+print(f"  Dim 6 LIVE:   Spearman = {sp_temporal_1433_live:.4f}")
+print(f"  Dim 6 ZEROED: Spearman = {sp_temporal_1433_zeroed:.4f}")
+
+# Ground truth VPSS targets for Phase 4 repo-split test cut (N=1,341 all, N=538 nonzero)
+test_mask_p4 = masks_phase4["test_mask"].cpu().numpy()
+targets_vpss = data_hr["Package"].y.cpu().numpy()
+test_idx_p4 = np.where(test_mask_p4)[0]
+test_idx_p4_nz = np.where(test_mask_p4 & (targets_vpss > 0))[0]
+
+sp_p4_all_live, _ = scipy_stats.spearmanr(targets_vpss[test_idx_p4], preds_hr_live[test_idx_p4])
+sp_p4_all_zeroed, _ = scipy_stats.spearmanr(targets_vpss[test_idx_p4], preds_hr_zeroed[test_idx_p4])
+sp_p4_nz_live, _ = scipy_stats.spearmanr(targets_vpss[test_idx_p4_nz], preds_hr_live[test_idx_p4_nz])
+sp_p4_nz_zeroed, _ = scipy_stats.spearmanr(targets_vpss[test_idx_p4_nz], preds_hr_zeroed[test_idx_p4_nz])
+
+print(f"\nVulnGAT-HR on Phase 4 Repo-Split Test Cut (N=1,341 all, N=538 nonzero, VPSS targets):")
+print(f"  Dim 6 LIVE:   Spearman_all = {sp_p4_all_live:.4f} | Spearman_nz = {sp_p4_nz_live:.4f}")
+print(f"  Dim 6 ZEROED: Spearman_all = {sp_p4_all_zeroed:.4f} | Spearman_nz = {sp_p4_nz_zeroed:.4f}")
+
+print("\n" + "=" * 80)
+print("STEP 2: Dim 6 Confound on Headline Metrics (Phase 4 Test Population: N=1,341)")
+print("=" * 80)
+
+# (a) VulnGAT-HR RankAcc
+rankacc_hr_live = compute_ranking_accuracy(preds_hr_live[test_idx_p4], targets_vpss[test_idx_p4])
+rankacc_hr_zeroed = compute_ranking_accuracy(preds_hr_zeroed[test_idx_p4], targets_vpss[test_idx_p4])
+rankacc_hr_nz_live = compute_ranking_accuracy(preds_hr_live[test_idx_p4_nz], targets_vpss[test_idx_p4_nz])
+rankacc_hr_nz_zeroed = compute_ranking_accuracy(preds_hr_zeroed[test_idx_p4_nz], targets_vpss[test_idx_p4_nz])
+
+print("2(a) VulnGAT-HR on Test (N=1,341):")
+print(f"  LIVE:   RankAcc = {rankacc_hr_live*100:.2f}% | Spearman_all = {sp_p4_all_live:.4f} | Spearman_nz = {sp_p4_nz_live:.4f}")
+print(f"  ZEROED: RankAcc = {rankacc_hr_zeroed*100:.2f}% | Spearman_all = {sp_p4_all_zeroed:.4f} | Spearman_nz = {sp_p4_nz_zeroed:.4f}")
+
+# (b) Ridge-raw and Reconverged MLP
+train_mask_p4 = masks_phase4["train_mask"].cpu().numpy()
+val_mask_p4 = masks_phase4["val_mask"].cpu().numpy()
+
+X_all = data_hr["Package"].x.cpu().numpy()  # 10 features normalized
+y_all = targets_vpss
+
+X_train = X_all[train_mask_p4]
+y_train = y_all[train_mask_p4]
+X_val = X_all[val_mask_p4]
+y_val = y_all[val_mask_p4]
+X_test = X_all[test_mask_p4]
+y_test = y_all[test_mask_p4]
+
+# Ridge with dim 6 LIVE
+ridge_live = Ridge(alpha=1.0)
+ridge_live.fit(X_train, y_train)
+preds_ridge_live = ridge_live.predict(X_test)
+
+# Ridge evaluated with dim 6 ZEROED at inference
+X_test_z = X_test.copy()
+X_test_z[:, 6] = 0.0
+preds_ridge_zeroed_inf = ridge_live.predict(X_test_z)
+
+# Ridge refit WITHOUT dim 6 (train on 9 features)
+cols_no_dim6 = [0, 1, 2, 3, 4, 5, 7, 8, 9]
+ridge_no_dim6 = Ridge(alpha=1.0)
+ridge_no_dim6.fit(X_train[:, cols_no_dim6], y_train)
+preds_ridge_no_dim6 = ridge_no_dim6.predict(X_test[:, cols_no_dim6])
+
+# MLP reconverged
+class FeatureMLP(nn.Module):
+    def __init__(self, in_dim=10):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(in_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, 64),
+            nn.ReLU(),
+            nn.Linear(64, 1),
+            nn.Sigmoid()
+        )
+    def forward(self, x):
+        return self.net(x).squeeze(-1)
+
+mlp_reconv = FeatureMLP(10)
+mlp_reconv.load_state_dict(torch.load(MLP_MODEL_FILE, map_location=device))
+mlp_reconv.eval()
+
+with torch.no_grad():
+    preds_mlp_live = mlp_reconv(torch.tensor(X_test, dtype=torch.float32)).numpy()
+    preds_mlp_zeroed_inf = mlp_reconv(torch.tensor(X_test_z, dtype=torch.float32)).numpy()
+
+# Train fresh MLP without dim 6 (in_dim=9)
+print("\nTraining fresh MLP without dim 6 (in_dim=9, CPU)...")
+torch.manual_seed(42)
+mlp_no_dim6 = FeatureMLP(9)
+opt_mlp = torch.optim.AdamW(mlp_no_dim6.parameters(), lr=1e-3, weight_decay=1e-5)
+
+X_tr_9 = torch.tensor(X_train[:, cols_no_dim6], dtype=torch.float32)
+y_tr_t = torch.tensor(y_train, dtype=torch.float32)
+X_val_9 = torch.tensor(X_val[:, cols_no_dim6], dtype=torch.float32)
+y_val_t = torch.tensor(y_val, dtype=torch.float32)
+val_nz_mask = y_val > 0
+
+best_val_sp = -1.0
+best_mlp_state = None
+patience = 50
+patience_cnt = 0
+
+batch_size = 256
+n_batches = int(np.ceil(len(X_tr_9) / batch_size))
+
+for epoch in range(500):
+    mlp_no_dim6.train()
+    perm = torch.randperm(len(X_tr_9))
+    for b in range(n_batches):
+        idx = perm[b*batch_size:(b+1)*batch_size]
+        opt_mlp.zero_grad()
+        p = mlp_no_dim6(X_tr_9[idx])
+        loss = F.mse_loss(p, y_tr_t[idx])
+        loss.backward()
+        opt_mlp.step()
+
+    mlp_no_dim6.eval()
+    with torch.no_grad():
+        vp = mlp_no_dim6(X_val_9).numpy()
+        sp_nz, _ = scipy_stats.spearmanr(y_val[val_nz_mask], vp[val_nz_mask])
+        if np.isnan(sp_nz): sp_nz = -1.0
+
+    if sp_nz > best_val_sp:
+        best_val_sp = sp_nz
+        best_mlp_state = copy.deepcopy(mlp_no_dim6.state_dict())
+        patience_cnt = 0
+    else:
+        patience_cnt += 1
+        if patience_cnt >= patience:
+            break
+
+mlp_no_dim6.load_state_dict(best_mlp_state)
+mlp_no_dim6.eval()
+with torch.no_grad():
+    preds_mlp_no_dim6 = mlp_no_dim6(torch.tensor(X_test[:, cols_no_dim6], dtype=torch.float32)).numpy()
+
+def calc_all_metrics(preds, targets):
+    nz = targets > 0
+    return {
+        "rankacc": compute_ranking_accuracy(preds, targets),
+        "rankacc_nz": compute_ranking_accuracy(preds[nz], targets[nz]),
+        "spearman_all": compute_spearman_rho(preds, targets),
+        "spearman_nz": compute_spearman_rho(preds[nz], targets[nz]),
+    }
+
+m_ridge_live = calc_all_metrics(preds_ridge_live, y_test)
+m_ridge_z_inf = calc_all_metrics(preds_ridge_zeroed_inf, y_test)
+m_ridge_refit = calc_all_metrics(preds_ridge_no_dim6, y_test)
+
+m_mlp_live = calc_all_metrics(preds_mlp_live, y_test)
+m_mlp_z_inf = calc_all_metrics(preds_mlp_zeroed_inf, y_test)
+m_mlp_refit = calc_all_metrics(preds_mlp_no_dim6, y_test)
+
+print("\n2(b) Baseline Metrics on Test (N=1,341):")
+print(f"  Ridge LIVE:        RankAcc = {m_ridge_live['rankacc']*100:.2f}% | Spear_all = {m_ridge_live['spearman_all']:.4f} | Spear_nz = {m_ridge_live['spearman_nz']:.4f}")
+print(f"  Ridge ZEROED inf:  RankAcc = {m_ridge_z_inf['rankacc']*100:.2f}% | Spear_all = {m_ridge_z_inf['spearman_all']:.4f} | Spear_nz = {m_ridge_z_inf['spearman_nz']:.4f}")
+print(f"  Ridge REFIT (9-d): RankAcc = {m_ridge_refit['rankacc']*100:.2f}% | Spear_all = {m_ridge_refit['spearman_all']:.4f} | Spear_nz = {m_ridge_refit['spearman_nz']:.4f}")
+print(f"  MLP LIVE:          RankAcc = {m_mlp_live['rankacc']*100:.2f}% | Spear_all = {m_mlp_live['spearman_all']:.4f} | Spear_nz = {m_mlp_live['spearman_nz']:.4f}")
+print(f"  MLP ZEROED inf:    RankAcc = {m_mlp_z_inf['rankacc']*100:.2f}% | Spear_all = {m_mlp_z_inf['spearman_all']:.4f} | Spear_nz = {m_mlp_z_inf['spearman_nz']:.4f}")
+print(f"  MLP REFIT (9-d):   RankAcc = {m_mlp_refit['rankacc']*100:.2f}% | Spear_all = {m_mlp_refit['spearman_all']:.4f} | Spear_nz = {m_mlp_refit['spearman_nz']:.4f}")
+
+# (c) Report Margins
+print("\n2(c) HR Margins vs Baselines:")
+print(f"  [LIVE] HR (85.55%) vs Ridge ({m_ridge_live['rankacc']*100:.2f}%): +{(85.55 - m_ridge_live['rankacc']*100):.2f} pp")
+print(f"  [LIVE] HR (85.55%) vs MLP ({m_mlp_live['rankacc']*100:.2f}%):   +{(85.55 - m_mlp_live['rankacc']*100):.2f} pp")
+print(f"  [ZEROED inf] HR ({rankacc_hr_zeroed*100:.2f}%) vs Ridge ({m_ridge_z_inf['rankacc']*100:.2f}%): +{(rankacc_hr_zeroed*100 - m_ridge_z_inf['rankacc']*100):.2f} pp")
+print(f"  [ZEROED inf] HR ({rankacc_hr_zeroed*100:.2f}%) vs MLP ({m_mlp_z_inf['rankacc']*100:.2f}%):   +{(rankacc_hr_zeroed*100 - m_mlp_z_inf['rankacc']*100):.2f} pp")
+print(f"  [HR zeroed vs REFIT 9d] HR ({rankacc_hr_zeroed*100:.2f}%) vs Ridge refit ({m_ridge_refit['rankacc']*100:.2f}%): +{(rankacc_hr_zeroed*100 - m_ridge_refit['rankacc']*100):.2f} pp")
+print(f"  [HR zeroed vs REFIT 9d] HR ({rankacc_hr_zeroed*100:.2f}%) vs MLP refit ({m_mlp_refit['rankacc']*100:.2f}%):   +{(rankacc_hr_zeroed*100 - m_mlp_refit['rankacc']*100):.2f} pp")
+
+# (d) EXPLORATORY: Refit only the HR head on embeddings recomputed with dim 6 zeroed
+print("\n2(d) EXPLORATORY: Refit HR head on embeddings recomputed with dim 6 ZEROED...")
+# Recompute embeddings with encoder forward where Package.x[:, 6] = 0
+with torch.no_grad():
+    Z_zeroed = hr_model.encode(x_dict_zeroed, edge_index_dict)["Package"].cpu()  # [12405, 128]
+
+# Train fresh Linear(128,1) -> Sigmoid head on Z_zeroed
+torch.manual_seed(42)
+head_refit_z = nn.Sequential(nn.Linear(128, 1), nn.Sigmoid())
+opt_head_z = torch.optim.Adam(head_refit_z.parameters(), lr=1e-3)
+
+Z_tr = Z_zeroed[train_mask_p4]
+y_tr_t = torch.tensor(y_train, dtype=torch.float32)
+Z_val = Z_zeroed[val_mask_p4]
+y_val_nz_mask = torch.tensor(y_val > 0)
+Z_test = Z_zeroed[test_mask_p4]
+
+best_val_sp_hz = -1.0
+best_hz_state = None
+patience_hz = 50
+patience_cnt_hz = 0
+batch_size_hz = 32
+n_batches_hz = int(np.ceil(len(Z_tr) / batch_size_hz))
+
+for epoch in range(500):
+    head_refit_z.train()
+    perm = torch.randperm(len(Z_tr))
+    for b in range(n_batches_hz):
+        idx = perm[b*batch_size_hz:(b+1)*batch_size_hz]
+        opt_head_z.zero_grad()
+        p = head_refit_z(Z_tr[idx]).squeeze(-1)
+        loss = F.mse_loss(p, y_tr_t[idx])
+        loss.backward()
+        opt_head_z.step()
+
+    head_refit_z.eval()
+    with torch.no_grad():
+        vp = head_refit_z(Z_val).squeeze(-1).numpy()
+        sp_nz, _ = scipy_stats.spearmanr(y_val[val_nz_mask], vp[val_nz_mask])
+        if np.isnan(sp_nz): sp_nz = -1.0
+
+    if sp_nz > best_val_sp_hz:
+        best_val_sp_hz = sp_nz
+        best_hz_state = copy.deepcopy(head_refit_z.state_dict())
+        patience_cnt_hz = 0
+    else:
+        patience_cnt_hz += 1
+        if patience_cnt_hz >= patience_hz:
+            break
+
+head_refit_z.load_state_dict(best_hz_state)
+head_refit_z.eval()
+with torch.no_grad():
+    preds_hr_head_refit_z = head_refit_z(Z_test).squeeze(-1).numpy()
+
+m_hr_head_refit_z = calc_all_metrics(preds_hr_head_refit_z, y_test)
+print(f"  EXPLORATORY Refit HR Head on Zeroed Embeddings:")
+print(f"    RankAcc = {m_hr_head_refit_z['rankacc']*100:.2f}% | Spearman_all = {m_hr_head_refit_z['spearman_all']:.4f} | Spearman_nz = {m_hr_head_refit_z['spearman_nz']:.4f}")
+print(f"    Margin vs Ridge Refit ({m_ridge_refit['rankacc']*100:.2f}%): +{(m_hr_head_refit_z['rankacc']*100 - m_ridge_refit['rankacc']*100):.2f} pp")
+print(f"    Margin vs MLP Refit ({m_mlp_refit['rankacc']*100:.2f}%):   +{(m_hr_head_refit_z['rankacc']*100 - m_mlp_refit['rankacc']*100):.2f} pp")
+
+print("\n" + "=" * 80)
+print("STEP 3: NodeTestBench Dim 6 Check")
+print("=" * 80)
+
+# Load NodeTestBench results
+with open(PROJECT_ROOT / "phase5" / "bench_run" / "bench_results_hr.json", "r", encoding="utf-8") as f:
+    bench_data = json.load(f)
+
+# Re-score bench_results_hr.json at threshold >= 0.40
+bench_pkgs = bench_data["packages"]
+print(f"Total packages in NodeTestBench: {len(bench_pkgs)}")
+
+# Live results from bench_results_hr.json
+tp_live = sum(1 for p in bench_pkgs if p["risk_score"] >= 0.40 and p.get("cve"))
+fp_live = sum(1 for p in bench_pkgs if p["risk_score"] >= 0.40 and not p.get("cve"))
+fn_live = sum(1 for p in bench_pkgs if p["risk_score"] < 0.40 and p.get("cve"))
+tn_live = sum(1 for p in bench_pkgs if p["risk_score"] < 0.40 and not p.get("cve"))
+
+prec_live = tp_live / (tp_live + fp_live) if (tp_live + fp_live) > 0 else 0.0
+rec_live = tp_live / (tp_live + fn_live) if (tp_live + fn_live) > 0 else 0.0
+
+print(f"NodeTestBench LIVE (threshold >= 0.40):")
+print(f"  Flagged: {tp_live + fp_live} | TP={tp_live}, FP={fp_live}, FN={fn_live}, TN={tn_live}")
+print(f"  Precision = {prec_live*100:.1f}% | Recall = {rec_live*100:.1f}%")
+
+# Now re-run inference on NodeTestBench with dim 6 ZEROED
+# Parse NodeTestBench package-lock.json
+sys.path.insert(0, str(PROJECT_ROOT / "phase5" / "bench_run"))
+from analyze_project import parse_package_lock, build_analysis_tensors
+
+bench_lock = str(PROJECT_ROOT / "phase5" / "NodeTestBench" / "package-lock.json")
+packages_ntb, edges_ntb = parse_package_lock(bench_lock)
+x_dict_ntb, edge_index_dict_ntb, pkg_list_ntb, all_has_vuln_ntb, has_vuln_subtree_ntb = build_analysis_tensors(
+    packages_ntb, edges_ntb, cached_graph_path=GRAPH_FILE
+)
+
+# 1. LIVE check with exact analyze_project pipeline (with calibration cap)
+with torch.no_grad():
+    x_dict_ntb_live = {k: v.to(device) for k, v in x_dict_ntb.items()}
+    edge_index_ntb_live = {k: v.to(device) for k, v in edge_index_dict_ntb.items()}
+    scores_ntb_live_raw = hr_model(x_dict_ntb_live, edge_index_ntb_live).cpu().numpy()
+
+scores_ntb_live_capped = scores_ntb_live_raw.copy()
+for idx, pkg_id in enumerate(pkg_list_ntb):
+    has_own = pkg_id in all_has_vuln_ntb
+    if not has_own and not (pkg_id in has_vuln_subtree_ntb):
+        scores_ntb_live_capped[idx] = min(scores_ntb_live_capped[idx], 0.08)
+
+gt_cve_map = {p["package"]: p.get("cve") for p in bench_pkgs}
+
+# 2. ZEROED check (dim 6 zeroed before inference)
+x_dict_ntb_zeroed = copy.deepcopy(x_dict_ntb_live)
+x_dict_ntb_zeroed["Package"][:, 6] = 0.0
+
+with torch.no_grad():
+    scores_ntb_zeroed_raw = hr_model(x_dict_ntb_zeroed, edge_index_ntb_live).cpu().numpy()
+
+scores_ntb_zeroed_capped = scores_ntb_zeroed_raw.copy()
+for idx, pkg_id in enumerate(pkg_list_ntb):
+    has_own = pkg_id in all_has_vuln_ntb
+    if not has_own and not (pkg_id in has_vuln_subtree_ntb):
+        scores_ntb_zeroed_capped[idx] = min(scores_ntb_zeroed_capped[idx], 0.08)
+
+def eval_ntb_scores(scores, label):
+    tp = sum(1 for i, pid in enumerate(pkg_list_ntb) if scores[i] >= 0.40 and bool(gt_cve_map.get(pid)))
+    fp = sum(1 for i, pid in enumerate(pkg_list_ntb) if scores[i] >= 0.40 and not bool(gt_cve_map.get(pid)))
+    fn = sum(1 for i, pid in enumerate(pkg_list_ntb) if scores[i] < 0.40 and bool(gt_cve_map.get(pid)))
+    tn = sum(1 for i, pid in enumerate(pkg_list_ntb) if scores[i] < 0.40 and not bool(gt_cve_map.get(pid)))
+    prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    print(f"  {label:<30}: Flagged={tp+fp:<3} | TP={tp:<2}, FP={fp:<2}, FN={fn:<2}, TN={tn:<3} | Prec={prec*100:.1f}% | Rec={rec*100:.1f}%")
+    return {"tp": tp, "fp": fp, "fn": fn, "tn": tn, "prec": prec, "rec": rec}
+
+print("\nNodeTestBench Re-Score (threshold >= 0.40):")
+ntb_live_capped = eval_ntb_scores(scores_ntb_live_capped, "Dim 6 LIVE (capped)")
+ntb_live_raw = eval_ntb_scores(scores_ntb_live_raw, "Dim 6 LIVE (raw)")
+ntb_zeroed_capped = eval_ntb_scores(scores_ntb_zeroed_capped, "Dim 6 ZEROED (capped)")
+ntb_zeroed_raw = eval_ntb_scores(scores_ntb_zeroed_raw, "Dim 6 ZEROED (raw)")
+
+print("\n" + "=" * 80)
+print("STEP 4: v2.1 Row Corrections & Verification")
+print("=" * 80)
+
+with open(V2DC_RESULTS_FILE, "r", encoding="utf-8") as f:
+    v2dc_data = json.load(f)
+
+summary = v2dc_data["summary"]
+print("v2.1 Pre-registered ARM Means across 5 seeds:")
+for arm_name, s in summary.items():
+    print(f"  {arm_name:<22}: Masked-50 AUC = {s['auc_mean']:.4f} +/- {s['auc_std']:.4f} | Spearman = {s['spearman_mean']:.4f} +/- {s['spearman_std']:.4f}")
+
+# Re-run the 5 checkpoints of full_v2 (p=0.3) on the official zeroed path
+print("\nRe-running v2.1 full_v2 (p=0.3) 5 checkpoints on OFFICIAL ZEROED audit path...")
+SEEDS = [42, 123, 456, 789, 1024]
+ckpt_zip = zipfile.ZipFile(V2DC_ZIP)
+
+# Prepare graph data for v2 architecture
+# Port v2 data loading
+pkg_features_v2 = np.array([n["features"] for n in pkg_nodes], dtype=np.float32)
+def norm_feats(tensor, continuous_indices):
+    norm_tensor = tensor.clone()
+    for idx in continuous_indices:
+        col = norm_tensor[:, idx]
+        min_val = col.min()
+        max_val = col.max()
+        norm_tensor[:, idx] = (col - min_val) / (max_val - min_val) if max_val > min_val else 0.0
+    return norm_tensor
+
+pkg_feat_v2 = norm_feats(torch.tensor(pkg_features_v2, dtype=torch.float32), [2, 3, 4, 5, 7])
+cve_feat_v2 = []
+for n in graph_json["nodes"]["CVE"]:
+    emb = n.get("embedding") or [0.0]*768
+    cvss = float(n.get("cvss_score", 0.0) if n.get("cvss_score") is not None else 0.0) / 10.0
+    cve_feat_v2.append(emb + [cvss])
+cve_feat_v2 = torch.tensor(cve_feat_v2, dtype=torch.float32)
+auth_feat_v2 = norm_feats(torch.tensor([n["features"] for n in graph_json["nodes"]["Author"]], dtype=torch.float32), [0, 1, 2, 3, 6])
+
+from torch_geometric.data import HeteroData
+from torch_geometric.nn import GATConv, HeteroConv
+
+def build_coo(edge_list, src_map, dst_map):
+    src, dst = [], []
+    for e in edge_list:
+        if e["source"] in src_map and e["target"] in dst_map:
+            src.append(src_map[e["source"]]); dst.append(dst_map[e["target"]])
+    return torch.tensor([src, dst], dtype=torch.long)
+
+auth_id_to_idx = {n["id"]: i for i, n in enumerate(graph_json["nodes"]["Author"])}
+cve_id_to_idx = {n["id"]: i for i, n in enumerate(graph_json["nodes"]["CVE"])}
+
+data_v2 = HeteroData()
+data_v2["Package"].x = pkg_feat_v2
+data_v2["CVE"].x = cve_feat_v2
+data_v2["Author"].x = auth_feat_v2
+data_v2["Package", "dependsOn", "Package"].edge_index = build_coo(graph_json["edges"]["dependsOn"], pkg_id_to_idx, pkg_id_to_idx)
+data_v2["Package", "hasVulnerability", "CVE"].edge_index = build_coo(graph_json["edges"]["hasVulnerability"], pkg_id_to_idx, cve_id_to_idx)
+data_v2["Package", "maintainedBy", "Author"].edge_index = build_coo(graph_json["edges"]["maintainedBy"], pkg_id_to_idx, auth_id_to_idx)
+data_v2["CVE", "introducedBy", "Author"].edge_index = build_coo(graph_json["edges"]["introducedBy"], cve_id_to_idx, auth_id_to_idx)
+
+FWD = [("Package", "dependsOn", "Package"), ("Package", "hasVulnerability", "CVE"),
+       ("Package", "maintainedBy", "Author"), ("CVE", "introducedBy", "Author")]
+
+def with_rev(edge_index_dict):
+    full_dict = dict(edge_index_dict)
+    for (src, rel, dst) in FWD:
+        if (src, rel, dst) in full_dict:
+            full_dict[(dst, "rev_" + rel, src)] = full_dict[(src, rel, dst)].flip(0)
+    return full_dict
+
+class VulnGATv2Model(nn.Module):
+    def __init__(self, pkg_in_dim=10, cve_in_dim=769, author_in_dim=7, hidden_dim=128, heads=4):
+        super().__init__()
+        self.pkg_proj = nn.Linear(pkg_in_dim, hidden_dim)
+        self.cve_proj = nn.Linear(cve_in_dim, hidden_dim)
+        self.author_proj = nn.Linear(author_in_dim, hidden_dim)
+        convspec = lambda a, b: GATConv(a, b, heads=heads, add_self_loops=False)
+        both = {
+            ("Package", "dependsOn", "Package"): convspec(hidden_dim, hidden_dim // heads),
+            ("Package", "hasVulnerability", "CVE"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+            ("Package", "maintainedBy", "Author"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+            ("CVE", "introducedBy", "Author"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+            ("Package", "rev_dependsOn", "Package"): convspec(hidden_dim, hidden_dim // heads),
+            ("CVE", "rev_hasVulnerability", "Package"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+            ("Author", "rev_maintainedBy", "Package"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+            ("Author", "rev_introducedBy", "CVE"): convspec((hidden_dim, hidden_dim), hidden_dim // heads),
+        }
+        self.conv1 = HeteroConv(both, aggr="sum")
+        self.conv2 = HeteroConv(both, aggr="sum")
+        self.classifier = nn.Sequential(nn.Linear(hidden_dim, 64), nn.GELU(), nn.Dropout(0.1), nn.Linear(64, 1), nn.Sigmoid())
+    def forward(self, x_dict, edge_index_dict):
+        h = {"Package": F.relu(self.pkg_proj(x_dict["Package"])),
+             "CVE": F.relu(self.cve_proj(x_dict["CVE"])),
+             "Author": F.relu(self.author_proj(x_dict["Author"]))}
+        ef = with_rev(edge_index_dict)
+        h1 = self.conv1(h, ef); h1 = {k: F.relu(v) for k, v in h1.items()}
+        h2 = self.conv2(h1, ef)
+        return self.classifier(h2["Package"]).squeeze(-1), h2["Package"]
+
+own_vpss = mea.compute_own_vpss(graph_json, vpss_labels)
+eligible_645 = mea.select_eligible_packages(own_vpss, 0.70)
+never_8682 = mea.get_never_vuln_indices(vpss_labels, pkg_id_to_idx, len(pkg_nodes))
+
+aucs_v21_official_zeroed = []
+
+for s in SEEDS:
+    ckpt_name = f"v2dc_full_v2_p30_s{s}.pt"
+    ckpt_bytes = ckpt_zip.open(ckpt_name)
+    m = VulnGATv2Model()
+    m.load_state_dict(torch.load(ckpt_bytes, map_location=device))
+    m.eval()
+
+    # Official masked audit (with dim 6 zeroed for masked packages per Commandment 2)
+    masked_data, masked_indices, _, _ = mea.apply_edge_mask(
+        data_v2, eligible_645, pkg_id_to_idx, graph_json, cve_id_to_idx, 0.50, s
+    )
+    with torch.no_grad():
+        x_d = {k: masked_data[k].x for k in masked_data.node_types}
+        e_d = {k: masked_data[k].edge_index for k in masked_data.edge_types}
+        scores, _ = m(x_d, e_d)
+        scores = scores.cpu().numpy()
+
+    pos = scores[list(masked_indices)]
+    neg = scores[never_8682]
+    y_ev = np.concatenate([np.ones(len(pos)), np.zeros(len(neg))])
+    auc_val = float(roc_auc_score(y_ev, np.concatenate([pos, neg])))
+    aucs_v21_official_zeroed.append(auc_val)
+    print(f"  v2.1 full_v2 p=0.3 s={s:<4}: Official zeroed masked-50 AUC = {auc_val:.4f}")
+
+mean_v21_off = np.mean(aucs_v21_official_zeroed)
+std_v21_off = np.std(aucs_v21_official_zeroed)
+print(f"  => v2.1 full_v2 p=0.3 (5-seed mean +/- std on Official Zeroed Path): {mean_v21_off:.4f} +/- {std_v21_off:.4f}")
+</file>
+
+<file path="phase5/VULNGAT_V2_PREREGISTRATION.md">
+# VulnGAT v2 Pre-Registration Document
+**Document Status:** LOCKED & PRE-REGISTERED (PATCHED FOR HARD FIRE)  
+**Date:** 2026-09-20  
+**Authors:** VulnChain Research Team  
+**Pre-registration Standard:** Open Science Framework (OSF) / Preregistered Research Design Standard  
+
+---
+
+## 1. Executive Summary & Brain Directives
+
+This document pre-registers the architectural, training, and evaluation specifications for **VulnGAT v2**, the terminal model intervention of the VulnChain project. 
+
+### Brain Rulings Applied Verbatim (Deviations Ledger)
+- **(g) Multi-task loss replaces approved MSE-only:** ACCEPTED with conditions: $\lambda_{\text{rank}}=0.20$, $\lambda_{\text{mask}}=0.30$ FROZEN (no tuning); attribution via ablations; if no-masking ablation also passes primary, headline attributes to ranking loss, not masking.
+- **(h) Secondary gate metric = Spearman (not RankAcc-nz):** ACCEPTED, resolves Brain's no-accuracy-metrics rule; floor = ridge-raw + margin = **0.6571**.
+- **(i) 5 seeds (not seed 42):** ACCEPTED; BOTH gates evaluate on the **MEAN across seeds**, per-seed values reported. No per-seed pass claims.
+- **v2 IS GREENLIT:** One cycle, no v3, terminal outcome either way. This cycle + its ablations = the project's **final training intervention**. Failure = **final negative result**. **NO v3 under any combination of outcomes.**
+- **EPSS = Option C amended:** Primary = closure labels; headline framing LOCKED as *"GNN vs formula oracle — approximating EPSS-closure without EPSS inputs"*; NEVER *"beats closure"*. Own-CVE (751) = labeled exploratory arm only.
+- **NEW cross-label transfer arm:** VPSS-trained HR head evaluated on EPSS-closure test labels (no retraining) and vice versa. The circularity-escaping comparison.
+- **D3 CLARIFICATION:** The v2 clean-test gate floor is the **best learnable baseline (ridge/HR) + $\max(2\text{pp}, 2 \times \text{seed-std})$**. The closure oracle ($r_s = 1.0$) is ceiling context only.
+
+---
+
+## 2. Explicit Training Label Specification
+
+- **Training Ground Truth:** **EPSS-closure** (3,691 non-zero packages, Commandment 6 gate PASSED).
+- **Circularity Statement (carried verbatim from Option-C decision):**  
+  *"GNN vs formula oracle — approximating EPSS-closure without EPSS inputs; NEVER 'beats closure'."*
+- **VPSS Fallback Removal:** The VPSS fallback clause is formally removed (Commandment 6 gate passed with 3,691 non-zero packages — dead branch eliminated).
+
+---
+
+## 3. Pre-Registered Hypotheses
+
+### Primary Hypothesis ($H_1$ — Propagation Resilience)
+VulnGAT v1 suffered from distribution shift under edge masking because it was trained exclusively on graphs with complete $hasVulnerability$ edges, learning to rely on local edge presence rather than structural neighborhood context. **VulnGAT v2, trained with edge dropout and masked-edge auxiliary supervision, will achieve a 50% masked-edge AUC that exceeds the label-propagation baseline by at least $\max(0.02, 2 \times \text{std}_{\text{LP}})$.**
+
+### Secondary Hypothesis ($H_2$ — Clean-Test Generalization)
+The architectural modifications and auxiliary ranking objectives in VulnGAT v2 will not sacrifice clean-test ranking performance. **VulnGAT v2 will achieve a clean-test Spearman correlation exceeding the best learnable baseline by at least $\max(0.02, 2 \times \text{seed-std})$.**
+
+---
+
+## 4. Pinned Evaluation Populations & Quantitative Gates
+
+All thresholds are derived from measured 5-seed distributions across seeds $\{42, 123, 456, 789, 1024\}$ on the 51-repository dataset.
+
+### 4.1 Primary Gate: 50% Masked-Edge AUC (Out-of-Distribution Propagation)
+- **Pinned Evaluation Population:** Masked-audit eligible strata ($N=645$ eligible packages with $\text{own\_ratio} \ge 0.70$ evaluated against $N=8,682$ never-vulnerable negative packages). This is the **exact same population** where label propagation was measured ($0.7191 \pm 0.0069$).
+- **Baseline (Label Propagation):** $\mu = 0.7191 \pm 0.0069$
+- **Margin:** $\max(0.02, 2 \times 0.0069) = 0.0200$
+- **Pre-Registered Success Threshold:**  
+  $$\text{Mean}(\text{AUC}_{\text{v2}}) \ge 0.7191 + 0.0200 = \mathbf{0.7391}$$
+- **Current Baseline Reference:** VulnGAT-HR v1 achieves $0.6315 \pm 0.0045$ ($\Delta = -0.1076$ below threshold).
+
+### 4.2 Secondary Gate: Clean-Test Spearman Correlation
+- **Pinned Evaluation Population:** Temporal-split non-zero test cut ($N=1,430$ packages with newest contributing CVE published date $\ge$ `2026-08-01`). This is the **exact same population** where ridge-raw was measured ($0.6371$).
+- **Baseline Distribution (Non-Zero Test Cut, $N=1,430$):**
+  - Closure-Decayed-Sum Oracle: $r_s = 1.0000$ *(Ceiling context only, not a gate floor)*
+  - Closure-Max (Hill $K=1$): $r_s = 0.9463$
+  - Ridge-Raw Baseline: $r_s = 0.6371$
+  - VulnGAT-HR Head (5 seeds): $r_s = 0.5614 \pm 0.0014$
+- **Best Learnable Baseline:** Ridge-Raw ($r_s = 0.6371$)
+- **Seed Standard Deviation:** $\sigma = 0.0014$
+- **Margin:** $\max(0.02, 2 \times 0.0014) = 0.0200$
+- **Pre-Registered Success Threshold:**  
+  $$\text{Mean}(r_{s, \text{v2}}) \ge 0.6371 + 0.0200 = \mathbf{0.6571}$$
+
+### 4.3 Gate Evaluation Rule
+- **Both gates evaluate on the MEAN across the 5 seeds $\{42, 123, 456, 789, 1024\}$.**
+- Per-seed values are reported in full. No per-seed pass claims are permitted.
+
+---
+
+## 5. Run Matrix & Attribution Rules
+
+### 5.1 Run Matrix (35 Short Runs Total)
+The training execution matrix comprises 35 runs across fixed seeds $\{42, 123, 456, 789, 1024\}$:
+1. **Full v2 (15 runs):** 3 $p_{\text{mask}}$ values $\{0.10, 0.30, 0.50\} \times 5\text{ seeds}$.
+   - Objectives: $\mathcal{L}_{\text{MSE}} + 0.20 \mathcal{L}_{\text{rank}} + 0.30 \mathcal{L}_{\text{aux}}$ with dynamic edge masking at probability $p_{\text{mask}}$.
+2. **No-Masking Ablation (5 runs):** $p_{\text{mask}} = 0.0 \times 5\text{ seeds}$.
+   - Objectives: $\mathcal{L}_{\text{MSE}} + 0.20 \mathcal{L}_{\text{rank}}$ without edge masking ($\lambda_{\text{aux}} = 0.0$).
+3. **No-Ranking Ablation (15 runs):** 3 $p_{\text{mask}}$ values $\{0.10, 0.30, 0.50\} \times 5\text{ seeds}$.
+   - Objectives: $\mathcal{L}_{\text{MSE}} + 0.30 \mathcal{L}_{\text{aux}}$ with dynamic edge masking ($\lambda_{\text{rank}} = 0.0$).
+
+### 5.2 Attribution Rules
+- **Only Full v2 faces the gates.**
+- Ablations are **attribution-only** and reported in the exact same table for comparative attribution.
+- **Attribution Condition:** If the no-masking ablation also passes the primary gate ($\ge 0.7391$), the headline result attributes the gain to the **ranking loss**, not edge masking.
+
+---
+
+## 6. Model Architecture & Hyperparameters
+
+### 6.1 VulnGAT v2 Architecture
+- **Base Graph Neural Network:** 2-layer Heterogeneous Graph Attention Network (HeteroGAT) with edge-type-specific message passing.
+- **Node Types:** `Package` (10-d raw features), `CVE` (768-d SentenceBERT + 1-d CVSS = 769-d), `Author` (7-d features).
+- **Edge Types:**
+  - `(Package, dependsOn, Package)`
+  - `(Package, hasVulnerability, CVE)`
+  - `(Package, maintainedBy, Author)`
+  - `(CVE, introducedBy, Author)`
+- **Hidden Dimension:** 128
+- **Attention Heads:** 4 (32 dims per head)
+- **Output Head:** Two-layer MLP (`Linear(128, 64) -> GELU -> Dropout(0.1) -> Linear(64, 1) -> Sigmoid`).
+
+### 6.2 Loss Formulation (FROZEN — No Tuning)
+$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{MSE}} + \lambda_{\text{rank}} \mathcal{L}_{\text{rank}} + \lambda_{\text{aux}} \mathcal{L}_{\text{aux}}$$
+- $\lambda_{\text{rank}} = 0.20$ (FROZEN)
+- $\lambda_{\text{aux}} = 0.30$ (FROZEN)
+- $\mathcal{L}_{\text{rank}}$: Pairwise SoftMargin ranking loss over sampled pairs with $|\Delta y| > 0.05$.
+- $\mathcal{L}_{\text{aux}}$: Consistency MSE between clean-graph predictions and masked-graph predictions.
+
+### 6.3 Optimization & Early Stopping
+- **Optimizer:** AdamW ($\text{lr} = 5 \times 10^{-4}$, weight decay $= 10^{-4}$).
+- **Max Epochs:** 100.
+- **Early Stopping:** Patience of 15 epochs monitored on Validation Spearman correlation on non-zero packages ($N=452$).
+- **Fixed Seeds:** $\{42, 123, 456, 789, 1024\}$.
+
+---
+
+## 7. Terminality Statement
+
+This cycle and its pre-registered ablations constitute the **final training intervention of the VulnChain project**. 
+- If Full v2 meets both gates, VulnGAT v2 is validated.
+- If Full v2 fails either gate, it constitutes a **final, terminal negative result** documenting the structural limitations of GNN propagation on dependency vulnerability graphs.
+- **Under NO combination of outcomes will a v3 cycle be initiated.**
+
+---
+
+# ⚠️ RETRACTION NOTICE — APPENDED 2026-09-20 (POST-AUTOPSY; LOCKED BODY ABOVE UNMODIFIED)
+
+Per the v2 checkpoint autopsy ([`V2_AUTOPSY.md`](V2_AUTOPSY.md); ledger entries D5–D8 in `WORKER_REPORT_PHASE5.md`):
+
+1. **RETRACTED (§7):** The sentence *"If Full v2 fails either gate, it constitutes a **final, terminal negative result** documenting the structural limitations of GNN propagation on dependency vulnerability graphs"* is **RETRACTED**. The v2 cycle failed for execution/protocol-artifact reasons, not because of any demonstrated structural limitation of GNN propagation. No structural conclusion may be cited from this cycle.
+2. **QUARANTINED:** The executed v2 result is quarantined. The primary gate (§4.1) was **never measured** — the notebook's re-implementation of the eligible-strata filter produced an empty positive set (0 packages; the official N=645 relies on a 0.30 auto-relaxation in `TrainModel/masked_edge_audit.py` that the notebook dropped), making all 35 masked AUCs undefined (`NaN`). The secondary-gate number is vacuous (chance-level output of an untrained model: weights ≤ 1.3% L2 from random init; train Spearman ≈ chance). Neither gate outcome (pass or fail) may be reported from this cycle.
+3. **STATUS OF H1/H2:** Both hypotheses remain **untested**. Under the pre-committed matrix (execution-defect row), the matter passes to the Brain for a ruling on a single conditional rerun; note that the rerun cannot use an "identical protocol" (the defects are in this document's own specification: forward-only `HeteroConv`, unnormalized inputs, inline eligibility re-computation) and requires the three amendments listed in `V2_AUTOPSY.md` §9, with all gates, thresholds, seeds, and margins unchanged.
+4. **Identical-rows anomaly:** The identical full_v2 p=0.1/0.3/0.5 table rows are explained (three distinct trainings whose p-difference was causally inert); see autopsy Item 2. No data-integrity concern.
+
+---
+
+# 🔁 RERUN ADDENDUM — APPENDED 2026-09-20 (POST-RETRACTION; LOCKED BODY ABOVE UNMODIFIED)
+
+1. **Authorization (ledger D8 → RESOLVED):** the Brain authorized exactly **one conditional rerun** as *"identical protocol, defect-corrected."* The three defect corrections — (i) eligibility wired to the official `TrainModel/masked_edge_audit.py` code path including the documented 0.30 auto-relaxation, with hard runtime assertions N=645 / N=8,682; (ii) reverse message-passing directions restored to direction parity with `TrainModel/core/model/layers.py` (HANLayer); (iii) Phase-4-identical feature normalization (Package min-max dims [2,3,4,5,7]; CVSS/10; Author dims [0,1,2,3,6]) — restore pre-registered intent. **No gate, threshold, λ, seed, run-matrix entry, or terminality clause is changed.** Full amendment justifications, the edge-direction parity table, and the verbatim pre-flight record: [`V2_AUTOPSY.md`](V2_AUTOPSY.md) Appendix B.
+
+2. **Rerun artifact:** `phase5/vulngat_v2_training_rerun.ipynb` (run_ids `v2dc_*`, `protocol_version = 'v2.1-defect-corrected'`, per-epoch per-term loss logging into the intermediate JSON, legacy-record hard-fail on load). The quarantined v2 artifacts remain byte-untouched and are never reused or resumed.
+
+3. **Pre-flight (Commandment 15, CPU only):** P1 init-sanity, P2 pathway-liveness, P4 eligibility (official 645 / 8,682), P5 loss-logging, P6 resume-safety, and the Fix-1 normalization-parity check (bit-identical, max|Δ| = 0.000e+00) — **all PASS**. P3 (learnability smoke) failed at its original 50-epoch horizon (train Spearman = −0.1602); the ordered CPU debug showed the corrected model crosses the unchanged 0.30 bar at **epoch 91**, inside the pre-registered 100-epoch budget (train ρ = +0.4043 at the cap; weights discarded).
+
+4. **Ruling D10 (VERBATIM):**
+   > "P3 horizon (50 epochs) was Brain-mis-specified relative to frozen protocol dynamics (~70-epoch output-mean-fitting phase). Corrected to budget-matched horizon: train Spearman > 0.30 within the pre-registered 100-epoch budget; bar unchanged. Satisfied by the pre-collected 300-epoch diagnostic (train ρ = +0.4043 at epoch 100; weights discarded; evidence predates this ruling). The 300-epoch trajectory beyond the cap is interpretation context only, never gate-eligible. Precedent: Phase-1 nz-cut anchor correction."
+
+5. **Fire authorization (status line, verbatim):**
+   > **PRE-FLIGHT PASSES under corrected P3. Colab fire AUTHORIZED by the Brain. Protocol frozen. No further changes of any kind permitted.**
+
+6. **Fired-artifact identity:** the notebook fired at Colab must be byte-identical to the pre-flighted artifact —
+   - **SHA-256:** `aeaeae83c2c3afe91fdf5f1768ef0e6cfc329644099bf490f130c6e6a440372d`
+   - **MD5:** `c4c04f8a974d96359ff43900d1d31f19` · **size:** 48,072 bytes
+   - Machine-readable record: [`v2dc_fire_manifest.json`](v2dc_fire_manifest.json). **Any hash mismatch invalidates the fire** — a mismatched notebook is not the pre-flighted artifact and must not be run under this authorization.
+
+---
+
+# 🏁 RESULT NOTICE — APPENDED 2026-09-20 (POST-RERUN; LOCKED BODY ABOVE UNMODIFIED)
+
+The conditional rerun authorized under the Rerun Addendum (rulings D8/D10) was fired on Colab (T4 GPU) and **completed the full pre-registered 35-run matrix** under `protocol_version = v2.1-defect-corrected` (fired artifact SHA-256 `aeaeae83c2c3afe91fdf5f1768ef0e6cfc329644099bf490f130c6e6a440372d`; artifacts verified: 35/35 `v2dc_*` runs, gate statistics recomputed from per-seed values — exact match; 35/35 checkpoints, zip integrity OK; archived as `phase5/v2dc_final_results.json` and `phase5/v2dc_checkpoints.zip`).
+
+## Gate outcomes (mean across seeds {42,123,456,789,1024}; only full_v2 faces gates)
+
+| Config | 50% Masked AUC | Primary ≥ 0.7391 | Clean-Test r_s | Secondary ≥ 0.6571 |
+|---|---|---|---|---|
+| full_v2 (p=0.1) | 0.4156 ± 0.0904 | **FAIL** | 0.1507 ± 0.1122 | **FAIL** |
+| full_v2 (p=0.3) | 0.4031 ± 0.1009 | **FAIL** | 0.1503 ± 0.1118 | **FAIL** |
+| full_v2 (p=0.5) | 0.3916 ± 0.1120 | **FAIL** | 0.1489 ± 0.1104 | **FAIL** |
+
+Both gates fail under every reading (best-p, pooled 0.4034 / 0.1500, or any single config). Reference: label propagation 0.7191 (primary population), ridge-raw 0.6371 and VulnGAT-HR v1 0.5614 (secondary population). Executed test cut N=1,433 (prereg 1,430 — the documented A4 integer-floor drift).
+
+## Pre-committed interpretation — row "Both < bars" (applied verbatim)
+
+> **"The pre-registered end-to-end protocol, correctly implemented, does not beat label propagation or ridge on this graph at this scale; frozen Phase-4 representations remain the best encoder."**
+
+Attribution note: the pre-registered attribution rule governed a PASS; with no pass anywhere there is nothing to attribute. Empirically the no-masking ablation (AUC 0.4251, r_s 0.1634) is nominally the best arm but within ~1 std of full_v2 — dynamic edge masking neither helps nor rescues; the ranking loss contributes ~+0.07 r_s over no_ranking, far from any bar. Full mechanics (training-depth-dependent below-chance AUC inversion; early-stopping/mean-fitting interaction, 27/35 runs; budget-binding evidence; CPU-debug↔GPU reproduction) are recorded in the worker report's terminal-result section and in the P5 per-epoch trajectories present on all 35 runs.
+
+## Terminality — CONFIRMED
+
+This result, together with the quarantined v2 cycle, **closes the VulnGAT question**. Per §7 of the locked body (as amended by the retraction notice): **no v3 cycle will be initiated under any combination of outcomes; no further training interventions.** The frozen Phase-4 representations remain the project's best encoder; the project's evidence chain rests on the Phase-4/Phase-5 baselines and analyses, not on end-to-end GNN training.
+</file>
+
+<file path="phase5/WORKER_REPORT_PHASE5.md">
+# Worker Report — Phase 5 (VulnGAT Head-Refit)
+**Run date:** 2026-09-20 · **Orders:** Phase-5 task brief (VulnGAT Head-Refit, "execute exactly, do not redesign") · **Status: Phases 0/1/2 COMPLETE — Phase 2 masked-edge gate FAILED → Phase 3 GATED OFF — Phase 4 inference reruns complete, comparison table pending**
+
+> Environment note: this machine now has **torch 2.13.0+cpu + PyG 2.8.0.post1** installed locally (it was CPU-only-no-PyG during Phase 4), so everything in Phase 5 ran locally on CPU per the orders' DEFAULT=LOCAL routing. No Colab handoff was triggered: the encoder stayed frozen end-to-end and no step was too slow for CPU (masked-edge audit = 687.7 s wall for all 3 ratios incl. bootstrap).
+
+---
+
+## Phase 0 — Validity gate: **PASS** ✅
+Script: `phase5/phase0_validity_gate.py` · Output: `phase5/phase0_validity.json`
+
+Rebuilt the forward pass from `phase4/results_colab/phase4/models/vulngat_51repo.pt` (the epoch-3 best-val snapshot with the anti-aligned head) with the exact wiring of the proven local diagnostic (`phase4/diagnose_embedding_collapse.py`). Against the archived Colab metrics:
+
+| split | metric | archived | reproduced | diff |
+|---|---|---|---|---|
+| test | Spearman_all | −0.2356973802 | −0.2356973802 | **0.00e+00** |
+| test | RankAcc | 0.3910759097 | 0.3910759097 | **0.00e+00** |
+| test | MAE / MSE | 0.1676503271 / 0.0581010431 | same | 0.00e+00 |
+| train/val | all 8 metrics | — | — | ≤ 1e-7 (float noise) |
+| all 12,405 predictions | max abs diff vs `test_predictions_51repo.json` | — | — | **8.9e-08** |
+
+pkg_id order identical. Wiring is valid; gate tolerance set to the ordered ~1e-6 (first run used an over-tight 1e-9 and failed on 1e-7 float noise — documented, then corrected; the failures were pure accumulation-order noise, not wiring).
+
+## Phase 1 — VulnGAT-HR head refit: **DONE** ✅ (with one protocol clarification)
+Scripts: `phase5/phase1_head_refit.py`, debug: `phase5/debug_phase1_convergence.py` · Outputs: `phase5/phase1_head_refit.json`, `phase5/phase1_training_curve.json`, `phase5/pkg_embeddings_frozen.npy` (+`pkg_embeddings_meta.json`), `phase5/vulngat_hr.pt`
+
+Protocol as ordered: full encoder frozen (`requires_grad=False`, eval, no dropout); all 12,405 Package nodes forwarded once → cached 128-d embeddings; fresh `Sequential(Linear(128,1), Sigmoid())` head (mirrors original classifier exactly, so the state_dict drops into `model.classifier`); **MSE only, no InfoNCE**; Adam lr=1e-3; max 500 epochs; **selection on val Spearman (non-zero, n=161)**; early stop patience 50; seed 42.
+
+**Protocol clarification (batch size):** the orders pin lr/epochs/seed but not batch size. Read as full-batch, it means 1 Adam step/epoch → 500 total steps → under-converged (best epoch = the 500 cap, test Spear_all only 0.47–0.56; the exact disease the Phase-4 MLP had). Debug evidence (D1): ridge on the cached embeddings reproduces the 0.7775/88.54% anchor **exactly** → cache, masks, labels all correct. Fix: minibatch Adam; bs selected among {32,64,128,256} **purely on the ordered validation metric** (val Spearman-nz: 0.5802/0.5759/0.5749/0.5731 → bs=32 wins); all four converge to the same zone (test RankAcc-all 85.4–85.9%), so this is genuine convergence, not batch luck. Training curve: early stop at epoch 229, **selected epoch 179**, val Spearman-nz 0.5757.
+
+**Test results (saleor-storefront):**
+
+| cut | MSE | MAE | Pearson | Spearman | RankAcc |
+|---|---|---|---|---|---|
+| (a) all 1,341 | **0.0265** | 0.1100 | 0.6239 (nz) | 0.5487 (nz) / **0.7210 (all)** | **85.55%** |
+| (b) non-zero 538 | 0.0421 | 0.1514 | 0.6239 | 0.5487 | 69.98% |
+
+vs as-trained VulnGAT: Spearman_all −0.2357 → **+0.7210**; RankAcc 39.11% → **85.55%**.
+
+**Sanity gate (nz cut ≈85–88% expected): literal expectation NOT met — and it is unmeetable for any linear head.** Evidence: the 85–88% anchors (ridge 88.5%, fresh linear head 87.1%) are **all-cut** numbers; measured on the non-zero cut, ridge — the closed-form ceiling for ANY linear head on these embeddings — gets **72.03%**. VulnGAT-HR's nz-cut RankAcc 69.98% = **97.2% of the linear ceiling**; on the comparable all cut it lands 85.55%, inside the anchor zone. Wiring proven correct (D1 above) → **no encoder-retrain / Colab contingency triggered** (it was justified only if wiring were proven correct AND the refit still failed the anchor zone on the like-for-like cut — it doesn't).
+
+## Phase 2a — Baseline fix: **DONE** ✅
+Script: `phase5/phase2a_mlp_reconverge.py` · Output: `phase5/phase2a_baselines.json`, `phase5/mlp_reconverged.pt`
+
+Reconverged the archived MLP (architecture identical: 10-64-64-1-Sigmoid; minibatch bs=256, wd=1e-5 as archived; selection moved to val-Spearman-nz = the protocol fix, so all three final-table models are selected the same way; early stop at epoch 62, selected epoch 11). **Final table (test, saleor-storefront):**
+
+| model | MSE | MAE | Spear_nz | Spear_all | RankAcc | RankAcc_nz |
+|---|---|---|---|---|---|---|
+| ridge-raw (floor), α=1.0 on val MSE | 0.1997 | 0.4204 | 0.5165 | 0.5520 | 77.13% | 67.87% |
+| **MLP reconverged** | 0.0315 | 0.1315 | 0.5198 | 0.5550 | **77.45%** | 67.80% |
+| **VulnGAT-HR** | **0.0265** | **0.1100** | **0.5487** | **0.7210** | **85.55%** | **69.98%** |
+| *refs:* MLP archived (P4, under-converged) | 0.0383 | 0.1436 | 0.4944 | 0.4426 | 72.18% | — |
+| *refs:* VulnGAT archived (P4, anti-aligned) | 0.0581 | 0.1677 | 0.2227 | −0.2357 | 39.11% | — |
+
+The Phase-4 anomaly "MLP loses to ridge" is resolved: a converged MLP **ties** ridge (77.45 vs 77.13). VulnGAT-HR beats both baselines on every ranking metric (+8.1 pp RankAcc, +0.17 Spearman_all over the feature-only models) — on the clean split, the frozen encoder's embeddings now carry real value on top of the 10 raw features.
+
+## Phase 2b — Masked-edge audit on VulnGAT-HR: **pre-registered criterion FAILED** ❌ (honest Outcome 3)
+Run: archived `TrainModel/masked_edge_audit.py` unmodified (dim-6 zeroing active per Commandment 2), env-var paths, `PYTHONHASHSEED=42` pinned, seed 42, ratios 10/30/50%, 1,000-iter bootstrap, all on CPU in 687.7 s. Output: `phase5/masked_edge_audit_hr.json` (config: eligible 645 @ own/VPSS ≥ 0.7, never-vuln negatives 8,682).
+
+**AUC (masked-vulnerable vs never-vulnerable), overall stratum:**
+
+| mask | VulnGAT-HR | BFS | label-prop | feat-shuffle |
+|---|---|---|---|---|
+| 10% | 0.7002 | 0.5694 | **0.7087** | 0.6991 |
+| 30% | 0.6501 | 0.5299 | **0.7233** | 0.6522 |
+| 50% | 0.6423 | 0.5350 | **0.7150** | 0.6426 |
+
+50% shared stratum: model 0.6472 / BFS 0.5341 / label-prop 0.7208; 50% orphaned: model 0.6237 / label-prop 0.6925.
+
+Readings, verbatim-honest:
+- vs the as-trained model (AUC 0.397 at 50% — below chance), VulnGAT-HR is a massive repair (**0.397 → 0.642**) and it beats BFS by ≈ +0.11 everywhere.
+- **The number to beat was label-prop 0.72, and it still wins** at every ratio; the pre-registered criterion (beat label-prop by >0.02 at 50% mask, Commandment 9) fails at **−0.073/−0.078**. The audit's distribution-shift caveat applies unchanged: the encoder was trained with its own `hasVulnerability` edges present; masked inference is OOD for it.
+- Feature-shuffle drop ≈ 0.0000 at every ratio → still **no CVE-embedding semantic signal used** (identical to Phase 4's finding).
+- MRR (embedding-space CVE re-ranking) 0.008–0.012 vs random floor 0.0011 — 7–11× above chance, absolute tiny (unchanged from P4).
+
+## Phase 2c — NodeTestBench OOD (threshold LOCKED ≥0.40, no tuning): **reported — precision does not survive the swap**
+Protocol: archived Phase-4 staging reproduced locally — `phase5/bench_run/` = `analyze_project.py` + `core/` + 51-repo `vulnchain_graph.json` (KB) + `models/vulngat_trained.pt` = **VulnGAT-HR merged checkpoint** (`phase5/models/vulngat_hr_full.pt`: frozen 51-repo encoder + refit head; 98 tensors, loads cleanly). Ground truth = non-null `cve` field. Output: `phase5/bench_run/bench_results_hr.json`.
+
+| N=671 (77 CVE-confirmed) | as-trained (P4 archived) | **VulnGAT-HR** |
+|---|---|---|
+| Flagged ≥0.40 | 25 | 41 |
+| TP / FP / FN | 25 / 0 / 52 | 31 / 10 / 46 |
+| **Precision** | **100.0%** | **75.6%** |
+| **Recall** | 32.5% | **40.3%** |
+
+Honest reading: recall improves (31 TPs, +6 recovered CVE packages) but **10 clean packages cross 0.40** — eslint 0.9995, superagent 0.9685, pg 0.9515, eslint-plugin-node 0.9504, needle 0.9228, rc 0.8493, boxen 0.6493, table 0.6370, wrap-ansi 0.5520, inquirer 0.4838 — most flagged via vulnerable descendants (blast-radius behavior by design; still FPs under this ground truth). The archived "100% precision" claim is **not** a property of the refit model. No threshold tuning was done or allowed.
+
+## Phase 3 — EPSS rebuild + counts + decision matrix: **COMPLETE** ✅ (HARD STOP for Brain)
+*Spec confirmation (verbatim): D1 ungated. Corrected rationale: the masked-edge failure is RELEVANT to the EPSS question (the EPSS value-add claim depends on propagation); run anyway because it is cheap and informative. ≥3,000 non-zero hard stop kept.*
+
+Scripts: `phase5/epss_labeler_rebuild.py` · Outputs: `phase5/epss_rebuild_report.json`, `phase5/epss_labels_51repo.json`
+
+### 3.1 Validity Gate: **PASS** ✅ (bit-exact reproduction)
+Reconstructed the EPSS labeler and verified against `TrainModel/epss_labels_experimental.json` across all 5,578 pilot packages:
+- **Fields checked:** 22,312 (all 4 fields: `epss_risk`, `raw_sum`, `num_contributing_vulns`, `min_depth_to_vuln`).
+- **Mismatches:** **0** (tolerance < 1e-10).
+- **Algorithmic discoveries (ground truth from archived labels):**
+  1. *No exposure tier:* exposure was $1.0$ everywhere (unlike VPSS, which used 1.0/0.5/0.3/0.15).
+  2. *Unique CVE deduplication at minimum depth:* if multiple transitive packages share the same CVE, EPSS counted that CVE once at its minimum depth.
+  3. *Max BFS depth:* search strictly capped at `depth <= 5`.
+  4. *CISA KEV bonus:* if `in_cisa_kev == True`, the CVE score is boosted to $1.0$ (observed on `GHSA-jpcq-cgw6-v4j6` in jQuery).
+  5. *CVSS imputation:* for CVEs lacking EPSS score, imputed as `cvss_score / 100.0`.
+  6. *Rounded raw_sum input:* `epss_risk = round(raw_sum / (raw_sum + 1.0), 6)` from rounded `raw_sum`.
+
+### 3.2 51-Repo Graph Counts (BOTH Definitions)
+Applied the validated labeler to `phase5/bench_run/vulnchain_graph.json` (12,405 packages, 883 CVEs, 2,632 hasVuln edges):
+
+| Definition | Description | Count | Passes Cmd 6 Gate (≥3,000)? |
+|---|---|---|---|
+| **(a) Closure-derived** | Any package with $raw\_sum > 0$ from BFS closure ($d \le 5$) | **3,303** (26.6%) | **YES** ✅ (3,303 ≥ 3,000) |
+| *(a.1) With own CVE* | Labeled package possesses direct `hasVulnerability` edge | 751 (6.1%) | — |
+| *(a.2) Closure-only* | Labeled package elevated purely via downstream dependencies | 2,552 (20.6%) | — |
+| **(b) Own-CVE only** | Only packages with direct `hasVulnerability` edges | **751** (6.1%) | **NO** ❌ (751 < 3,000, 889-regime) |
+| *Zero EPSS* | Packages with zero reachable EPSS risk | 9,102 (73.4%) | — |
+
+**Confirmation:** In the 9-repo era, 889 non-zero packages existed vs 301 packages with `hasVulnerability` edges (588 closure-only). Archived EPSS was **definitively closure-derived** (Definition a).
+
+### 3.3 Advisory-Date Distribution (Temporal Split Feasibility)
+All 883 CVE nodes in the 51-repo graph were resolved against `.osv_records_cache.json` (`published` ISO timestamp):
+- **Dates resolved:** 883 / 883 (100%, 0 missing).
+- **Date range:** 2017-10-24 to 2026-09-17.
+- **Quartiles:** Q1 = **2022-01-21** · Q2 (median) = **2025-05-19** · Q3 = **2026-05-14**.
+- **Year distribution:** 2017: 11 | 2018: 35 | 2019: 34 | 2020: 49 | 2021: 76 | 2022: 105 | 2023: 52 | 2024: 57 | 2025: 72 | **2026: 392** (44.4% in 2026).
+- **Precommitted temporal split:** Cutoff by package's newest contributing CVE published date; cutoff date pre-registered to ensure $\ge 150$ non-zero test nodes (B5 precedent). Residual shared-CVE overlap across train/test splits will be explicitly reported.
+- **Limitation:** Current snapshot EPSS scores used for all CVEs — tests advisory-recency generalization, not true historical EPSS drift.
+
+### 3.4 Decision Matrix for the Brain (HARD STOP ENFORCED)
+No models trained. No notebook generated. Awaiting Brain directive:
+
+| Option | Track | N (non-zero) | Cmd 6 Gate | Key Methodological Trade-off |
+|---|---|---|---|---|
+| **A** | **Closure-derived** (Definition a) | **3,303** | **PASS** (≥3,000) | Label is deterministic decayed-sum ($K=1.0$). A GNN predicting this label without seeing EPSS inputs is evaluated against an oracle formula ($r_s \approx 1.0$ baseline). Must reframe headline as "GNN vs formula oracle". |
+| **B** | **Own-CVE only** (Definition b) | **751** | **FAIL** (<3,000) | Falls into the underpowered 889-sample regime that degraded in Phase 4. Violates Commandment 6. Not scientifically viable alone. |
+| **C** | **Dual-Track** | 3,303 + 751 | Partial | Primary evaluation on Option A (continuity & validity); Option B tracked as clearly labeled underpowered exploratory benchmark with no headline claims. |
+
+---
+
+## Phase 4 — Inference swap: D2 comparison tables **COMPLETE** ✅
+*Spec confirmation (verbatim): D2 comparison tables (FP decomposition, quantiles, rank overlap, descriptive P@k, §13.4 packages with caveat) MUST appear in worker report.*
+
+Script: `phase5/phase4_compare.py` · Output: `phase5/phase4_inference_swap.json`  
+Arms evaluated: **VulnGAT-HR** (`phase5/models/vulngat_hr_full.pt`) vs **as-trained 51-repo** (`phase4/models/vulngat_51repo.pt`), both under the 51-repo knowledge base. Thresholds locked: Critical $\ge 0.40$, Propagation baseline $> 0.08$.
+
+### Table 1: Per-Lockfile Summary & FP Decomposition
+| Lockfile | Pkgs | HR Flagged (own / prop / neither) | Old Flagged (own / prop / neither) | Neither Rate (HR vs Old) |
+|---|---|---|---|---|
+| `legacy_app` | 9 | 5 (5 / 0 / 0) | 2 (2 / 0 / 0) | 0.0% vs 0.0% |
+| `marked` | 617 | 42 (1 / 0 / 41) | 2 (2 / 0 / 0) | 97.6% vs 0.0% |
+| `meteor` | 401 | 24 (2 / 0 / 22) | 0 (0 / 0 / 0) | 91.7% vs 0.0% |
+| `modern_clean` | 6 | 1 (1 / 0 / 0) | 0 (0 / 0 / 0) | 0.0% vs 0.0% |
+| `socket_io` | 1157 | 82 (12 / 0 / 70) | 1 (1 / 0 / 0) | 85.4% vs 0.0% |
+| `user_package_lock` | 132 | 10 (6 / 3 / 1) | 0 (0 / 0 / 0) | 10.0% vs 0.0% |
+| `vuln_test` | 11 | 1 (1 / 0 / 0) | 1 (1 / 0 / 0) | 0.0% vs 0.0% |
+
+### Table 2: Score Distributions, Rank Overlap & Descriptive Top-K Precision
+| Lockfile | HR Quantiles (min/p50/p90/max) | Old Quantiles (min/p50/p90/max) | Spearman Rank Overlap ($r_s$) | HR P@10 (TP/N) | Old P@10 (TP/N) |
+|---|---|---|---|---|---|
+| `legacy_app` | 0.08 / 0.41 / 0.98 / 1.00 | 0.08 / 0.18 / 0.40 / 0.41 | 0.227 (p=5.6e-01) | 77.8% (7/9) | 77.8% (7/9) |
+| `marked` | 0.02 / 0.08 / 0.08 / 1.00 | 0.05 / 0.08 / 0.08 / 0.44 | 0.402 (p=2.6e-25) | 0.0% (0/10) | 40.0% (4/10) |
+| `meteor` | 0.01 / 0.08 / 0.08 / 1.00 | 0.05 / 0.08 / 0.08 / 0.28 | 0.327 (p=1.8e-11) | 20.0% (2/10) | 10.0% (1/10) |
+| `modern_clean` | 0.05 / 0.08 / 0.47 / 0.62 | 0.08 / 0.08 / 0.27 / 0.33 | 0.870 (p=2.4e-02) | 33.3% (2/6) | 33.3% (2/6) |
+| `socket_io` | 0.02 / 0.08 / 0.08 / 1.00 | 0.05 / 0.08 / 0.08 / 0.41 | 0.238 (p=2.1e-16) | 0.0% (0/10) | 20.0% (2/10) |
+| `user_package_lock` | 0.03 / 0.08 / 0.08 / 1.00 | 0.05 / 0.08 / 0.08 / 0.31 | 0.177 (p=4.3e-02) | 60.0% (6/10) | 70.0% (7/10) |
+| `vuln_test` | 0.02 / 0.08 / 0.40 / 0.65 | 0.08 / 0.08 / 0.21 / 0.53 | 0.521 (p=1.0e-01) | 40.0% (4/10) | 40.0% (4/10) |
+
+### 4.3 Section 13.4 Packages & Credit Split Attribution
+1. **§13.4 Packages:** In the 9-repo lore, four benign packages (`@google/genai`: 0.2453, `socket.io-client`: 0.1989, `vite`: 0.1232, `protobufjs`: 0.1229) were cited as evidence of blast-radius propagation above the 0.08 calibration cap.  
+   - *Audit Caveat:* Those scores were produced under the 9-repo knowledge base. In `user_package_lock.json` (which parses to 132 packages, matching archived `results.json`), the actual benign parents elevated above the 0.08 cap are:
+     - `socket.io@4.8.3`: HR = **0.3046** (no direct CVE; elevated via child `socket.io-parser`)
+     - `express@5.2.1`: HR = **0.2220** (no direct CVE; elevated via middleware chain)
+     - `concurrently@9.2.1`: HR = **0.2195** (no direct CVE; elevated via downstream tree)
+     - `socket.io-adapter@2.5.6`: HR = **0.1330** (no direct CVE)
+2. **Honest Credit Attribution:** Across real-world lockfiles, VulnGAT-HR is significantly more aggressive than the under-converged old head:
+   - On small/targeted lockfiles (`legacy_app`, `vuln_test`, `user_package_lock`), HR achieves high precision (0–10% neither rate) and recovers genuine multi-hop transitive paths.
+   - On large graphs (`marked`, `meteor`, `socket_io`), HR elevates many benign packages into $\ge 0.40$ (85–97% neither rate under flat CVE-ground-truth), directly mirroring the NodeTestBench precision drop (100% $\to$ 75.6%).
+   - The credit split between GNN topological propagation and post-hoc pipeline calibration remains approximately **30% GNN / 70% pipeline engineering**.
+
+---
+
+## Artifacts Inventory (Phase 5)
+| file | what |
+|---|---|
+| `phase0_validity_gate.py` / `phase0_validity.json` | Phase-0 gate script + PASS report |
+| `phase1_head_refit.py` / `phase1_head_refit.json` / `phase1_training_curve.json` | VulnGAT-HR protocol + results + curve |
+| `debug_phase1_convergence.py` | gate-failure debug (ridge anchor reproduction, full-batch vs minibatch evidence) |
+| `pkg_embeddings_frozen.npy` + `pkg_embeddings_meta.json` | cached frozen 128-d embeddings for all 12,405 packages |
+| `vulngat_hr.pt` | refit head (head_state_dict + meta; load into `model.classifier`) |
+| `models/vulngat_hr_full.pt` | merged full VulnGAT state_dict (frozen encoder + HR head) |
+| `phase2a_mlp_reconverge.py` / `phase2a_baselines.json` / `mlp_reconverged.pt` | baseline fix + final table |
+| `masked_edge_audit_hr.json` | Phase-2b audit results (Outcome 3, FAILED criterion) |
+| `bench_run/` (+`bench_results_hr.json`, `hr_*.json`) | staged HR inference dir + outputs |
+| `bench_run_astrained/` (+`old_*.json`) | staged as-trained comparison dir + outputs |
+| `phase4_compare.py` / `phase4_inference_swap.json` | Phase 4 D2 comparison script + JSON output |
+| `demo/` (`demo_runner.py`, `DEMO_REPORT.md`, `demo_comparison.json`) | Part 1 live demo runner + side-by-side tables |
+| `DIAGNOSIS_39to85.md` | Part 1 forensic narrative (39% to 85.6%) |
+| `epss_labeler_rebuild.py` / `epss_rebuild_report.json` / `epss_labels_51repo.json` | Part 3 EPSS rebuild + validity gate (PASS) + decision matrix |
+| `logs_hr_*.txt` / `logs_old_*.txt` | per-run inference logs |
+| `NodeTestBench/` | cloned benchmark repo |
+
+---
+
+## Bottom Line & Decisions for the Brain
+1. **In-Distribution Ranking:** VulnGAT-HR fully repairs ranking (39% $\to$ **85.6%** RankAcc; Spearman $-0.24 \to \mathbf{+0.72}$) and beats both feature-only baselines (reconverged MLP 77.5%, ridge 77.1%).
+2. **Phase 2 Headline Gates:** Masked-edge AUC (0.642) beats BFS (0.535) but still loses to label-prop (0.715, pre-registered criterion failed). NodeTestBench precision dropped from 100% $\to$ 75.6% (recall rose 32.5% $\to$ 40.3%).
+3. **EPSS (Part 3):** Validity gate passed bit-exactly (22,312/22,312 fields matched). Definition (a) closure-derived yields **3,303 non-zero samples** (passes Commandment 6 $\ge 3,000$ gate). Definition (b) own-CVE yields **751 samples** (fails gate). Advisory dates span 2017–2026 (883/883 resolved). **HARD STOP ACTIVE: Awaiting Brain decision on Options A, B, or C before training any EPSS arm.**
+4. **Deviations / Amendments Ledger (verbatim):**
+   - **D1:** EPSS ungated. Corrected rationale: the masked-edge failure is RELEVANT to the EPSS question (the EPSS value-add claim depends on propagation); run anyway because it is cheap and informative. $\ge 3,000$ non-zero hard stop kept.
+   - **D1 additions ACTIVE:** closure baselines (max + decayed-sum) are the bar for "embeddings add value"; temporal split by advisory dates, not random; $\ge 5$ seeds reporting mean $\pm$ std; primary metrics = Spearman + precision-at-k; hard-stop decision matrix after counts.
+   - **D2:** comparison tables (FP decomposition, quantiles, rank overlap, descriptive P@k, §13.4 packages with caveat) MUST appear in worker report.
+   - **D3:** live demo + diagnosis is FIRST in priority order.
+   - **D4:** v2 pre-registration (5+ seed audit, protocol fixes, GNN vs closure comparison, 100% precision diagnosis) TIMEBOXED, last.
+
+---
+
+# Phase 5 Continuation II Addendum — Final Pre-v2 Report
+**Run date:** 2026-09-20 · **Orders:** Phase 5 Continuation II (Blocking Fixes → EPSS Arms → v2 Pre-registration + Notebook)  
+**Status: Parts A, B, C, D, E COMPLETE — v2 Pre-registration locked, Colab Notebook generated, HARD STOP on v2 training enforced.**
+
+### Brain Decisions Logged Verbatim (Deviations Ledger)
+- **(g) Multi-task loss replaces approved MSE-only:** ACCEPTED with conditions: $\lambda_{\text{rank}}=0.20$, $\lambda_{\text{mask}}=0.30$ FROZEN (no tuning); attribution via ablations; if no-masking ablation also passes primary, headline attributes to ranking loss, not masking.
+- **(h) Secondary gate metric = Spearman (not RankAcc-nz):** ACCEPTED, resolves Brain's no-accuracy-metrics rule; floor = ridge-raw + margin = **0.6571**.
+- **(i) 5 seeds (not seed 42):** ACCEPTED; BOTH gates evaluate on the **MEAN across seeds**, per-seed values reported. No per-seed pass claims.
+- **v2 IS GREENLIT:** One cycle, no v3, terminal outcome either way. This cycle + its ablations = the project's **final training intervention**. Failure = **final negative result**. **NO v3 under any combination of outcomes.**
+- **EPSS = Option C amended:** Primary = closure labels; headline framing LOCKED as *"GNN vs formula oracle — approximating EPSS-closure without EPSS inputs"*; NEVER *"beats closure"*. Own-CVE (751) = labeled exploratory arm only.
+- **NEW cross-label transfer arm:** VPSS-trained HR head evaluated on EPSS-closure test labels (no retraining) and vice versa. The circularity-escaping comparison.
+- **D3 CLARIFICATION:** The v2 clean-test gate floor is the **best learnable baseline (ridge/HR) + $\max(2\text{pp}, 2 \times \text{seed-std})$**. The closure oracle ($r_s = 1.0$) is ceiling context only.
+
+---
+
+## Part A — Neither-Bucket Reconciliation (100% COMPLETE ✅)
+Scripts: `phase5/rerun_inferences.py`, `phase5/phase4_compare_reconciled.py` · Output: `phase5/phase4_inference_swap.json`
+
+Re-ran all 7 lockfiles across both arms (HR and Old, 14 total runs) using an instrumented `analyze_project.py` that directly records `has_own_cve`, `cap_applied`, and `has_vuln_descendant` in each package object.
+
+| Lockfile | Pkgs | HR Flagged | Reconciled Neither (HR) | Old Neither (HR) | Old Neither Rate | Reconciled Neither Rate |
+|---|---|---|---|---|---|---|
+| `legacy_app` | 9 | 5 | 0 | 0 | 0.0% | **0.0%** |
+| `marked` | 617 | 42 | 0 | 41 | 97.6% | **0.0%** |
+| `meteor` | 401 | 24 | 0 | 22 | 91.7% | **0.0%** |
+| `modern_clean` | 6 | 1 | 0 | 0 | 0.0% | **0.0%** |
+| `socket_io` | 1157 | 82 | 0 | 70 | 85.4% | **0.0%** |
+| `user_package_lock` | 132 | 10 | 0 | 0 | 0.0% | **0.0%** |
+| `vuln_test` | 11 | 1 | 0 | 1 | 0.0% | **0.0%** |
+
+**Mechanism Confirmed:**
+- There are **exactly zero (0) true neither survivors** across all lockfiles.
+- Every single package flagged $\ge 0.40$ without an own CVE (e.g. `npm@11.18.0`, `eslint@8.57.1`, `nyc@17.0.0`) has `has_vuln_descendant: true`.
+- The previous 85–97% neither rates were **100% an artifact of `attack_paths` only tracing paths ending at direct root packages**. When a transitive package has a vulnerable descendant but is not a root-sink chain end, it was miscounted as "neither".
+- The old decomposition is quarantined in `phase4_inference_swap.json` with the full explanation.
+
+---
+
+## Part B — EPSS Coverage Completion (100% COMPLETE ✅)
+Scripts: `phase5/epss_coverage_and_fetch.py`, `phase5/epss_rebuild_with_coverage.py` · Outputs: `phase5/epss_data_51repo.json`, `phase5/epss_labels_51repo.json`
+
+- **Coverage Expansion:** Re-queried FIRST.org API and CISA KEV catalog for 1,716 CVEs across all 51 repositories.
+  - Real EPSS coverage jumped from 34.1% (301) to **92.4% (816 CVEs)** (+515 gained).
+  - CVSS fallback: 25 CVEs (2.8%).
+  - Neither: 42 CVEs (4.8%) — 38 are pure GHSA records with no CVE alias.
+- **Rebuilt 51-Repo Graph Counts:**
+  - **(a) Closure-derived non-zero: 3,691 packages (29.8%)** $\to$ **PASSES Commandment 6 gate ($\ge 3,000$)**! (Own CVE: 958; Closure-only: 2,733).
+  - **(b) Own-CVE non-zero: 958 packages (7.7%)** $\to$ Fails $\ge 3,000$ gate (confirms Option B is underpowered).
+  - Advisory dates: 883/883 resolved (100%), spanning 2017-10-24 to 2026-09-17.
+
+---
+
+## Part C — EPSS Arms & 5-Seed Evaluation (100% COMPLETE ✅)
+Scripts: `phase5/part_c_epss_arms.py`, `phase5/part_c_masked_edge_multiseed.py` · Outputs: `phase5/phase3_epss_arms.json`, `phase5/part_c_masked_edge_audit_5seeds.json`
+
+### 1. Temporal Split
+- **Cutoff:** `2026-08-01` (by newest contributing CVE published date).
+- **Distribution:** Train (fit) = 1,809 | Validation = 452 | **Test = 1,430 non-zeros** (Gate $\ge 150$: **PASS**).
+- **Shared CVE Overlap:** 385 / 732 test CVEs (52.6%).
+
+### 2. Pre-Committed EPSS Arms Table (Non-Zero Test Cut, $N=1,430$)
+| Arm | Description | Spearman (mean $\pm$ std) | P@10 (mean $\pm$ std) | Recall@top10% |
+|---|---|---|---|---|
+| **a** | closure-max (Hill $K=1$) | 0.9463 $\pm$ 0.0000 | 1.00 $\pm$ 0.00 | 0.7203 $\pm$ 0.0000 |
+| **b** | closure-decayed-sum (ORACLE ceiling) | 1.0000 $\pm$ 0.0000 | 1.00 $\pm$ 0.00 | 1.0000 $\pm$ 0.0000 |
+| **c** | ridge-raw $\to$ EPSS | 0.6371 $\pm$ 0.0000 | 0.50 $\pm$ 0.00 | 0.3846 $\pm$ 0.0000 |
+| **d** | HR head on frozen embeddings $\to$ EPSS (5 seeds) | 0.5614 $\pm$ 0.0014 | 0.20 $\pm$ 0.00 | 0.4112 $\pm$ 0.0069 |
+| **e1** | VPSS-trained HR head on EPSS test (no retraining) | 0.4678 $\pm$ 0.0000 | 0.30 $\pm$ 0.00 | 0.3986 $\pm$ 0.0000 |
+| **e2** | EPSS-trained HR head on VPSS test (no retraining) | 0.3948 $\pm$ 0.0000 | 0.20 $\pm$ 0.00 | 0.3706 $\pm$ 0.0000 |
+| **f** | EXPLORATORY own-CVE cut ($N=262$ pkgs, clearly labeled) | 0.6024 $\pm$ 0.0000 | 0.40 $\pm$ 0.00 | 0.2222 $\pm$ 0.0000 |
+
+### 3. 5-Seed Masked-Edge Audit (50% Mask ONLY)
+- **VulnGAT-HR AUC (overall):** $0.6315 \pm 0.0045$
+- **Label-Prop AUC (overall):** $0.7191 \pm 0.0069$
+- **Label-Prop std:** $0.0069$
+- **Margin = $\max(0.02, 2 \times \text{std})$:** $0.0200$ (2pp)
+- **Pre-registered Success Bar:** $0.7191 + 0.0200 = \mathbf{0.7391}$
+- **Current VulnGAT-HR vs Bar:** $0.6315$ vs $0.7391$ ($\Delta = -0.1076$)
+- **Stratification:** Shared: Model $0.6470 \pm 0.0060$ vs LP $0.7214 \pm 0.0064$ | Orphaned: Model $0.5682 \pm 0.0431$ vs LP $0.7112 \pm 0.0289$.
+
+---
+
+## Part D — v2 Pre-Registration & Notebook (100% COMPLETE ✅)
+Artifacts: `phase5/VULNGAT_V2_PREREGISTRATION.md`, `phase5/vulngat_v2_training.ipynb`
+
+1. **Pre-Registration Document:** Complete and locked in `phase5/VULNGAT_V2_PREREGISTRATION.md`.
+   - **Primary Gate:** 50% Masked-Edge AUC $\ge \mathbf{0.7391}$ ($\text{LP}_{\text{mean}} + \text{margin}$).
+   - **Secondary Gate:** Clean-Test Spearman $\ge \mathbf{0.6571}$ ($\text{Ridge}_{\text{raw}} + \text{margin}$).
+   - **Loss Formulation:** Multi-task MSE + Pairwise Ranking ($\lambda=0.20$) + Masked Auxiliary Consistency ($\lambda=0.30$) with dynamic edge dropout.
+   - **Ablation Arms:** (1) Full v2, (2) No Edge Masking, (3) No Ranking Loss.
+2. **Self-Contained Colab Notebook:** Produced at `phase5/vulngat_v2_training.ipynb`.
+   - Fully self-contained with PyG dataset wiring, VulnGAT v2 architecture, training harness across 5 seeds, and automatic verification against the pre-registered thresholds.
+   - **HARD STOP ENFORCED:** The notebook was generated but NOT executed locally, per strict orders. Ready for Colab GPU execution by the Brain.
+
+---
+
+## Updated Artifacts Inventory (Continuation II)
+| File | Purpose |
+|---|---|
+| `phase5/epss_data_51repo.json` | Expanded EPSS data (92.4% coverage, 816 CVEs) |
+| `phase5/epss_labels_51repo.json` | Rebuilt 51-repo EPSS labels (3,691 closure non-zeros) |
+| `phase5/phase4_inference_swap.json` | Reconciled FP decomposition (0 true neither survivors) |
+| `phase5/phase3_epss_arms.json` | Pre-committed EPSS arms across 5 seeds |
+| `phase5/part_c_masked_edge_audit_5seeds.json` | 5-seed 50% masked-edge audit results + margin |
+| `phase5/VULNGAT_V2_PREREGISTRATION.md` | Formal OSF-standard pre-registration document |
+| `phase5/vulngat_v2_training.ipynb` | Self-contained Colab notebook for the Brain |
+
+---
+
+# Phase 5 Continuation III Addendum — v2 Autopsy (Checkpoint Forensics)
+**Run date:** 2026-09-20 · **Orders:** v2 Autopsy (NO training, CPU only) · **Status:** COMPLETE
+**Full evidence:** [`phase5/V2_AUTOPSY.md`](V2_AUTOPSY.md) · Forensic scripts/logs: `phase5/autopsy_*.py|json|txt`
+
+**Classification: (A) Execution defect — HIGH confidence.** Three independent, individually sufficient defects, all in the pre-registered notebook artifact itself (the Colab run faithfully executed its own flawed spec):
+- **A1 Eligibility filter bug:** notebook's inline re-computation of the masked-audit strata yields **0 eligible packages** (own_ratio ≥ 0.70 is unreachable on this graph — max 0.6667); the official N=645 comes from a silent auto-relaxation to 0.30 in `TrainModel/masked_edge_audit.py` that the notebook dropped → empty positive set → `roc_auc_score` on single-class labels → **AUC = NaN on all 35 runs. The primary gate was never measured.** Counterfactual (inference only, official 645 strata): AUC = **0.495 ± 0.039** — chance, identical across all p.
+- **A2 Missing reverse message passing:** v2's `HeteroConv` has only the 4 forward directions; Package predictions depend solely on `dependsOn`. Masking `hasVulnerability` edges is provably inert (empirical: max|Δpred| = **0.000e+00** when 100% removed) → **L_aux ≡ 0 identically**; `p_mask` never influenced anything.
+- **A3 Missing feature normalization:** Phase 4 min-maxed package dims [2,3,4,5,7], CVSS/10, author dims [0,1,2,3,6]; v2 fed raw features → layer-1 preactivations std ≈ 476 at init → sigmoid saturation (logits |·| ≤ 531) → gradient ≈ 0 → **no model ever learned** (weights ≤1.3% L2 from random init; train r_s ≈ chance everywhere).
+
+- **(B) rejected as stated** — outputs are degenerate (saturated two-point masses) but nothing *converged*; the degeneracy is dead-on-arrival saturation, not an optimum. **(C) refuted** — no in-period fit exists to fail temporal generalization (train r_s −0.07…+0.08).
+
+### Brain Decisions / Ledger Entries (verbatim record)
+- **D5 (RETRACTION):** The preregistration §7 sentence *"…it constitutes a final, terminal negative result documenting the structural limitations of GNN propagation on dependency vulnerability graphs"* is **RETRACTED**. The v2 failure is an execution/protocol-artifact defect, not evidence about GNN propagation on this graph class. No structural claim may be cited from the v2 cycle. A dated retraction notice is appended to `VULNGAT_V2_PREREGISTRATION.md` (locked body unmodified).
+- **D6 (QUARANTINE UPHELD):** The v2 result (35 checkpoints + `vulngat_v2_final_results.json`) remains **QUARANTINED**. Primary gate: never measured (NaN by construction). Secondary gate number (mean r_s = 0.0198 vs 0.6571): vacuous (chance-level output of an untrained model). Neither gate may be cited as pass or fail.
+- **D7 (Identical-rows anomaly — documented & resolved):** The p10/p30/p50 identical mean±std rows are **real data from three distinct trainings whose p-difference was causally inert**: all 35 checkpoint MD5s distinct; weight diffs across p nonzero and non-monotonic (GPU atomics scale); the dropout function received and applied varying p correctly; but the masked edge type is architecturally dead for the head and the RNG draw count is p-independent, so all three configs traced the same effective trajectory. Spearman (rank-based, over saturated bimodal outputs) is then identical to machine precision wherever no ranks flip — including a bit-identical val r_s = −0.06799244700113821 shared by six full_v2/no_ranking runs at seed 42. **No duplication, fabrication, or logging fault.**
+- **D8 (Conditional rerun — RESOLVED: rerun authorized):** The pre-committed row *"execution defect → one rerun, identical protocol, no tuning"* **cannot be executed as written** — an identical-protocol rerun deterministically reproduces all three defects (they are in the spec). **RESOLUTION: the Brain granted the single conditional rerun as "identical protocol, defect-corrected"** — exactly three amendments (reverse/bidirectional message passing; Phase-4-identical normalization; eligibility delegated to `TrainModel/masked_edge_audit.py`), with gates, thresholds, seeds, and margins unchanged. Batching needs no change (v2 is full-graph; no `bs=32` node-slicing exists). Executed as `phase5/vulngat_v2_training_rerun.ipynb` (`v2dc_*` run ids); see the Rerun Preparation section and `V2_AUTOPSY.md` Appendix B.
+- **D9 (Pre-flight suite — ADOPTED, Commandment 15):** The six-gate CPU pre-flight suite (P1 init sanity; P2 pathway liveness; P3 learnability smoke; P4 eligibility assertion via the official code path; P5 per-epoch per-term loss logging; P6 resume-safety with non-reusable run ids) is adopted as a **standing requirement**: no training run may be fired on Colab until P1–P6 pass on CPU, and any failure mandates CPU-side debug before any fire. First application: P1/P2/P4/P5/P6 PASS; P3 initially FAILED at its 50-epoch horizon → resolved by D10.
+- **D10 (P3 horizon correction + FIRE AUTHORIZATION — VERBATIM):** "P3 horizon (50 epochs) was Brain-mis-specified relative to frozen protocol dynamics (~70-epoch output-mean-fitting phase). Corrected to budget-matched horizon: train Spearman > 0.30 within the pre-registered 100-epoch budget; bar unchanged. Satisfied by the pre-collected 300-epoch diagnostic (train ρ = +0.4043 at epoch 100; weights discarded; evidence predates this ruling). The 300-epoch trajectory beyond the cap is interpretation context only, never gate-eligible. Precedent: Phase-1 nz-cut anchor correction." Fired-artifact identity recorded: `vulngat_v2_training_rerun.ipynb` SHA-256 `aeaeae83c2c3afe91fdf5f1768ef0e6cfc329644099bf490f130c6e6a440372d` (MD5 `c4c04f8a974d96359ff43900d1d31f19`, 48,072 bytes; `v2dc_fire_manifest.json`). **Status: PRE-FLIGHT PASSES under corrected P3. Colab fire AUTHORIZED by the Brain. Protocol frozen. No further changes of any kind permitted.**
+- **D11 (TERMINAL RESULT — pre-committed row executed):** The authorized rerun fired on Colab (T4) and completed the full pre-registered matrix (35/35 runs, all `v2dc_*`, `protocol_version='v2.1-defect-corrected'`; artifacts verified: gate stats recomputed from per-seed values — exact match; 35/35 checkpoints, zip integrity OK; archived as `phase5/v2dc_final_results.json` + `phase5/v2dc_checkpoints.zip`). **Both gates FAIL: full_v2 primary AUC 0.3916-0.4156 (bar 0.7391; below chance 0.5), secondary r_s 0.1489-0.1507 (bar 0.6571).** Pre-committed row "Both < bars -> Terminal negative - now validly measured" applied with the locked thesis: *"The pre-registered end-to-end protocol, correctly implemented, does not beat label propagation or ridge on this graph at this scale; frozen Phase-4 representations remain the best encoder."* P5 loss logging closed in production (full per-epoch trajectories on all 35 runs). Terminality CONFIRMED - no v3, no further training interventions.
+
+### Additional Autopsy Artifacts
+| File | Purpose |
+|---|---|
+| `phase5/V2_AUTOPSY.md` | Full per-item forensic report (items 1–6, counterfactual gate, classification, thesis language) |
+| `phase5/autopsy_item2_weightdiff.py` / `.json` | Checkpoint MD5 + weight-diff forensics across arms/p/seeds |
+| `phase5/autopsy_behavior2.py` / `autopsy_behavior_results.json` / `autopsy_behavior_log2.txt` | Verbatim rebuild of notebook cells 3–4; train/val/test metrics, activation hooks, init-distance, inertness test, NaN mechanism, raw feature stats |
+| `phase5/autopsy_behavior.py` / `autopsy_behavior_log.txt` | First forensic pass (superseded; findings identical) |
+
+
+---
+
+## Rerun Preparation & Fire Authorization (2026-09-20, CPU only) — COMPLETE ✅
+
+*Spec confirmation (verbatim): v2 rerun preparation — defect fixes + pre-flight validation, NO GPU training. Brain ruling ACTIVE: conditional rerun authorized as "identical protocol, defect-corrected." Gates (0.7391 / 0.6571), 35-run matrix, λ_rank=0.20, λ_mask=0.30, seeds {42,123,456,789,1024}, mean-across-seeds evaluation, terminality: ALL UNCHANGED. Commandment-15 pre-flight suite (P1–P6) on CPU; Brain fires Colab after a clean pre-flight report. Later: D10 logging + fire authorization (CPU, minutes, NO training).*
+
+**Deliverables:**
+- **Patched notebook** `phase5/vulngat_v2_training_rerun.ipynb` (generator `generate_v2_notebook_rerun.py`): [FIX A1] eligibility via verbatim port of the official `masked_edge_audit.py` path + hard N=645/8,682 assertions; [FIX A2] reverse message-passing directions (direction parity with `core/model/layers.py`, reverse edges derived at call time so masking removes reverse messages too); [FIX A3] Phase-4 normalization (bit-identical to `load_vulnchain_dataset()`, max|Δ|=0.0); [P5] per-epoch per-term loss trajectories in the intermediate JSON; [P6] run_id prefix `v2dc_` + `protocol_version` marker + legacy-record hard-fail. The quarantined `vulngat_v2_training.ipynb` and `generate_v2_notebook.py` are byte-untouched.
+- **Pre-flight suite** `preflight_v2_rerun.py` (+ `preflight_results.json`, `preflight_log.txt`): executes the notebook's actual cells (pip magics stripped, 35-run matrix loop withheld) against the staged real dataset.
+- **P3 debug** `debug_p3_trajectory.py` (+ JSON/log): 300-epoch frozen-config diagnostic (CPU, weights discarded).
+- **Fire manifest** `v2dc_fire_manifest.json`: SHA-256 `aeaeae83c2c3afe91fdf5f1768ef0e6cfc329644099bf490f130c6e6a440372d`, MD5 `c4c04f8a974d96359ff43900d1d31f19`, 48,072 bytes.
+- **Documentation:** `V2_AUTOPSY.md` Appendix B (authorization, amendment justifications incl. v1-sensitivity parity argument, edge-direction parity table, verbatim pre-flight, P3 diagnosis); rerun addendum + D10 + fire authorization appended to `VULNGAT_V2_PREREGISTRATION.md` (locked body untouched); ledger entries below.
+
+**Pre-flight verdict (verbatim, full evidence in Appendix B.3):**
+| Gate | Result | Evidence |
+|---|---|---|
+| P1 Init sanity | PASS | init pred std 0.007211 > 0; layer-1 preact std 0.2597 ∈ [0.1, 10] (v2 defect ≈ 476) |
+| P2 Pathway liveness | PASS | 100% hasVuln removal: max\|Δpred\| = 3.109249e-02 > 0 (v2: exactly 0.000e+00); partial p∈{0.1,0.3,0.5,0.9} all > 0 |
+| P3 Learnability smoke | FAIL→PASS under D10 | 50-epoch horizon: train ρ = −0.1602 (bar 0.30). D10-corrected budget-matched horizon: bar crossed at epoch 91; train ρ = +0.4043 at the pre-registered 100-epoch cap; weights discarded |
+| P4 Eligibility | PASS | official module: 645 / 8,682; notebook values set-equal; assertions fired |
+| P5 Loss logging | PASS | 50/50 epochs, all terms finite; L_aux live (max 8.64e-04, >0 in 50/50 epochs; v2: identically 0) |
+| P6 Resume safety | PASS | 35/35 `v2dc_` ids disjoint from quarantined ids; skip-completed verified; legacy record hard-fails |
+| F1 Normalization parity | PASS | bit-identical vs TrainModel loader: max\|Δ\| = 0.000e+00 (Package/Author/CVE-emb/CVE-CVSS position-aware) |
+
+**P3 diagnosis (Appendix B.4):** ~70-epoch output-mean-fitting phase under the frozen lr=5e-4 (pred mean 0.46 → 0.03; MSE reaches the constant floor Var(y_train)=0.01026); ranking emerges after epoch ~70; train ρ > 0 at 72, > 0.30 at 91, +0.4043 at the 100-epoch cap. The 50-epoch smoke horizon under-sampled the frozen budget; the model itself is sound. Beyond-cap trajectory (best val ρ 0.6810 @ ep266) is interpretation context only, never gate-eligible (D10).
+
+**Status:** PRE-FLIGHT PASSES under corrected P3. Colab fire AUTHORIZED by the Brain (D10). Protocol frozen. No further changes of any kind permitted.
+
+
+---
+
+## V2 RERUN EXECUTED — TERMINAL RESULT (2026-09-20) — COMPLETE ✅
+
+*Pre-committed row executed: "Both < bars → Terminal negative — now validly measured." The Colab fire (T4 GPU, authorized by D10, artifact SHA-256 `aeaeae83…440372d`) completed the full pre-registered 35-run matrix under `protocol_version = v2.1-defect-corrected`. This is the project's FINAL training intervention outcome; terminality applies.*
+
+### Artifact verification (before interpretation)
+- `vulngat_v2_final_results.json`: `protocol_version='v2.1-defect-corrected'`; **35/35 runs present** (15 full_v2 + 5 no_masking + 15 no_ranking), **all run_ids `v2dc_`-prefixed**, every record carries the protocol marker; gate statistics **recomputed from per-seed values — exact match** with the stored summary. Archived as `phase5/v2dc_final_results.json`.
+- `vulngat_v2_checkpoints (1).zip`: **35/35 checkpoints, all `v2dc_`-prefixed, zip integrity OK** (74.5 MB). Archived as `phase5/v2dc_checkpoints.zip`.
+- **P5 closed in production:** every one of the 35 records carries a full per-epoch `{loss_mse, loss_rank, loss_aux, loss_total, val_spearman}` trajectory with `len(trajectory) == n_epochs_run`. The autopsy's unrecoverable-trajectory hole cannot recur.
+
+### Pre-registered gates (mean across seeds {42,123,456,789,1024}; only full_v2 faces gates)
+
+| Config | 50% Masked AUC (mean ± std) | Primary ≥ 0.7391 | Clean-Test r_s (mean ± std) | Secondary ≥ 0.6571 |
+|---|---|---|---|---|
+| full_v2 (p=0.1) | **0.4156 ± 0.0904** | FAIL | **0.1507 ± 0.1122** | FAIL |
+| full_v2 (p=0.3) | **0.4031 ± 0.1009** | FAIL | **0.1503 ± 0.1118** | FAIL |
+| full_v2 (p=0.5) | **0.3916 ± 0.1120** | FAIL | **0.1489 ± 0.1104** | FAIL |
+| no_masking (p=0.0) | 0.4251 ± 0.0837 | (attribution) | 0.1634 ± 0.1253 | (attribution) |
+| no_ranking (p=0.1/0.3/0.5) | 0.4125–0.4126 | (attribution) | 0.0808 ± 0.0649 | (attribution) |
+| *Reference: full_v2 pooled (15 runs)* | *0.4034* | *FAIL* | *0.1500* | *FAIL* |
+
+Both gates fail **under every reading** (best-p, pooled, or any single config) — by 0.32+ AUC and 0.50+ r_s. Reference points: label propagation 0.7191 (primary population), ridge-raw 0.6371 and VulnGAT-HR v1 0.5614 (secondary population). The executed test cut is N=1,433 (prereg documented 1,430 — the autopsy's A4 integer-floor drift, carried).
+
+### Pre-committed thesis (verbatim, row "Both < bars")
+> **"The pre-registered end-to-end protocol, correctly implemented, does not beat label propagation or ridge on this graph at this scale; frozen Phase-4 representations remain the best encoder."**
+
+### Mechanics (from the P5 trajectories — reported as interpretation context, never gate-eligible per D10)
+1. **Training depth moves the primary metric from chance DOWNWARD.** Runs whose patience-15 early stop fired during the ~70-epoch mean-fitting phase (16-epoch runs, near-init checkpoints) score AUC ≈ **0.524** (chance, as expected for untrained models). Runs that trained past mean-fitting (21- and 100-epoch runs) score AUC ≈ **0.34/0.33**. Learning actively ranks own-CVE-dominated packages **below** never-vulnerable ones under 50% masking — the below-chance AUC is a learned stratum inversion, not noise.
+2. **Early-stopping/mean-fitting interaction (27/35 runs early-stopped):** for seeds whose val ρ dips negative during mean-fitting, the frozen patience-15-on-val-ρ rule selects a near-epoch-0 checkpoint (best val ρ = the least-bad dip point). 14 runs stopped at epoch 16, 13 at epoch 21, 8 ran the full 100. This heterogeneity is part of the correctly-executed frozen protocol and is reflected in the per-seed spread (e.g., full_v2 AUC: s123 0.542 ≈ chance vs s42 0.370).
+3. **All 8 full-100-epoch runs were still improving at the cap** (val ρ slope UP in the last 10 epochs for every one) — the frozen 100-epoch budget is binding. Per D10 this is context only; the caps were not touched.
+4. **The CPU diagnostic was faithful to the GPU run:** seed-42 val ρ at ep70/ep90/ep99 = +0.0015/+0.3000/+0.3718 (GPU) vs +0.0015/+0.3000/+0.3784 (pre-collected CPU debug, ep100) — the debug evidence that grounded D10 reproduced essentially exactly.
+5. **Attribution honesty:** the pre-registered attribution rule governed a PASS (if no-masking also passes → attribute to ranking). With **no pass anywhere** there is nothing to attribute; the notebook's canned "masking confirmed necessary" line is **not** a finding. Empirically no_masking (0.425/0.163) is nominally the best arm but within ~1 std of full_v2 — masking neither helps nor rescues; the ranking loss adds ~+0.07 r_s over no_ranking, far from any bar.
+
+### Terminality
+**CONFIRMED.** The v2 cycle (quarantined) and this defect-corrected rerun together close the VulnGAT question: under the pre-registered protocol, correctly implemented and validly measured, the heterogeneous GNN does not beat label propagation on the masked population nor ridge on the clean-test population. **No v3. No further training interventions.** Frozen Phase-4 representations remain the project's best encoder. The thesis now rests on the Phase-4/Phase-5 evidence chain (frozen-embedding baselines, label propagation, EPSS-track analyses), not on end-to-end GNN training.
+
+**Ledger:** see D11 below.
+</file>
+
+</files>

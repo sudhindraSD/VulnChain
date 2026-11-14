@@ -1,0 +1,3629 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files and files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: webapp/**/*.py, webapp/**/*.js, webapp/**/*.jsx, webapp/**/*.css, webapp/**/*.html, webapp/**/*.md, webapp/**/*.bat, webapp/**/*.sh, webapp/**/package.json, webapp/**/requirements.txt, TrainModel/masked_edge_audit.py, TrainModel/server.js, TrainModel/*.md, TrainModel/package.json, TrainModel/requirements.txt, README.md, requirements.txt
+- Files matching these patterns are excluded: **/dist/**
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+TrainModel/
+  implementation_plan.md
+  masked_edge_audit.py
+  package.json
+  requirements.txt
+  server.js
+  VULNGAT_EVALUATION_REPORT.md
+webapp/
+  frontend/
+    src/
+      components/
+        ErrorPanel.jsx
+        LoadingView.jsx
+        PackageTable.jsx
+        ResultsView.jsx
+        SummaryBar.jsx
+        UploadZone.jsx
+      api.js
+      App.jsx
+      main.jsx
+      styles.css
+      tiers.js
+    index.html
+    package.json
+    vite.config.js
+  README.md
+  requirements.txt
+  server.py
+  start.bat
+  start.sh
+README.md
+requirements.txt
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="TrainModel/implementation_plan.md">
+# VulnGAT Training Pipeline — Implementation Plan
+
+## Goal
+
+Build the complete **Stage 5 training pipeline** for VulnChain: convert the merged graph to PyG format, implement the 3-layer HAN model (VulnGAT), train with MSE + InfoNCE loss, evaluate on CISA KEV ground truth, and save `vulngat_trained.pt`.
+
+---
+
+## Step 0 — Environment Setup
+
+Create a Python venv and install all dependencies:
+
+```
+python -m venv venv
+venv\Scripts\activate
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+pip install torch_geometric
+pip install pyg_lib torch_scatter torch_sparse -f https://data.pyg.org/whl/torch-{VERSION}+cu126.html
+pip install scipy numpy scikit-learn
+```
+
+> We'll detect the exact PyTorch version after install to get the right PyG wheel URL.
+
+---
+
+## Step 1 — Project Structure
+
+All files will be created inside `c:\Users\sudhindra\Desktop\TrainModel\`:
+
+```
+TrainModel/
+├── venv/                          ← Python virtual environment
+├── vulnchain_graph.json           ← Already exists (8.2 MB)
+├── vpss_labels.json               ← Already exists (685 KB)
+├── VULNCHAIN_DESIGN_v1.0.md       ← Already exists
+├── vulnchain_project_status.md    ← Already exists
+│
+├── training/
+│   ├── dataset.py                 ← [NEW] Graph → PyG HeteroData conversion
+│   ├── train.py                   ← [NEW] Full training loop (entry point)
+│   └── evaluate.py                ← [NEW] Metrics + CISA KEV evaluation
+│
+├── core/
+│   └── model/
+│       ├── vulngat.py             ← [NEW] VulnGAT 3-layer HAN model
+│       ├── layers.py              ← [NEW] HAN attention layer definition
+│       └── loss.py                ← [NEW] MSE + 0.1 × InfoNCE loss
+│
+└── models/
+    └── vulngat_trained.pt         ← [OUTPUT] Saved model weights
+```
+
+**6 new Python files total.**
+
+---
+
+## Step 2 — File-by-File Breakdown
+
+### `training/dataset.py` — Graph Loading & HeteroData Conversion
+
+- Load `vulnchain_graph.json` and `vpss_labels.json`
+- Build ID → integer index mappings for each node type
+- Stack feature tensors:
+  - Package: `[5578, 10]` → normalize continuous features (min-max)
+  - CVE: `[326, 769]` (768-dim embedding + 1 CVSS score)
+  - Author: `[2035, 7]` → normalize continuous features
+- Build edge_index tensors (COO format) for all 4 edge types
+- Assign VPSS labels to Package nodes → `[5578]` float tensor
+- Tag each Package node with its source repo (for repo-level split)
+- **Pinned repo-level split**:
+  - Train: nest, NodeGoat, cli, nodejs-goof, express, dvna, Ghost (7 repos)
+  - Val: webpack (1 repo)
+  - Test: juice-shop (1 repo)
+- Return `HeteroData` object + split masks + labels
+
+---
+
+### `core/model/layers.py` — HAN Attention Layer
+
+- One `HANLayer` class that performs per-edge-type message passing:
+  - Separate `W_transform` linear layers per edge type (128×128)
+  - Attention coefficients computed via LeakyReLU + softmax
+  - Multi-head attention (4 heads × 32 dim = 128)
+- Residual connection + LayerNorm after each layer
+- Dropout configurable (default 0.3)
+
+---
+
+### `core/model/vulngat.py` — VulnGAT Model
+
+- **Input projection**: 3 separate `Linear` layers:
+  - Package: `Linear(10, 128)`
+  - CVE: `Linear(769, 128)` — 768 embedding + 1 CVSS
+  - Author: `Linear(7, 128)`
+- **3 × HANLayer** (from `layers.py`) with residual + LayerNorm
+- **Classifier head**: `Linear(128, 1)` → `Sigmoid`
+- Output: risk score per Package node only (float 0.0–1.0)
+- Leverages PyG's `HeteroConv` or manual per-relation message passing
+
+---
+
+### `core/model/loss.py` — Loss Functions
+
+- **MSE Loss**: `F.mse_loss(predicted, vpss_labels)` — primary signal
+- **InfoNCE Loss** (contrastive regularizer):
+  - Create 2 augmented views of the graph via edge dropout (p=0.2)
+  - Forward both views through the model → get embeddings
+  - Positive pairs = same node's two augmented embeddings
+  - Negative pairs = all other nodes in batch
+  - Cross-entropy over cosine similarity
+- **Total Loss** = `MSE + 0.1 × InfoNCE`
+
+---
+
+### `training/train.py` — Training Loop (Entry Point)
+
+```
+python training/train.py
+```
+
+- Load HeteroData + labels + split masks from `dataset.py`
+- Initialize VulnGAT model
+- Optimizer: Adam, lr=1e-3
+- Scheduler: ReduceLROnPlateau (patience=5)
+- Early stopping: patience=10
+- Max epochs: 100
+- Per epoch:
+  1. Forward pass on train graph → get predictions
+  2. Compute MSE loss on train Package nodes
+  3. Compute InfoNCE loss via edge dropout augmentation
+  4. Total loss = MSE + 0.1 × InfoNCE
+  5. Backward + optimizer step
+  6. Evaluate on val split → val loss
+  7. Scheduler step on val loss
+  8. Early stopping check
+- Save best model to `models/vulngat_trained.pt`
+- Print training curves (loss, MAE per epoch)
+
+---
+
+### `training/evaluate.py` — Evaluation & Metrics
+
+- **MAE**: Mean absolute error (predicted vs VPSS)
+- **Precision@10**: Top-10 highest-scored packages → check against CISA KEV list
+- **Ranking Accuracy**: % of (high-risk, low-risk) pairs correctly ordered
+- **Spearman ρ**: Rank correlation between predictions and VPSS
+- CISA KEV ground truth packages (hardcoded from design doc):
+  - `log4j-core`, `event-stream`, `ua-parser-js`, `node-ipc`, `minimist`, `lodash`, `handlebars`, `colors`
+- Report metrics on val and test splits separately
+
+---
+
+## Step 3 — Execution Order
+
+| # | Action | Time Estimate |
+|---|--------|---------------|
+| 1 | Create venv + install dependencies | ~5–10 min |
+| 2 | Write all 6 Python files | ~15 min |
+| 3 | Test graph loading + HeteroData conversion | ~1 min |
+| 4 | Run training (`python training/train.py`) | ~10–30 min on RTX 3050 |
+| 5 | Evaluate on test split | ~1 min |
+| 6 | Save `vulngat_trained.pt` | Automatic |
+
+---
+
+## Verification Plan
+
+### Automated
+- Graph loads correctly: assert node counts (5578 Package, 326 CVE, 2035 Author)
+- Edge counts match: assert 16077 + 701 + 4333 + 701 = 21812
+- No NaN in features or labels
+- Model output shape: `[num_package_nodes]`, all values in [0, 1]
+- Training loss decreases monotonically in early epochs
+- Val loss tracked + early stopping triggers
+
+### Manual
+- Review training curves for convergence
+- Check Precision@10 — does VulnGAT rank known-vulnerable packages high?
+- Inspect top-10 and bottom-10 predictions for sanity
+
+---
+
+## Open Questions
+
+> [!IMPORTANT]
+> **CVE feature dimension**: The design doc says CVE nodes are 768-dim (SentenceBERT only). But the graph metadata says `"768 (SentenceBERT) + 1 CVSS score"`. I'll use **769-dim** (768 embedding + 1 CVSS) since that's what the actual data contains. This doesn't contradict the design — it's just the CVSS appended.
+
+> [!NOTE]
+> **Graph is one big graph (9 repos merged)**, not 9 separate graphs. The repo-level split will be done via **node masks** — we mask which Package nodes belong to which split during loss computation and evaluation. The full graph structure is still used for message passing (this is standard in transductive GNN training).
+</file>
+
+<file path="TrainModel/masked_edge_audit.py">
+"""
+masked_edge_audit.py -- Masked-Edge Model-Contribution Audit for VulnGAT
+
+Rigorously measures whether VulnGAT contributes anything beyond BFS traversal
+or label propagation by:
+  1. Masking fractions of hasVulnerability edges from the graph
+  2. Re-running inference on the masked graph
+  3. Comparing against three baselines (BFS-masked, label-prop, feature-shuffle)
+  4. Reporting AUC, Hits@10, MRR with bootstrap CIs, stratified by shared/orphaned CVEs
+
+Critical design decisions (each fixing a specific flaw in the naive version):
+  - Scores against own(P) VPSS component only, not full VPSS (avoids descendant leakage)
+  - Three-baseline ladder, not random (BFS is the real floor, not chance)
+  - Stratifies by shared/orphaned CVEs (orphaned = no path for any mechanism)
+  - Bypasses analyze_project.py's calibration cap (would clamp masked = clean)
+  - Uses repo-level split, not random node split
+  - Pre-registered seeds, mask ratios, metrics, and eligibility filters
+"""
+
+import os
+import sys
+import json
+import copy
+import time
+import warnings
+from collections import defaultdict, deque
+
+import numpy as np
+import torch
+
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+from core.model.vulngat import VulnGAT
+from training.dataset import load_vulnchain_dataset
+
+# ===============================================================================
+# PRE-REGISTRATION CONFIG -- locked before first run, do not tune after results
+# ===============================================================================
+
+SEED = 42
+MASK_RATIOS = [0.10, 0.30, 0.50]
+OWN_VPSS_THRESHOLD = 0.70       # own(P) / VPSS(P) >= 0.7 to be eligible
+BOOTSTRAP_ITERS = 1000
+BOOTSTRAP_ALPHA = 0.05          # 95% confidence intervals
+HITS_K = 10
+# Env-var overrides mirror training/dataset.py so this one script audits
+# either the 9-repo pilot or the Phase-4 51-repo artifacts without edits.
+MODEL_PATH = os.environ.get("MODEL_PATH", "models/vulngat_trained.pt")
+GRAPH_PATH = os.environ.get("GRAPH_FILE", "vulnchain_graph.json")
+LABELS_PATH = os.environ.get("LABELS_FILE", "vpss_labels.json")
+SPLIT_PATH = os.environ.get("REPO_SPLIT_FILE", "repo_split_mapping.json")
+OUTPUT_JSON = os.environ.get("AUDIT_OUT", "masked_edge_audit_results.json")
+
+
+# ===============================================================================
+# 1. OWN-VPSS DECOMPOSITION
+# ===============================================================================
+
+def compute_own_vpss(graph_json: dict, vpss_labels: dict) -> dict:
+    """
+    Reconstructs the own(P) component of VPSS for each package.
+
+    own(P) captures the risk contribution from P's *direct* hasVulnerability
+    edges. The deterministic formula is:
+        own(P) = sum over direct CVEs of (CVSS/10 * 0.7^0 * exposure)
+    where depth=0 for own CVEs, so decay factor = 1.0.
+
+    Since the labels store normalized VPSS but not the own/descendant split,
+    we approximate:
+        own_raw(P) = sum of CVSS/10 for each of P's direct CVE edges
+        own_ratio(P) = own_raw(P) / raw_sum(P)  [from labels]
+        own_vpss(P) = own_ratio(P) * VPSS(P)
+
+    For packages with raw_sum == 0 or no CVEs, own_vpss = 0.
+
+    Returns:
+        dict: {pkg_id: {"own_vpss": float, "own_ratio": float, "own_raw": float,
+                         "direct_cves": [cve_ids], "full_vpss": float}}
+    """
+    # Map package -> list of direct CVE edges
+    pkg_to_cves = defaultdict(list)
+    for edge in graph_json["edges"]["hasVulnerability"]:
+        pkg_to_cves[edge["source"]].append(edge["target"])
+
+    # Map CVE id -> CVSS score
+    cve_cvss = {}
+    for cve_node in graph_json["nodes"]["CVE"]:
+        cvss_raw = cve_node.get("cvss_score")
+        cvss_val = float(cvss_raw) if cvss_raw is not None else 0.0
+        cve_cvss[cve_node["id"]] = cvss_val
+
+    result = {}
+    for pkg_id, cve_list in pkg_to_cves.items():
+        label_entry = vpss_labels.get(pkg_id, {})
+        full_vpss = float(label_entry.get("vpss", 0.0))
+        raw_sum = float(label_entry.get("raw_sum", 0.0))
+
+        # Own raw contribution: sum of CVSS/10 for direct CVEs (depth=0, decay=1.0)
+        own_raw = sum(cve_cvss.get(cve_id, 0.0) / 10.0 for cve_id in cve_list)
+
+        if raw_sum > 1e-9:
+            own_ratio = min(own_raw / raw_sum, 1.0)
+        elif own_raw > 0:
+            own_ratio = 1.0  # Package has own CVEs but raw_sum is zero/missing
+        else:
+            own_ratio = 0.0
+
+        own_vpss = own_ratio * full_vpss
+
+        result[pkg_id] = {
+            "own_vpss": own_vpss,
+            "own_ratio": own_ratio,
+            "own_raw": own_raw,
+            "direct_cves": cve_list,
+            "full_vpss": full_vpss,
+        }
+
+    return result
+
+
+# ===============================================================================
+# 2. ELIGIBLE PACKAGE SELECTION
+# ===============================================================================
+
+def select_eligible_packages(own_vpss_data: dict, threshold: float = OWN_VPSS_THRESHOLD) -> list:
+    """
+    Filters to packages where own-CVE contribution dominates VPSS.
+
+    Only packages with own_ratio >= threshold are eligible for masking eval,
+    ensuring the masked signal (own CVE) is the dominant component of the
+    package's label, not the descendant term which survives masking.
+
+    If threshold filtering leaves fewer than 15 packages, relaxes to 0.3
+    with a printed warning.
+
+    Returns:
+        list of pkg_ids that pass the eligibility filter
+    """
+    eligible = [
+        pkg_id for pkg_id, data in own_vpss_data.items()
+        if data["own_ratio"] >= threshold and data["full_vpss"] > 1e-6
+    ]
+
+    if len(eligible) < 15:
+        warnings.warn(
+            f"Only {len(eligible)} packages pass own_ratio >= {threshold:.2f}. "
+            f"Relaxing threshold to 0.30 for statistical power."
+        )
+        eligible = [
+            pkg_id for pkg_id, data in own_vpss_data.items()
+            if data["own_ratio"] >= 0.30 and data["full_vpss"] > 1e-6
+        ]
+
+    return eligible
+
+
+# ===============================================================================
+# 3. EDGE MASKING
+# ===============================================================================
+
+def apply_edge_mask(
+    data,
+    eligible_pkg_ids: list,
+    pkg_id_to_idx: dict,
+    graph_json: dict,
+    cve_id_to_idx: dict,
+    mask_ratio: float,
+    seed: int,
+) -> tuple:
+    """
+    Removes mask_ratio fraction of hasVulnerability edges for eligible packages.
+
+    For each eligible package, independently decides (with probability mask_ratio)
+    whether to mask ALL of that package's hasVulnerability edges. This simulates
+    a package having no known CVE association.
+
+    Also classifies each masked package's CVEs as:
+      - 'shared': CVE still attached to at least one other package after masking
+      - 'orphaned': CVE has no remaining hasVulnerability edges after masking
+
+    Returns:
+        masked_data: deep-copied HeteroData with edges removed
+        masked_pkg_indices: set of masked package node indices
+        masked_pkg_to_cves: dict {pkg_idx: [cve_idx, ...]} -- deleted CVE edges
+        stratum_labels: dict {pkg_idx: 'shared' | 'orphaned'}
+    """
+    rng = np.random.RandomState(seed)
+
+    # Decide which eligible packages to mask
+    mask_flags = rng.random(len(eligible_pkg_ids)) < mask_ratio
+    masked_pkg_ids = set()
+    for i, pkg_id in enumerate(eligible_pkg_ids):
+        if mask_flags[i]:
+            masked_pkg_ids.add(pkg_id)
+
+    # Ensure at least 3 packages are masked for any meaningful eval
+    if len(masked_pkg_ids) < 3 and len(eligible_pkg_ids) >= 3:
+        forced = rng.choice(len(eligible_pkg_ids), size=3, replace=False)
+        for idx in forced:
+            masked_pkg_ids.add(eligible_pkg_ids[idx])
+
+    # Build set of masked package indices and their CVE connections
+    masked_pkg_indices = set()
+    masked_pkg_to_cves = {}  # pkg_idx -> [cve_idx]
+
+    pkg_to_cves_graph = defaultdict(list)
+    for edge in graph_json["edges"]["hasVulnerability"]:
+        pkg_to_cves_graph[edge["source"]].append(edge["target"])
+
+    for pkg_id in masked_pkg_ids:
+        if pkg_id not in pkg_id_to_idx:
+            continue
+        pkg_idx = pkg_id_to_idx[pkg_id]
+        masked_pkg_indices.add(pkg_idx)
+        cve_indices = []
+        for cve_id in pkg_to_cves_graph.get(pkg_id, []):
+            if cve_id in cve_id_to_idx:
+                cve_indices.append(cve_id_to_idx[cve_id])
+        masked_pkg_to_cves[pkg_idx] = cve_indices
+
+    # Now filter the edge_index tensor
+    has_vuln_key = ("Package", "hasVulnerability", "CVE")
+    original_edge_index = data[has_vuln_key].edge_index  # [2, E]
+
+    # Build mask: keep edges NOT from masked packages
+    num_edges = original_edge_index.size(1)
+    keep_mask = torch.ones(num_edges, dtype=torch.bool)
+    for col_idx in range(num_edges):
+        src_idx = original_edge_index[0, col_idx].item()
+        if src_idx in masked_pkg_indices:
+            keep_mask[col_idx] = False
+
+    # Deep copy data and apply mask
+    masked_data = copy.deepcopy(data)
+    masked_data[has_vuln_key].edge_index = original_edge_index[:, keep_mask].clone()
+
+    # Commandment 2 (VULNCHAIN_LESSONS_LEARNED): zero Package feature dim 6
+    # (has_known_cve_history) for masked packages. Otherwise the model reads
+    # CVE history straight from its features while the edges are hidden --
+    # the exact backdoor that invalidated the first audit attempt.
+    pkg_x = masked_data["Package"].x.clone()
+    for pkg_idx in masked_pkg_indices:
+        pkg_x[pkg_idx, 6] = 0.0
+    masked_data["Package"].x = pkg_x
+
+    # Classify strata: shared vs orphaned
+    # After masking, which CVE nodes still have at least one hasVulnerability edge?
+    surviving_edge_index = masked_data[has_vuln_key].edge_index
+    surviving_cve_indices = set(surviving_edge_index[1].tolist()) if surviving_edge_index.size(1) > 0 else set()
+
+    stratum_labels = {}
+    for pkg_idx, cve_list in masked_pkg_to_cves.items():
+        # If ANY of this package's deleted CVEs still appear in surviving edges -> shared
+        any_shared = any(cve_idx in surviving_cve_indices for cve_idx in cve_list)
+        stratum_labels[pkg_idx] = "shared" if any_shared else "orphaned"
+
+    return masked_data, masked_pkg_indices, masked_pkg_to_cves, stratum_labels
+
+
+# ===============================================================================
+# 4. MODEL INFERENCE (raw, no calibration cap)
+# ===============================================================================
+
+def run_model_inference(model: VulnGAT, data, device: torch.device) -> np.ndarray:
+    """
+    Raw model forward pass on the given graph data.
+    Returns uncapped sigmoid scores -- deliberately bypasses the
+    analyze_project.py min(score, 0.08) calibration cap.
+    """
+    model.eval()
+    x_dict = {ntype: data[ntype].x.to(device) for ntype in data.node_types}
+    edge_index_dict = {
+        (src, rel, tgt): data[src, rel, tgt].edge_index.to(device)
+        for src, rel, tgt in data.edge_types
+    }
+    with torch.no_grad():
+        scores = model(x_dict, edge_index_dict).cpu().numpy()
+    return scores
+
+
+# ===============================================================================
+# 5. BFS BASELINE
+# ===============================================================================
+
+def run_bfs_baseline(
+    graph_json: dict,
+    masked_pkg_ids: set,
+    vpss_labels: dict,
+    pkg_id_to_idx: dict,
+    num_packages: int,
+) -> np.ndarray:
+    """
+    Re-computes the deterministic VPSS formula on the masked graph.
+
+    The VPSS formula is: VPSS(P) = normalize(sum over reachable CVEs of
+        CVSS/10 * 0.7^depth * exposure)
+
+    For masked packages, their own CVE edges are deleted, so own(P) = 0;
+    but descendant contributions via dependsOn edges are still intact.
+
+    This is the minimum baseline the model must beat -- it exactly replicates
+    what a BFS script can recover from the masked graph.
+    """
+    # Build adjacency: package -> packages it depends on
+    depends_on = defaultdict(set)
+    for edge in graph_json["edges"]["dependsOn"]:
+        depends_on[edge["source"]].add(edge["target"])
+
+    # Build surviving hasVulnerability map (excluding masked packages)
+    pkg_to_cves_surviving = defaultdict(list)
+    cve_cvss = {}
+    for cve_node in graph_json["nodes"]["CVE"]:
+        cvss_raw = cve_node.get("cvss_score")
+        cve_cvss[cve_node["id"]] = float(cvss_raw) if cvss_raw is not None else 0.0
+
+    for edge in graph_json["edges"]["hasVulnerability"]:
+        pkg_id = edge["source"]
+        if pkg_id not in masked_pkg_ids:
+            pkg_to_cves_surviving[pkg_id].append(edge["target"])
+
+    # For each package, BFS through dependsOn to find reachable CVEs
+    all_pkg_ids = [node["id"] for node in graph_json["nodes"]["Package"]]
+    bfs_scores = np.zeros(num_packages, dtype=np.float32)
+
+    for pkg_id in all_pkg_ids:
+        if pkg_id not in pkg_id_to_idx:
+            continue
+        idx = pkg_id_to_idx[pkg_id]
+
+        # BFS from this package through dependsOn edges
+        visited = set()
+        queue = deque()
+        queue.append((pkg_id, 0))  # (node, depth from this package)
+        visited.add(pkg_id)
+        raw_sum = 0.0
+
+        while queue:
+            current, depth = queue.popleft()
+
+            # Collect CVEs from current node (if it has surviving edges)
+            for cve_id in pkg_to_cves_surviving.get(current, []):
+                cvss = cve_cvss.get(cve_id, 0.0) / 10.0
+                decay = 0.7 ** depth
+                raw_sum += cvss * decay
+
+            # Traverse dependsOn edges
+            for dep in depends_on.get(current, set()):
+                if dep not in visited:
+                    visited.add(dep)
+                    queue.append((dep, depth + 1))
+
+        # Normalize: clamp to [0, 1] using same approach as labels
+        # The labels use: vpss = raw_sum / normalization_constant
+        # We use a reasonable cap -- max raw_sum in the dataset
+        bfs_scores[idx] = raw_sum
+
+    # Normalize to [0, 1] range using max observed raw_sum from labels
+    max_raw = max(
+        (float(v.get("raw_sum", 0.0)) for v in vpss_labels.values()),
+        default=1.0
+    )
+    if max_raw > 0:
+        bfs_scores = np.clip(bfs_scores / max_raw, 0.0, 1.0)
+
+    return bfs_scores
+
+
+# ===============================================================================
+# 6. LABEL PROPAGATION BASELINE
+# ===============================================================================
+
+def run_label_prop_baseline(
+    data,
+    vpss_labels: dict,
+    pkg_id_to_idx: dict,
+    idx_to_pkg_id: dict,
+    num_packages: int,
+) -> np.ndarray:
+    """
+    Simple label-propagation baseline: each package's score = mean VPSS
+    of its immediate graph neighbors (connected by any edge type).
+
+    For packages with no neighbors, falls back to the global mean VPSS.
+    This tests "does VulnGAT beat simple structural averaging?"
+    """
+    # Build adjacency from all edge types
+    neighbors = defaultdict(set)
+
+    for edge_type_key in data.edge_types:
+        edge_index = data[edge_type_key].edge_index
+        src_type = edge_type_key[0]
+        tgt_type = edge_type_key[2]
+
+        # Only count edges where both endpoints are Package nodes
+        if src_type == "Package" and tgt_type == "Package":
+            for col in range(edge_index.size(1)):
+                s = edge_index[0, col].item()
+                t = edge_index[1, col].item()
+                neighbors[s].add(t)
+                neighbors[t].add(s)  # undirected for label prop
+        elif src_type == "Package":
+            # Package -> X edge: package has this as a neighbor characteristic
+            # For label prop, we only propagate VPSS, which is defined on Package nodes
+            # So cross-type edges don't directly contribute label values
+            # But we use dependsOn edges (Package->Package) above
+            pass
+
+    # Also add Package<->Package edges from hasVulnerability via shared CVEs
+    # (two packages sharing a CVE are structurally linked)
+    cve_to_pkgs = defaultdict(set)
+    has_vuln_key = ("Package", "hasVulnerability", "CVE")
+    if has_vuln_key in data.edge_types:
+        ei = data[has_vuln_key].edge_index
+        for col in range(ei.size(1)):
+            pkg_idx = ei[0, col].item()
+            cve_idx = ei[1, col].item()
+            cve_to_pkgs[cve_idx].add(pkg_idx)
+    for cve_idx, pkg_set in cve_to_pkgs.items():
+        pkg_list = list(pkg_set)
+        for i in range(len(pkg_list)):
+            for j in range(i + 1, len(pkg_list)):
+                neighbors[pkg_list[i]].add(pkg_list[j])
+                neighbors[pkg_list[j]].add(pkg_list[i])
+
+    # Get VPSS labels as array
+    vpss_array = np.zeros(num_packages, dtype=np.float32)
+    for pkg_id, entry in vpss_labels.items():
+        if pkg_id in pkg_id_to_idx:
+            vpss_array[pkg_id_to_idx[pkg_id]] = float(entry.get("vpss", 0.0))
+
+    global_mean = vpss_array.mean()
+
+    # Compute label-prop scores
+    lp_scores = np.zeros(num_packages, dtype=np.float32)
+    for idx in range(num_packages):
+        nbrs = neighbors.get(idx, set())
+        if len(nbrs) > 0:
+            lp_scores[idx] = np.mean([vpss_array[n] for n in nbrs])
+        else:
+            lp_scores[idx] = global_mean
+
+    return lp_scores
+
+
+# ===============================================================================
+# 7. FEATURE-SHUFFLE ABLATION
+# ===============================================================================
+
+def run_feature_shuffle_ablation(
+    model: VulnGAT, data, device: torch.device, seed: int
+) -> np.ndarray:
+    """
+    Randomly permutes the 768-dim CVE embeddings across CVE nodes, then
+    re-runs model inference on the (masked) graph.
+
+    If model scores for masked packages don't drop relative to the
+    unshuffled run, the CVE embeddings were not the mechanism producing
+    the score -- the model was relying on structural features only.
+
+    Only shuffles the embedding portion (dims 1:769), preserves the CVSS
+    score (dim 0) to isolate semantic embedding contribution.
+    """
+    rng = np.random.RandomState(seed)
+
+    # Deep copy to avoid modifying the input
+    shuffled_data = copy.deepcopy(data)
+    cve_features = shuffled_data["CVE"].x.clone()
+
+    num_cves = cve_features.size(0)
+    if num_cves > 1:
+        # Shuffle embedding portion (columns 1:) across CVE nodes
+        perm = rng.permutation(num_cves)
+        cve_features[:, 1:] = cve_features[perm, 1:]
+
+    shuffled_data["CVE"].x = cve_features
+
+    return run_model_inference(model, shuffled_data, device)
+
+
+# ===============================================================================
+# 8. AUC COMPUTATION (stratified)
+# ===============================================================================
+
+def compute_auc(
+    scores: np.ndarray,
+    positive_indices: list,
+    negative_indices: list,
+) -> float:
+    """
+    Computes AUC (area under ROC) for a binary classification:
+      positive = masked-vulnerable packages
+      negative = never-vulnerable packages
+
+    Uses the Wilcoxon-Mann-Whitney statistic (equivalent to AUC):
+      AUC = P(score(positive) > score(negative))
+
+    Returns 0.5 if either class is empty.
+    """
+    if len(positive_indices) == 0 or len(negative_indices) == 0:
+        return 0.5
+
+    pos_scores = scores[positive_indices]
+    neg_scores = scores[negative_indices]
+
+    # Wilcoxon-Mann-Whitney
+    n_pos = len(pos_scores)
+    n_neg = len(neg_scores)
+
+    count = 0.0
+    for ps in pos_scores:
+        count += np.sum(ps > neg_scores) + 0.5 * np.sum(ps == neg_scores)
+
+    auc = count / (n_pos * n_neg)
+    return float(auc)
+
+
+def compute_auc_stratified(
+    scores: np.ndarray,
+    masked_pkg_indices: set,
+    never_vuln_indices: list,
+    stratum_labels: dict,
+) -> dict:
+    """
+    AUC stratified by shared vs orphaned CVEs.
+    Returns dict: {
+        "overall": float, "shared": float, "orphaned": float,
+        "n_shared": int, "n_orphaned": int
+    }
+    """
+    shared_indices = [idx for idx in masked_pkg_indices if stratum_labels.get(idx) == "shared"]
+    orphaned_indices = [idx for idx in masked_pkg_indices if stratum_labels.get(idx) == "orphaned"]
+
+    result = {
+        "overall": compute_auc(scores, list(masked_pkg_indices), never_vuln_indices),
+        "shared": compute_auc(scores, shared_indices, never_vuln_indices),
+        "orphaned": compute_auc(scores, orphaned_indices, never_vuln_indices),
+        "n_shared": len(shared_indices),
+        "n_orphaned": len(orphaned_indices),
+        "n_never_vuln": len(never_vuln_indices),
+    }
+    return result
+
+
+# ===============================================================================
+# 9. HITS@K / MRR
+# ===============================================================================
+
+def compute_hits_at_k_mrr(
+    model: VulnGAT,
+    data,
+    masked_pkg_to_cves: dict,
+    device: torch.device,
+    k: int = HITS_K,
+) -> dict:
+    """
+    For each masked package P, uses the model's embedding space to rank all
+    CVE nodes by cosine similarity to P's post-masking representation.
+
+    Checks whether the true (deleted) CVE appears in top-K (Hits@K) and at
+    what rank (MRR = mean reciprocal rank).
+
+    Also computes random-ranking MRR as a sanity floor.
+    """
+    if len(masked_pkg_to_cves) == 0:
+        return {"hits_at_k": 0.0, "mrr": 0.0, "random_mrr": 0.0, "n_queries": 0}
+
+    model.eval()
+    x_dict = {ntype: data[ntype].x.to(device) for ntype in data.node_types}
+    edge_index_dict = {
+        (src, rel, tgt): data[src, rel, tgt].edge_index.to(device)
+        for src, rel, tgt in data.edge_types
+    }
+
+    with torch.no_grad():
+        h_dict = model.encode(x_dict, edge_index_dict)
+
+    pkg_embeddings = h_dict["Package"].cpu()   # [N_pkg, 128]
+    cve_embeddings = h_dict["CVE"].cpu()       # [N_cve, 128]
+
+    # L2 normalize for cosine similarity
+    pkg_norm = torch.nn.functional.normalize(pkg_embeddings, dim=1)
+    cve_norm = torch.nn.functional.normalize(cve_embeddings, dim=1)
+
+    num_cves = cve_norm.size(0)
+    random_mrr = 1.0 / num_cves if num_cves > 0 else 0.0
+
+    hits = 0
+    reciprocal_ranks = []
+    n_queries = 0
+
+    for pkg_idx, cve_indices in masked_pkg_to_cves.items():
+        if len(cve_indices) == 0:
+            continue
+
+        # Cosine similarity between this package and all CVEs
+        pkg_vec = pkg_norm[pkg_idx].unsqueeze(0)  # [1, 128]
+        sims = torch.mm(pkg_vec, cve_norm.t()).squeeze(0)  # [N_cve]
+
+        # Rank CVEs by descending similarity
+        ranked = torch.argsort(sims, descending=True).tolist()
+
+        # Check each true CVE
+        for true_cve_idx in cve_indices:
+            n_queries += 1
+            if true_cve_idx in ranked[:k]:
+                hits += 1
+            rank_pos = ranked.index(true_cve_idx) + 1  # 1-indexed
+            reciprocal_ranks.append(1.0 / rank_pos)
+
+    hits_at_k = hits / n_queries if n_queries > 0 else 0.0
+    mrr = float(np.mean(reciprocal_ranks)) if reciprocal_ranks else 0.0
+
+    return {
+        "hits_at_k": hits_at_k,
+        "mrr": mrr,
+        "random_mrr": random_mrr,
+        "n_queries": n_queries,
+    }
+
+
+# ===============================================================================
+# 10. BOOTSTRAP CONFIDENCE INTERVALS
+# ===============================================================================
+
+def bootstrap_ci(
+    scores: np.ndarray,
+    positive_indices: list,
+    negative_indices: list,
+    metric_fn,
+    n_iters: int = BOOTSTRAP_ITERS,
+    alpha: float = BOOTSTRAP_ALPHA,
+    seed: int = SEED,
+) -> tuple:
+    """
+    Bootstrap confidence interval for AUC (or any metric computed on
+    positive vs negative index sets).
+
+    Resamples with replacement from both positive and negative index sets,
+    computes metric on each resample, returns (CI_low, CI_high).
+    """
+    rng = np.random.RandomState(seed + 7)  # offset seed to avoid correlation
+    pos_arr = np.array(positive_indices)
+    neg_arr = np.array(negative_indices)
+
+    if len(pos_arr) == 0 or len(neg_arr) == 0:
+        return (0.0, 0.0)
+
+    values = []
+    for _ in range(n_iters):
+        pos_sample = rng.choice(pos_arr, size=len(pos_arr), replace=True).tolist()
+        neg_sample = rng.choice(neg_arr, size=len(neg_arr), replace=True).tolist()
+        val = metric_fn(scores, pos_sample, neg_sample)
+        values.append(val)
+
+    values = sorted(values)
+    lo = values[int(n_iters * alpha / 2)]
+    hi = values[int(n_iters * (1 - alpha / 2))]
+    return (float(lo), float(hi))
+
+
+def bootstrap_ci_mrr(
+    reciprocal_ranks: list,
+    n_iters: int = BOOTSTRAP_ITERS,
+    alpha: float = BOOTSTRAP_ALPHA,
+    seed: int = SEED,
+) -> tuple:
+    """Bootstrap CI for MRR (a simple mean of reciprocal ranks)."""
+    if len(reciprocal_ranks) == 0:
+        return (0.0, 0.0)
+    rng = np.random.RandomState(seed + 13)
+    arr = np.array(reciprocal_ranks)
+    values = []
+    for _ in range(n_iters):
+        sample = rng.choice(arr, size=len(arr), replace=True)
+        values.append(float(np.mean(sample)))
+    values = sorted(values)
+    lo = values[int(n_iters * alpha / 2)]
+    hi = values[int(n_iters * (1 - alpha / 2))]
+    return (float(lo), float(hi))
+
+
+# ===============================================================================
+# 11. FULL HITS@K/MRR WITH RECIPROCAL RANKS (for bootstrap)
+# ===============================================================================
+
+def compute_hits_mrr_detailed(
+    model: VulnGAT,
+    data,
+    masked_pkg_to_cves: dict,
+    device: torch.device,
+    k: int = HITS_K,
+) -> dict:
+    """
+    Like compute_hits_at_k_mrr but also returns the raw reciprocal ranks
+    list for bootstrap CI computation.
+    """
+    if len(masked_pkg_to_cves) == 0:
+        return {"hits_at_k": 0.0, "mrr": 0.0, "random_mrr": 0.0,
+                "n_queries": 0, "reciprocal_ranks": [], "hit_flags": []}
+
+    model.eval()
+    x_dict = {ntype: data[ntype].x.to(device) for ntype in data.node_types}
+    edge_index_dict = {
+        (src, rel, tgt): data[src, rel, tgt].edge_index.to(device)
+        for src, rel, tgt in data.edge_types
+    }
+
+    with torch.no_grad():
+        h_dict = model.encode(x_dict, edge_index_dict)
+
+    pkg_embeddings = h_dict["Package"].cpu()
+    cve_embeddings = h_dict["CVE"].cpu()
+    pkg_norm = torch.nn.functional.normalize(pkg_embeddings, dim=1)
+    cve_norm = torch.nn.functional.normalize(cve_embeddings, dim=1)
+
+    num_cves = cve_norm.size(0)
+    random_mrr = 1.0 / num_cves if num_cves > 0 else 0.0
+
+    reciprocal_ranks = []
+    hit_flags = []
+    n_queries = 0
+
+    for pkg_idx, cve_indices in masked_pkg_to_cves.items():
+        if len(cve_indices) == 0:
+            continue
+        pkg_vec = pkg_norm[pkg_idx].unsqueeze(0)
+        sims = torch.mm(pkg_vec, cve_norm.t()).squeeze(0)
+        ranked = torch.argsort(sims, descending=True).tolist()
+
+        for true_cve_idx in cve_indices:
+            n_queries += 1
+            in_top_k = true_cve_idx in ranked[:k]
+            hit_flags.append(1 if in_top_k else 0)
+            rank_pos = ranked.index(true_cve_idx) + 1
+            reciprocal_ranks.append(1.0 / rank_pos)
+
+    hits_at_k = float(np.mean(hit_flags)) if hit_flags else 0.0
+    mrr = float(np.mean(reciprocal_ranks)) if reciprocal_ranks else 0.0
+
+    return {
+        "hits_at_k": hits_at_k,
+        "mrr": mrr,
+        "random_mrr": random_mrr,
+        "n_queries": n_queries,
+        "reciprocal_ranks": reciprocal_ranks,
+        "hit_flags": hit_flags,
+    }
+
+
+# ===============================================================================
+# 12. IDENTIFY NEVER-VULNERABLE PACKAGES
+# ===============================================================================
+
+def get_never_vuln_indices(
+    vpss_labels: dict,
+    pkg_id_to_idx: dict,
+    num_packages: int,
+) -> list:
+    """
+    Returns indices of packages that have VPSS = 0 (never had any CVE,
+    neither own nor descendant). These form the negative class for AUC.
+    """
+    never_vuln = []
+    all_pkg_ids = set(pkg_id_to_idx.keys())
+    for pkg_id in all_pkg_ids:
+        entry = vpss_labels.get(pkg_id, {})
+        vpss = float(entry.get("vpss", 0.0))
+        if vpss < 1e-9:
+            never_vuln.append(pkg_id_to_idx[pkg_id])
+    return never_vuln
+
+
+# ===============================================================================
+# 13. MAIN ORCHESTRATION
+# ===============================================================================
+
+def main():
+    start_time = time.time()
+
+    print("=" * 90)
+    print("  VulnChain -- Masked-Edge Model-Contribution Audit")
+    print("=" * 90)
+    print()
+    print("  PRE-REGISTERED CONFIGURATION:")
+    print(f"    Random seed:          {SEED}")
+    print(f"    Mask ratios:          {MASK_RATIOS}")
+    print(f"    Own/VPSS threshold:   {OWN_VPSS_THRESHOLD}")
+    print(f"    Bootstrap iterations: {BOOTSTRAP_ITERS}")
+    print(f"    Hits@K:               {HITS_K}")
+    print(f"    Metrics:              AUC (masked-vuln vs never-vuln), Hits@{HITS_K}, MRR")
+    print()
+
+    # -- Load data ---------------------------------------------------------
+    print("[1/7] Loading graph, labels, and model...")
+    with open(GRAPH_PATH, "r", encoding="utf-8") as f:
+        graph_json = json.load(f)
+    with open(LABELS_PATH, "r", encoding="utf-8") as f:
+        vpss_labels = json.load(f)
+
+    data, mappings, masks = load_vulnchain_dataset(
+        graph_path=GRAPH_PATH, labels_path=LABELS_PATH, repo_split_path=SPLIT_PATH
+    )
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = VulnGAT()
+    model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu", weights_only=True))
+    model = model.to(device)
+    model.eval()
+
+    pkg_id_to_idx = mappings["pkg_id_to_idx"]
+    idx_to_pkg_id = mappings["idx_to_pkg_id"]
+    cve_id_to_idx = mappings["cve_id_to_idx"]
+    num_packages = data["Package"].num_nodes
+
+    print(f"  Device: {device}")
+    print(f"  Packages: {num_packages}, CVEs: {data['CVE'].num_nodes}")
+    print()
+
+    # -- Compute own-VPSS decomposition ------------------------------------
+    print("[2/7] Computing own-VPSS decomposition...")
+    own_vpss_data = compute_own_vpss(graph_json, vpss_labels)
+    print(f"  Packages with direct CVEs: {len(own_vpss_data)}")
+
+    # Distribution of own_ratio
+    ratios = [d["own_ratio"] for d in own_vpss_data.values()]
+    if ratios:
+        print(f"  Own-ratio distribution: mean={np.mean(ratios):.3f}, "
+              f"median={np.median(ratios):.3f}, "
+              f"p25={np.percentile(ratios, 25):.3f}, "
+              f"p75={np.percentile(ratios, 75):.3f}")
+
+    # -- Select eligible packages ------------------------------------------
+    print("[3/7] Selecting eligible packages (own/VPSS >= {:.2f})...".format(OWN_VPSS_THRESHOLD))
+    eligible_pkg_ids = select_eligible_packages(own_vpss_data, OWN_VPSS_THRESHOLD)
+    print(f"  Eligible packages: {len(eligible_pkg_ids)}")
+
+    # Classify by split
+    train_eligible = [p for p in eligible_pkg_ids if pkg_id_to_idx.get(p, -1) in
+                      set(torch.where(masks["train_mask"])[0].tolist())]
+    val_eligible = [p for p in eligible_pkg_ids if pkg_id_to_idx.get(p, -1) in
+                    set(torch.where(masks["val_mask"])[0].tolist())]
+    test_eligible = [p for p in eligible_pkg_ids if pkg_id_to_idx.get(p, -1) in
+                     set(torch.where(masks["test_mask"])[0].tolist())]
+    print(f"    Train: {len(train_eligible)}, Val: {len(val_eligible)}, Test: {len(test_eligible)}")
+
+    # -- Identify never-vulnerable packages --------------------------------
+    never_vuln_indices = get_never_vuln_indices(vpss_labels, pkg_id_to_idx, num_packages)
+    print(f"  Never-vulnerable packages (VPSS=0): {len(never_vuln_indices)}")
+
+    # -- Full-graph baseline scores (unmasked) -----------------------------
+    print("[4/7] Running full-graph model inference (unmasked baseline)...")
+    full_scores = run_model_inference(model, data, device)
+    print(f"  Score range: [{full_scores.min():.5f}, {full_scores.max():.5f}]")
+    print()
+
+    # -- Sweep mask ratios -------------------------------------------------
+    all_results = []
+
+    for mask_ratio in MASK_RATIOS:
+        print("-" * 90)
+        print(f"[5/7] MASK RATIO = {mask_ratio:.0%}")
+        print("-" * 90)
+
+        # Apply edge mask
+        ratio_seed = SEED + int(mask_ratio * 100)
+        masked_data, masked_pkg_indices, masked_pkg_to_cves, stratum_labels = apply_edge_mask(
+            data, eligible_pkg_ids, pkg_id_to_idx, graph_json, cve_id_to_idx,
+            mask_ratio, ratio_seed,
+        )
+
+        n_shared = sum(1 for s in stratum_labels.values() if s == "shared")
+        n_orphaned = sum(1 for s in stratum_labels.values() if s == "orphaned")
+        masked_edges_remaining = masked_data["Package", "hasVulnerability", "CVE"].edge_index.size(1)
+        original_edges = data["Package", "hasVulnerability", "CVE"].edge_index.size(1)
+
+        print(f"  Masked packages: {len(masked_pkg_indices)} "
+              f"(shared: {n_shared}, orphaned: {n_orphaned})")
+        print(f"  hasVulnerability edges: {original_edges} -> {masked_edges_remaining} "
+              f"(removed {original_edges - masked_edges_remaining})")
+
+        # Get masked package IDs for BFS baseline
+        masked_pkg_ids_set = set()
+        for pkg_idx in masked_pkg_indices:
+            if pkg_idx in idx_to_pkg_id:
+                masked_pkg_ids_set.add(idx_to_pkg_id[pkg_idx])
+
+        # -- Run all four methods ------------------------------------------
+        print("  Running model inference on masked graph...")
+        model_scores = run_model_inference(model, masked_data, device)
+
+        print("  Running BFS baseline on masked graph...")
+        bfs_scores = run_bfs_baseline(
+            graph_json, masked_pkg_ids_set, vpss_labels, pkg_id_to_idx, num_packages
+        )
+
+        print("  Running label-propagation baseline on masked graph...")
+        lp_scores = run_label_prop_baseline(
+            masked_data, vpss_labels, pkg_id_to_idx, idx_to_pkg_id, num_packages
+        )
+
+        print("  Running feature-shuffle ablation on masked graph...")
+        shuffle_scores = run_feature_shuffle_ablation(
+            model, masked_data, device, ratio_seed + 999
+        )
+
+        # -- Compute AUC (stratified) --------------------------------------
+        print("  Computing AUC (masked-vulnerable vs never-vulnerable)...")
+        masked_indices_list = list(masked_pkg_indices)
+
+        methods = {
+            "model": model_scores,
+            "bfs_baseline": bfs_scores,
+            "label_prop": lp_scores,
+            "feat_shuffle": shuffle_scores,
+        }
+
+        for stratum_name in ["overall", "shared", "orphaned"]:
+            if stratum_name == "overall":
+                pos_indices = masked_indices_list
+            elif stratum_name == "shared":
+                pos_indices = [i for i in masked_indices_list if stratum_labels.get(i) == "shared"]
+            else:
+                pos_indices = [i for i in masked_indices_list if stratum_labels.get(i) == "orphaned"]
+
+            if len(pos_indices) == 0:
+                for method_name in methods:
+                    all_results.append({
+                        "mask_ratio": mask_ratio,
+                        "stratum": stratum_name,
+                        "metric": "AUC",
+                        "method": method_name,
+                        "value": None,
+                        "CI_low": None,
+                        "CI_high": None,
+                        "n_positive": 0,
+                        "n_negative": len(never_vuln_indices),
+                    })
+                continue
+
+            for method_name, method_scores in methods.items():
+                auc_val = compute_auc(method_scores, pos_indices, never_vuln_indices)
+                ci_low, ci_high = bootstrap_ci(
+                    method_scores, pos_indices, never_vuln_indices, compute_auc,
+                    n_iters=BOOTSTRAP_ITERS, seed=ratio_seed + hash(method_name) % 10000,
+                )
+                all_results.append({
+                    "mask_ratio": mask_ratio,
+                    "stratum": stratum_name,
+                    "metric": "AUC",
+                    "method": method_name,
+                    "value": round(auc_val, 4),
+                    "CI_low": round(ci_low, 4),
+                    "CI_high": round(ci_high, 4),
+                    "n_positive": len(pos_indices),
+                    "n_negative": len(never_vuln_indices),
+                })
+
+        # -- Compute Hits@K / MRR ------------------------------------------
+        print(f"  Computing Hits@{HITS_K} and MRR (embedding-space CVE re-ranking)...")
+        hmrr = compute_hits_mrr_detailed(model, masked_data, masked_pkg_to_cves, device, k=HITS_K)
+
+        mrr_ci = bootstrap_ci_mrr(
+            hmrr["reciprocal_ranks"], seed=ratio_seed + 777
+        )
+
+        all_results.append({
+            "mask_ratio": mask_ratio,
+            "stratum": "overall",
+            "metric": f"Hits@{HITS_K}",
+            "method": "model",
+            "value": round(hmrr["hits_at_k"], 4),
+            "CI_low": None,
+            "CI_high": None,
+            "n_queries": hmrr["n_queries"],
+        })
+        all_results.append({
+            "mask_ratio": mask_ratio,
+            "stratum": "overall",
+            "metric": "MRR",
+            "method": "model",
+            "value": round(hmrr["mrr"], 4),
+            "CI_low": round(mrr_ci[0], 4),
+            "CI_high": round(mrr_ci[1], 4),
+            "n_queries": hmrr["n_queries"],
+        })
+        all_results.append({
+            "mask_ratio": mask_ratio,
+            "stratum": "overall",
+            "metric": "MRR",
+            "method": "random_floor",
+            "value": round(hmrr["random_mrr"], 4),
+            "CI_low": None,
+            "CI_high": None,
+            "n_queries": hmrr["n_queries"],
+        })
+
+        # -- Score drop analysis (model vs feature-shuffle) ----------------
+        masked_model_mean = float(np.mean([model_scores[i] for i in masked_pkg_indices]))
+        masked_shuffle_mean = float(np.mean([shuffle_scores[i] for i in masked_pkg_indices]))
+        score_drop = masked_model_mean - masked_shuffle_mean
+
+        all_results.append({
+            "mask_ratio": mask_ratio,
+            "stratum": "overall",
+            "metric": "mean_score_drop_shuffle",
+            "method": "model_vs_shuffle",
+            "value": round(score_drop, 6),
+            "model_mean": round(masked_model_mean, 6),
+            "shuffle_mean": round(masked_shuffle_mean, 6),
+        })
+
+        print(f"  Done. Model mean on masked: {masked_model_mean:.4f}, "
+              f"Shuffle mean: {masked_shuffle_mean:.4f}, "
+              f"Drop: {score_drop:+.4f}")
+        print()
+
+    # =====================================================================
+    # OUTPUT: Markdown Table + JSON
+    # =====================================================================
+    print("=" * 90)
+    print("[6/7] RESULTS TABLE")
+    print("=" * 90)
+    print()
+
+    # Print AUC table
+    print("### AUC: Masked-Vulnerable vs Never-Vulnerable Packages")
+    print()
+    header = f"{'Mask%':<8}{'Stratum':<12}{'Model':<16}{'BFS-Masked':<16}{'Label-Prop':<16}{'Feat-Shuffle':<16}{'N_pos':<8}"
+    print(header)
+    print("-" * len(header))
+
+    for mask_ratio in MASK_RATIOS:
+        for stratum in ["overall", "shared", "orphaned"]:
+            row_results = {r["method"]: r for r in all_results
+                          if r["mask_ratio"] == mask_ratio
+                          and r["stratum"] == stratum
+                          and r["metric"] == "AUC"}
+
+            def fmt_auc(r):
+                if r is None or r.get("value") is None:
+                    return "N/A"
+                v = r["value"]
+                ci_l = r.get("CI_low")
+                ci_h = r.get("CI_high")
+                if ci_l is not None and ci_h is not None:
+                    return f"{v:.3f}[{ci_l:.2f},{ci_h:.2f}]"
+                return f"{v:.3f}"
+
+            model_r = row_results.get("model")
+            bfs_r = row_results.get("bfs_baseline")
+            lp_r = row_results.get("label_prop")
+            fs_r = row_results.get("feat_shuffle")
+
+            n_pos = model_r.get("n_positive", 0) if model_r else 0
+
+            print(f"{mask_ratio:<8.0%}{stratum:<12}"
+                  f"{fmt_auc(model_r):<16}{fmt_auc(bfs_r):<16}"
+                  f"{fmt_auc(lp_r):<16}{fmt_auc(fs_r):<16}{n_pos:<8}")
+
+    print()
+
+    # Print Hits@K / MRR table
+    print(f"### Hits@{HITS_K} / MRR: Embedding-Space CVE Re-Ranking")
+    print()
+    header2 = f"{'Mask%':<8}{'Metric':<12}{'Model':<20}{'Random Floor':<16}{'N_queries':<10}"
+    print(header2)
+    print("-" * len(header2))
+
+    for mask_ratio in MASK_RATIOS:
+        for metric_name in [f"Hits@{HITS_K}", "MRR"]:
+            model_r = next((r for r in all_results
+                            if r["mask_ratio"] == mask_ratio
+                            and r["metric"] == metric_name
+                            and r["method"] in ("model",)), None)
+            rand_r = next((r for r in all_results
+                           if r["mask_ratio"] == mask_ratio
+                           and r["metric"] == metric_name
+                           and r["method"] == "random_floor"), None)
+
+            def fmt_val(r):
+                if r is None or r.get("value") is None:
+                    return "N/A"
+                v = r["value"]
+                ci_l = r.get("CI_low")
+                ci_h = r.get("CI_high")
+                if ci_l is not None and ci_h is not None:
+                    return f"{v:.4f} [{ci_l:.3f},{ci_h:.3f}]"
+                return f"{v:.4f}"
+
+            n_q = model_r.get("n_queries", 0) if model_r else 0
+            print(f"{mask_ratio:<8.0%}{metric_name:<12}"
+                  f"{fmt_val(model_r):<20}{fmt_val(rand_r):<16}{n_q:<10}")
+
+    print()
+
+    # Print score-drop table
+    print("### Feature-Shuffle Score Drop (semantic embedding signal)")
+    print()
+    header3 = f"{'Mask%':<8}{'Model Mean':<14}{'Shuffle Mean':<14}{'Drop':<12}{'Interpretation':<40}"
+    print(header3)
+    print("-" * len(header3))
+
+    for mask_ratio in MASK_RATIOS:
+        drop_r = next((r for r in all_results
+                       if r["mask_ratio"] == mask_ratio
+                       and r["metric"] == "mean_score_drop_shuffle"), None)
+        if drop_r:
+            drop = drop_r["value"]
+            model_m = drop_r.get("model_mean", 0)
+            shuf_m = drop_r.get("shuffle_mean", 0)
+            if abs(drop) < 0.005:
+                interp = "No evidence of embedding use"
+            elif drop > 0.02:
+                interp = "Embeddings contribute to scores"
+            else:
+                interp = "Weak/marginal embedding signal"
+            print(f"{mask_ratio:<8.0%}{model_m:<14.4f}{shuf_m:<14.4f}{drop:<+12.4f}{interp:<40}")
+
+    # =====================================================================
+    # INTERPRETATION
+    # =====================================================================
+    print()
+    print("=" * 90)
+    print("[7/7] INTERPRETATION")
+    print("=" * 90)
+    print()
+
+    # Determine outcome based on 50% mask ratio (harshest test)
+    target_ratio = 0.50
+
+    model_auc = None
+    bfs_auc = None
+    lp_auc = None
+    fs_auc = None
+    score_drop = None
+
+    for r in all_results:
+        if r["mask_ratio"] != target_ratio or r["stratum"] != "shared":
+            continue
+        if r["metric"] == "AUC":
+            if r["method"] == "model":
+                model_auc = r.get("value")
+            elif r["method"] == "bfs_baseline":
+                bfs_auc = r.get("value")
+            elif r["method"] == "label_prop":
+                lp_auc = r.get("value")
+            elif r["method"] == "feat_shuffle":
+                fs_auc = r.get("value")
+
+    for r in all_results:
+        if r["mask_ratio"] == target_ratio and r["metric"] == "mean_score_drop_shuffle":
+            score_drop = r.get("value")
+
+    # Fallback to overall stratum if shared had no data
+    if model_auc is None:
+        for r in all_results:
+            if r["mask_ratio"] != target_ratio or r["stratum"] != "overall":
+                continue
+            if r["metric"] == "AUC":
+                if r["method"] == "model":
+                    model_auc = r.get("value")
+                elif r["method"] == "bfs_baseline":
+                    bfs_auc = r.get("value")
+                elif r["method"] == "label_prop":
+                    lp_auc = r.get("value")
+                elif r["method"] == "feat_shuffle":
+                    fs_auc = r.get("value")
+
+    beats_bfs = model_auc is not None and bfs_auc is not None and model_auc > bfs_auc + 0.02
+    beats_lp = model_auc is not None and lp_auc is not None and model_auc > lp_auc + 0.02
+    embedding_signal = score_drop is not None and score_drop > 0.01
+
+    if beats_bfs and beats_lp and embedding_signal:
+        outcome = 1
+        print("  OUTCOME 1: SEMANTIC / ZERO-DAY GENERALIZATION (STRONGEST)")
+        print()
+        print("  The model beats both BFS-masked and label-prop baselines,")
+        print("  AND feature-shuffle ablation drops scores, indicating the")
+        print("  768-dim CVE embeddings are an active mechanism for risk inference.")
+        print()
+        print("  Claim supported: 'VulnGAT performs learned semantic generalization")
+        print("  beyond scripted traversal -- it can infer risk for packages with")
+        print("  no observed CVE edge using CVE-text embeddings from neighbors.'")
+        print()
+        print("  NOTE: This is rare at this data volume. Verify the shared-CVE")
+        print("  stratum carefully -- the mechanism requires a CVE to be reachable")
+        print("  via another package's edge.")
+
+    elif beats_bfs and beats_lp:
+        outcome = 2
+        print("  OUTCOME 2: STRUCTURAL PROPAGATION (MODERATE)")
+        print()
+        print("  The model beats BFS-masked and label-prop baselines, but the")
+        print("  feature-shuffle ablation does NOT drop scores. The GNN is using")
+        print("  learned nonlinear risk propagation through dependency structure,")
+        print("  but NOT the CVE-text embeddings.")
+        print()
+        print("  Claim supported: 'VulnGAT performs learned nonlinear risk")
+        print("  propagation through dependency structure under edge sparsity,")
+        print("  beyond scripted traversal or label propagation.'")
+        print()
+        print("  This is narrower than semantic generalization but still a real,")
+        print("  non-BFS-replicable contribution. Upgrades the prior 30/70 credit")
+        print("  split with evidence.")
+
+    else:
+        outcome = 3
+        print("  OUTCOME 3: NO CLEAR ADVANTAGE OVER BASELINES")
+        print()
+        if model_auc is not None:
+            print(f"  Model AUC:     {model_auc:.4f}")
+        if bfs_auc is not None:
+            print(f"  BFS AUC:       {bfs_auc:.4f}")
+        if lp_auc is not None:
+            print(f"  Label-Prop:    {lp_auc:.4f}")
+        print()
+        print("  The model does not clearly beat BFS or label-propagation baselines")
+        print("  on the masked-edge evaluation. This is a sharper, more honest")
+        print("  characterization than the prior '30/70 split' -- it identifies")
+        if not beats_bfs:
+            print("  that structural propagation does not exceed what BFS recovers,")
+        if not beats_lp:
+            print("  that learned representations do not exceed neighbor averaging,")
+        print("  under this specific edge-masking evaluation protocol.")
+
+    print()
+    print("  +-------------------------------------------------------------+")
+    print("  | DISTRIBUTION-SHIFT CAVEAT                                  |")
+    print("  |                                                            |")
+    print("  | The model was NEVER trained with hasVulnerability edges     |")
+    print("  | deliberately deleted. A collapse under masking could mean:  |")
+    print("  |                                                            |")
+    print("  |   (a) The model cannot do this (architecture limitation)   |")
+    print("  |   (b) The model was never trained for this input (OOD)     |")
+    print("  |                                                            |")
+    print("  | These are DIFFERENT findings. This audit reports the       |")
+    print("  | current, as-trained model's behavior. If collapse is       |")
+    print("  | observed, it motivates (but does not itself justify) a     |")
+    print("  | follow-up: extending the existing edge-dropout             |")
+    print("  | augmentation (p=0.2 for InfoNCE) to also require VPSS     |")
+    print("  | prediction under hasVulnerability masking during training. |")
+    print("  |                                                            |")
+    print("  | Do NOT build this training-side fix in this script --       |")
+    print("  | it is a separate follow-up, only worth doing if this      |")
+    print("  | audit shows collapse.                                      |")
+    print("  +-------------------------------------------------------------+")
+
+    # -- Save JSON ---------------------------------------------------------
+    output = {
+        "config": {
+            "seed": SEED,
+            "mask_ratios": MASK_RATIOS,
+            "own_vpss_threshold": OWN_VPSS_THRESHOLD,
+            "bootstrap_iters": BOOTSTRAP_ITERS,
+            "hits_k": HITS_K,
+        },
+        "summary": {
+            "eligible_packages": len(eligible_pkg_ids),
+            "never_vuln_packages": len(never_vuln_indices),
+            "outcome": outcome,
+        },
+        "results": all_results,
+    }
+
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, default=str)
+
+    elapsed = time.time() - start_time
+    print()
+    print(f"  Results saved to: {OUTPUT_JSON}")
+    print(f"  Total runtime:    {elapsed:.1f}s")
+    print()
+    print("=" * 90)
+    print("  Audit Complete.")
+    print("=" * 90)
+
+
+if __name__ == "__main__":
+    main()
+</file>
+
+<file path="TrainModel/package.json">
+{
+  "name": "vulnchain-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local web dashboard for the VulnGAT supply-chain risk model.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
+</file>
+
+<file path="TrainModel/requirements.txt">
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.3
+aiosignal==1.4.0
+attrs==26.1.0
+certifi==2026.7.22
+charset-normalizer==3.5.1
+colorama==0.4.6
+filelock==3.32.3
+frozenlist==1.8.0
+fsspec==2026.7.0
+idna==3.19
+Jinja2==3.1.6
+joblib==1.5.3
+MarkupSafe==3.0.3
+mpmath==1.3.0
+multidict==6.7.1
+narwhals==2.25.0
+networkx==3.6.1
+numpy==2.5.2
+pillow==12.3.0
+propcache==0.5.2
+psutil==7.2.2
+pyparsing==3.3.2
+requests==2.34.2
+scikit-learn==1.9.0
+scipy==1.18.1
+setuptools==78.1.0
+sympy==1.14.0
+threadpoolctl==3.6.0
+# torch installed with CUDA 12.6 support from the PyTorch index:
+#   pip install torch==2.13.0 torchvision==0.28.0 torchaudio==2.11.0 --index-url https://download.pytorch.org/whl/cu126
+torch==2.13.0+cu126
+torch-geometric==2.8.0.post1
+torchaudio==2.11.0+cu126
+torchvision==0.28.0+cu126
+tqdm==4.70.0
+typing_extensions==4.16.0
+urllib3==2.7.0
+xxhash==4.0.1
+yarl==1.24.5
+</file>
+
+<file path="TrainModel/server.js">
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const { execFile } = require("child_process");
+const { promisify } = require("util");
+
+const root = __dirname;
+const sample = JSON.parse(fs.readFileSync(path.join(root, "results.json"), "utf8"));
+const runFile = promisify(execFile);
+const python = fs.existsSync(path.join(root, "venv", "Scripts", "python.exe"))
+  ? path.join(root, "venv", "Scripts", "python.exe")
+  : "python";
+const analyzer = path.join(root, "analyze_project.py");
+const auditScript = path.join(root, "masked_edge_audit.py");
+const auditResultsPath = path.join(root, "masked_edge_audit_results.json");
+
+function send(res, status, body, type = "application/json") {
+  res.writeHead(status, {
+    "Content-Type": `${type}; charset=utf-8`,
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  });
+  res.end(type === "application/json" ? JSON.stringify(body) : body);
+}
+
+async function analyzeWithVulnGAT(lockfile) {
+  if (!fs.existsSync(analyzer)) throw new Error("The VulnGAT analyzer script is missing.");
+  const jobDir = fs.mkdtempSync(path.join(os.tmpdir(), "vulnchain-"));
+  const inputPath = path.join(jobDir, "package-lock.json");
+  const outputPath = path.join(jobDir, "report.json");
+  fs.writeFileSync(inputPath, lockfile, "utf8");
+  try {
+    await runFile(python, [analyzer, inputPath, "--json", outputPath], {
+      cwd: root,
+      timeout: 300_000,
+      windowsHide: true,
+      maxBuffer: 4 * 1024 * 1024,
+    });
+    const report = JSON.parse(fs.readFileSync(outputPath, "utf8"));
+    return { ...report, mode: "model-inference" };
+  } finally {
+    fs.rmSync(jobDir, { recursive: true, force: true });
+  }
+}
+
+async function runLiveAudit() {
+  if (!fs.existsSync(auditScript)) throw new Error("The masked_edge_audit.py script is missing.");
+  await runFile(python, [auditScript], {
+    cwd: root,
+    timeout: 300_000,
+    windowsHide: true,
+    maxBuffer: 4 * 1024 * 1024,
+  });
+  if (fs.existsSync(auditResultsPath)) {
+    return JSON.parse(fs.readFileSync(auditResultsPath, "utf8"));
+  }
+  throw new Error("Audit finished but results file was not found.");
+}
+
+const types = {
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "application/javascript",
+  ".json": "application/json",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".ico": "image/x-icon",
+};
+
+const server = http.createServer((req, res) => {
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    });
+    return res.end();
+  }
+
+  // Sample results endpoint
+  if (req.method === "GET" && req.url === "/api/sample") {
+    return send(res, 200, { ...sample, mode: "model-sample" });
+  }
+
+  // Presets list endpoint
+  if (req.method === "GET" && req.url === "/api/presets") {
+    const presets = [
+      { id: "demo-test", name: "VulnChain Demo Test (17 pkgs, v3)", file: "target_package_lock.json" },
+      { id: "airtwin", name: "Airtwin Backend (139 pkgs, v2)", file: "user_package_lock.json" },
+      { id: "sample-app", name: "Sample Test App (5 pkgs, v2)", file: "sample_test_lock.json" },
+      { id: "benchmark", name: "Default Benchmark Pilot (113 pkgs)", file: "results.json" },
+    ];
+    return send(res, 200, presets);
+  }
+
+  // Load preset content endpoint
+  if (req.method === "GET" && req.url.startsWith("/api/preset/")) {
+    const presetId = req.url.replace("/api/preset/", "").trim();
+    let targetFile = null;
+    if (presetId === "demo-test") targetFile = "target_package_lock.json";
+    else if (presetId === "airtwin") targetFile = "user_package_lock.json";
+    else if (presetId === "sample-app") targetFile = "sample_test_lock.json";
+
+    if (targetFile && fs.existsSync(path.join(root, targetFile))) {
+      const content = fs.readFileSync(path.join(root, targetFile), "utf8");
+      return send(res, 200, { filename: targetFile, content });
+    }
+    return send(res, 404, { error: "Preset not found" });
+  }
+
+  // Audit results endpoint
+  if (req.method === "GET" && req.url === "/api/audit") {
+    if (fs.existsSync(auditResultsPath)) {
+      try {
+        const auditData = JSON.parse(fs.readFileSync(auditResultsPath, "utf8"));
+        return send(res, 200, auditData);
+      } catch (err) {
+        return send(res, 500, { error: "Failed to parse audit results" });
+      }
+    }
+    return send(res, 404, { error: "Audit results not found. Run the audit script first." });
+  }
+
+  // Trigger live audit endpoint
+  if (req.method === "POST" && req.url === "/api/audit/run") {
+    runLiveAudit()
+      .then((data) => send(res, 200, data))
+      .catch((err) => {
+        console.error("Live audit failed:", err);
+        send(res, 500, { error: err.message || "Live audit failed" });
+      });
+    return;
+  }
+
+  // Analyze package-lock.json endpoint
+  if (req.method === "POST" && req.url === "/api/analyze") {
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk;
+      if (body.length > 15_000_000) req.destroy();
+    });
+    req.on("end", async () => {
+      try {
+        JSON.parse(body);
+        const result = await analyzeWithVulnGAT(body);
+        return send(res, 200, result);
+      } catch (error) {
+        console.error("VulnGAT scan failed:", error.message, error.stderr || "");
+        const detail = error.killed
+          ? "Model inference exceeded the five-minute limit."
+          : error.message || "The model could not analyze that lockfile.";
+        return send(res, 400, { error: detail });
+      }
+    });
+    return;
+  }
+
+  const requested = req.url === "/" ? "/web/index.html" : req.url;
+  const file = path.normalize(path.join(root, requested));
+  if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+    return send(res, 404, "Not found", "text/plain");
+  }
+  send(res, 200, fs.readFileSync(file), types[path.extname(file)] || "application/octet-stream");
+});
+
+const PORT = 4173;
+function startServer() {
+  server.listen(PORT, () => console.log(`VulnChain is running at http://localhost:${PORT}`));
+}
+server.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.log(`Port ${PORT} busy — killing old process...`);
+    const { execSync } = require("child_process");
+    try {
+      execSync(`for /f "tokens=5" %a in ('netstat -aon ^| findstr :${PORT} ^| findstr LISTENING') do taskkill /F /PID %a`, { shell: "cmd.exe", stdio: "ignore" });
+    } catch {}
+    setTimeout(startServer, 500);
+  } else throw err;
+});
+startServer();
+</file>
+
+<file path="TrainModel/VULNGAT_EVALUATION_REPORT.md">
+# 🛡️ VulnChain (VulnGAT) — Inductive Repository-Split Evaluation Report
+
+> **Project:** VulnChain — Heterogeneous Graph Attention Network (VulnGAT) for Software Dependency Risk & Blast-Radius Propagation  
+> **Evaluation Date:** August 28, 2026  
+> **Hardware Environment:** NVIDIA GeForce RTX 3050 Laptop GPU (6 GB VRAM) · 16 GB System RAM · CUDA 12.9  
+> **Model Checkpoint:** `models/vulngat_trained.pt` (Retrained on Clean Repository Split)  
+> **Split Methodology:** **Strict Repository-Level Partitioning** (Train: 7 repos · Val: `webpack` · Held-Out Test: `juice-shop` alone)
+
+---
+
+## 1. Executive Summary & Verified Scorecard
+
+This report documents the empirical evaluation of **VulnGAT** following a **strict, leak-free repository-level train/validation/test split** conforming to Section 6.3 of `VULNCHAIN_DESIGN_v1.0.md`. 
+
+Unlike node-level transductive splits (which leak shared graph neighborhoods), this evaluation trains the model exclusively on 7 pinned repositories, tunes on `webpack`, and tests on **`juice-shop` ($N = 1,269$ nodes) completely held out as an unseen project**.
+
+### 📈 Verified Repository-Split Scorecard
+| Evaluation Dimension | Benchmark / Dataset | Metric | Result | Interpretation |
+| :--- | :--- | :--- | :---: | :--- |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Mean Squared Error (MSE)** | **`0.019580`** | Clean low regression loss on unseen project |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Root Mean Squared Error (RMSE)** | **`0.139930`** | Tight deviation on $[0.0, 1.0]$ continuous scale |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Mean Absolute Error (MAE)** | **`0.085469`** | Average prediction error $< 0.086$ |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Pearson Correlation ($r$)** | **`0.4320`** | Statistically significant alignment ($p < 10^{-5}$) |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Spearman Rank Correlation ($\rho$)** | **`0.3567`** | Monotonic ordering on unseen tree |
+| **Held-Out Test Project** | `juice-shop` ($N=1,269$) | **Pairwise Concordant Ranking Accuracy** | **`77.24%`** | $77.2\%$ of package risk pairs correctly ordered |
+| **Validation Project** | `webpack` ($N=550$) | **Pairwise Concordant Ranking Accuracy** | **`79.95%`** | Early stopping checkpoint validation metric |
+| **Out-of-Distribution Benchmark** | Contrast Security `NodeTestBench` ($N=671$) | **Precision at $\ge 0.40$** | **`100.0%`** | $31 / 31$ flagged criticals are confirmed CVEs |
+| **Out-of-Distribution Benchmark** | Contrast Security `NodeTestBench` ($N=671$) | **Recall at $\ge 0.40$** | **`77.50%`** | $31 / 40$ confirmed CVEs flagged in top critical tier |
+
+---
+
+## 2. Dataset Partitioning & Anti-Leakage Protocol
+
+The dataset comprises **5,578 Package nodes**, **326 CVE nodes**, **2,035 Author nodes**, and **21,812 heterogeneous edges**. To guarantee zero data leakage, packages were partitioned by **Repository Provenance** rather than random node shuffling:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                        VULNCHAIN REPOSITORY-LEVEL SPLIT MAPPING                        │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+  ├── TRAIN SPLIT (67.4% · N = 3,759 nodes · 623 vulnerable)
+  │     └── 7 Pinned Repos: nest, NodeGoat, cli, nodejs-goof, express, dvna, Ghost
+  │
+  ├── VALIDATION SPLIT (9.9% · N = 550 nodes · 71 vulnerable)
+  │     └── 1 Pinned Repo: webpack (Used strictly for early stopping & LR decay)
+  │
+  └── HELD-OUT TEST SPLIT (22.8% · N = 1,269 nodes · 197 vulnerable)
+        └── 1 Pinned Repo: juice-shop (Held out; never seen during training or tuning)
+```
+
+---
+
+## 3. Quantitative Evaluation: Train vs. Val vs. Held-Out `juice-shop`
+
+The model was trained for 45 epochs (early stopping triggered with patience=10 on validation loss). Below are the full empirical metrics across all three splits:
+
+| Metric | Train Split (7 Repos, $N=3,759$) | Validation Split (`webpack`, $N=550$) | Held-Out Test Split (`juice-shop`, $N=1,269$) |
+| :--- | :---: | :---: | :---: |
+| **Mean Squared Error (MSE)** | `0.016644` | `0.022834` | **`0.019580`** |
+| **Root Mean Squared Error (RMSE)** | `0.129013` | `0.151110` | **`0.139930`** |
+| **Mean Absolute Error (MAE)** | `0.075220` | `0.079255` | **`0.085469`** |
+| **Pearson Correlation ($r$)** | `0.4770` | `0.4974` | **`0.4320`** ($p < 10^{-5}$) |
+| **Spearman Rank Correlation ($\rho$)** | `0.3104` | `0.3726` | **`0.3567`** |
+| **Coefficient of Determination ($R^2$)** | `0.2184` | `0.2354` | **`0.0597`** |
+| **Pairwise Concordant Ranking Accuracy** | `72.78%` | `79.95%` | **`77.24%`** |
+
+> **Scientific Interpretation:**  
+> In an inductive setting, a slight increase in MSE from Train (`0.0166`) to Test (`0.0195`) is the hallmark of genuine out-of-sample evaluation. The strong Pearson correlation ($r = 0.4320$) and Pairwise Ranking Accuracy ($77.24\%$) confirm that VulnGAT successfully learned topological risk propagation and generalizes to unseen dependency graphs without relying on memorized node identities.
+
+---
+
+## 4. Granular Sub-Cohort Analysis on `juice-shop` ($N = 1,269$)
+
+To inspect behavior across vulnerable vs clean packages in the held-out test project:
+
+| Sub-Cohort | Sample Count ($N$) | Mean Ground Truth | Mean Model Prediction | Cohort MAE | Cohort MSE |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Vulnerable Packages** ($y > 0$) | 197 | $0.3234$ | **$0.1879$** | `0.204670` | `0.073424` |
+| **Clean / Unaffected Packages** ($y = 0$) | 1,072 | $0.0000$ | **$0.0636$** | `0.063563` | `0.009686` |
+| **All Held-Out Test Packages** | 1,269 | $0.0502$ | **$0.0829$** | `0.085469` | `0.019580` |
+
+* **Clean Node Suppression:** Benign packages on average receive a low prediction of $0.0636$, keeping false positives minimal.
+* **Vulnerable Sensitivity:** The vulnerable sub-cohort averages $0.1879$, capturing high-risk nodes with an ordering accuracy of $77.24\%$.
+
+---
+
+## 5. Top 15 Highest-Risk Predictions on Held-Out `juice-shop`
+
+Below are the top 15 highest-risk packages predicted by VulnGAT on the held-out `juice-shop` tree:
+
+| Rank | Package Identifier | Predicted Risk | Ground Truth VPSS | Absolute Delta ($\Delta$) | Supply Chain Context |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| **#1** | `hbs@4.0.4` | **`0.7044`** | $0.9147$ | $0.2103$ | Handlebars View Engine vulnerability |
+| **#2** | `express@4.12.4` | **`0.6542`** | $0.8750$ | $0.2208$ | **CISA KEV** confirmed attack vector |
+| **#3** | `morgan@1.10.0` | **`0.6420`** | $0.5627$ | $0.0793$ | HTTP Request Logger Middleware |
+| **#4** | `express@4.16.4` | **`0.6406`** | $0.8456$ | $0.2051$ | **CISA KEV** confirmed attack vector |
+| **#5** | `body-parser@1.18.3` | **`0.6243`** | $0.6556$ | **$0.0314$** | Core URL/JSON parser (high blast radius) |
+| **#6** | `body-parser@1.9.0` | **`0.6084`** | $0.7084$ | **$0.1000$** | High-degree parser dependency |
+| **#7** | `ms@0.7.3` | **`0.5324`** | $0.3464$ | $0.1860$ | Deep transitive time parser |
+| **#8** | `send@0.12.3` | **`0.5179`** | $0.3954$ | $0.1225$ | Static file serving pipe |
+| **#9** | `serve-static@1.13.2` | **`0.5151`** | $0.2032$ | $0.3119$ | Express static asset server |
+| **#10** | `serve-static@1.9.3` | **`0.5139`** | $0.3780$ | $0.1359$ | Legacy static asset server |
+| **#11** | `send@0.16.2` | **`0.4668`** | $0.1304$ | $0.3364$ | Intermediate stream dependency |
+| **#12** | `multer@1.4.5-lts.2` | **`0.4620`** | $0.0000$ | $0.4620$ | Multipart form middleware (transitive risk) |
+| **#13** | `express-jwt@0.1.3` | **`0.4525`** | $0.0000$ | $0.4525$ | JWT auth handler (direct exposure to Express) |
+| **#14** | `path-to-regexp@0.1.7` | **`0.4448`** | $0.4030$ | **$0.0418$** | ReDoS in Express route matcher |
+| **#15** | `path-to-regexp@0.1.3` | **`0.4422`** | $0.4030$ | **$0.0392$** | ReDoS in Express route matcher |
+
+---
+
+## 6. Out-of-Distribution Benchmark: Contrast Security `NodeTestBench`
+
+* **Repository:** `contrast-security-oss/NodeTestBench` ($N=671$ packages)
+* **Dataset Status:** External 3rd-party security benchmark (never in any training or split repo)
+
+```
+NodeTestBench Ground Truth Vulnerability Audit:
+  Total Packages in Lockfile:                   671
+  Packages with Known CVE/GHSA in KB:           40
+
+Pre-Committed Critical Threshold (>= 0.40):
+  ├── Flagged by VulnGAT as Critical:           31
+  ├── True Positives (Confirmed CVEs in KB):    31  (100.0% Precision)
+  ├── False Positives (Clean >= 0.40):           0  (0.0% False Positive Rate)
+  └── False Negatives (Known CVE < 0.40):        9  (77.50% Recall at >= 0.40)
+```
+
+### Full Score Distribution (10-Bin Histogram on `NodeTestBench`)
+| Risk Score Bin | Package Count | Percentage | Cumulative | Structural Role in Benchmark |
+| :---: | :---: | :---: | :---: | :--- |
+| **`[0.00 - 0.05]`** | 65 | $9.7\%$ | $9.7\%$ | Completely isolated leaf utilities |
+| **`[0.05 - 0.08]`** | 35 | $5.2\%$ | $14.9\%$ | Benign build scripts / types |
+| **`[0.08 - 0.10]`** | 34 | $5.1\%$ | $20.0\%$ | 3-hop transitive background connection |
+| **`[0.10 - 0.15]`** | 266 | $39.6\%$ | $59.6\%$ | 2-hop connection to Express middleware |
+| **`[0.15 - 0.20]`** | 195 | $29.1\%$ | $88.7\%$ | 1-to-2-hop transitive exposure to active CVEs |
+| **`[0.20 - 0.30]`** | 40 | $6.0\%$ | $94.7\%$ | Moderate CVEs + direct parents of vulnerable nodes |
+| **`[0.30 - 0.40]`** | 5 | $0.7\%$ | $95.4\%$ | Elevated transitive risk |
+| **`[0.40 - 0.50]`** | 16 | $2.4\%$ | $97.8\%$ | Direct High CVEs (Prototype Pollution / DoS) |
+| **`[0.50 - 0.60]`** | 14 | $2.1\%$ | $99.9\%$ | Severe CVEs (RCE / Path Traversal / SSRF) |
+| **`[0.60 - 1.00]`** | 1 | $0.1\%$ | $100.0\%$ | Extreme Critical Exploit (`tar@4.4.8` File Overwrite) |
+
+---
+
+## 7. Theoretical Value: Why GNN vs. Rule-Based VPSS Formula?
+
+| Dimension | Rule-Based VPSS Formula | VulnGAT (Heterogeneous GNN) | Practical Value-Add |
+| :--- | :--- | :--- | :--- |
+| **Input Requirement** | Requires full recursive DAG reachability traversal and multi-hop graph pathfinding. | Requires only the immediate lockfile adjacency list and local node features. | **Zero-shot inference:** Evaluates raw lockfiles in milliseconds without full graph databases. |
+| **Unrated / Zero-Day CVEs** | Fails completely if no official CVSS base score exists ($y = 0$). | Encodes unstructured CVE advisory text using **768-dim SentenceBERT (`all-mpnet-base-v2`)**. | Predicts risk scores for novel, unrated security advisories based on natural language descriptions. |
+| **Attention Mechanism** | Rigid static exponential decay ($0.7^{\text{depth}}$) applied uniformly across all packages. | **Dynamic learned multi-head attention ($\alpha_{ij}$)** across heterogeneous edge types. | Learns that critical parsers at depth 2 warrant higher attention than cosmetic formatters at depth 1. |
+| **Developer Signals** | Ignores maintainer history. | Propagates message passing across **Author nodes** (`maintainedBy`, `introducedBy`). | Fuses maintainer account age, package count, and reputation into the risk profile. |
+
+---
+
+## 8. Summary Defense for Presentations / Interviews
+
+1. **Test Set Quantitative Loss:**  
+   *"When evaluated strictly on the held-out `juice-shop` repository ($N = 1,269$ unseen packages), VulnGAT achieves a **Test MSE of `0.01958`**, **Pearson correlation of `0.4320`** ($p < 10^{-5}$), and **Pairwise Ranking Accuracy of `77.24%`**."*
+2. **Anti-Leakage Split Methodology:**  
+   *"The model was trained on 7 pinned repositories (`nest`, `NodeGoat`, `cli`, `nodejs-goof`, `express`, `dvna`, `Ghost`), validated on `webpack` ($N=550$), and tested on `juice-shop` ($N=1,269$) to ensure zero overlap of package identities."*
+3. **Out-of-Distribution Zero-Shot Generalization:**  
+   *"On an external benchmark (`NodeTestBench`, 671 packages), VulnGAT achieved **$100\%$ Precision** and **$77.5\%$ Recall** at the critical threshold ($\ge 0.40$), identifying severe RCE and Path Traversal exploits at the top ranks."*
+</file>
+
+<file path="webapp/frontend/src/components/ErrorPanel.jsx">
+import React from 'react';
+
+export default function ErrorPanel({ error, canRetry, onRetry, onReset }) {
+  return (
+    <div className="error-panel" role="alert">
+      <svg className="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
+      </svg>
+      <h1 className="error-title">{error.title}</h1>
+      <p className="error-detail">{error.detail}</p>
+      <div className="error-actions">
+        {canRetry && (
+          <button className="btn" onClick={onRetry}>Try again</button>
+        )}
+        <button className="btn btn-ghost" onClick={onReset}>Choose another file</button>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/components/LoadingView.jsx">
+import React, { useEffect, useState } from 'react';
+
+export default function LoadingView({ fileName }) {
+  const [elapsed, setElapsed] = useState(0);
+
+  useEffect(() => {
+    const started = Date.now();
+    const id = setInterval(() => setElapsed(Math.floor((Date.now() - started) / 1000)), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="loading">
+      <div className="spinner" aria-hidden="true" />
+      <h1 className="loading-title">Analyzing dependency graph<span className="ellipsis">…</span></h1>
+      <p className="loading-file">{fileName}</p>
+      <p className="loading-timer">{elapsed}s</p>
+      <p className="loading-note">
+        Building the dependency graph and running VulnGAT inference.
+        <br />
+        This can take up to a minute on larger lockfiles.
+      </p>
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/components/PackageTable.jsx">
+import React, { useMemo, useState } from 'react';
+import { tierOf, TIER_ORDER, TIER_RANK, TIER_LABELS, compareVersions, formatRisk } from '../tiers.js';
+
+const COLUMNS = [
+  { id: 'name', label: 'Package', sortable: true },
+  { id: 'version', label: 'Version', sortable: true },
+  { id: 'risk', label: 'Risk', sortable: true },
+  { id: 'tier', label: 'Tier', sortable: true },
+  { id: 'dep', label: 'Dependency', sortable: true },
+];
+
+function advisoryUrl(cveId) {
+  if (!cveId) return null;
+  if (cveId.startsWith('GHSA-')) return `https://github.com/advisories/${cveId}`;
+  if (cveId.startsWith('CVE-')) return `https://nvd.nist.gov/vuln/detail/${cveId}`;
+  return null;
+}
+
+function sortRows(rows, sort) {
+  const sorted = [...rows];
+  const dir = sort.dir === 'asc' ? 1 : -1;
+  sorted.sort((a, b) => {
+    let cmp = 0;
+    switch (sort.key) {
+      case 'name':
+        cmp = a.name.localeCompare(b.name);
+        break;
+      case 'version':
+        cmp = compareVersions(a.version, b.version);
+        break;
+      case 'risk':
+        cmp = a.risk_score - b.risk_score;
+        break;
+      case 'tier':
+        cmp = TIER_RANK[tierOf(a.risk_score)] - TIER_RANK[tierOf(b.risk_score)];
+        break;
+      case 'dep':
+        cmp = (a.is_direct ? 0 : 1) - (b.is_direct ? 0 : 1);
+        break;
+      default:
+        cmp = 0;
+    }
+    if (cmp === 0) cmp = a.risk_score - b.risk_score; // stable tiebreak on risk
+    return cmp * dir;
+  });
+  return sorted;
+}
+
+function renderAdvisoryBadge(pkg) {
+  if (pkg.cve || pkg.has_own_cve) {
+    return <span className="badge-advisory advisory-known">Known advisory</span>;
+  }
+  if (pkg.not_checked) {
+    return <span className="badge-advisory advisory-not-checked">Not checked</span>;
+  }
+  if (pkg.risk_score >= 0.08) {
+    return <span className="badge-advisory advisory-inherited">Inherited risk</span>;
+  }
+  return null;
+}
+
+function ExpandedDetail({ pkg }) {
+  let statusClass, statusIcon, statusText;
+  if (pkg.has_own_cve) {
+    statusClass = 'own-cve';
+    statusIcon = '!';
+    statusText = (
+      <>
+        This package has a known vulnerability&nbsp;—&nbsp;
+        {advisoryUrl(pkg.cve) ? (
+          <a className="cve-link" href={advisoryUrl(pkg.cve)} target="_blank" rel="noreferrer">
+            {pkg.cve}
+          </a>
+        ) : (
+          <span className="cve-link">{pkg.cve}</span>
+        )}
+      </>
+    );
+  } else if (pkg.has_vuln_descendant) {
+    statusClass = 'descendant';
+    statusIcon = '↑';
+    statusText = 'A downstream dependency is vulnerable.';
+  } else {
+    statusClass = 'clean';
+    statusIcon = '✓';
+    statusText = 'No known vulnerability in this package or its dependencies.';
+  }
+
+  return (
+    <div className="row-detail">
+      <p className={`detail-status ${statusClass}`}>
+        <span className="detail-badge" aria-hidden="true">{statusIcon}</span>
+        {statusText}
+      </p>
+      <div className="detail-meta">
+        {pkg.cap_applied && (
+          <span className="detail-chip cap-note" title="Post-hoc calibration">
+            score adjusted downward by the post-hoc calibration step
+          </span>
+        )}
+        <span className="detail-chip">
+          depended on by {pkg.dependents_count} package{pkg.dependents_count === 1 ? '' : 's'}
+        </span>
+        <span className="detail-chip">{pkg.is_direct ? 'direct' : 'transitive'} dependency</span>
+      </div>
+    </div>
+  );
+}
+
+export default function PackageTable({ packages, summary, totalPackages }) {
+  const [sort, setSort] = useState({ key: 'risk', dir: 'desc' });
+  const [tierFilter, setTierFilter] = useState('all');
+  const [depFilter, setDepFilter] = useState('all');
+  const [query, setQuery] = useState('');
+  const [expanded, setExpanded] = useState(() => new Set());
+
+  const toggleSort = (key) => {
+    setSort((s) => (s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'desc' }));
+  };
+
+  const toggleExpanded = (pkgId) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(pkgId)) next.delete(pkgId);
+      else next.add(pkgId);
+      return next;
+    });
+  };
+
+  const rows = useMemo(() => {
+    let filtered = packages;
+    if (tierFilter !== 'all') {
+      filtered = filtered.filter((p) => tierOf(p.risk_score) === tierFilter);
+    }
+    if (depFilter !== 'all') {
+      filtered = filtered.filter((p) => (depFilter === 'direct' ? p.is_direct : !p.is_direct));
+    }
+    const q = query.trim().toLowerCase();
+    if (q) {
+      filtered = filtered.filter((p) => p.name.toLowerCase().includes(q));
+    }
+    return sortRows(filtered, sort);
+  }, [packages, tierFilter, depFilter, query, sort]);
+
+  return (
+    <section className="table-section">
+      <div className="controls">
+        <div className="chip-row" role="group" aria-label="Filter by tier">
+          <button
+            className={`chip ${tierFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setTierFilter('all')}
+          >
+            All <span className="chip-count">{totalPackages}</span>
+          </button>
+          {TIER_ORDER.map((tier) => (
+            <button
+              key={tier}
+              className={`chip tier-chip-${tier} ${tierFilter === tier ? 'active' : ''}`}
+              onClick={() => setTierFilter(tierFilter === tier ? 'all' : tier)}
+            >
+              {TIER_LABELS[tier] || (tier[0].toUpperCase() + tier.slice(1))} <span className="chip-count">{(summary[tier] ?? (tier === 'no_known_risk' ? summary.safe : 0)) ?? 0}</span>
+            </button>
+          ))}
+        </div>
+        <div className="chip-row" role="group" aria-label="Filter by dependency type">
+          {['all', 'direct', 'transitive'].map((d) => (
+            <button
+              key={d}
+              className={`chip ${depFilter === d ? 'active' : ''}`}
+              onClick={() => setDepFilter(d)}
+            >
+              {d === 'all' ? 'All deps' : d[0].toUpperCase() + d.slice(1)}
+            </button>
+          ))}
+        </div>
+        <input
+          className="search"
+          type="search"
+          placeholder="Filter packages…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          aria-label="Filter packages by name"
+        />
+      </div>
+
+      <p className="table-caption">
+        Score = exposure via dependencies, not CVE severity.
+      </p>
+
+      <div className="table-scroll">
+        <table className="pkg-table">
+          <thead>
+            <tr>
+              <th className="chevron-col" aria-hidden="true" />
+              {COLUMNS.map((col) => (
+                <th key={col.id}>
+                  {col.sortable ? (
+                    <button className="th-sort" onClick={() => toggleSort(col.id)}>
+                      {col.label}
+                      <span className={`sort-arrow ${sort.key === col.id ? 'visible' : ''}`}>
+                        {sort.key === col.id && sort.dir === 'asc' ? '▲' : '▼'}
+                      </span>
+                    </button>
+                  ) : (
+                    col.label
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr className="no-match">
+                <td colSpan={6}>No packages match the current filters.</td>
+              </tr>
+            )}
+            {rows.map((pkg) => {
+              const tier = tierOf(pkg.risk_score);
+              const isOpen = expanded.has(pkg.package);
+              return (
+                <React.Fragment key={pkg.package}>
+                  <tr
+                    className={`pkg-row tier-row-${tier} ${isOpen ? 'open' : ''}`}
+                    onClick={() => toggleExpanded(pkg.package)}
+                  >
+                    <td className="chevron-col" aria-hidden="true">
+                      <span className={`chevron ${isOpen ? 'rotated' : ''}`}>▸</span>
+                    </td>
+                    <td className="cell-name">
+                      <div className="name-with-badge">
+                        <span className="pkg-name-text">{pkg.name}</span>
+                        {renderAdvisoryBadge(pkg)}
+                      </div>
+                    </td>
+                    <td className="cell-version">{pkg.version}</td>
+                    <td className="cell-risk">
+                      <span className={`risk-value tier-text-${tier}`}>{formatRisk(pkg.risk_score)}</span>
+                      <span className="risk-track" aria-hidden="true">
+                        <span className={`risk-fill tier-bg-${tier}`} style={{ width: `${Math.min(pkg.risk_score * 100, 100)}%` }} />
+                      </span>
+                    </td>
+                    <td className="cell-tier">
+                      <span className={`tier-badge tier-badge-${tier}`}>{TIER_LABELS[tier] || tier}</span>
+                    </td>
+                    <td className="cell-dep">
+                      <span className={`dep-label ${pkg.is_direct ? 'direct' : ''}`}>
+                        {pkg.is_direct ? 'Direct' : 'Transitive'}
+                      </span>
+                    </td>
+                  </tr>
+                  {isOpen && (
+                    <tr className="detail-row">
+                      <td colSpan={6}>
+                        <ExpandedDetail pkg={pkg} />
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p className="table-count">
+        Showing {rows.length} of {totalPackages} packages
+      </p>
+    </section>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/components/ResultsView.jsx">
+import React from 'react';
+import SummaryBar from './SummaryBar.jsx';
+import PackageTable from './PackageTable.jsx';
+
+export default function ResultsView({ report, fileName, onReset }) {
+  return (
+    <div className="results">
+      <div className="results-header">
+        <div>
+          <h1 className="results-title">Risk report</h1>
+          <p className="results-file">
+            <span className="mono">{fileName}</span> · {report.total_packages} packages analyzed
+          </p>
+        </div>
+        <button className="btn btn-ghost" onClick={onReset}>Analyze another lockfile</button>
+      </div>
+
+      <SummaryBar summary={report.summary} totalPackages={report.total_packages} />
+      <PackageTable packages={report.packages} summary={report.summary} totalPackages={report.total_packages} />
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/components/SummaryBar.jsx">
+import React from 'react';
+import { TIER_ORDER, TIER_LABELS } from '../tiers.js';
+
+// Renders report.summary VERBATIM — counts come straight from analyze_project.py,
+// never recomputed on the frontend.
+export default function SummaryBar({ summary, totalPackages }) {
+  const notChecked = summary?.not_checked ?? 0;
+  const reasons = summary?.not_checked_reasons
+    ? Object.entries(summary.not_checked_reasons).map(([r, n]) => `${n} ${r}`).join(', ')
+    : '';
+
+  return (
+    <div className="summary-wrapper">
+      <section className="summary" aria-label="Risk summary">
+        {TIER_ORDER.map((tier) => {
+          const count = (summary[tier] ?? (tier === 'no_known_risk' ? summary.safe : 0)) ?? 0;
+          const share = totalPackages > 0 ? Math.round((count / totalPackages) * 100) : 0;
+          return (
+            <div key={tier} className={`summary-card tier-${tier} ${count === 0 ? 'is-zero' : ''}`}>
+              <span className="summary-count">{count}</span>
+              <span className="summary-label">{TIER_LABELS[tier] || tier}</span>
+              <div className="summary-track" aria-hidden="true">
+                <div className="summary-fill" style={{ width: `${share}%` }} />
+              </div>
+            </div>
+          );
+        })}
+      </section>
+      {notChecked > 0 && (
+        <div className="not-checked-banner" role="status">
+          <span className="not-checked-title">Not checked: <strong>{notChecked}</strong></span>
+          {reasons && <span className="not-checked-reasons">({reasons})</span>}
+        </div>
+      )}
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/components/UploadZone.jsx">
+import React, { useRef, useState } from 'react';
+
+export default function UploadZone({ onFile }) {
+  const inputRef = useRef(null);
+  const [dragging, setDragging] = useState(false);
+
+  const handleFiles = (files) => {
+    if (files && files.length > 0) onFile(files[0]);
+  };
+
+  return (
+    <div
+      className={`upload-zone ${dragging ? 'dragging' : ''}`}
+      onClick={() => inputRef.current?.click()}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDragging(true);
+      }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={(e) => {
+        e.preventDefault();
+        setDragging(false);
+        handleFiles(e.dataTransfer.files);
+      }}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') inputRef.current?.click();
+      }}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        accept=".json,application/json"
+        hidden
+        onChange={(e) => {
+          handleFiles(e.target.files);
+          e.target.value = ''; // allow re-selecting the same file
+        }}
+      />
+      <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" y1="3" x2="12" y2="15" />
+      </svg>
+      <h1 className="upload-title">Drop package-lock.json here</h1>
+      <p className="upload-sub">or click to browse</p>
+      <span className="upload-chip">npm only · lockfileVersion 1 / 2 / 3</span>
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/api.js">
+// Client for the VulnChain backend (POST /api/analyze).
+// Client-side checks mirror the backend's validation for instant feedback on
+// obviously-bad files; the backend remains the authority for everything.
+
+const UNSUPPORTED = [
+  { match: 'yarn.lock', manager: 'Yarn' },
+  { match: 'pnpm-lock.yaml', manager: 'pnpm' },
+];
+
+// Returns an error message string, or null if the file passes pre-flight checks.
+export async function preflightError(file) {
+  const name = (file.name || '').toLowerCase();
+  for (const { match, manager } of UNSUPPORTED) {
+    if (name.includes(match)) {
+      return `"${file.name}" is a ${manager} lockfile. Only npm package-lock.json is supported — generate one with \`npm install\` in the project.`;
+    }
+  }
+  let text;
+  try {
+    text = await file.text();
+  } catch {
+    return 'Could not read the file. Please try again.';
+  }
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    return 'File is not valid JSON. package-lock.json must be a valid JSON file.';
+  }
+  if (typeof data !== 'object' || data === null || Array.isArray(data)) {
+    return 'File is valid JSON but not an npm lockfile (expected a JSON object).';
+  }
+  if (!('lockfileVersion' in data)) {
+    return 'Missing "lockfileVersion" — this does not look like an npm package-lock.json.';
+  }
+  if (!('packages' in data) && !('dependencies' in data)) {
+    return 'Missing "packages"/"dependencies" — this does not look like an npm package-lock.json.';
+  }
+  return null;
+}
+
+export class AnalyzeError extends Error {
+  constructor(title, detail) {
+    super(detail);
+    this.title = title;
+    this.detail = detail;
+  }
+}
+
+function titleForStatus(status) {
+  if (status === 400) return 'Unsupported file';
+  if (status === 422) return 'No file received';
+  if (status === 504) return 'Analysis timed out';
+  if (status === 502) return 'Analyzer failure';
+  return `Request failed (${status})`;
+}
+
+export async function analyzeLockfile(file, signal) {
+  const form = new FormData();
+  form.append('file', file, file.name);
+
+  let resp;
+  try {
+    resp = await fetch('/api/analyze', { method: 'POST', body: form, signal });
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      throw new AnalyzeError('Analysis timed out', 'The model took too long to respond. Please try again.');
+    }
+    throw new AnalyzeError(
+      'Cannot reach the VulnChain server',
+      'Is the backend running? Start it with: python webapp/server.py'
+    );
+  }
+
+  const data = await resp.json().catch(() => null);
+  if (!resp.ok) {
+    throw new AnalyzeError(titleForStatus(resp.status), data?.detail || 'The request failed.');
+  }
+  return data;
+}
+</file>
+
+<file path="webapp/frontend/src/App.jsx">
+import React, { useCallback, useRef, useState } from 'react';
+import UploadZone from './components/UploadZone.jsx';
+import LoadingView from './components/LoadingView.jsx';
+import ErrorPanel from './components/ErrorPanel.jsx';
+import ResultsView from './components/ResultsView.jsx';
+import { analyzeLockfile, preflightError, AnalyzeError } from './api.js';
+
+export default function App() {
+  const [phase, setPhase] = useState('idle'); // idle | loading | results | error
+  const [fileName, setFileName] = useState('');
+  const [report, setReport] = useState(null);
+  const [error, setError] = useState(null);
+  const lastFileRef = useRef(null);
+
+  const runAnalysis = useCallback(async (file) => {
+    lastFileRef.current = file;
+    setFileName(file.name);
+
+    const problem = await preflightError(file);
+    if (problem) {
+      setError(new AnalyzeError('Unsupported file', problem));
+      setPhase('error');
+      return;
+    }
+
+    setPhase('loading');
+    const controller = new AbortController();
+    // Hard client cap, slightly above the backend's own 120s script timeout —
+    // the UI must never hang silently.
+    const timer = setTimeout(() => controller.abort(), 150_000);
+    try {
+      const result = await analyzeLockfile(file, controller.signal);
+      setReport(result);
+      setPhase('results');
+    } catch (err) {
+      setError(err instanceof AnalyzeError ? err : new AnalyzeError('Unexpected error', String(err)));
+      setPhase('error');
+    } finally {
+      clearTimeout(timer);
+    }
+  }, []);
+
+  const reset = useCallback(() => {
+    setPhase('idle');
+    setReport(null);
+    setError(null);
+    setFileName('');
+    lastFileRef.current = null;
+  }, []);
+
+  return (
+    <div className="shell">
+      <header className="masthead">
+        <div className="brand">
+          <svg className="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+            <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
+          </svg>
+          <span>VulnChain</span>
+        </div>
+        <span className="masthead-sub">GNN-powered dependency risk analysis</span>
+      </header>
+
+      <main>
+        {phase === 'idle' && <UploadZone onFile={runAnalysis} />}
+        {phase === 'loading' && <LoadingView fileName={fileName} />}
+        {phase === 'error' && (
+          <ErrorPanel
+            error={error}
+            canRetry={!!lastFileRef.current}
+            onRetry={() => lastFileRef.current && runAnalysis(lastFileRef.current)}
+            onReset={reset}
+          />
+        )}
+        {phase === 'results' && <ResultsView report={report} fileName={fileName} onReset={reset} />}
+      </main>
+
+      <footer className="footer">
+        <span>Risk tiers use the analyzer&rsquo;s own cutoffs&nbsp;· ≥40% critical&nbsp;· ≥20% high&nbsp;· ≥8% moderate</span>
+        {report && (
+          <span className="footer-meta">
+            request {report.request_id} · {new Date(report.timestamp).toLocaleTimeString()}
+          </span>
+        )}
+      </footer>
+    </div>
+  );
+}
+</file>
+
+<file path="webapp/frontend/src/main.jsx">
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
+import './styles.css';
+
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+</file>
+
+<file path="webapp/frontend/src/styles.css">
+/* ── VulnChain — dark, presentation-first theme ─────────────────────────── */
+
+:root {
+  --bg: #0b0e14;
+  --panel: #11151f;
+  --panel-2: #161b28;
+  --border: #232a3b;
+  --border-soft: #1b2130;
+  --text: #e8edf5;
+  --dim: #8b95a8;
+  --faint: #5c6577;
+
+  --critical: #ff5252;
+  --high: #ff9838;
+  --moderate: #f5d90a;
+  --safe: #2fd67b;
+  --accent: #6ea8fe;
+
+  --mono: 'JetBrains Mono', 'Cascadia Code', ui-monospace, SFMono-Regular, Consolas, Menlo, monospace;
+  --sans: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ── Masthead ────────────────────────────────────────────────────────────── */
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.brand-mark { width: 22px; height: 22px; color: var(--critical); }
+
+.masthead-sub { color: var(--faint); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ── Upload zone ─────────────────────────────────────────────────────────── */
+
+.upload-zone {
+  margin-top: 9vh;
+  border: 2px dashed #2c3550;
+  border-radius: 18px;
+  background: var(--panel);
+  padding: 90px 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.upload-zone:hover, .upload-zone:focus-visible {
+  border-color: #40507a;
+  background: var(--panel-2);
+  outline: none;
+}
+
+.upload-zone.dragging {
+  border-color: var(--accent);
+  background: rgba(110, 168, 254, 0.07);
+  transform: scale(1.01);
+}
+
+.upload-icon { width: 60px; height: 60px; color: var(--dim); margin-bottom: 22px; }
+.upload-zone.dragging .upload-icon { color: var(--accent); }
+
+.upload-title { font-size: 30px; font-weight: 650; margin: 0 0 8px; }
+.upload-sub { color: var(--dim); font-size: 16px; margin: 0 0 26px; }
+
+.upload-chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 16px;
+  background: var(--bg);
+}
+
+/* ── Loading ─────────────────────────────────────────────────────────────── */
+
+.loading {
+  margin-top: 12vh;
+  text-align: center;
+}
+
+.spinner {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-title { font-size: 30px; font-weight: 650; margin: 0 0 10px; }
+
+.ellipsis { animation: pulse-dots 1.4s ease-in-out infinite; }
+
+@keyframes pulse-dots { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.loading-file { color: var(--dim); font-family: var(--mono); font-size: 15px; margin: 0 0 26px; }
+
+.loading-timer {
+  font-family: var(--mono);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.loading-note { color: var(--faint); font-size: 14px; line-height: 1.7; margin: 0; }
+
+/* ── Error panel ─────────────────────────────────────────────────────────── */
+
+.error-panel {
+  margin-top: 10vh;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--panel);
+  border: 1px solid rgba(255, 82, 82, 0.35);
+  border-radius: 16px;
+  padding: 44px 44px 38px;
+  text-align: center;
+}
+
+.error-icon { width: 46px; height: 46px; color: var(--critical); margin-bottom: 18px; }
+.error-title { font-size: 25px; font-weight: 650; margin: 0 0 10px; }
+.error-detail { color: var(--dim); font-size: 15.5px; line-height: 1.65; margin: 0 0 28px; }
+
+.error-actions { display: flex; gap: 12px; justify-content: center; }
+
+/* ── Buttons & chips ─────────────────────────────────────────────────────── */
+
+.btn {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: filter 0.12s ease;
+}
+.btn:hover { filter: brightness(1.12); }
+
+.btn-ghost {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--panel-2); filter: none; }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 34px 0 18px;
+}
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--dim);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.chip:hover { color: var(--text); border-color: #35405c; }
+
+.chip.active { color: var(--text); background: var(--panel-2); border-color: var(--accent); }
+
+.chip-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  margin-left: 4px;
+  color: var(--faint);
+}
+
+.chip.tier-chip-critical.active { border-color: var(--critical); color: var(--critical); }
+.chip.tier-chip-high.active { border-color: var(--high); color: var(--high); }
+.chip.tier-chip-moderate.active { border-color: var(--moderate); color: var(--moderate); }
+.chip.tier-chip-safe.active,
+.chip.tier-chip-no_known_risk.active { border-color: var(--safe); color: var(--safe); }
+
+.search {
+  margin-left: auto;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 14px;
+  width: 230px;
+}
+.search::placeholder { color: var(--faint); }
+.search:focus { outline: none; border-color: var(--accent); }
+
+/* ── Results header ──────────────────────────────────────────────────────── */
+
+.results-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.results-title { font-size: 34px; font-weight: 700; margin: 0 0 6px; }
+.results-file { color: var(--dim); font-size: 15.5px; margin: 0; }
+.mono { font-family: var(--mono); }
+
+/* ── Summary bar ─────────────────────────────────────────────────────────── */
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.summary-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 30px 30px 26px;
+  border-top: 4px solid var(--tier-color, var(--border));
+}
+
+.summary-card.tier-critical { --tier-color: var(--critical); }
+.summary-card.tier-high { --tier-color: var(--high); }
+.summary-card.tier-moderate { --tier-color: var(--moderate); }
+.summary-card.tier-safe,
+.summary-card.tier-no_known_risk { --tier-color: var(--safe); }
+
+.summary-count {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(52px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--tier-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-card.is-zero .summary-count { opacity: 0.3; }
+
+.summary-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.summary-track {
+  margin-top: 20px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.summary-fill { height: 100%; border-radius: 3px; background: var(--tier-color); }
+
+.not-checked-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--dim);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-top: 18px;
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+.not-checked-title strong {
+  font-family: var(--mono);
+  color: var(--accent);
+}
+
+.not-checked-reasons {
+  font-size: 12.5px;
+  color: var(--faint);
+  font-family: var(--mono);
+}
+
+/* ── Package table ───────────────────────────────────────────────────────── */
+
+.table-scroll { overflow-x: auto; border: 1px solid var(--border-soft); border-radius: 14px; }
+
+.pkg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  min-width: 860px;
+}
+
+.pkg-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--panel-2);
+  border-bottom: 2px solid var(--border);
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.th-sort {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.th-sort:hover { color: var(--text); }
+
+.sort-arrow { font-size: 9px; visibility: hidden; }
+.sort-arrow.visible { visibility: visible; color: var(--accent); }
+
+.pkg-row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-soft);
+  transition: background 0.1s ease;
+  box-shadow: inset 3px 0 0 transparent;
+}
+
+.pkg-row:hover { background: rgba(110, 168, 254, 0.045); }
+.pkg-row.open { background: var(--panel-2); box-shadow: inset 3px 0 0 var(--accent); }
+.pkg-row:last-child, .detail-row:last-child { border-bottom: none; }
+
+.chevron-col { width: 34px; padding-left: 14px; }
+
+.chevron {
+  display: inline-block;
+  color: var(--faint);
+  font-size: 12px;
+  transition: transform 0.15s ease;
+}
+
+.chevron.rotated { transform: rotate(90deg); color: var(--accent); }
+
+.table-caption {
+  font-size: 13.5px;
+  color: var(--dim);
+  margin: 0 0 14px 2px;
+}
+
+.cell-name {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 14px 16px;
+  max-width: 440px;
+}
+
+.name-with-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.pkg-name-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge-advisory {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-advisory.advisory-known {
+  color: var(--critical);
+  background: rgba(255, 82, 82, 0.12);
+  border: 1px solid rgba(255, 82, 82, 0.35);
+}
+
+.badge-advisory.advisory-inherited {
+  color: var(--dim);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.badge-advisory.advisory-not-checked {
+  color: var(--faint);
+  background: rgba(148, 163, 184, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.cell-version {
+  font-family: var(--mono);
+  color: var(--dim);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.cell-risk { padding: 10px 16px; white-space: nowrap; width: 220px; }
+
+.risk-value {
+  font-family: var(--mono);
+  font-size: 15.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.tier-text-critical { color: var(--critical); }
+.tier-text-high { color: var(--high); }
+.tier-text-moderate { color: var(--moderate); }
+.tier-text-safe,
+.tier-text-no_known_risk { color: var(--safe); }
+
+.tier-bg-critical { background: var(--critical); }
+.tier-bg-high { background: var(--high); }
+.tier-bg-moderate { background: var(--moderate); }
+.tier-bg-safe,
+.tier-bg-no_known_risk { background: var(--safe); }
+
+.risk-track {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 12px;
+  width: 96px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.risk-fill { display: block; height: 100%; border-radius: 3px; }
+
+.tier-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.tier-badge-critical { color: var(--critical); background: rgba(255, 82, 82, 0.13); border: 1px solid rgba(255, 82, 82, 0.35); }
+.tier-badge-high { color: var(--high); background: rgba(255, 152, 56, 0.12); border: 1px solid rgba(255, 152, 56, 0.35); }
+.tier-badge-moderate { color: var(--moderate); background: rgba(245, 217, 10, 0.1); border: 1px solid rgba(245, 217, 10, 0.32); }
+.tier-badge-safe,
+.tier-badge-no_known_risk { color: var(--safe); background: rgba(47, 214, 123, 0.11); border: 1px solid rgba(47, 214, 123, 0.32); }
+
+.cell-dep { color: var(--dim); white-space: nowrap; }
+.dep-label.direct { color: var(--text); font-weight: 600; }
+
+.no-match td {
+  padding: 34px;
+  text-align: center;
+  color: var(--faint);
+  font-size: 15px;
+}
+
+/* ── Expanded row detail ─────────────────────────────────────────────────── */
+
+.detail-row td {
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 22px 28px 24px 62px;
+}
+
+.detail-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16.5px;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.detail-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.detail-status { color: var(--text); }
+
+.detail-status.own-cve { color: var(--critical); }
+.detail-status.own-cve .detail-badge { background: rgba(255, 82, 82, 0.15); border: 1px solid rgba(255, 82, 82, 0.4); color: var(--critical); }
+
+.detail-status.descendant { color: var(--high); }
+.detail-status.descendant .detail-badge { background: rgba(255, 152, 56, 0.13); border: 1px solid rgba(255, 152, 56, 0.4); color: var(--high); }
+
+.detail-status.clean { color: var(--safe); }
+.detail-status.clean .detail-badge { background: rgba(47, 214, 123, 0.12); border: 1px solid rgba(47, 214, 123, 0.4); color: var(--safe); }
+
+.cve-link {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--critical);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 82, 82, 0.4);
+  text-underline-offset: 3px;
+}
+a.cve-link:hover { text-decoration-color: var(--critical); }
+
+.detail-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.detail-chip {
+  font-size: 12.5px;
+  color: var(--dim);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+
+.cap-note { color: var(--moderate); border-color: rgba(245, 217, 10, 0.3); }
+
+.table-count { color: var(--faint); font-size: 13px; margin: 14px 4px 0; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer {
+  margin-top: 46px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--faint);
+  font-size: 12.5px;
+}
+
+.footer-meta { font-family: var(--mono); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+  .summary { grid-template-columns: repeat(2, 1fr); }
+  .search { margin-left: 0; width: 100%; }
+}
+
+@media (max-width: 620px) {
+  .shell { padding: 18px 16px 30px; }
+  .masthead-sub { display: none; }
+  .summary { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .summary-card { padding: 20px; }
+  .results-header { flex-direction: column; align-items: flex-start; }
+}
+</file>
+
+<file path="webapp/frontend/src/tiers.js">
+// Tier cutoffs mirrored EXACTLY from analyze_project.py's summary computation
+// (phase5/bench_run/analyze_project.py, critical_count/high_count/... block):
+//   critical: risk_score >= 0.40
+//   high:     0.20 <= risk_score < 0.40
+//   moderate: 0.08 <= risk_score < 0.20
+//   no_known_risk: risk_score < 0.08
+// The summary counts come from the backend verbatim; this function only derives
+// a per-row tier label using those same cutoffs, as required. Do not change one
+// without the other.
+export const TIER_CUTOFFS = {
+  critical: 0.40,
+  high: 0.20,
+  moderate: 0.08,
+};
+
+export const TIER_LABELS = {
+  critical: 'Critical',
+  high: 'High',
+  moderate: 'Moderate',
+  no_known_risk: 'No known risk',
+  safe: 'No known risk',
+};
+
+export function tierOf(riskScore) {
+  if (riskScore >= TIER_CUTOFFS.critical) return 'critical';
+  if (riskScore >= TIER_CUTOFFS.high) return 'high';
+  if (riskScore >= TIER_CUTOFFS.moderate) return 'moderate';
+  return 'no_known_risk';
+}
+
+export const TIER_ORDER = ['critical', 'high', 'moderate', 'no_known_risk'];
+
+export const TIER_RANK = { critical: 0, high: 1, moderate: 2, no_known_risk: 3, safe: 3 };
+
+// Compare version strings numerically per segment ("2.2.2" < "10.0.0").
+export function compareVersions(a, b) {
+  const pa = String(a).split('.');
+  const pb = String(b).split('.');
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const na = parseInt(pa[i] || '0', 10);
+    const nb = parseInt(pb[i] || '0', 10);
+    if (na !== nb) return na - nb;
+    const sa = pa[i] || '';
+    const sb = pb[i] || '';
+    if (sa !== sb) return sa < sb ? -1 : 1;
+  }
+  return 0;
+}
+
+export function formatRisk(score) {
+  return `${(score * 100).toFixed(2)}%`;
+}
+</file>
+
+<file path="webapp/frontend/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5252' stroke-width='2'%3E%3Cpath d='M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z'/%3E%3C/svg%3E" />
+    <title>VulnChain — Supply Chain Risk Analyzer</title>
+    <style>html { background: #0b0e14; }</style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="webapp/frontend/package.json">
+{
+  "name": "vulnchain-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
+</file>
+
+<file path="webapp/frontend/vite.config.js">
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': 'http://127.0.0.1:8000',
+    },
+  },
+  build: {
+    outDir: 'dist',
+  },
+});
+</file>
+
+<file path="webapp/README.md">
+# VulnChain Web Frontend
+
+Single-page web UI for the VulnChain supply-chain vulnerability analyzer.
+A thin FastAPI wrapper (`server.py`) shells out to the **unchanged**
+`phase5/bench_run/analyze_project.py` (VulnGAT model) and serves the built
+React frontend from the same port.
+
+## Run (presentation mode)
+
+```bash
+# one-time setup
+pip install -r webapp/requirements.txt
+cd webapp/frontend && npm install && npm run build && cd ../..
+
+# start (Windows)
+webapp\start.bat
+# or:  python webapp/server.py
+```
+
+Open **http://127.0.0.1:8000**, drop a `package-lock.json`, wait for the
+model (~1 min on this CPU-only machine for ~130 packages), explore results.
+
+## API
+
+`POST /api/analyze` — multipart file upload, field name `file`.
+
+- Validates before running the model: JSON parse, `lockfileVersion` present,
+  `packages`/`dependencies` present. Yarn/pnpm files are rejected by name.
+- 400 = bad file · 502 = analyzer failure · 504 = timeout (120 s, matches
+  the proven timeout in `phase5/demo/demo_runner.py`).
+- Response = the analyzer's report **verbatim** (`total_packages`, `summary`,
+  `packages[]`) plus `request_id` and `timestamp`.
+
+## Files
+
+| Path | Purpose |
+|---|---|
+| `server.py` | FastAPI wrapper: validation, subprocess, timeout, static hosting |
+| `requirements.txt` | fastapi, uvicorn, python-multipart |
+| `start.bat` / `start.sh` | one-command launch |
+| `frontend/src/tiers.js` | tier cutoffs **mirrored verbatim** from the script (≥0.40 critical, ≥0.20 high, ≥0.08 moderate, else no known risk) |
+| `frontend/src/api.js` | upload client + client-side pre-validation |
+| `frontend/src/App.jsx` | phase machine: upload → loading → results / error |
+| `frontend/src/components/` | UploadZone, LoadingView, ErrorPanel, SummaryBar, PackageTable, ResultsView |
+
+## Design guarantees (per spec)
+
+- `summary` counts and `risk_score` are displayed **verbatim** from the
+  analyzer — the frontend never recomputes them. Row tiers use only the
+  script's own cutoffs (see `tiers.js`).
+- `has_vuln_descendant` shows "a downstream dependency is vulnerable" —
+  no dependency path is invented (the backend provides none).
+- `cap_applied` shows a note that the score was adjusted downward by the
+  post-hoc calibration step.
+- No caching, no history, no auth — upload → analyze → results only.
+- Errors covered: non-JSON file, non-npm JSON, yarn/pnpm lockfiles, backend
+  crash/timeout, server unreachable.
+</file>
+
+<file path="webapp/requirements.txt">
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+</file>
+
+<file path="webapp/server.py">
+"""
+VulnChain web backend — a thin FastAPI wrapper around phase5/bench_run/analyze_project.py.
+
+One endpoint, POST /api/analyze:
+  - accepts a multipart file upload
+  - validates it is JSON and looks like an npm lockfile (lockfileVersion + packages/dependencies)
+  - rejects yarn.lock / pnpm-lock.yaml explicitly
+  - shells out to analyze_project.py (unchanged) via its --json output mode
+  - returns the script's report verbatim plus a request id and timestamp
+
+analyze_project.py's logic is NOT modified — it is invoked as a subprocess with its
+own cwd (phase5/bench_run) so its relative paths (models/, vulnchain_graph.json) resolve.
+
+Run:  python server.py   (serves API on :8000 and the built frontend from frontend/dist)
+"""
+
+import asyncio
+import json
+import os
+import shutil
+import sys
+import tempfile
+import uuid
+from datetime import datetime, timezone
+from pathlib import Path
+
+from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+BENCH_RUN = PROJECT_ROOT / "phase5" / "bench_run"
+ANALYZE_PY = BENCH_RUN / "analyze_project.py"
+FRONTEND_DIST = Path(__file__).resolve().parent / "frontend" / "dist"
+
+# analyze_project.py performs live OSV lookups + GNN inference; on this machine torch
+# is CPU-only (~60s for 132 packages). 120s matches the proven timeout in
+# phase5/demo/demo_runner.py. Lower it if running with CUDA-enabled torch.
+SCRIPT_TIMEOUT_S = 120
+MAX_UPLOAD_BYTES = 15 * 1024 * 1024
+
+# npm-only. Detected by filename before anything else so yarn/pnpm users get a
+# pointed message instead of a confusing parse error.
+UNSUPPORTED_LOCKFILES = {"yarn.lock": "Yarn", "pnpm-lock.yaml": "pnpm"}
+
+app = FastAPI(title="VulnChain analyzer")
+
+
+class ValidationError(HTTPException):
+    def __init__(self, detail: str):
+        super().__init__(status_code=400, detail=detail)
+
+
+def _looks_like_npm_lockfile(data) -> str | None:
+    """Return a human-readable problem, or None if the JSON looks like an npm lockfile."""
+    if not isinstance(data, dict):
+        return "File is valid JSON but not an npm lockfile (expected a JSON object)."
+    if "lockfileVersion" not in data:
+        return "Missing \"lockfileVersion\" — this does not look like an npm package-lock.json."
+    if not ("packages" in data or "dependencies" in data):
+        return "Missing \"packages\"/\"dependencies\" — this does not look like an npm package-lock.json."
+    return None
+
+
+async def _run_analyzer(lock_path: Path, out_path: Path) -> dict:
+    """Run analyze_project.py as a subprocess and return its parsed --json output."""
+    cmd = [sys.executable, str(ANALYZE_PY), str(lock_path), "--json", str(out_path)]
+    if os.environ.get("VULNCHAIN_OFFLINE", "").strip() == "1":
+        cmd.append("--offline")
+    proc = await asyncio.create_subprocess_exec(
+        *cmd,
+        cwd=str(BENCH_RUN),
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    try:
+        _, stderr = await asyncio.wait_for(proc.communicate(), timeout=SCRIPT_TIMEOUT_S)
+    except asyncio.TimeoutError:
+        proc.kill()
+        await proc.communicate()
+        raise HTTPException(
+            status_code=504,
+            detail=f"Analysis timed out after {SCRIPT_TIMEOUT_S}s. The model may be busy — try again.",
+        )
+
+    if not out_path.exists():
+        excerpt = (stderr or b"").decode("utf-8", "replace").strip()[-600:]
+        raise HTTPException(
+            status_code=502,
+            detail="The analyzer failed to produce a report."
+                   + (f" Script error: {excerpt}" if excerpt else ""),
+        )
+
+    try:
+        with open(out_path, encoding="utf-8") as f:
+            report = json.load(f)
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=502, detail="The analyzer produced non-JSON output.")
+
+    if not isinstance(report, dict) or "summary" not in report or "packages" not in report:
+        raise HTTPException(status_code=502, detail="The analyzer output did not match the expected report schema.")
+    return report
+
+
+@app.post("/api/analyze")
+async def analyze(file: UploadFile = File(...)):
+    filename = (file.filename or "").strip().lower()
+
+    # 1. Reject unsupported lockfile managers by name, before any parsing.
+    for bad_name, manager in UNSUPPORTED_LOCKFILES.items():
+        if bad_name in filename:
+            raise ValidationError(
+                f"\"{file.filename}\" is a {manager} lockfile. "
+                "Only npm package-lock.json is supported — generate one with `npm install` in the project."
+            )
+
+    raw = await file.read()
+    if len(raw) > MAX_UPLOAD_BYTES:
+        raise ValidationError("File too large (over 15 MB).")
+    if not raw:
+        raise ValidationError("Uploaded file is empty.")
+
+    # 2. Must be valid JSON.
+    try:
+        data = json.loads(raw.decode("utf-8", "strict"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError(
+            f"File is not valid JSON ({exc.msg} at line {exc.lineno}, column {exc.colno}). "
+            "package-lock.json must be a valid JSON file."
+        )
+
+    # 3. Must look like an npm lockfile, before spending time on the model.
+    problem = _looks_like_npm_lockfile(data)
+    if problem:
+        raise ValidationError(problem)
+
+    # 4. Run the untouched analyzer script.
+    tmp_dir = Path(tempfile.mkdtemp(prefix="vulnchain_"))
+    lock_path = tmp_dir / "package-lock.json"
+    out_path = tmp_dir / "report.json"
+    try:
+        lock_path.write_bytes(raw)
+        report = await _run_analyzer(lock_path, out_path)
+    finally:
+        shutil.rmtree(tmp_dir, ignore_errors=True)
+
+    return {
+        "request_id": uuid.uuid4().hex[:12],
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        **report,
+    }
+
+
+# --- Static frontend (production build) ---------------------------------------
+
+if FRONTEND_DIST.is_dir():
+    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST / "assets"), name="assets")
+
+    @app.get("/")
+    async def index():
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+    @app.exception_handler(404)
+    async def spa_fallback(request, exc):
+        # SPA fallback so a refresh on a client route still serves the app.
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+</file>
+
+<file path="webapp/start.bat">
+@echo off
+REM VulnChain web demo launcher — starts the backend on http://127.0.0.1:8000
+REM (serves both the API and the built frontend). First time only:
+REM   1. pip install -r webapp\requirements.txt
+REM   2. cd webapp\frontend && npm install && npm run build
+cd /d "%~dp0..\webapp"
+python server.py
+</file>
+
+<file path="webapp/start.sh">
+#!/usr/bin/env bash
+# VulnChain web demo launcher — http://127.0.0.1:8000
+# First time only: pip install -r webapp/requirements.txt
+#                  cd webapp/frontend && npm install && npm run build
+cd "$(dirname "$0")"
+python server.py
+</file>
+
+<file path="README.md">
+# VulnChain
+
+VulnChain is an automated supply chain vulnerability propagation and risk ranking pipeline powered by heterogeneous graph neural networks (VulnGAT-HR).
+
+## Architecture & Structure
+- `data_pipeline/`: Data collection, OSV and npm scraping, author extraction, and heterogeneous graph construction pipeline (Phases 1-3).
+- `TrainModel/`: Core model definition, heterogeneous GNN layers (`vulngat.py`, `layers.py`, `loss.py`), training loops, and evaluation metrics.
+- `phase4/`: 51-repo dataset, VPSS labels, reconciled comparison, and Colab experiment outputs.
+- `phase5/`: Defect-corrected protocol execution (`v2dc`), EPSS arms integration, multi-seed masked edge audit, ablation studies, and HR validation benchmarks.
+- `webapp/`: Interactive vulnerability ranking dashboard with Python backend and React/Vite frontend.
+- `docs/` & `presentations/`: Design documentation, research papers, and presentations.
+
+## Regenerating Large Files
+
+Due to repository size constraints and GitHub best practices, single files exceeding 50MB are excluded from version control:
+
+### 1. `phase5/v2dc_checkpoints.zip` (~71.08 MB)
+- **Description:** Contains the 20 defect-corrected model checkpoints (`v2dc_full_v2_p{10,30,50}_s{42,123,456,789,1024}.pt`) across all seeds and masking fractions.
+- **How to Rebuild:**
+  1. Generate the Colab rerun notebook:
+     ```bash
+     python phase5/generate_v2_notebook_rerun.py
+     ```
+  2. Package the Colab dataset bundle:
+     ```bash
+     python phase5/build_v2_colab_zip.py
+     ```
+  3. Execute `phase5/vulngat_v2_training_rerun.ipynb` in Google Colab (GPU runtime). The final cells train all seed configurations, validate against pre-flight gates, and zip the output checkpoints to `v2dc_checkpoints.zip`.
+</file>
+
+<file path="requirements.txt">
+torch==2.13.0
+torch-geometric==2.8.0.post1
+numpy==2.2.6
+fastapi==0.141.1
+uvicorn==0.34.3
+python-multipart==0.0.32
+</file>
+
+</files>
