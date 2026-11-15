@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vulnchain-proof"
+version = "0.0.0"
+description = "STEP 4 proof module: verifiable dependency paths for flagged npm packages"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.setuptools]
+packages = ["vulnchain", "vulnchain.proof"]
