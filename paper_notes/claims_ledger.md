@@ -34,7 +34,7 @@ verdict; `INVALID` = withdrawn / superseded / not citable as a result.
 | Proof module criterion (b): UNEXPLAINED comparison items | `1` | `proof/out/npm_audit_comparison.json` | `80a819a` | PRE-REGISTERED |
 | Offline vs online agreement rate `A = agree_count / size(D)` | `156/168 = 0.9285714285714286`; `disagree_count 12`; `no_online_result_count 0` | `proof/out/offline_online.json` | `80a819a` | PRE-REGISTERED |
 | VC_FLAGGED vs NPM_ITEMS, alternative unit (post-hoc, NOT the pre-registered comparison) | `both 28`; `VC-flagged-only 5`; `npm-only 2` (33 distinct VC_FLAGGED pids vs 30 NPM_ITEMS) | `PROOF_POSTHOC2.md` | `7a4a28d` | POST-HOC |
-| Model score coverage: frozen score for UNRESOLVED packages | `0 of 24` distinct ids; `25` UNRESOLVED records / `34` flagged | `PROOF_POSTHOC.md` | `1ce4487` | POST-HOC |
+| Model score coverage | 25 UNRESOLVED records, 24 distinct packages, 0 with a frozen score anywhere in the repo | `PROOF_POSTHOC.md` | `1ce4487` | POST-HOC |
 | CLI flagged-set completeness (post-hoc recomputation, CLI unchanged) | `0` omitted; `0` extra; `34` expected node keys / `33` distinct pids | `PROOF_POSTHOC2.md` | `7a4a28d` | POST-HOC |
 | Stage 4 popularity-matched gate (a) PASS: `Ridge_raw - random` PR-AUC | `Ridge_raw 0.208244`; `+0.151926` 95% CI `[+0.089961, +0.214983]` | `../vulnchain-rebuild-gate/STAGE4_RESULT.md` | `9e2883c` | PRE-REGISTERED |
 | Stage 4 popularity-matched gate (b) PASS: `Ridge_raw - POPULARITY_ONLY` PR-AUC | `+0.114275` 95% CI `[+0.063540, +0.161861]`; baselines `random 0.056318`, `POPULARITY_ONLY 0.093969` | `../vulnchain-rebuild-gate/STAGE4_RESULT.md` | `9e2883c` | PRE-REGISTERED |
