@@ -1,0 +1,91 @@
+{
+  "schema": "vulnchain-proof/independence_audit/1",
+  "audited_file": "proof\\verify_paths.py",
+  "allowed_stdlib": [
+    "argparse",
+    "collections",
+    "hashlib",
+    "json",
+    "os",
+    "pathlib",
+    "re",
+    "sys",
+    "typing"
+  ],
+  "project_prefixes": [
+    "vulnchain",
+    "phase5",
+    "data_pipeline",
+    "webapp",
+    "TrainModel",
+    "core",
+    "model",
+    "models",
+    "graph",
+    "features",
+    "verify_paths",
+    "compare_npm_audit",
+    "offline_online",
+    "case_studies",
+    "make_exports"
+  ],
+  "import_count": 5,
+  "imports": [
+    {
+      "line": 12,
+      "kind": "import",
+      "module": "argparse",
+      "names": [],
+      "level": 0,
+      "alias": null,
+      "statement": "import argparse",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "line": 13,
+      "kind": "import",
+      "module": "json",
+      "names": [],
+      "level": 0,
+      "alias": null,
+      "statement": "import json",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "line": 14,
+      "kind": "import",
+      "module": "sys",
+      "names": [],
+      "level": 0,
+      "alias": null,
+      "statement": "import sys",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "line": 15,
+      "kind": "import_from",
+      "module": "collections",
+      "names": [
+        "defaultdict"
+      ],
+      "level": 0,
+      "alias": null,
+      "statement": "from collections import defaultdict",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "line": 16,
+      "kind": "import_from",
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "level": 0,
+      "alias": null,
+      "statement": "from pathlib import Path",
+      "verdict": "OK_STDLIB"
+    }
+  ],
+  "failures": [],
+  "result": "PASS"
+}
