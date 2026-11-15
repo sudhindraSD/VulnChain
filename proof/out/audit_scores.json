@@ -1,0 +1,184 @@
+{
+  "schema": "vulnchain-proof/audit_scores/1",
+  "LP_original": {
+    "mean": 0.719099,
+    "std": 0.006897
+  },
+  "LP_clean": {
+    "mean": 0.632905,
+    "std": 0.007867
+  },
+  "HR": {
+    "mean": 0.631473,
+    "std": 0.004468
+  },
+  "BFS": {
+    "mean": 0.52865,
+    "std": 0.003851
+  },
+  "score_source": {
+    "parsed_from": "phase5/HYBRID_GATE.md",
+    "source_sha256": "7a6ec2503b91d6951ada346d721833400bdc1fb2f6a6f842ccf725e2fe2b06ac",
+    "values": {
+      "LP_original": {
+        "mean": 0.719099,
+        "std": 0.006897
+      },
+      "LP_clean": {
+        "mean": 0.632905,
+        "std": 0.007867
+      },
+      "HR": {
+        "mean": 0.631473,
+        "std": 0.004468
+      },
+      "BFS": {
+        "mean": 0.52865,
+        "std": 0.003851
+      }
+    },
+    "source_lines": {
+      "LP_original": "| `LP_original` | 0.719099 \u00b1 0.006897",
+      "LP_clean": "| `LP_clean` (VPSS recomputed on masked graph) | 0.632905 \u00b1 0.007867",
+      "HR": "| VulnGAT-HR (unchanged) | 0.631473 \u00b1 0.004468",
+      "BFS": "| BFS (unchanged, for reference) | 0.528650 \u00b1 0.003851"
+    },
+    "parse_failures": []
+  },
+  "task_d": {
+    "parsed_from": "phase5/confirm_metrics.json",
+    "source_sha256": "0225d3e3bb4310e60640d6d48a2c58a9c6559b834a2b0d0f41ddab35d329e960",
+    "seed_list": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005
+    ],
+    "rows": [
+      {
+        "seed": 2001,
+        "n": 12405,
+        "n_eligible": 645,
+        "n_neg": 8682,
+        "n_pos": 313,
+        "len_eval_idx": 8995,
+        "LP_clean": 0.6195168587205875,
+        "HR": 0.6317149874184258,
+        "RIDGE_RAW": 0.5865563727384262,
+        "CANDIDATE": 0.6801669275714949,
+        "RANK_AVG(RIDGE,LP_clean)": 0.6492563292420218,
+        "CANDIDATE_perm": 0.5912210125168079,
+        "PERM_ALL": 0.50535830071103,
+        "BINARISED_LP": 0.626067814647911,
+        "DEGREE": 0.5578682493175627,
+        "NONZERO_NBR": 0.6377211343214598,
+        "CANDIDATE-LP_clean": 0.0606500688509074,
+        "CANDIDATE-HR": 0.048451940153069084,
+        "CANDIDATE-RANK_AVG(RIDGE,LP_clean)": 0.03091059832947307
+      },
+      {
+        "seed": 2002,
+        "n": 12405,
+        "n_eligible": 645,
+        "n_neg": 8682,
+        "n_pos": 320,
+        "len_eval_idx": 9002,
+        "LP_clean": 0.626477194194886,
+        "HR": 0.6386968008523382,
+        "RIDGE_RAW": 0.5928317927896798,
+        "CANDIDATE": 0.6907360415226906,
+        "RANK_AVG(RIDGE,LP_clean)": 0.6633325414651002,
+        "CANDIDATE_perm": 0.6003457224717806,
+        "PERM_ALL": 0.5124370104814558,
+        "BINARISED_LP": 0.6297827041580281,
+        "DEGREE": 0.5473823355793596,
+        "NONZERO_NBR": 0.6411989244989633,
+        "CANDIDATE-LP_clean": 0.06425884732780462,
+        "CANDIDATE-HR": 0.05203924067035248,
+        "CANDIDATE-RANK_AVG(RIDGE,LP_clean)": 0.027403500057590402
+      },
+      {
+        "seed": 2003,
+        "n": 12405,
+        "n_eligible": 645,
+        "n_neg": 8682,
+        "n_pos": 324,
+        "len_eval_idx": 9006,
+        "LP_clean": 0.6246692105989119,
+        "HR": 0.6361638312273726,
+        "RIDGE_RAW": 0.5805133581327623,
+        "CANDIDATE": 0.6882673389814602,
+        "RANK_AVG(RIDGE,LP_clean)": 0.6540346353033522,
+        "CANDIDATE_perm": 0.5994657600086457,
+        "PERM_ALL": 0.5172527735829202,
+        "BINARISED_LP": 0.6287378669078354,
+        "DEGREE": 0.547789025683904,
+        "NONZERO_NBR": 0.6340950199220183,
+        "CANDIDATE-LP_clean": 0.0635981283825483,
+        "CANDIDATE-HR": 0.052103507754087564,
+        "CANDIDATE-RANK_AVG(RIDGE,LP_clean)": 0.034232703678108045
+      },
+      {
+        "seed": 2004,
+        "n": 12405,
+        "n_eligible": 645,
+        "n_neg": 8682,
+        "n_pos": 309,
+        "len_eval_idx": 8991,
+        "LP_clean": 0.5994113103851364,
+        "HR": 0.6299847394713908,
+        "RIDGE_RAW": 0.5789801314925274,
+        "CANDIDATE": 0.6645650823897078,
+        "RANK_AVG(RIDGE,LP_clean)": 0.6310196895857888,
+        "CANDIDATE_perm": 0.6300359930787128,
+        "PERM_ALL": 0.5603676169644595,
+        "BINARISED_LP": 0.6019605716249593,
+        "DEGREE": 0.5502108293840099,
+        "NONZERO_NBR": 0.6185680450345878,
+        "CANDIDATE-LP_clean": 0.0651537720045714,
+        "CANDIDATE-HR": 0.03458034291831702,
+        "CANDIDATE-RANK_AVG(RIDGE,LP_clean)": 0.033545392803918994
+      },
+      {
+        "seed": 2005,
+        "n": 12405,
+        "n_eligible": 645,
+        "n_neg": 8682,
+        "n_pos": 299,
+        "len_eval_idx": 8981,
+        "LP_clean": 0.6084889815471829,
+        "HR": 0.6445068757949981,
+        "RIDGE_RAW": 0.6015681157879409,
+        "CANDIDATE": 0.6835603050635651,
+        "RANK_AVG(RIDGE,LP_clean)": 0.6551716964865608,
+        "CANDIDATE_perm": 0.5914067778720283,
+        "PERM_ALL": 0.48911387031485587,
+        "BINARISED_LP": 0.6115697799391198,
+        "DEGREE": 0.5657784644969526,
+        "NONZERO_NBR": 0.6292099750454367,
+        "CANDIDATE-LP_clean": 0.07507132351638224,
+        "CANDIDATE-HR": 0.03905342926856703,
+        "CANDIDATE-RANK_AVG(RIDGE,LP_clean)": 0.028388608577004315
+      }
+    ],
+    "verdict": {
+      "primary_pass": true,
+      "mean_delta": 0.06574642801644279,
+      "sd_delta": 0.005479641448113535,
+      "threshold": 0.02,
+      "perm_mean": 0.5169059144109444,
+      "perm_out": false
+    },
+    "computed_from_rows_not_typed": {
+      "n_seeds": 5,
+      "mean_CANDIDATE": 0.6814591391057837,
+      "mean_LP_clean": 0.6157127110893409,
+      "mean_HR": 0.6362134469529052,
+      "mean_CANDIDATE_perm": 0.6024950531895951,
+      "mean_PERM_ALL": 0.5169059144109444,
+      "mean_paired_delta_CANDIDATE_minus_LP_clean": 0.06574642801644279,
+      "sd_paired_delta_ddof1": 0.005479641448113535
+    }
+  }
+}

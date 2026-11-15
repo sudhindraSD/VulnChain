@@ -1,0 +1,1614 @@
+{
+  "schema": "vulnchain-proof/offline_online/1",
+  "lockfile": "demo/sample-lock.json",
+  "definitions": {
+    "offline": "ADV_OFF: frozen KB hasVulnerability edges + osv_cache.json cve_id; zero network calls",
+    "online": "ADV_ON: live POST https://api.osv.dev/v1/query per package; zero cached advisories",
+    "timeout_s": 8,
+    "workers": 8,
+    "retries": 0,
+    "comparison": "exact string-set equality ADV_OFF(p) == ADV_ON(p); empty == empty counts as agreement",
+    "formula": "A = |{p in D : ADV_OFF(p) == ADV_ON(p)}| / |D|,  D = {p : status == 'OK'}"
+  },
+  "elapsed_seconds": 19.398,
+  "rows": [
+    {
+      "package": "accepts@1.3.8",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "amdefine@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "anymatch@3.1.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "append-field@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "array-flatten@1.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "async@0.2.10",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "async@3.2.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "axios@0.18.0",
+      "offline_ids": [
+        "GHSA-42xw-2xvc-qx8m"
+      ],
+      "online_ids": [
+        "GHSA-3p68-rc4w-qgx5",
+        "GHSA-42xw-2xvc-qx8m",
+        "GHSA-43fc-jf86-j433",
+        "GHSA-4w2v-q235-vp99",
+        "GHSA-5c9x-8gcm-mpgx",
+        "GHSA-62hf-57xw-28j9",
+        "GHSA-6chq-wfr3-2hj9",
+        "GHSA-7q8q-rj6j-mhjq",
+        "GHSA-898c-q2cr-xwhg",
+        "GHSA-cph5-m8f7-6c5x",
+        "GHSA-fvcv-3m26-pcqx",
+        "GHSA-hfxv-24rg-xrqf",
+        "GHSA-j5f8-grm9-p9fc",
+        "GHSA-jr5f-v2jv-69x6",
+        "GHSA-m7pr-hjqh-92cm",
+        "GHSA-mmx7-hfxf-jppx",
+        "GHSA-p92q-9vqr-4j8v",
+        "GHSA-pf86-5x62-jrwf",
+        "GHSA-pjwm-pj3p-43mv",
+        "GHSA-pmwg-cvhr-8vh7",
+        "GHSA-vf2m-468p-8v99",
+        "GHSA-w9j2-pvgh-6h63",
+        "GHSA-wf5p-g6vw-rhxx",
+        "GHSA-xhjh-pmcv-23jw",
+        "GHSA-xx6v-rp6x-q39c"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "balanced-match@1.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "base32.js@0.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "basic-auth@2.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "bignumber.js@9.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "binary-extensions@2.3.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "body-parser@1.20.2",
+      "offline_ids": [
+        "GHSA-qwcr-r2fm-qrc7",
+        "GHSA-v422-hmwv-36x6"
+      ],
+      "online_ids": [
+        "GHSA-27r3-jxmh-p828",
+        "GHSA-qwcr-r2fm-qrc7",
+        "GHSA-v422-hmwv-36x6"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "brace-expansion@1.1.11",
+      "offline_ids": [
+        "GHSA-3jxr-9vmj-r5cp",
+        "GHSA-f886-m6hf-6m8v",
+        "GHSA-mh99-v99m-4gvg",
+        "GHSA-rgw5-rvv9-x895",
+        "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "online_ids": [
+        "GHSA-3jxr-9vmj-r5cp",
+        "GHSA-6j4f-fj2g-mc7p",
+        "GHSA-f886-m6hf-6m8v",
+        "GHSA-mh99-v99m-4gvg",
+        "GHSA-q2hr-2g5m-vwhr",
+        "GHSA-qhr7-859c-m2p7",
+        "GHSA-rgw5-rvv9-x895",
+        "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "braces@3.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "buffer-from@1.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "busboy@1.6.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "bytes@3.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "call-bind@1.0.7",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "camelcase@1.2.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "chokidar@3.6.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "concat-map@0.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "concat-stream@1.6.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "content-disposition@0.5.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "content-type@1.0.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "cookie-parser@1.4.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "cookie-signature@1.0.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "cookie-signature@1.0.7",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "cookie@0.4.1",
+      "offline_ids": [
+        "GHSA-pxg6-pf52-xh8x"
+      ],
+      "online_ids": [
+        "GHSA-pxg6-pf52-xh8x"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "cookie@0.6.0",
+      "offline_ids": [
+        "GHSA-pxg6-pf52-xh8x"
+      ],
+      "online_ids": [
+        "GHSA-pxg6-pf52-xh8x"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "core-util-is@1.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "debug@2.6.9",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "debug@4.3.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "decamelize@1.2.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "define-data-property@1.1.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "depd@1.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "depd@2.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "destroy@1.2.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "doc-path@2.1.1",
+      "offline_ids": [
+        "GHSA-gm8g-xhh8-rmwr"
+      ],
+      "online_ids": [
+        "GHSA-gm8g-xhh8-rmwr"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "dotenv@16.4.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "ee-first@1.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "encodeurl@1.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "es-define-property@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "es-errors@1.3.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "escape-html@1.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "etag@1.8.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "express-session@1.18.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "express@4.19.2",
+      "offline_ids": [
+        "GHSA-qw6h-vgh9-j6wx"
+      ],
+      "online_ids": [
+        "GHSA-qw6h-vgh9-j6wx"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "fill-range@7.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "finalhandler@1.2.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "follow-redirects@1.15.6",
+      "offline_ids": [
+        "GHSA-r4q5-vmmm-2653"
+      ],
+      "online_ids": [
+        "GHSA-r4q5-vmmm-2653"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "foreachasync@3.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "forwarded@0.2.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "fresh@0.5.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "fsevents@2.3.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "function-bind@1.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "get-intrinsic@1.2.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "glob-parent@5.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "gopd@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "handlebars@4.7.7",
+      "offline_ids": [
+        "GHSA-2qvq-rjwj-gvw9",
+        "GHSA-2w6w-674q-4c4q",
+        "GHSA-3mfm-83xf-c92r",
+        "GHSA-442j-39wm-28r2",
+        "GHSA-7rx3-28cr-v5wh",
+        "GHSA-9cx6-37pm-9jff",
+        "GHSA-xhpv-hc6g-r9c6",
+        "GHSA-xjpj-3mr7-gcpf"
+      ],
+      "online_ids": [
+        "GHSA-2qvq-rjwj-gvw9",
+        "GHSA-2w6w-674q-4c4q",
+        "GHSA-3mfm-83xf-c92r",
+        "GHSA-442j-39wm-28r2",
+        "GHSA-7rx3-28cr-v5wh",
+        "GHSA-8r5x-fm3f-whwj",
+        "GHSA-9cx6-37pm-9jff",
+        "GHSA-p8wg-vrv2-v86f",
+        "GHSA-xhpv-hc6g-r9c6",
+        "GHSA-xjpj-3mr7-gcpf",
+        "GHSA-xw65-4hp5-5hc7"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "has-flag@3.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "has-property-descriptors@1.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "has-proto@1.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "has-symbols@1.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "hasown@2.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "hbs@4.2.0",
+      "offline_ids": [],
+      "online_ids": [
+        "GHSA-7f5c-rpf4-86p8"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "http-errors@1.6.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "http-errors@2.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "iconv-lite@0.4.24",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "ignore-by-default@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "inherits@2.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "inherits@2.0.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "ipaddr.js@1.9.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "is-binary-path@2.1.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "is-buffer@1.1.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "is-extglob@2.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "is-glob@4.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "is-number@7.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "isarray@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "lodash@4.17.15",
+      "offline_ids": [
+        "GHSA-29mw-wpgm-hmr9",
+        "GHSA-35jh-r3h4-6jhm",
+        "GHSA-f23m-r3pf-42rh",
+        "GHSA-p6mc-m468-83gw",
+        "GHSA-r5fr-rjxr-66jc",
+        "GHSA-xxjr-mmjv-4gpg"
+      ],
+      "online_ids": [
+        "GHSA-29mw-wpgm-hmr9",
+        "GHSA-35jh-r3h4-6jhm",
+        "GHSA-p6mc-m468-83gw",
+        "GHSA-r5fr-rjxr-66jc",
+        "GHSA-xxjr-mmjv-4gpg"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "media-typer@0.3.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "merge-descriptors@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "methods@1.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "mime-db@1.52.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "mime-types@2.1.35",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "mime@1.6.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "minimatch@3.1.2",
+      "offline_ids": [
+        "GHSA-23c5-xmqv-rm74",
+        "GHSA-3ppc-4f35-3m26",
+        "GHSA-7r86-cg39-jmmj"
+      ],
+      "online_ids": [
+        "GHSA-23c5-xmqv-rm74",
+        "GHSA-3ppc-4f35-3m26",
+        "GHSA-7r86-cg39-jmmj"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "minimist@0.0.10",
+      "offline_ids": [
+        "GHSA-vh95-rmgr-6w4m",
+        "GHSA-xvch-5gv4-984h"
+      ],
+      "online_ids": [
+        "GHSA-vh95-rmgr-6w4m",
+        "GHSA-xvch-5gv4-984h"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "minimist@1.2.8",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "mkdirp@0.5.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "moment@2.30.1",
+      "offline_ids": [],
+      "online_ids": [
+        "GHSA-4p3w-j4w9-5jqw"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "morgan@1.9.1",
+      "offline_ids": [
+        "GHSA-4vj7-5mj6-jm8m",
+        "GHSA-jxfw-x594-9x9m"
+      ],
+      "online_ids": [
+        "GHSA-4vj7-5mj6-jm8m",
+        "GHSA-9f6g-j8ch-79g4",
+        "GHSA-jxfw-x594-9x9m"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "ms@2.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "ms@2.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "ms@2.1.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "multer@1.4.5-lts.1",
+      "offline_ids": [
+        "GHSA-44fp-w29j-9vj5",
+        "GHSA-4pg4-qvpc-4q3h",
+        "GHSA-535w-7cp7-47q4",
+        "GHSA-5528-5vmv-3xc2",
+        "GHSA-72gw-mp4g-v24j",
+        "GHSA-fjgf-rc76-4x9p",
+        "GHSA-g5hg-p3ph-g8qg",
+        "GHSA-qvfw-j98x-7q72",
+        "GHSA-v52c-386h-88mc",
+        "GHSA-wc9g-mqfw-jrwm",
+        "GHSA-xf7r-hgr6-v32p"
+      ],
+      "online_ids": [
+        "GHSA-44fp-w29j-9vj5",
+        "GHSA-4pg4-qvpc-4q3h",
+        "GHSA-535w-7cp7-47q4",
+        "GHSA-5528-5vmv-3xc2",
+        "GHSA-72gw-mp4g-v24j",
+        "GHSA-fjgf-rc76-4x9p",
+        "GHSA-g5hg-p3ph-g8qg",
+        "GHSA-qvfw-j98x-7q72",
+        "GHSA-v52c-386h-88mc",
+        "GHSA-wc9g-mqfw-jrwm",
+        "GHSA-xf7r-hgr6-v32p"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "mysql@2.18.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "negotiator@0.6.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "neo-async@2.6.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "nodemailer@6.9.14",
+      "offline_ids": [
+        "GHSA-2x7j-588g-ccc2"
+      ],
+      "online_ids": [
+        "GHSA-268h-hp4c-crq3",
+        "GHSA-2x7j-588g-ccc2",
+        "GHSA-39m8-27wv-hr27",
+        "GHSA-4ffr-jq9g-5ffx",
+        "GHSA-4g23-2xm8-66gc",
+        "GHSA-6vj9-mwq6-2f5v",
+        "GHSA-85x2-q946-cp5h",
+        "GHSA-8c8m-p3m8-cjg8",
+        "GHSA-8m3c-c648-2xjj",
+        "GHSA-8vvx-rff5-p5rq",
+        "GHSA-c7w3-x93f-qmm8",
+        "GHSA-g73g-hqqh-jr95",
+        "GHSA-m943-m63m-w62w",
+        "GHSA-mm7p-fcc7-pg87",
+        "GHSA-p6gq-j5cr-w38f",
+        "GHSA-r7g4-qg5f-qqm2",
+        "GHSA-rcmh-qjqh-p98v",
+        "GHSA-v53p-9fqp-m79j",
+        "GHSA-vvjj-xcjg-gr5g",
+        "GHSA-wmmp-3585-3rmp",
+        "GHSA-wqvq-jvpq-h66f"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "nodemon@3.1.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "normalize-path@3.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "object-assign@4.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "object-inspect@1.13.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "on-finished@2.3.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "on-finished@2.4.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "on-headers@1.0.2",
+      "offline_ids": [
+        "GHSA-76c9-3jph-rj3q"
+      ],
+      "online_ids": [
+        "GHSA-76c9-3jph-rj3q"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "optimist@0.6.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "parseurl@1.3.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "path-to-regexp@0.1.7",
+      "offline_ids": [
+        "GHSA-37ch-88jc-xwx2",
+        "GHSA-9wv6-86v2-598j",
+        "GHSA-rhx6-c78j-4q9w"
+      ],
+      "online_ids": [
+        "GHSA-37ch-88jc-xwx2",
+        "GHSA-9wv6-86v2-598j",
+        "GHSA-rhx6-c78j-4q9w"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "picomatch@2.3.1",
+      "offline_ids": [
+        "GHSA-3v7f-55p6-f55p",
+        "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "online_ids": [
+        "GHSA-3v7f-55p6-f55p",
+        "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "process-nextick-args@2.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "proxy-addr@2.0.7",
+      "offline_ids": [],
+      "online_ids": [
+        "GHSA-jqcg-44mw-7w3h"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "pstree.remy@1.1.8",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "pyformat@1.0.0-0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "qs@6.11.0",
+      "offline_ids": [
+        "GHSA-4mjr-xmp4-gh2g",
+        "GHSA-6rw7-vpxm-498p",
+        "GHSA-w7fw-mjwx-w883"
+      ],
+      "online_ids": [
+        "GHSA-4mjr-xmp4-gh2g",
+        "GHSA-6pq8-jhm2-2vcw",
+        "GHSA-6rw7-vpxm-498p",
+        "GHSA-w7fw-mjwx-w883"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "random-bytes@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "range-parser@1.2.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "raw-body@2.5.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "readable-stream@2.3.7",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "readable-stream@2.3.8",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "readdirp@3.6.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "safe-buffer@5.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "safe-buffer@5.2.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "safe-eval@0.3.0",
+      "offline_ids": [
+        "GHSA-33vh-7x8q-mg35"
+      ],
+      "online_ids": [
+        "GHSA-33vh-7x8q-mg35",
+        "GHSA-79xf-67r4-q2jj",
+        "GHSA-9pcf-h8q9-63f6",
+        "GHSA-hcg3-56jf-x4vh",
+        "GHSA-hrpq-r399-whgw",
+        "GHSA-ww6v-677g-p656"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": false
+    },
+    {
+      "package": "safer-buffer@2.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "semver@7.6.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "send@0.18.0",
+      "offline_ids": [
+        "GHSA-m6fv-jmcg-4jfg"
+      ],
+      "online_ids": [
+        "GHSA-m6fv-jmcg-4jfg"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "serve-static@1.15.0",
+      "offline_ids": [
+        "GHSA-cm22-4g7w-348p"
+      ],
+      "online_ids": [
+        "GHSA-cm22-4g7w-348p"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "set-function-length@1.2.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "setprototypeof@1.1.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "setprototypeof@1.2.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "side-channel@1.0.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "simple-update-notifier@2.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "source-map@0.1.34",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "source-map@0.6.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "speakeasy@2.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "sqlstring@2.3.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "statuses@1.4.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "statuses@2.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "streamsearch@1.1.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "string_decoder@1.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "supports-color@5.5.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "swig@1.4.2",
+      "offline_ids": [
+        "GHSA-2rq5-699j-x7p6"
+      ],
+      "online_ids": [
+        "GHSA-2rq5-699j-x7p6"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "to-regex-range@5.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "toidentifier@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "touch@3.1.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "type-is@1.6.18",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "typedarray@0.0.6",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "uglify-js@2.4.24",
+      "offline_ids": [
+        "GHSA-c9f4-xj24-8jqx"
+      ],
+      "online_ids": [
+        "GHSA-c9f4-xj24-8jqx"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "uglify-js@3.18.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "uglify-to-browserify@1.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "uid-safe@2.1.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "undefsafe@2.0.5",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "unpipe@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "util-deprecate@1.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "utils-merge@1.0.1",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "validator@13.5.2",
+      "offline_ids": [
+        "GHSA-9965-vmph-33xx",
+        "GHSA-qgmg-gppg-76g5",
+        "GHSA-vghf-hv5q-vc2g",
+        "GHSA-xx4c-jj58-r7x6"
+      ],
+      "online_ids": [
+        "GHSA-9965-vmph-33xx",
+        "GHSA-qgmg-gppg-76g5",
+        "GHSA-vghf-hv5q-vc2g",
+        "GHSA-xx4c-jj58-r7x6"
+      ],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "vary@1.1.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "verademo-javascript@0.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "walk@2.3.15",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "window-size@0.1.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "wordwrap@0.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "wordwrap@0.0.3",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "wordwrap@1.0.0",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "xtend@4.0.2",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    },
+    {
+      "package": "yargs@3.5.4",
+      "offline_ids": [],
+      "online_ids": [],
+      "status": "OK",
+      "error": null,
+      "agree": true
+    }
+  ],
+  "counts": {
+    "units_total": 168,
+    "evaluated_D": 168,
+    "agree_count": 156,
+    "disagree_count": 12,
+    "no_online_result_count": 0,
+    "offline_only_count": 0,
+    "online_only_count": 3,
+    "both_nonempty_disagree_count": 9,
+    "both_empty_agree_count": 140
+  },
+  "agreement_rate": 0.9285714285714286,
+  "no_online_result_packages": []
+}

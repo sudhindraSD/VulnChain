@@ -1,0 +1,11 @@
+{
+  "schema": "vulnchain-proof/meta/1",
+  "source_commit": "177f63a4224c9a8c047cba6307cc5e90a5510de4",
+  "timestamp": "2026-11-15T04:45:29+00:00",
+  "lockfile": "demo/sample-lock.json",
+  "lockfile_sha256": "f7a147023dcd3d1fa12c6451b5a93e441e415fb9835b561cffa6f123623314ba",
+  "advisory_source_sha256": {
+    "phase5/bench_run/vulnchain_graph.json": "8fe4dca9e3e001cab708c8f987d8f46dd80684dfcea3f963b3ab13665cf0c72d",
+    "phase5/bench_run/osv_cache.json": "aade9a5d13937f16d06de18ea70cf6034cb16fd8554ccb97411fcf7561423335"
+  }
+}

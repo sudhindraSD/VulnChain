@@ -1,0 +1,4273 @@
+{
+  "schema": "vulnchain-proof/graph_subgraph/1",
+  "parser": "proof/verify_paths.py::parse_lockfile (independent parser)",
+  "node_cap": 300,
+  "counts": {
+    "subgraphs": 34,
+    "truncated_subgraphs": 0,
+    "max_closure_size": 84
+  },
+  "subgraphs": [
+    {
+      "package": "anymatch@3.1.3",
+      "nodes": [
+        {
+          "id": "anymatch@3.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "normalize-path@3.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "picomatch@2.3.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": [
+            "GHSA-3v7f-55p6-f55p",
+            "GHSA-c2c7-rcm5-vvqj"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "from": "anymatch@3.1.3",
+          "to": "normalize-path@3.0.0"
+        },
+        {
+          "from": "anymatch@3.1.3",
+          "to": "picomatch@2.3.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 3,
+      "node_cap": 300
+    },
+    {
+      "package": "axios@0.18.0",
+      "nodes": [
+        {
+          "id": "axios@0.18.0",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-42xw-2xvc-qx8m"
+          ]
+        },
+        {
+          "id": "follow-redirects@1.15.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-r4q5-vmmm-2653"
+          ]
+        },
+        {
+          "id": "is-buffer@1.1.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "axios@0.18.0",
+          "to": "follow-redirects@1.15.6"
+        },
+        {
+          "from": "axios@0.18.0",
+          "to": "is-buffer@1.1.6"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "axios@0.18.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 3,
+      "node_cap": 300
+    },
+    {
+      "package": "body-parser@1.20.2",
+      "nodes": [
+        {
+          "id": "body-parser@1.20.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-qwcr-r2fm-qrc7",
+            "GHSA-v422-hmwv-36x6"
+          ]
+        },
+        {
+          "id": "bytes@3.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "content-type@1.0.5",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "destroy@1.2.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "iconv-lite@0.4.24",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "qs@6.11.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-4mjr-xmp4-gh2g",
+            "GHSA-6rw7-vpxm-498p",
+            "GHSA-w7fw-mjwx-w883"
+          ]
+        },
+        {
+          "id": "raw-body@2.5.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "type-is@1.6.18",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "unpipe@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "toidentifier@1.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "safer-buffer@2.1.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "ee-first@1.1.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "side-channel@1.0.6",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "media-typer@0.3.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime-types@2.1.35",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "call-bind@1.0.7",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "es-errors@1.3.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "get-intrinsic@1.2.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "object-inspect@1.13.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "mime-db@1.52.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "es-define-property@1.0.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "function-bind@1.1.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "set-function-length@1.2.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-proto@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-symbols@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "hasown@2.0.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "define-data-property@1.1.4",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "gopd@1.0.1",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "has-property-descriptors@1.0.2",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "body-parser@1.20.2",
+          "to": "bytes@3.1.2"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "content-type@1.0.5"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "destroy@1.2.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "iconv-lite@0.4.24"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "qs@6.11.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "raw-body@2.5.2"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "type-is@1.6.18"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "unpipe@1.0.0"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "inherits@2.0.4"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "setprototypeof@1.2.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "toidentifier@1.0.1"
+        },
+        {
+          "from": "iconv-lite@0.4.24",
+          "to": "safer-buffer@2.1.2"
+        },
+        {
+          "from": "on-finished@2.4.1",
+          "to": "ee-first@1.1.1"
+        },
+        {
+          "from": "qs@6.11.0",
+          "to": "side-channel@1.0.6"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "bytes@3.1.2"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "iconv-lite@0.4.24"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "unpipe@1.0.0"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "media-typer@0.3.0"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "mime-types@2.1.35"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "call-bind@1.0.7"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "object-inspect@1.13.1"
+        },
+        {
+          "from": "mime-types@2.1.35",
+          "to": "mime-db@1.52.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "set-function-length@1.2.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-proto@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-symbols@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "hasown@2.0.2"
+        },
+        {
+          "from": "es-define-property@1.0.0",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "define-data-property@1.1.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "has-property-descriptors@1.0.2"
+        },
+        {
+          "from": "hasown@2.0.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "gopd@1.0.1",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "has-property-descriptors@1.0.2",
+          "to": "es-define-property@1.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "body-parser@1.20.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 42,
+      "node_cap": 300
+    },
+    {
+      "package": "brace-expansion@1.1.11",
+      "nodes": [
+        {
+          "id": "brace-expansion@1.1.11",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-3jxr-9vmj-r5cp",
+            "GHSA-f886-m6hf-6m8v",
+            "GHSA-mh99-v99m-4gvg",
+            "GHSA-rgw5-rvv9-x895",
+            "GHSA-v6h2-p8h4-qcjw"
+          ]
+        },
+        {
+          "id": "balanced-match@1.0.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "concat-map@0.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "balanced-match@1.0.2"
+        },
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "concat-map@0.0.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2",
+        "brace-expansion@1.1.11"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 3,
+      "node_cap": 300
+    },
+    {
+      "package": "chokidar@3.6.0",
+      "nodes": [
+        {
+          "id": "chokidar@3.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "anymatch@3.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "braces@3.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "glob-parent@5.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "is-binary-path@2.1.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "is-glob@4.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "normalize-path@3.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "readdirp@3.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "picomatch@2.3.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": [
+            "GHSA-3v7f-55p6-f55p",
+            "GHSA-c2c7-rcm5-vvqj"
+          ]
+        },
+        {
+          "id": "fill-range@7.1.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "binary-extensions@2.3.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "is-extglob@2.1.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "to-regex-range@5.0.1",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "is-number@7.0.0",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "chokidar@3.6.0",
+          "to": "anymatch@3.1.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "braces@3.0.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "glob-parent@5.1.2"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "is-binary-path@2.1.0"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "is-glob@4.0.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "normalize-path@3.0.0"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "readdirp@3.6.0"
+        },
+        {
+          "from": "anymatch@3.1.3",
+          "to": "normalize-path@3.0.0"
+        },
+        {
+          "from": "anymatch@3.1.3",
+          "to": "picomatch@2.3.1"
+        },
+        {
+          "from": "braces@3.0.3",
+          "to": "fill-range@7.1.1"
+        },
+        {
+          "from": "glob-parent@5.1.2",
+          "to": "is-glob@4.0.3"
+        },
+        {
+          "from": "is-binary-path@2.1.0",
+          "to": "binary-extensions@2.3.0"
+        },
+        {
+          "from": "is-glob@4.0.3",
+          "to": "is-extglob@2.1.1"
+        },
+        {
+          "from": "readdirp@3.6.0",
+          "to": "picomatch@2.3.1"
+        },
+        {
+          "from": "fill-range@7.1.1",
+          "to": "to-regex-range@5.0.1"
+        },
+        {
+          "from": "to-regex-range@5.0.1",
+          "to": "is-number@7.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 14,
+      "node_cap": 300
+    },
+    {
+      "package": "cookie-parser@1.4.6",
+      "nodes": [
+        {
+          "id": "cookie-parser@1.4.6",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "cookie@0.4.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        },
+        {
+          "id": "cookie-signature@1.0.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "cookie-parser@1.4.6",
+          "to": "cookie@0.4.1"
+        },
+        {
+          "from": "cookie-parser@1.4.6",
+          "to": "cookie-signature@1.0.6"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "cookie-parser@1.4.6",
+        "cookie@0.4.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 3,
+      "node_cap": 300
+    },
+    {
+      "package": "cookie@0.4.1",
+      "nodes": [
+        {
+          "id": "cookie@0.4.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "cookie-parser@1.4.6",
+        "cookie@0.4.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "cookie@0.6.0",
+      "nodes": [
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        },
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "cookie@0.6.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 2,
+      "node_cap": 300
+    },
+    {
+      "package": "cookie@0.6.0",
+      "nodes": [
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        },
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "cookie@0.6.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 2,
+      "node_cap": 300
+    },
+    {
+      "package": "doc-path@2.1.1",
+      "nodes": [
+        {
+          "id": "doc-path@2.1.1",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-gm8g-xhh8-rmwr"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "doc-path@2.1.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "express-session@1.18.0",
+      "nodes": [
+        {
+          "id": "express-session@1.18.0",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        },
+        {
+          "id": "cookie-signature@1.0.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "on-headers@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-76c9-3jph-rj3q"
+          ]
+        },
+        {
+          "id": "parseurl@1.3.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "safe-buffer@5.2.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "uid-safe@2.1.5",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "random-bytes@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "express-session@1.18.0",
+          "to": "cookie@0.6.0"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "cookie-signature@1.0.7"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "on-headers@1.0.2"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "parseurl@1.3.3"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "safe-buffer@5.2.1"
+        },
+        {
+          "from": "express-session@1.18.0",
+          "to": "uid-safe@2.1.5"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "uid-safe@2.1.5",
+          "to": "random-bytes@1.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "cookie@0.6.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 11,
+      "node_cap": 300
+    },
+    {
+      "package": "express@4.19.2",
+      "nodes": [
+        {
+          "id": "express@4.19.2",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-qw6h-vgh9-j6wx"
+          ]
+        },
+        {
+          "id": "accepts@1.3.8",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "array-flatten@1.1.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "body-parser@1.20.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-qwcr-r2fm-qrc7",
+            "GHSA-v422-hmwv-36x6"
+          ]
+        },
+        {
+          "id": "content-disposition@0.5.4",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "content-type@1.0.5",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "cookie@0.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-pxg6-pf52-xh8x"
+          ]
+        },
+        {
+          "id": "cookie-signature@1.0.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "encodeurl@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "escape-html@1.0.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "etag@1.8.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "finalhandler@1.2.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "fresh@0.5.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "merge-descriptors@1.0.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "methods@1.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "parseurl@1.3.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "path-to-regexp@0.1.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-37ch-88jc-xwx2",
+            "GHSA-9wv6-86v2-598j",
+            "GHSA-rhx6-c78j-4q9w"
+          ]
+        },
+        {
+          "id": "proxy-addr@2.0.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "qs@6.11.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-4mjr-xmp4-gh2g",
+            "GHSA-6rw7-vpxm-498p",
+            "GHSA-w7fw-mjwx-w883"
+          ]
+        },
+        {
+          "id": "range-parser@1.2.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "safe-buffer@5.2.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "send@0.18.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-m6fv-jmcg-4jfg"
+          ]
+        },
+        {
+          "id": "serve-static@1.15.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-cm22-4g7w-348p"
+          ]
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "type-is@1.6.18",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "utils-merge@1.0.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "vary@1.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "mime-types@2.1.35",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "negotiator@0.6.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "bytes@3.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "destroy@1.2.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "iconv-lite@0.4.24",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "raw-body@2.5.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "unpipe@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "safe-buffer@5.2.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "toidentifier@1.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ee-first@1.1.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "forwarded@0.2.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ipaddr.js@1.9.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "side-channel@1.0.6",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime@1.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "media-typer@0.3.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime-db@1.52.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "safer-buffer@2.1.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "call-bind@1.0.7",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "es-errors@1.3.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "get-intrinsic@1.2.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "object-inspect@1.13.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "es-define-property@1.0.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "function-bind@1.1.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "set-function-length@1.2.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-proto@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-symbols@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "hasown@2.0.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "define-data-property@1.1.4",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "gopd@1.0.1",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "has-property-descriptors@1.0.2",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "express@4.19.2",
+          "to": "accepts@1.3.8"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "array-flatten@1.1.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "body-parser@1.20.2"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "content-disposition@0.5.4"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "content-type@1.0.5"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "cookie@0.6.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "cookie-signature@1.0.6"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "etag@1.8.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "finalhandler@1.2.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "fresh@0.5.2"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "merge-descriptors@1.0.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "methods@1.1.2"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "parseurl@1.3.3"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "path-to-regexp@0.1.7"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "proxy-addr@2.0.7"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "qs@6.11.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "range-parser@1.2.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "safe-buffer@5.2.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "send@0.18.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "serve-static@1.15.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "setprototypeof@1.2.0"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "type-is@1.6.18"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "utils-merge@1.0.1"
+        },
+        {
+          "from": "express@4.19.2",
+          "to": "vary@1.1.2"
+        },
+        {
+          "from": "accepts@1.3.8",
+          "to": "mime-types@2.1.35"
+        },
+        {
+          "from": "accepts@1.3.8",
+          "to": "negotiator@0.6.3"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "bytes@3.1.2"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "content-type@1.0.5"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "destroy@1.2.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "iconv-lite@0.4.24"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "qs@6.11.0"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "raw-body@2.5.2"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "type-is@1.6.18"
+        },
+        {
+          "from": "body-parser@1.20.2",
+          "to": "unpipe@1.0.0"
+        },
+        {
+          "from": "content-disposition@0.5.4",
+          "to": "safe-buffer@5.2.1"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "parseurl@1.3.3"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "finalhandler@1.2.0",
+          "to": "unpipe@1.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "inherits@2.0.4"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "setprototypeof@1.2.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "toidentifier@1.0.1"
+        },
+        {
+          "from": "on-finished@2.4.1",
+          "to": "ee-first@1.1.1"
+        },
+        {
+          "from": "proxy-addr@2.0.7",
+          "to": "forwarded@0.2.0"
+        },
+        {
+          "from": "proxy-addr@2.0.7",
+          "to": "ipaddr.js@1.9.1"
+        },
+        {
+          "from": "qs@6.11.0",
+          "to": "side-channel@1.0.6"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "destroy@1.2.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "etag@1.8.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "fresh@0.5.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "mime@1.6.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "ms@2.1.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "range-parser@1.2.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "parseurl@1.3.3"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "send@0.18.0"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "media-typer@0.3.0"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "mime-types@2.1.35"
+        },
+        {
+          "from": "mime-types@2.1.35",
+          "to": "mime-db@1.52.0"
+        },
+        {
+          "from": "iconv-lite@0.4.24",
+          "to": "safer-buffer@2.1.2"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "bytes@3.1.2"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "iconv-lite@0.4.24"
+        },
+        {
+          "from": "raw-body@2.5.2",
+          "to": "unpipe@1.0.0"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "call-bind@1.0.7"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "object-inspect@1.13.1"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "set-function-length@1.2.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-proto@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-symbols@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "hasown@2.0.2"
+        },
+        {
+          "from": "es-define-property@1.0.0",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "define-data-property@1.1.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "has-property-descriptors@1.0.2"
+        },
+        {
+          "from": "hasown@2.0.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "gopd@1.0.1",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "has-property-descriptors@1.0.2",
+          "to": "es-define-property@1.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 84,
+      "node_cap": 300
+    },
+    {
+      "package": "follow-redirects@1.15.6",
+      "nodes": [
+        {
+          "id": "follow-redirects@1.15.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-r4q5-vmmm-2653"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "axios@0.18.0",
+        "follow-redirects@1.15.6"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "handlebars@4.7.7",
+      "nodes": [
+        {
+          "id": "handlebars@4.7.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-2qvq-rjwj-gvw9",
+            "GHSA-2w6w-674q-4c4q",
+            "GHSA-3mfm-83xf-c92r",
+            "GHSA-442j-39wm-28r2",
+            "GHSA-7rx3-28cr-v5wh",
+            "GHSA-9cx6-37pm-9jff",
+            "GHSA-xhpv-hc6g-r9c6",
+            "GHSA-xjpj-3mr7-gcpf"
+          ]
+        },
+        {
+          "id": "minimist@1.2.8",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "neo-async@2.6.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "source-map@0.6.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "wordwrap@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "handlebars@4.7.7",
+          "to": "minimist@1.2.8"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "neo-async@2.6.2"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "source-map@0.6.1"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "wordwrap@1.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "hbs@4.2.0",
+        "handlebars@4.7.7"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 5,
+      "node_cap": 300
+    },
+    {
+      "package": "hbs@4.2.0",
+      "nodes": [
+        {
+          "id": "hbs@4.2.0",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "handlebars@4.7.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-2qvq-rjwj-gvw9",
+            "GHSA-2w6w-674q-4c4q",
+            "GHSA-3mfm-83xf-c92r",
+            "GHSA-442j-39wm-28r2",
+            "GHSA-7rx3-28cr-v5wh",
+            "GHSA-9cx6-37pm-9jff",
+            "GHSA-xhpv-hc6g-r9c6",
+            "GHSA-xjpj-3mr7-gcpf"
+          ]
+        },
+        {
+          "id": "walk@2.3.15",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "minimist@1.2.8",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "neo-async@2.6.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "source-map@0.6.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "wordwrap@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "foreachasync@3.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "hbs@4.2.0",
+          "to": "handlebars@4.7.7"
+        },
+        {
+          "from": "hbs@4.2.0",
+          "to": "walk@2.3.15"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "minimist@1.2.8"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "neo-async@2.6.2"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "source-map@0.6.1"
+        },
+        {
+          "from": "handlebars@4.7.7",
+          "to": "wordwrap@1.0.0"
+        },
+        {
+          "from": "walk@2.3.15",
+          "to": "foreachasync@3.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "hbs@4.2.0",
+        "handlebars@4.7.7"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 8,
+      "node_cap": 300
+    },
+    {
+      "package": "lodash@4.17.15",
+      "nodes": [
+        {
+          "id": "lodash@4.17.15",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-29mw-wpgm-hmr9",
+            "GHSA-35jh-r3h4-6jhm",
+            "GHSA-f23m-r3pf-42rh",
+            "GHSA-p6mc-m468-83gw",
+            "GHSA-r5fr-rjxr-66jc",
+            "GHSA-xxjr-mmjv-4gpg"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "lodash@4.17.15"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "minimatch@3.1.2",
+      "nodes": [
+        {
+          "id": "minimatch@3.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-23c5-xmqv-rm74",
+            "GHSA-3ppc-4f35-3m26",
+            "GHSA-7r86-cg39-jmmj"
+          ]
+        },
+        {
+          "id": "brace-expansion@1.1.11",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-3jxr-9vmj-r5cp",
+            "GHSA-f886-m6hf-6m8v",
+            "GHSA-mh99-v99m-4gvg",
+            "GHSA-rgw5-rvv9-x895",
+            "GHSA-v6h2-p8h4-qcjw"
+          ]
+        },
+        {
+          "id": "balanced-match@1.0.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "concat-map@0.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "minimatch@3.1.2",
+          "to": "brace-expansion@1.1.11"
+        },
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "balanced-match@1.0.2"
+        },
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "concat-map@0.0.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 4,
+      "node_cap": 300
+    },
+    {
+      "package": "minimist@0.0.10",
+      "nodes": [
+        {
+          "id": "minimist@0.0.10",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-vh95-rmgr-6w4m",
+            "GHSA-xvch-5gv4-984h"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "optimist@0.6.1",
+        "minimist@0.0.10"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "morgan@1.9.1",
+      "nodes": [
+        {
+          "id": "morgan@1.9.1",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-4vj7-5mj6-jm8m",
+            "GHSA-jxfw-x594-9x9m"
+          ]
+        },
+        {
+          "id": "basic-auth@2.0.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@1.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.3.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "on-headers@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-76c9-3jph-rj3q"
+          ]
+        },
+        {
+          "id": "safe-buffer@5.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "ee-first@1.1.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "morgan@1.9.1",
+          "to": "basic-auth@2.0.1"
+        },
+        {
+          "from": "morgan@1.9.1",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "morgan@1.9.1",
+          "to": "depd@1.1.2"
+        },
+        {
+          "from": "morgan@1.9.1",
+          "to": "on-finished@2.3.0"
+        },
+        {
+          "from": "morgan@1.9.1",
+          "to": "on-headers@1.0.2"
+        },
+        {
+          "from": "basic-auth@2.0.1",
+          "to": "safe-buffer@5.1.2"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "on-finished@2.3.0",
+          "to": "ee-first@1.1.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "morgan@1.9.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 9,
+      "node_cap": 300
+    },
+    {
+      "package": "multer@1.4.5-lts.1",
+      "nodes": [
+        {
+          "id": "multer@1.4.5-lts.1",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-44fp-w29j-9vj5",
+            "GHSA-4pg4-qvpc-4q3h",
+            "GHSA-535w-7cp7-47q4",
+            "GHSA-5528-5vmv-3xc2",
+            "GHSA-72gw-mp4g-v24j",
+            "GHSA-fjgf-rc76-4x9p",
+            "GHSA-g5hg-p3ph-g8qg",
+            "GHSA-qvfw-j98x-7q72",
+            "GHSA-v52c-386h-88mc",
+            "GHSA-wc9g-mqfw-jrwm",
+            "GHSA-xf7r-hgr6-v32p"
+          ]
+        },
+        {
+          "id": "append-field@1.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "busboy@1.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "concat-stream@1.6.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "mkdirp@0.5.6",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "object-assign@4.1.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "type-is@1.6.18",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "xtend@4.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "streamsearch@1.1.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "buffer-from@1.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "readable-stream@2.3.8",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "typedarray@0.0.6",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "minimist@1.2.8",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "media-typer@0.3.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime-types@2.1.35",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "core-util-is@1.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "isarray@1.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "process-nextick-args@2.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "safe-buffer@5.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "string_decoder@1.1.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "util-deprecate@1.0.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime-db@1.52.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "append-field@1.0.0"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "busboy@1.6.0"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "concat-stream@1.6.2"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "mkdirp@0.5.6"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "object-assign@4.1.1"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "type-is@1.6.18"
+        },
+        {
+          "from": "multer@1.4.5-lts.1",
+          "to": "xtend@4.0.2"
+        },
+        {
+          "from": "busboy@1.6.0",
+          "to": "streamsearch@1.1.0"
+        },
+        {
+          "from": "concat-stream@1.6.2",
+          "to": "buffer-from@1.1.2"
+        },
+        {
+          "from": "concat-stream@1.6.2",
+          "to": "inherits@2.0.3"
+        },
+        {
+          "from": "concat-stream@1.6.2",
+          "to": "readable-stream@2.3.8"
+        },
+        {
+          "from": "concat-stream@1.6.2",
+          "to": "typedarray@0.0.6"
+        },
+        {
+          "from": "mkdirp@0.5.6",
+          "to": "minimist@1.2.8"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "media-typer@0.3.0"
+        },
+        {
+          "from": "type-is@1.6.18",
+          "to": "mime-types@2.1.35"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "core-util-is@1.0.3"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "inherits@2.0.3"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "isarray@1.0.0"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "process-nextick-args@2.0.1"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "safe-buffer@5.1.2"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "string_decoder@1.1.1"
+        },
+        {
+          "from": "readable-stream@2.3.8",
+          "to": "util-deprecate@1.0.2"
+        },
+        {
+          "from": "mime-types@2.1.35",
+          "to": "mime-db@1.52.0"
+        },
+        {
+          "from": "string_decoder@1.1.1",
+          "to": "safe-buffer@5.1.2"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "multer@1.4.5-lts.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 23,
+      "node_cap": 300
+    },
+    {
+      "package": "nodemailer@6.9.14",
+      "nodes": [
+        {
+          "id": "nodemailer@6.9.14",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-2x7j-588g-ccc2"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemailer@6.9.14"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "nodemon@3.1.4",
+      "nodes": [
+        {
+          "id": "nodemon@3.1.4",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "chokidar@3.6.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "debug@4.3.5",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "ignore-by-default@1.0.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "minimatch@3.1.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-23c5-xmqv-rm74",
+            "GHSA-3ppc-4f35-3m26",
+            "GHSA-7r86-cg39-jmmj"
+          ]
+        },
+        {
+          "id": "pstree.remy@1.1.8",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "semver@7.6.2",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "simple-update-notifier@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "supports-color@5.5.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "touch@3.1.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "undefsafe@2.0.5",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "anymatch@3.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "braces@3.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "glob-parent@5.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "is-binary-path@2.1.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "is-glob@4.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "normalize-path@3.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "readdirp@3.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.1.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "brace-expansion@1.1.11",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-3jxr-9vmj-r5cp",
+            "GHSA-f886-m6hf-6m8v",
+            "GHSA-mh99-v99m-4gvg",
+            "GHSA-rgw5-rvv9-x895",
+            "GHSA-v6h2-p8h4-qcjw"
+          ]
+        },
+        {
+          "id": "has-flag@3.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "picomatch@2.3.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": [
+            "GHSA-3v7f-55p6-f55p",
+            "GHSA-c2c7-rcm5-vvqj"
+          ]
+        },
+        {
+          "id": "fill-range@7.1.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "binary-extensions@2.3.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "is-extglob@2.1.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "balanced-match@1.0.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "concat-map@0.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "to-regex-range@5.0.1",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "is-number@7.0.0",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "nodemon@3.1.4",
+          "to": "chokidar@3.6.0"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "debug@4.3.5"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "ignore-by-default@1.0.1"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "minimatch@3.1.2"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "pstree.remy@1.1.8"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "semver@7.6.2"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "simple-update-notifier@2.0.0"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "supports-color@5.5.0"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "touch@3.1.1"
+        },
+        {
+          "from": "nodemon@3.1.4",
+          "to": "undefsafe@2.0.5"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "anymatch@3.1.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "braces@3.0.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "glob-parent@5.1.2"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "is-binary-path@2.1.0"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "is-glob@4.0.3"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "normalize-path@3.0.0"
+        },
+        {
+          "from": "chokidar@3.6.0",
+          "to": "readdirp@3.6.0"
+        },
+        {
+          "from": "debug@4.3.5",
+          "to": "ms@2.1.2"
+        },
+        {
+          "from": "minimatch@3.1.2",
+          "to": "brace-expansion@1.1.11"
+        },
+        {
+          "from": "simple-update-notifier@2.0.0",
+          "to": "semver@7.6.2"
+        },
+        {
+          "from": "supports-color@5.5.0",
+          "to": "has-flag@3.0.0"
+        },
+        {
+          "from": "anymatch@3.1.3",
+          "to": "normalize-path@3.0.0"
+        },
+        {
+          "from": "anymatch@3.1.3",
+          "to": "picomatch@2.3.1"
+        },
+        {
+          "from": "braces@3.0.3",
+          "to": "fill-range@7.1.1"
+        },
+        {
+          "from": "glob-parent@5.1.2",
+          "to": "is-glob@4.0.3"
+        },
+        {
+          "from": "is-binary-path@2.1.0",
+          "to": "binary-extensions@2.3.0"
+        },
+        {
+          "from": "is-glob@4.0.3",
+          "to": "is-extglob@2.1.1"
+        },
+        {
+          "from": "readdirp@3.6.0",
+          "to": "picomatch@2.3.1"
+        },
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "balanced-match@1.0.2"
+        },
+        {
+          "from": "brace-expansion@1.1.11",
+          "to": "concat-map@0.0.1"
+        },
+        {
+          "from": "fill-range@7.1.1",
+          "to": "to-regex-range@5.0.1"
+        },
+        {
+          "from": "to-regex-range@5.0.1",
+          "to": "is-number@7.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 29,
+      "node_cap": 300
+    },
+    {
+      "package": "on-headers@1.0.2",
+      "nodes": [
+        {
+          "id": "on-headers@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-76c9-3jph-rj3q"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "on-headers@1.0.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "optimist@0.6.1",
+      "nodes": [
+        {
+          "id": "optimist@0.6.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "minimist@0.0.10",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-vh95-rmgr-6w4m",
+            "GHSA-xvch-5gv4-984h"
+          ]
+        },
+        {
+          "id": "wordwrap@0.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "optimist@0.6.1",
+          "to": "minimist@0.0.10"
+        },
+        {
+          "from": "optimist@0.6.1",
+          "to": "wordwrap@0.0.3"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "optimist@0.6.1",
+        "minimist@0.0.10"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 3,
+      "node_cap": 300
+    },
+    {
+      "package": "path-to-regexp@0.1.7",
+      "nodes": [
+        {
+          "id": "path-to-regexp@0.1.7",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-37ch-88jc-xwx2",
+            "GHSA-9wv6-86v2-598j",
+            "GHSA-rhx6-c78j-4q9w"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "path-to-regexp@0.1.7"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "picomatch@2.3.1",
+      "nodes": [
+        {
+          "id": "picomatch@2.3.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": [
+            "GHSA-3v7f-55p6-f55p",
+            "GHSA-c2c7-rcm5-vvqj"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "qs@6.11.0",
+      "nodes": [
+        {
+          "id": "qs@6.11.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-4mjr-xmp4-gh2g",
+            "GHSA-6rw7-vpxm-498p",
+            "GHSA-w7fw-mjwx-w883"
+          ]
+        },
+        {
+          "id": "side-channel@1.0.6",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "call-bind@1.0.7",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "es-errors@1.3.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "get-intrinsic@1.2.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "object-inspect@1.13.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "es-define-property@1.0.0",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "function-bind@1.1.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "set-function-length@1.2.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-proto@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "has-symbols@1.0.3",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "hasown@2.0.2",
+          "direct": false,
+          "depth": 5,
+          "advisories": []
+        },
+        {
+          "id": "define-data-property@1.1.4",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "gopd@1.0.1",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        },
+        {
+          "id": "has-property-descriptors@1.0.2",
+          "direct": false,
+          "depth": 6,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "qs@6.11.0",
+          "to": "side-channel@1.0.6"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "call-bind@1.0.7"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "side-channel@1.0.6",
+          "to": "object-inspect@1.13.1"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "call-bind@1.0.7",
+          "to": "set-function-length@1.2.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-proto@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "has-symbols@1.0.3"
+        },
+        {
+          "from": "get-intrinsic@1.2.4",
+          "to": "hasown@2.0.2"
+        },
+        {
+          "from": "es-define-property@1.0.0",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "define-data-property@1.1.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "set-function-length@1.2.2",
+          "to": "has-property-descriptors@1.0.2"
+        },
+        {
+          "from": "hasown@2.0.2",
+          "to": "function-bind@1.1.2"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-define-property@1.0.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "es-errors@1.3.0"
+        },
+        {
+          "from": "define-data-property@1.1.4",
+          "to": "gopd@1.0.1"
+        },
+        {
+          "from": "gopd@1.0.1",
+          "to": "get-intrinsic@1.2.4"
+        },
+        {
+          "from": "has-property-descriptors@1.0.2",
+          "to": "es-define-property@1.0.0"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "qs@6.11.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 15,
+      "node_cap": 300
+    },
+    {
+      "package": "readdirp@3.6.0",
+      "nodes": [
+        {
+          "id": "readdirp@3.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "picomatch@2.3.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": [
+            "GHSA-3v7f-55p6-f55p",
+            "GHSA-c2c7-rcm5-vvqj"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "from": "readdirp@3.6.0",
+          "to": "picomatch@2.3.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "readdirp@3.6.0",
+        "picomatch@2.3.1"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 2,
+      "node_cap": 300
+    },
+    {
+      "package": "safe-eval@0.3.0",
+      "nodes": [
+        {
+          "id": "safe-eval@0.3.0",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-33vh-7x8q-mg35"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "safe-eval@0.3.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    },
+    {
+      "package": "send@0.18.0",
+      "nodes": [
+        {
+          "id": "send@0.18.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-m6fv-jmcg-4jfg"
+          ]
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "destroy@1.2.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "encodeurl@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "escape-html@1.0.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "etag@1.8.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "fresh@0.5.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime@1.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "range-parser@1.2.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "toidentifier@1.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ee-first@1.1.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "send@0.18.0",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "destroy@1.2.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "etag@1.8.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "fresh@0.5.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "mime@1.6.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "ms@2.1.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "range-parser@1.2.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "inherits@2.0.4"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "setprototypeof@1.2.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "toidentifier@1.0.1"
+        },
+        {
+          "from": "on-finished@2.4.1",
+          "to": "ee-first@1.1.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "send@0.18.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 19,
+      "node_cap": 300
+    },
+    {
+      "package": "serve-static@1.15.0",
+      "nodes": [
+        {
+          "id": "serve-static@1.15.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-cm22-4g7w-348p"
+          ]
+        },
+        {
+          "id": "encodeurl@1.0.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "escape-html@1.0.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "parseurl@1.3.3",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "send@0.18.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-m6fv-jmcg-4jfg"
+          ]
+        },
+        {
+          "id": "debug@2.6.9",
+          "direct": true,
+          "depth": 1,
+          "advisories": []
+        },
+        {
+          "id": "depd@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "destroy@1.2.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "etag@1.8.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "fresh@0.5.2",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "http-errors@2.0.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "mime@1.6.0",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.1.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "on-finished@2.4.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "range-parser@1.2.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "statuses@2.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ms@2.0.0",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "inherits@2.0.4",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "setprototypeof@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "toidentifier@1.0.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "ee-first@1.1.1",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "serve-static@1.15.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "parseurl@1.3.3"
+        },
+        {
+          "from": "serve-static@1.15.0",
+          "to": "send@0.18.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "debug@2.6.9"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "destroy@1.2.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "encodeurl@1.0.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "escape-html@1.0.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "etag@1.8.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "fresh@0.5.2"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "http-errors@2.0.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "mime@1.6.0"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "ms@2.1.3"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "on-finished@2.4.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "range-parser@1.2.1"
+        },
+        {
+          "from": "send@0.18.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "debug@2.6.9",
+          "to": "ms@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "depd@2.0.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "inherits@2.0.4"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "setprototypeof@1.2.0"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "statuses@2.0.1"
+        },
+        {
+          "from": "http-errors@2.0.0",
+          "to": "toidentifier@1.0.1"
+        },
+        {
+          "from": "on-finished@2.4.1",
+          "to": "ee-first@1.1.1"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "serve-static@1.15.0"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 21,
+      "node_cap": 300
+    },
+    {
+      "package": "swig@1.4.2",
+      "nodes": [
+        {
+          "id": "swig@1.4.2",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-2rq5-699j-x7p6"
+          ]
+        },
+        {
+          "id": "optimist@0.6.1",
+          "direct": false,
+          "depth": 2,
+          "advisories": []
+        },
+        {
+          "id": "uglify-js@2.4.24",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-c9f4-xj24-8jqx"
+          ]
+        },
+        {
+          "id": "minimist@0.0.10",
+          "direct": false,
+          "depth": 3,
+          "advisories": [
+            "GHSA-vh95-rmgr-6w4m",
+            "GHSA-xvch-5gv4-984h"
+          ]
+        },
+        {
+          "id": "wordwrap@0.0.3",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "async@0.2.10",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "source-map@0.1.34",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "uglify-to-browserify@1.0.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "yargs@3.5.4",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "amdefine@1.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "camelcase@1.2.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "decamelize@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "window-size@0.1.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "wordwrap@0.0.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "swig@1.4.2",
+          "to": "optimist@0.6.1"
+        },
+        {
+          "from": "swig@1.4.2",
+          "to": "uglify-js@2.4.24"
+        },
+        {
+          "from": "optimist@0.6.1",
+          "to": "minimist@0.0.10"
+        },
+        {
+          "from": "optimist@0.6.1",
+          "to": "wordwrap@0.0.3"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "async@0.2.10"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "source-map@0.1.34"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "uglify-to-browserify@1.0.2"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "yargs@3.5.4"
+        },
+        {
+          "from": "source-map@0.1.34",
+          "to": "amdefine@1.0.1"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "camelcase@1.2.1"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "decamelize@1.2.0"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "window-size@0.1.0"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "wordwrap@0.0.2"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 14,
+      "node_cap": 300
+    },
+    {
+      "package": "uglify-js@2.4.24",
+      "nodes": [
+        {
+          "id": "uglify-js@2.4.24",
+          "direct": false,
+          "depth": 2,
+          "advisories": [
+            "GHSA-c9f4-xj24-8jqx"
+          ]
+        },
+        {
+          "id": "async@0.2.10",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "source-map@0.1.34",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "uglify-to-browserify@1.0.2",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "yargs@3.5.4",
+          "direct": false,
+          "depth": 3,
+          "advisories": []
+        },
+        {
+          "id": "amdefine@1.0.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "camelcase@1.2.1",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "decamelize@1.2.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "window-size@0.1.0",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        },
+        {
+          "id": "wordwrap@0.0.2",
+          "direct": false,
+          "depth": 4,
+          "advisories": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "async@0.2.10"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "source-map@0.1.34"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "uglify-to-browserify@1.0.2"
+        },
+        {
+          "from": "uglify-js@2.4.24",
+          "to": "yargs@3.5.4"
+        },
+        {
+          "from": "source-map@0.1.34",
+          "to": "amdefine@1.0.1"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "camelcase@1.2.1"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "decamelize@1.2.0"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "window-size@0.1.0"
+        },
+        {
+          "from": "yargs@3.5.4",
+          "to": "wordwrap@0.0.2"
+        }
+      ],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "uglify-js@2.4.24"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 10,
+      "node_cap": 300
+    },
+    {
+      "package": "validator@13.5.2",
+      "nodes": [
+        {
+          "id": "validator@13.5.2",
+          "direct": true,
+          "depth": 1,
+          "advisories": [
+            "GHSA-9965-vmph-33xx",
+            "GHSA-qgmg-gppg-76g5",
+            "GHSA-vghf-hv5q-vc2g",
+            "GHSA-xx4c-jj58-r7x6"
+          ]
+        }
+      ],
+      "edges": [],
+      "verified_path": [
+        "verademo-javascript@0.0.0",
+        "validator@13.5.2"
+      ],
+      "verified_path_pass": true,
+      "truncated": false,
+      "closure_size": 1,
+      "node_cap": 300
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "schema": "vulnchain-proof/npm_audit_comparison/1",
+  "lockfile": "demo/sample-lock.json",
+  "command": "npm audit --json",
+  "resolved_binary": "C:\\Users\\soumy\\.workbuddy-ai\\binaries\\node\\versions\\22.22.2-6\\npm.cmd",
+  "exit_code": 1,
+  "stderr": "",
+  "stdout_sha256": "8fe1e88e0ae3a2e5a65bc4e1399e328cd4a35e6b30965fbaa453fac818427c6c",
+  "stdout_bytes": 70866,
+  "reconstructed_package_json": {
+    "name": "verademo-javascript",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+      "async": "^3.2.5",
+      "axios": "^0.18.0",
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "doc-path": "2.1.1",
+      "dotenv": "^16.4.5",
+      "express": "^4.19.2",
+      "express-session": "^1.18.0",
+      "hbs": "^4.2.0",
+      "http-errors": "~1.6.3",
+      "lodash": "4.17.15",
+      "moment": "^2.30.1",
+      "morgan": "~1.9.1",
+      "multer": "^1.4.5-lts.1",
+      "mysql": "^2.18.1",
+      "nodemailer": "^6.9.14",
+      "pyformat": "^1.0.0-0",
+      "safe-eval": "0.3.0",
+      "semver": "^7.6.2",
+      "speakeasy": "^2.0.0",
+      "swig": "^1.4.2",
+      "validator": "13.5.2"
+    },
+    "devDependencies": {
+      "nodemon": "^3.1.4"
+    }
+  },
+  "advisory_source": [
+    "C:\\Users\\soumy\\Desktop\\VulnChain\\phase5\\bench_run\\vulnchain_graph.json",
+    "C:\\Users\\soumy\\Desktop\\VulnChain\\phase5\\bench_run\\osv_cache.json"
+  ],
+  "status": "COMPLETED",
+  "error": null,
+  "npm_audit_metadata_vulnerabilities": {
+    "info": 0,
+    "low": 6,
+    "moderate": 4,
+    "high": 12,
+    "critical": 7,
+    "total": 29
+  },
+  "npm_audit_vulnerability_entries": 29,
+  "unmatched_npm_nodes": [],
+  "groups": {
+    "found_by_both": [
+      "axios@0.18.0",
+      "body-parser@1.20.2",
+      "brace-expansion@1.1.11",
+      "cookie@0.4.1",
+      "cookie@0.6.0",
+      "doc-path@2.1.1",
+      "express@4.19.2",
+      "follow-redirects@1.15.6",
+      "handlebars@4.7.7",
+      "lodash@4.17.15",
+      "minimatch@3.1.2",
+      "minimist@0.0.10",
+      "morgan@1.9.1",
+      "nodemailer@6.9.14",
+      "on-headers@1.0.2",
+      "path-to-regexp@0.1.7",
+      "picomatch@2.3.1",
+      "qs@6.11.0",
+      "safe-eval@0.3.0",
+      "send@0.18.0",
+      "serve-static@1.15.0",
+      "swig@1.4.2",
+      "uglify-js@2.4.24",
+      "validator@13.5.2"
+    ],
+    "vulnchain_only": [
+      "multer@1.4.5-lts.1"
+    ],
+    "npm_audit_only": [
+      "cookie-parser@1.4.6",
+      "express-session@1.18.0",
+      "hbs@4.2.0",
+      "moment@2.30.1",
+      "optimist@0.6.1",
+      "proxy-addr@2.0.7"
+    ]
+  },
+  "causes": [
+    {
+      "item": "multer@1.4.5-lts.1",
+      "group": "vulnchain_only",
+      "cause": "version_range_resolution",
+      "evidence": {
+        "vc_ids": [
+          "GHSA-44fp-w29j-9vj5",
+          "GHSA-4pg4-qvpc-4q3h",
+          "GHSA-535w-7cp7-47q4",
+          "GHSA-5528-5vmv-3xc2",
+          "GHSA-72gw-mp4g-v24j",
+          "GHSA-fjgf-rc76-4x9p",
+          "GHSA-g5hg-p3ph-g8qg",
+          "GHSA-qvfw-j98x-7q72",
+          "GHSA-v52c-386h-88mc",
+          "GHSA-wc9g-mqfw-jrwm",
+          "GHSA-xf7r-hgr6-v32p"
+        ],
+        "npm_ids": [],
+        "range": null,
+        "all_dev": false,
+        "other_version_advisory": true,
+        "depth_from_root": 1,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "cookie-parser@1.4.6",
+      "group": "npm_audit_only",
+      "cause": "UNEXPLAINED",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [],
+        "range": "1.0.1 - 1.4.6",
+        "all_dev": false,
+        "other_version_advisory": false,
+        "depth_from_root": 1,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "express-session@1.18.0",
+      "group": "npm_audit_only",
+      "cause": "version_range_resolution",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [],
+        "range": "1.0.1 - 1.18.1",
+        "all_dev": false,
+        "other_version_advisory": false,
+        "depth_from_root": 1,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "hbs@4.2.0",
+      "group": "npm_audit_only",
+      "cause": "advisory_db_differences",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [
+          "GHSA-7f5c-rpf4-86p8"
+        ],
+        "range": "*",
+        "all_dev": false,
+        "other_version_advisory": true,
+        "depth_from_root": 1,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "moment@2.30.1",
+      "group": "npm_audit_only",
+      "cause": "advisory_db_differences",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [
+          "GHSA-4p3w-j4w9-5jqw"
+        ],
+        "range": "2.29.2 - 2.30.1",
+        "all_dev": false,
+        "other_version_advisory": true,
+        "depth_from_root": 1,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "optimist@0.6.1",
+      "group": "npm_audit_only",
+      "cause": "version_range_resolution",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [],
+        "range": ">=0.6.0",
+        "all_dev": false,
+        "other_version_advisory": false,
+        "depth_from_root": 2,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "proxy-addr@2.0.7",
+      "group": "npm_audit_only",
+      "cause": "advisory_db_differences",
+      "evidence": {
+        "vc_ids": [],
+        "npm_ids": [
+          "GHSA-jqcg-44mw-7w3h"
+        ],
+        "range": "1.1.0 - 2.0.7",
+        "all_dev": false,
+        "other_version_advisory": false,
+        "depth_from_root": 2,
+        "tool_bug_case_listed": false
+      }
+    },
+    {
+      "item": "axios@0.18.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "body-parser@1.20.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "brace-expansion@1.1.11",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "cookie@0.4.1",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "cookie@0.6.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "doc-path@2.1.1",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "express@4.19.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "follow-redirects@1.15.6",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "handlebars@4.7.7",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "lodash@4.17.15",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "minimatch@3.1.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "minimist@0.0.10",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "morgan@1.9.1",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "nodemailer@6.9.14",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "on-headers@1.0.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "path-to-regexp@0.1.7",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "picomatch@2.3.1",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "qs@6.11.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "safe-eval@0.3.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "send@0.18.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "serve-static@1.15.0",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "swig@1.4.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "uglify-js@2.4.24",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    },
+    {
+      "item": "validator@13.5.2",
+      "group": "found_by_both",
+      "cause": "NOT_A_DISCREPANCY",
+      "evidence": {}
+    }
+  ],
+  "counts": {
+    "vc_items": 25,
+    "npm_items": 30,
+    "found_by_both": 24,
+    "vulnchain_only": 1,
+    "npm_audit_only": 6,
+    "discrepancy_items": 7,
+    "unmatched_npm_nodes": 0,
+    "cause_counts": {
+      "NOT_A_DISCREPANCY": 24,
+      "UNEXPLAINED": 1,
+      "advisory_db_differences": 3,
+      "version_range_resolution": 3
+    }
+  },
+  "unexplained_count": 1
+}
