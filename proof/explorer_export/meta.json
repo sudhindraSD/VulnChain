@@ -1,0 +1,50 @@
+{
+  "advisory_source_sha256": {
+    "phase5/bench_run/osv_cache.json": "aade9a5d13937f16d06de18ea70cf6034cb16fd8554ccb97411fcf7561423335",
+    "phase5/bench_run/vulnchain_graph.json": "8fe4dca9e3e001cab708c8f987d8f46dd80684dfcea3f963b3ab13665cf0c72d"
+  },
+  "export_files": [
+    "MISSING.md",
+    "SCHEMA.md",
+    "advisories.json",
+    "edge_evidence.json",
+    "independence.json",
+    "lockfile_graph.json",
+    "meta.json",
+    "npm_audit_detail.json",
+    "reproduce.json",
+    "sample-lock.json"
+  ],
+  "fresh_clone_finished_utc": "2026-11-15T04:48:21+00:00",
+  "fresh_clone_started_utc": "2026-11-15T04:47:10+00:00",
+  "label": "presentation layer; see PROOF_ADDENDUM2.md; no new criterion, claim or result",
+  "lockfile": "demo/sample-lock.json",
+  "lockfile_sha256": "f7a147023dcd3d1fa12c6451b5a93e441e415fb9835b561cffa6f123623314ba",
+  "sample_lock_copy": {
+    "bytes_equal": true,
+    "eol_note": "a CRLF/LF difference is not a failure; a JSON-content difference is",
+    "git_blob_sha256": "f7a147023dcd3d1fa12c6451b5a93e441e415fb9835b561cffa6f123623314ba",
+    "json_content_equal": true,
+    "worktree_sha256": "f7a147023dcd3d1fa12c6451b5a93e441e415fb9835b561cffa6f123623314ba"
+  },
+  "schema": "vulnchain-explorer/meta/1",
+  "source_commit_at_export_time": "177f63a4224c9a8c047cba6307cc5e90a5510de4",
+  "source_files": [
+    "PROOF_POSTHOC2.md",
+    "PROOF_RESULT.md",
+    "data_pipeline/cve_nodes.json",
+    "demo/sample-lock.json",
+    "phase5/bench_run/osv_cache.json",
+    "phase5/bench_run/vulnchain_graph.json",
+    "proof/out/flagged_packages.json",
+    "proof/out/fresh_clone_log.json",
+    "proof/out/graph_subgraph.json",
+    "proof/out/independence_audit.json",
+    "proof/out/meta.json",
+    "proof/out/npm_audit_comparison.json",
+    "proof/out/offline_online.json",
+    "proof/out/verify_report.json",
+    "proof/verify_paths.py"
+  ],
+  "source_timestamp": "2026-11-15T04:45:29+00:00"
+}

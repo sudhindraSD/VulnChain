@@ -1,0 +1,120 @@
+{
+  "audited_file": "proof/verify_paths.py",
+  "committed_record": {
+    "allowed_stdlib": [
+      "argparse",
+      "collections",
+      "hashlib",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "sys",
+      "typing"
+    ],
+    "failures": [],
+    "import_count": 5,
+    "project_prefixes": [
+      "vulnchain",
+      "phase5",
+      "data_pipeline",
+      "webapp",
+      "TrainModel",
+      "core",
+      "model",
+      "models",
+      "graph",
+      "features",
+      "verify_paths",
+      "compare_npm_audit",
+      "offline_online",
+      "case_studies",
+      "make_exports"
+    ],
+    "result": "PASS",
+    "source": "proof/out/independence_audit.json"
+  },
+  "import_count": 5,
+  "imports": [
+    {
+      "alias": null,
+      "kind": "import",
+      "level": 0,
+      "line": 12,
+      "module": "argparse",
+      "names": [],
+      "statement": "import argparse",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "alias": null,
+      "kind": "import",
+      "level": 0,
+      "line": 13,
+      "module": "json",
+      "names": [],
+      "statement": "import json",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "alias": null,
+      "kind": "import",
+      "level": 0,
+      "line": 14,
+      "module": "sys",
+      "names": [],
+      "statement": "import sys",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "alias": null,
+      "kind": "import_from",
+      "level": 0,
+      "line": 15,
+      "module": "collections",
+      "names": [
+        "defaultdict"
+      ],
+      "statement": "from collections import defaultdict",
+      "verdict": "OK_STDLIB"
+    },
+    {
+      "alias": null,
+      "kind": "import_from",
+      "level": 0,
+      "line": 16,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "statement": "from pathlib import Path",
+      "verdict": "OK_STDLIB"
+    }
+  ],
+  "label": "presentation layer; import list parsed with the ast module; negative-control outcomes parsed from committed results",
+  "negative_controls": [
+    {
+      "mutation": "wrong version",
+      "outcome": "VERSION",
+      "source": "PROOF_RESULT.md section 2"
+    },
+    {
+      "mutation": "dropped edge",
+      "outcome": "EDGE",
+      "source": "PROOF_RESULT.md section 2"
+    },
+    {
+      "mutation": "fake advisory ID",
+      "outcome": "ADVISORY_ENDPOINT",
+      "source": "PROOF_RESULT.md section 2"
+    }
+  ],
+  "negative_controls_status": "OK",
+  "parsed_with": "ast (stdlib)",
+  "schema": "vulnchain-explorer/independence/1",
+  "sources": [
+    "proof/verify_paths.py",
+    "proof/out/independence_audit.json",
+    "PROOF_RESULT.md"
+  ]
+}

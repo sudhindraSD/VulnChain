@@ -1,0 +1,5308 @@
+{
+  "counts": {
+    "path_edges": 69,
+    "printed_paths": 34
+  },
+  "label": "presentation layer; raw lockfile entries copied verbatim; JSON pointers follow RFC 6901 (~0 for ~, ~1 for /)",
+  "paths": [
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "child_key": "node_modules/chokidar",
+          "child_name": "chokidar",
+          "child_pointer": "/packages/node_modules~1chokidar",
+          "declared_range": "^3.5.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/chokidar",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/chokidar",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/chokidar",
+          "resolved_version": "3.6.0",
+          "to_pid": "chokidar@3.6.0"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "child_key": "node_modules/anymatch",
+          "child_name": "anymatch",
+          "child_pointer": "/packages/node_modules~1anymatch",
+          "declared_range": "~3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "chokidar@3.6.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/chokidar/node_modules/anymatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/anymatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "parent_key": "node_modules/chokidar",
+          "parent_pointer": "/packages/node_modules~1chokidar",
+          "resolved_key": "node_modules/anymatch",
+          "resolved_version": "3.1.3",
+          "to_pid": "anymatch@3.1.3"
+        },
+        {
+          "child_entry_raw": {
+            "dev": true,
+            "engines": {
+              "node": ">=8.6"
+            },
+            "funding": {
+              "url": "https://github.com/sponsors/jonschlinkert"
+            },
+            "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
+            "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+            "version": "2.3.1"
+          },
+          "child_key": "node_modules/picomatch",
+          "child_name": "picomatch",
+          "child_pointer": "/packages/node_modules~1picomatch",
+          "declared_range": "^2.0.4",
+          "dep_kind": "dependencies",
+          "edge_index": 3,
+          "from_pid": "anymatch@3.1.3",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/anymatch/node_modules/picomatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/picomatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "parent_key": "node_modules/anymatch",
+          "parent_pointer": "/packages/node_modules~1anymatch",
+          "resolved_key": "node_modules/picomatch",
+          "resolved_version": "2.3.1",
+          "to_pid": "picomatch@2.3.1"
+        }
+      ],
+      "flagged_record_index": 0,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/chokidar",
+        "node_modules/anymatch",
+        "node_modules/picomatch"
+      ],
+      "package": "anymatch@3.1.3",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "follow-redirects": "^1.3.0",
+              "is-buffer": "^1.1.5"
+            },
+            "deprecated": "Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410",
+            "integrity": "sha512-14hgP2oTu6SPu+26Ofye6Se8u5Mmjc07a0ACHTJ5POKFU1Mtxz2IxSvaWy1O+QnbSa8XHy1gYz2E1l+G26XJdA==",
+            "resolved": "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz",
+            "version": "0.18.0"
+          },
+          "child_key": "node_modules/axios",
+          "child_name": "axios",
+          "child_pointer": "/packages/node_modules~1axios",
+          "declared_range": "^0.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/axios",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/axios",
+          "resolved_version": "0.18.0",
+          "to_pid": "axios@0.18.0"
+        }
+      ],
+      "flagged_record_index": 1,
+      "lockfile_keys": [
+        "",
+        "node_modules/axios"
+      ],
+      "package": "axios@0.18.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "axios@0.18.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "bytes": "3.1.2",
+              "content-type": "~1.0.5",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "destroy": "1.2.0",
+              "http-errors": "2.0.0",
+              "iconv-lite": "0.4.24",
+              "on-finished": "2.4.1",
+              "qs": "6.11.0",
+              "raw-body": "2.5.2",
+              "type-is": "~1.6.18",
+              "unpipe": "1.0.0"
+            },
+            "engines": {
+              "node": ">= 0.8",
+              "npm": "1.2.8000 || >= 1.4.16"
+            },
+            "license": "MIT",
+            "version": "1.20.2"
+          },
+          "child_key": "node_modules/body-parser",
+          "child_name": "body-parser",
+          "child_pointer": "/packages/node_modules~1body-parser",
+          "declared_range": "1.20.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express/node_modules/body-parser",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/body-parser",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/body-parser",
+          "resolved_version": "1.20.2",
+          "to_pid": "body-parser@1.20.2"
+        }
+      ],
+      "flagged_record_index": 2,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/body-parser"
+      ],
+      "package": "body-parser@1.20.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "body-parser@1.20.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "brace-expansion": "^1.1.7"
+            },
+            "dev": true,
+            "engines": {
+              "node": "*"
+            },
+            "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+            "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+            "version": "3.1.2"
+          },
+          "child_key": "node_modules/minimatch",
+          "child_name": "minimatch",
+          "child_pointer": "/packages/node_modules~1minimatch",
+          "declared_range": "^3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/minimatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/minimatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/minimatch",
+          "resolved_version": "3.1.2",
+          "to_pid": "minimatch@3.1.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "balanced-match": "^1.0.0",
+              "concat-map": "0.0.1"
+            },
+            "dev": true,
+            "integrity": "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==",
+            "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz",
+            "version": "1.1.11"
+          },
+          "child_key": "node_modules/brace-expansion",
+          "child_name": "brace-expansion",
+          "child_pointer": "/packages/node_modules~1brace-expansion",
+          "declared_range": "^1.1.7",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "minimatch@3.1.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/minimatch/node_modules/brace-expansion",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/brace-expansion",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "brace-expansion": "^1.1.7"
+            },
+            "dev": true,
+            "engines": {
+              "node": "*"
+            },
+            "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+            "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+            "version": "3.1.2"
+          },
+          "parent_key": "node_modules/minimatch",
+          "parent_pointer": "/packages/node_modules~1minimatch",
+          "resolved_key": "node_modules/brace-expansion",
+          "resolved_version": "1.1.11",
+          "to_pid": "brace-expansion@1.1.11"
+        }
+      ],
+      "flagged_record_index": 3,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/minimatch",
+        "node_modules/brace-expansion"
+      ],
+      "package": "brace-expansion@1.1.11",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2",
+        "brace-expansion@1.1.11"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "child_key": "node_modules/chokidar",
+          "child_name": "chokidar",
+          "child_pointer": "/packages/node_modules~1chokidar",
+          "declared_range": "^3.5.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/chokidar",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/chokidar",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/chokidar",
+          "resolved_version": "3.6.0",
+          "to_pid": "chokidar@3.6.0"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "child_key": "node_modules/anymatch",
+          "child_name": "anymatch",
+          "child_pointer": "/packages/node_modules~1anymatch",
+          "declared_range": "~3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "chokidar@3.6.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/chokidar/node_modules/anymatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/anymatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "parent_key": "node_modules/chokidar",
+          "parent_pointer": "/packages/node_modules~1chokidar",
+          "resolved_key": "node_modules/anymatch",
+          "resolved_version": "3.1.3",
+          "to_pid": "anymatch@3.1.3"
+        },
+        {
+          "child_entry_raw": {
+            "dev": true,
+            "engines": {
+              "node": ">=8.6"
+            },
+            "funding": {
+              "url": "https://github.com/sponsors/jonschlinkert"
+            },
+            "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
+            "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+            "version": "2.3.1"
+          },
+          "child_key": "node_modules/picomatch",
+          "child_name": "picomatch",
+          "child_pointer": "/packages/node_modules~1picomatch",
+          "declared_range": "^2.0.4",
+          "dep_kind": "dependencies",
+          "edge_index": 3,
+          "from_pid": "anymatch@3.1.3",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/anymatch/node_modules/picomatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/picomatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "parent_key": "node_modules/anymatch",
+          "parent_pointer": "/packages/node_modules~1anymatch",
+          "resolved_key": "node_modules/picomatch",
+          "resolved_version": "2.3.1",
+          "to_pid": "picomatch@2.3.1"
+        }
+      ],
+      "flagged_record_index": 4,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/chokidar",
+        "node_modules/anymatch",
+        "node_modules/picomatch"
+      ],
+      "package": "chokidar@3.6.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "cookie": "0.4.1",
+              "cookie-signature": "1.0.6"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.4.6"
+          },
+          "child_key": "node_modules/cookie-parser",
+          "child_name": "cookie-parser",
+          "child_pointer": "/packages/node_modules~1cookie-parser",
+          "declared_range": "~1.4.4",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/cookie-parser",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/cookie-parser",
+          "resolved_version": "1.4.6",
+          "to_pid": "cookie-parser@1.4.6"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.6"
+            },
+            "license": "MIT",
+            "version": "0.4.1"
+          },
+          "child_key": "node_modules/cookie",
+          "child_name": "cookie",
+          "child_pointer": "/packages/node_modules~1cookie",
+          "declared_range": "0.4.1",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "cookie-parser@1.4.6",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/cookie-parser/node_modules/cookie",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/cookie",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "cookie": "0.4.1",
+              "cookie-signature": "1.0.6"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.4.6"
+          },
+          "parent_key": "node_modules/cookie-parser",
+          "parent_pointer": "/packages/node_modules~1cookie-parser",
+          "resolved_key": "node_modules/cookie",
+          "resolved_version": "0.4.1",
+          "to_pid": "cookie@0.4.1"
+        }
+      ],
+      "flagged_record_index": 5,
+      "lockfile_keys": [
+        "",
+        "node_modules/cookie-parser",
+        "node_modules/cookie"
+      ],
+      "package": "cookie-parser@1.4.6",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "cookie-parser@1.4.6",
+        "cookie@0.4.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "cookie": "0.4.1",
+              "cookie-signature": "1.0.6"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.4.6"
+          },
+          "child_key": "node_modules/cookie-parser",
+          "child_name": "cookie-parser",
+          "child_pointer": "/packages/node_modules~1cookie-parser",
+          "declared_range": "~1.4.4",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/cookie-parser",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/cookie-parser",
+          "resolved_version": "1.4.6",
+          "to_pid": "cookie-parser@1.4.6"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.6"
+            },
+            "license": "MIT",
+            "version": "0.4.1"
+          },
+          "child_key": "node_modules/cookie",
+          "child_name": "cookie",
+          "child_pointer": "/packages/node_modules~1cookie",
+          "declared_range": "0.4.1",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "cookie-parser@1.4.6",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/cookie-parser/node_modules/cookie",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/cookie",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "cookie": "0.4.1",
+              "cookie-signature": "1.0.6"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.4.6"
+          },
+          "parent_key": "node_modules/cookie-parser",
+          "parent_pointer": "/packages/node_modules~1cookie-parser",
+          "resolved_key": "node_modules/cookie",
+          "resolved_version": "0.4.1",
+          "to_pid": "cookie@0.4.1"
+        }
+      ],
+      "flagged_record_index": 6,
+      "lockfile_keys": [
+        "",
+        "node_modules/cookie-parser",
+        "node_modules/cookie"
+      ],
+      "package": "cookie@0.4.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "cookie-parser@1.4.6",
+        "cookie@0.4.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "child_key": "node_modules/express-session",
+          "child_name": "express-session",
+          "child_pointer": "/packages/node_modules~1express-session",
+          "declared_range": "^1.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express-session",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express-session",
+          "resolved_version": "1.18.0",
+          "to_pid": "express-session@1.18.0"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.6"
+            },
+            "license": "MIT",
+            "version": "0.6.0"
+          },
+          "child_key": "node_modules/express-session/node_modules/cookie",
+          "child_name": "cookie",
+          "child_pointer": "/packages/node_modules~1express-session~1node_modules~1cookie",
+          "declared_range": "0.6.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express-session@1.18.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express-session/node_modules/cookie",
+              "resolver_match": true,
+              "winning": true
+            },
+            {
+              "exists": true,
+              "key": "node_modules/cookie",
+              "resolver_match": true,
+              "winning": false
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "parent_key": "node_modules/express-session",
+          "parent_pointer": "/packages/node_modules~1express-session",
+          "resolved_key": "node_modules/express-session/node_modules/cookie",
+          "resolved_version": "0.6.0",
+          "to_pid": "cookie@0.6.0"
+        }
+      ],
+      "flagged_record_index": 7,
+      "lockfile_keys": [
+        "",
+        "node_modules/express-session",
+        "node_modules/express-session/node_modules/cookie"
+      ],
+      "package": "cookie@0.6.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "cookie@0.6.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.6"
+            },
+            "license": "MIT",
+            "version": "0.6.0"
+          },
+          "child_key": "node_modules/express/node_modules/cookie",
+          "child_name": "cookie",
+          "child_pointer": "/packages/node_modules~1express~1node_modules~1cookie",
+          "declared_range": "0.6.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express/node_modules/cookie",
+              "resolver_match": true,
+              "winning": true
+            },
+            {
+              "exists": true,
+              "key": "node_modules/cookie",
+              "resolver_match": true,
+              "winning": false
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/express/node_modules/cookie",
+          "resolved_version": "0.6.0",
+          "to_pid": "cookie@0.6.0"
+        }
+      ],
+      "flagged_record_index": 8,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/express/node_modules/cookie"
+      ],
+      "package": "cookie@0.6.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "cookie@0.6.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "deprecated": "critical issue fixed in 2.3.0",
+            "engines": {
+              "node": ">=6.0"
+            },
+            "integrity": "sha512-vDbi4fuFl8bKJqszV/7wS/f+jP7WVEYZNU15iHPL4fpmm88tXCrf+Gqil0Ta159l0PfhRWz1DrxAqhxrprb9WA==",
+            "license": "MIT",
+            "resolved": "https://registry.npmjs.org/doc-path/-/doc-path-2.1.1.tgz",
+            "version": "2.1.1"
+          },
+          "child_key": "node_modules/doc-path",
+          "child_name": "doc-path",
+          "child_pointer": "/packages/node_modules~1doc-path",
+          "declared_range": "2.1.1",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/doc-path",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/doc-path",
+          "resolved_version": "2.1.1",
+          "to_pid": "doc-path@2.1.1"
+        }
+      ],
+      "flagged_record_index": 9,
+      "lockfile_keys": [
+        "",
+        "node_modules/doc-path"
+      ],
+      "package": "doc-path@2.1.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "doc-path@2.1.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "child_key": "node_modules/express-session",
+          "child_name": "express-session",
+          "child_pointer": "/packages/node_modules~1express-session",
+          "declared_range": "^1.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express-session",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express-session",
+          "resolved_version": "1.18.0",
+          "to_pid": "express-session@1.18.0"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.6"
+            },
+            "license": "MIT",
+            "version": "0.6.0"
+          },
+          "child_key": "node_modules/express-session/node_modules/cookie",
+          "child_name": "cookie",
+          "child_pointer": "/packages/node_modules~1express-session~1node_modules~1cookie",
+          "declared_range": "0.6.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express-session@1.18.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express-session/node_modules/cookie",
+              "resolver_match": true,
+              "winning": true
+            },
+            {
+              "exists": true,
+              "key": "node_modules/cookie",
+              "resolver_match": true,
+              "winning": false
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "parent_key": "node_modules/express-session",
+          "parent_pointer": "/packages/node_modules~1express-session",
+          "resolved_key": "node_modules/express-session/node_modules/cookie",
+          "resolved_version": "0.6.0",
+          "to_pid": "cookie@0.6.0"
+        }
+      ],
+      "flagged_record_index": 10,
+      "lockfile_keys": [
+        "",
+        "node_modules/express-session",
+        "node_modules/express-session/node_modules/cookie"
+      ],
+      "package": "express-session@1.18.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "cookie@0.6.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        }
+      ],
+      "flagged_record_index": 11,
+      "lockfile_keys": [
+        "",
+        "node_modules/express"
+      ],
+      "package": "express@4.19.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "follow-redirects": "^1.3.0",
+              "is-buffer": "^1.1.5"
+            },
+            "deprecated": "Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410",
+            "integrity": "sha512-14hgP2oTu6SPu+26Ofye6Se8u5Mmjc07a0ACHTJ5POKFU1Mtxz2IxSvaWy1O+QnbSa8XHy1gYz2E1l+G26XJdA==",
+            "resolved": "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz",
+            "version": "0.18.0"
+          },
+          "child_key": "node_modules/axios",
+          "child_name": "axios",
+          "child_pointer": "/packages/node_modules~1axios",
+          "declared_range": "^0.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/axios",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/axios",
+          "resolved_version": "0.18.0",
+          "to_pid": "axios@0.18.0"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">=4.0"
+            },
+            "funding": [
+              {
+                "type": "individual",
+                "url": "https://github.com/sponsors/RubenVerborgh"
+              }
+            ],
+            "integrity": "sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==",
+            "peerDependenciesMeta": {
+              "debug": {
+                "optional": true
+              }
+            },
+            "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz",
+            "version": "1.15.6"
+          },
+          "child_key": "node_modules/follow-redirects",
+          "child_name": "follow-redirects",
+          "child_pointer": "/packages/node_modules~1follow-redirects",
+          "declared_range": "^1.3.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "axios@0.18.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/axios/node_modules/follow-redirects",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/follow-redirects",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "follow-redirects": "^1.3.0",
+              "is-buffer": "^1.1.5"
+            },
+            "deprecated": "Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410",
+            "integrity": "sha512-14hgP2oTu6SPu+26Ofye6Se8u5Mmjc07a0ACHTJ5POKFU1Mtxz2IxSvaWy1O+QnbSa8XHy1gYz2E1l+G26XJdA==",
+            "resolved": "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz",
+            "version": "0.18.0"
+          },
+          "parent_key": "node_modules/axios",
+          "parent_pointer": "/packages/node_modules~1axios",
+          "resolved_key": "node_modules/follow-redirects",
+          "resolved_version": "1.15.6",
+          "to_pid": "follow-redirects@1.15.6"
+        }
+      ],
+      "flagged_record_index": 12,
+      "lockfile_keys": [
+        "",
+        "node_modules/axios",
+        "node_modules/follow-redirects"
+      ],
+      "package": "follow-redirects@1.15.6",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "axios@0.18.0",
+        "follow-redirects@1.15.6"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "handlebars": "4.7.7",
+              "walk": "2.3.15"
+            },
+            "engines": {
+              "node": ">= 0.8",
+              "npm": "1.2.8000 || >= 1.4.16"
+            },
+            "license": "MIT",
+            "version": "4.2.0"
+          },
+          "child_key": "node_modules/hbs",
+          "child_name": "hbs",
+          "child_pointer": "/packages/node_modules~1hbs",
+          "declared_range": "^4.2.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/hbs",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/hbs",
+          "resolved_version": "4.2.0",
+          "to_pid": "hbs@4.2.0"
+        },
+        {
+          "child_entry_raw": {
+            "bin": {
+              "handlebars": "bin/handlebars"
+            },
+            "dependencies": {
+              "minimist": "^1.2.5",
+              "neo-async": "^2.6.0",
+              "source-map": "^0.6.1",
+              "wordwrap": "^1.0.0"
+            },
+            "engines": {
+              "node": ">=0.4.7"
+            },
+            "license": "MIT",
+            "optionalDependencies": {
+              "uglify-js": "^3.1.4"
+            },
+            "version": "4.7.7"
+          },
+          "child_key": "node_modules/handlebars",
+          "child_name": "handlebars",
+          "child_pointer": "/packages/node_modules~1handlebars",
+          "declared_range": "4.7.7",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "hbs@4.2.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/hbs/node_modules/handlebars",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/handlebars",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "handlebars": "4.7.7",
+              "walk": "2.3.15"
+            },
+            "engines": {
+              "node": ">= 0.8",
+              "npm": "1.2.8000 || >= 1.4.16"
+            },
+            "license": "MIT",
+            "version": "4.2.0"
+          },
+          "parent_key": "node_modules/hbs",
+          "parent_pointer": "/packages/node_modules~1hbs",
+          "resolved_key": "node_modules/handlebars",
+          "resolved_version": "4.7.7",
+          "to_pid": "handlebars@4.7.7"
+        }
+      ],
+      "flagged_record_index": 13,
+      "lockfile_keys": [
+        "",
+        "node_modules/hbs",
+        "node_modules/handlebars"
+      ],
+      "package": "handlebars@4.7.7",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "hbs@4.2.0",
+        "handlebars@4.7.7"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "handlebars": "4.7.7",
+              "walk": "2.3.15"
+            },
+            "engines": {
+              "node": ">= 0.8",
+              "npm": "1.2.8000 || >= 1.4.16"
+            },
+            "license": "MIT",
+            "version": "4.2.0"
+          },
+          "child_key": "node_modules/hbs",
+          "child_name": "hbs",
+          "child_pointer": "/packages/node_modules~1hbs",
+          "declared_range": "^4.2.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/hbs",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/hbs",
+          "resolved_version": "4.2.0",
+          "to_pid": "hbs@4.2.0"
+        },
+        {
+          "child_entry_raw": {
+            "bin": {
+              "handlebars": "bin/handlebars"
+            },
+            "dependencies": {
+              "minimist": "^1.2.5",
+              "neo-async": "^2.6.0",
+              "source-map": "^0.6.1",
+              "wordwrap": "^1.0.0"
+            },
+            "engines": {
+              "node": ">=0.4.7"
+            },
+            "license": "MIT",
+            "optionalDependencies": {
+              "uglify-js": "^3.1.4"
+            },
+            "version": "4.7.7"
+          },
+          "child_key": "node_modules/handlebars",
+          "child_name": "handlebars",
+          "child_pointer": "/packages/node_modules~1handlebars",
+          "declared_range": "4.7.7",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "hbs@4.2.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/hbs/node_modules/handlebars",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/handlebars",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "handlebars": "4.7.7",
+              "walk": "2.3.15"
+            },
+            "engines": {
+              "node": ">= 0.8",
+              "npm": "1.2.8000 || >= 1.4.16"
+            },
+            "license": "MIT",
+            "version": "4.2.0"
+          },
+          "parent_key": "node_modules/hbs",
+          "parent_pointer": "/packages/node_modules~1hbs",
+          "resolved_key": "node_modules/handlebars",
+          "resolved_version": "4.7.7",
+          "to_pid": "handlebars@4.7.7"
+        }
+      ],
+      "flagged_record_index": 14,
+      "lockfile_keys": [
+        "",
+        "node_modules/hbs",
+        "node_modules/handlebars"
+      ],
+      "package": "hbs@4.2.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "hbs@4.2.0",
+        "handlebars@4.7.7"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==",
+            "license": "MIT",
+            "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
+            "version": "4.17.15"
+          },
+          "child_key": "node_modules/lodash",
+          "child_name": "lodash",
+          "child_pointer": "/packages/node_modules~1lodash",
+          "declared_range": "4.17.15",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/lodash",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/lodash",
+          "resolved_version": "4.17.15",
+          "to_pid": "lodash@4.17.15"
+        }
+      ],
+      "flagged_record_index": 15,
+      "lockfile_keys": [
+        "",
+        "node_modules/lodash"
+      ],
+      "package": "lodash@4.17.15",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "lodash@4.17.15"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "brace-expansion": "^1.1.7"
+            },
+            "dev": true,
+            "engines": {
+              "node": "*"
+            },
+            "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+            "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+            "version": "3.1.2"
+          },
+          "child_key": "node_modules/minimatch",
+          "child_name": "minimatch",
+          "child_pointer": "/packages/node_modules~1minimatch",
+          "declared_range": "^3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/minimatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/minimatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/minimatch",
+          "resolved_version": "3.1.2",
+          "to_pid": "minimatch@3.1.2"
+        }
+      ],
+      "flagged_record_index": 16,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/minimatch"
+      ],
+      "package": "minimatch@3.1.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "child_key": "node_modules/swig",
+          "child_name": "swig",
+          "child_pointer": "/packages/node_modules~1swig",
+          "declared_range": "^1.4.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/swig",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/swig",
+          "resolved_version": "1.4.2",
+          "to_pid": "swig@1.4.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "minimist": "~0.0.1",
+              "wordwrap": "~0.0.2"
+            },
+            "license": "MIT/X11",
+            "version": "0.6.1"
+          },
+          "child_key": "node_modules/optimist",
+          "child_name": "optimist",
+          "child_pointer": "/packages/node_modules~1optimist",
+          "declared_range": "~0.6",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "swig@1.4.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/swig/node_modules/optimist",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/optimist",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "parent_key": "node_modules/swig",
+          "parent_pointer": "/packages/node_modules~1swig",
+          "resolved_key": "node_modules/optimist",
+          "resolved_version": "0.6.1",
+          "to_pid": "optimist@0.6.1"
+        },
+        {
+          "child_entry_raw": {
+            "license": "MIT",
+            "version": "0.0.10"
+          },
+          "child_key": "node_modules/minimist",
+          "child_name": "minimist",
+          "child_pointer": "/packages/node_modules~1minimist",
+          "declared_range": "~0.0.1",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "optimist@0.6.1",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/optimist/node_modules/minimist",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/minimist",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "minimist": "~0.0.1",
+              "wordwrap": "~0.0.2"
+            },
+            "license": "MIT/X11",
+            "version": "0.6.1"
+          },
+          "parent_key": "node_modules/optimist",
+          "parent_pointer": "/packages/node_modules~1optimist",
+          "resolved_key": "node_modules/minimist",
+          "resolved_version": "0.0.10",
+          "to_pid": "minimist@0.0.10"
+        }
+      ],
+      "flagged_record_index": 17,
+      "lockfile_keys": [
+        "",
+        "node_modules/swig",
+        "node_modules/optimist",
+        "node_modules/minimist"
+      ],
+      "package": "minimist@0.0.10",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "optimist@0.6.1",
+        "minimist@0.0.10"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "basic-auth": "~2.0.0",
+              "debug": "2.6.9",
+              "depd": "~1.1.2",
+              "on-finished": "~2.3.0",
+              "on-headers": "~1.0.1"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.9.1"
+          },
+          "child_key": "node_modules/morgan",
+          "child_name": "morgan",
+          "child_pointer": "/packages/node_modules~1morgan",
+          "declared_range": "~1.9.1",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/morgan",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/morgan",
+          "resolved_version": "1.9.1",
+          "to_pid": "morgan@1.9.1"
+        }
+      ],
+      "flagged_record_index": 18,
+      "lockfile_keys": [
+        "",
+        "node_modules/morgan"
+      ],
+      "package": "morgan@1.9.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "morgan@1.9.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "append-field": "^1.0.0",
+              "busboy": "^1.0.0",
+              "concat-stream": "^1.5.2",
+              "mkdirp": "^0.5.4",
+              "object-assign": "^4.1.1",
+              "type-is": "^1.6.4",
+              "xtend": "^4.0.0"
+            },
+            "engines": {
+              "node": ">= 6.0.0"
+            },
+            "license": "MIT",
+            "version": "1.4.5-lts.1"
+          },
+          "child_key": "node_modules/multer",
+          "child_name": "multer",
+          "child_pointer": "/packages/node_modules~1multer",
+          "declared_range": "^1.4.5-lts.1",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/multer",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/multer",
+          "resolved_version": "1.4.5-lts.1",
+          "to_pid": "multer@1.4.5-lts.1"
+        }
+      ],
+      "flagged_record_index": 19,
+      "lockfile_keys": [
+        "",
+        "node_modules/multer"
+      ],
+      "package": "multer@1.4.5-lts.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "multer@1.4.5-lts.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">=6.0.0"
+            },
+            "license": "MIT-0",
+            "version": "6.9.14"
+          },
+          "child_key": "node_modules/nodemailer",
+          "child_name": "nodemailer",
+          "child_pointer": "/packages/node_modules~1nodemailer",
+          "declared_range": "^6.9.14",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemailer",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemailer",
+          "resolved_version": "6.9.14",
+          "to_pid": "nodemailer@6.9.14"
+        }
+      ],
+      "flagged_record_index": 20,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemailer"
+      ],
+      "package": "nodemailer@6.9.14",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemailer@6.9.14"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "brace-expansion": "^1.1.7"
+            },
+            "dev": true,
+            "engines": {
+              "node": "*"
+            },
+            "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+            "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+            "version": "3.1.2"
+          },
+          "child_key": "node_modules/minimatch",
+          "child_name": "minimatch",
+          "child_pointer": "/packages/node_modules~1minimatch",
+          "declared_range": "^3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/minimatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/minimatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/minimatch",
+          "resolved_version": "3.1.2",
+          "to_pid": "minimatch@3.1.2"
+        }
+      ],
+      "flagged_record_index": 21,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/minimatch"
+      ],
+      "package": "nodemon@3.1.4",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "minimatch@3.1.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "child_key": "node_modules/express-session",
+          "child_name": "express-session",
+          "child_pointer": "/packages/node_modules~1express-session",
+          "declared_range": "^1.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express-session",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express-session",
+          "resolved_version": "1.18.0",
+          "to_pid": "express-session@1.18.0"
+        },
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.8"
+            },
+            "license": "MIT",
+            "version": "1.0.2"
+          },
+          "child_key": "node_modules/on-headers",
+          "child_name": "on-headers",
+          "child_pointer": "/packages/node_modules~1on-headers",
+          "declared_range": "~1.0.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express-session@1.18.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express-session/node_modules/on-headers",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/on-headers",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.7",
+              "debug": "2.6.9",
+              "depd": "~2.0.0",
+              "on-headers": "~1.0.2",
+              "parseurl": "~1.3.3",
+              "safe-buffer": "5.2.1",
+              "uid-safe": "~2.1.5"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.18.0"
+          },
+          "parent_key": "node_modules/express-session",
+          "parent_pointer": "/packages/node_modules~1express-session",
+          "resolved_key": "node_modules/on-headers",
+          "resolved_version": "1.0.2",
+          "to_pid": "on-headers@1.0.2"
+        }
+      ],
+      "flagged_record_index": 22,
+      "lockfile_keys": [
+        "",
+        "node_modules/express-session",
+        "node_modules/on-headers"
+      ],
+      "package": "on-headers@1.0.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express-session@1.18.0",
+        "on-headers@1.0.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "child_key": "node_modules/swig",
+          "child_name": "swig",
+          "child_pointer": "/packages/node_modules~1swig",
+          "declared_range": "^1.4.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/swig",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/swig",
+          "resolved_version": "1.4.2",
+          "to_pid": "swig@1.4.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "minimist": "~0.0.1",
+              "wordwrap": "~0.0.2"
+            },
+            "license": "MIT/X11",
+            "version": "0.6.1"
+          },
+          "child_key": "node_modules/optimist",
+          "child_name": "optimist",
+          "child_pointer": "/packages/node_modules~1optimist",
+          "declared_range": "~0.6",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "swig@1.4.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/swig/node_modules/optimist",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/optimist",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "parent_key": "node_modules/swig",
+          "parent_pointer": "/packages/node_modules~1swig",
+          "resolved_key": "node_modules/optimist",
+          "resolved_version": "0.6.1",
+          "to_pid": "optimist@0.6.1"
+        },
+        {
+          "child_entry_raw": {
+            "license": "MIT",
+            "version": "0.0.10"
+          },
+          "child_key": "node_modules/minimist",
+          "child_name": "minimist",
+          "child_pointer": "/packages/node_modules~1minimist",
+          "declared_range": "~0.0.1",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "optimist@0.6.1",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/optimist/node_modules/minimist",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/minimist",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "minimist": "~0.0.1",
+              "wordwrap": "~0.0.2"
+            },
+            "license": "MIT/X11",
+            "version": "0.6.1"
+          },
+          "parent_key": "node_modules/optimist",
+          "parent_pointer": "/packages/node_modules~1optimist",
+          "resolved_key": "node_modules/minimist",
+          "resolved_version": "0.0.10",
+          "to_pid": "minimist@0.0.10"
+        }
+      ],
+      "flagged_record_index": 23,
+      "lockfile_keys": [
+        "",
+        "node_modules/swig",
+        "node_modules/optimist",
+        "node_modules/minimist"
+      ],
+      "package": "optimist@0.6.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "optimist@0.6.1",
+        "minimist@0.0.10"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "license": "MIT",
+            "version": "0.1.7"
+          },
+          "child_key": "node_modules/path-to-regexp",
+          "child_name": "path-to-regexp",
+          "child_pointer": "/packages/node_modules~1path-to-regexp",
+          "declared_range": "0.1.7",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express/node_modules/path-to-regexp",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/path-to-regexp",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/path-to-regexp",
+          "resolved_version": "0.1.7",
+          "to_pid": "path-to-regexp@0.1.7"
+        }
+      ],
+      "flagged_record_index": 24,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/path-to-regexp"
+      ],
+      "package": "path-to-regexp@0.1.7",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "path-to-regexp@0.1.7"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "child_key": "node_modules/chokidar",
+          "child_name": "chokidar",
+          "child_pointer": "/packages/node_modules~1chokidar",
+          "declared_range": "^3.5.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/chokidar",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/chokidar",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/chokidar",
+          "resolved_version": "3.6.0",
+          "to_pid": "chokidar@3.6.0"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "child_key": "node_modules/anymatch",
+          "child_name": "anymatch",
+          "child_pointer": "/packages/node_modules~1anymatch",
+          "declared_range": "~3.1.2",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "chokidar@3.6.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/chokidar/node_modules/anymatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/anymatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "parent_key": "node_modules/chokidar",
+          "parent_pointer": "/packages/node_modules~1chokidar",
+          "resolved_key": "node_modules/anymatch",
+          "resolved_version": "3.1.3",
+          "to_pid": "anymatch@3.1.3"
+        },
+        {
+          "child_entry_raw": {
+            "dev": true,
+            "engines": {
+              "node": ">=8.6"
+            },
+            "funding": {
+              "url": "https://github.com/sponsors/jonschlinkert"
+            },
+            "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
+            "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+            "version": "2.3.1"
+          },
+          "child_key": "node_modules/picomatch",
+          "child_name": "picomatch",
+          "child_pointer": "/packages/node_modules~1picomatch",
+          "declared_range": "^2.0.4",
+          "dep_kind": "dependencies",
+          "edge_index": 3,
+          "from_pid": "anymatch@3.1.3",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/anymatch/node_modules/picomatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/picomatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "normalize-path": "^3.0.0",
+              "picomatch": "^2.0.4"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8"
+            },
+            "integrity": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==",
+            "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz",
+            "version": "3.1.3"
+          },
+          "parent_key": "node_modules/anymatch",
+          "parent_pointer": "/packages/node_modules~1anymatch",
+          "resolved_key": "node_modules/picomatch",
+          "resolved_version": "2.3.1",
+          "to_pid": "picomatch@2.3.1"
+        }
+      ],
+      "flagged_record_index": 25,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/chokidar",
+        "node_modules/anymatch",
+        "node_modules/picomatch"
+      ],
+      "package": "picomatch@2.3.1",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "anymatch@3.1.3",
+        "picomatch@2.3.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "side-channel": "^1.0.4"
+            },
+            "engines": {
+              "node": ">=0.6"
+            },
+            "funding": {
+              "url": "https://github.com/sponsors/ljharb"
+            },
+            "license": "BSD-3-Clause",
+            "version": "6.11.0"
+          },
+          "child_key": "node_modules/qs",
+          "child_name": "qs",
+          "child_pointer": "/packages/node_modules~1qs",
+          "declared_range": "6.11.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express/node_modules/qs",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/qs",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/qs",
+          "resolved_version": "6.11.0",
+          "to_pid": "qs@6.11.0"
+        }
+      ],
+      "flagged_record_index": 26,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/qs"
+      ],
+      "package": "qs@6.11.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "qs@6.11.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "child_key": "node_modules/nodemon",
+          "child_name": "nodemon",
+          "child_pointer": "/packages/node_modules~1nodemon",
+          "declared_range": "^3.1.4",
+          "dep_kind": "devDependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/nodemon",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/nodemon",
+          "resolved_version": "3.1.4",
+          "to_pid": "nodemon@3.1.4"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "child_key": "node_modules/chokidar",
+          "child_name": "chokidar",
+          "child_pointer": "/packages/node_modules~1chokidar",
+          "declared_range": "^3.5.2",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "nodemon@3.1.4",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/nodemon/node_modules/chokidar",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/chokidar",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "nodemon": "bin/nodemon.js"
+            },
+            "dependencies": {
+              "chokidar": "^3.5.2",
+              "debug": "^4",
+              "ignore-by-default": "^1.0.1",
+              "minimatch": "^3.1.2",
+              "pstree.remy": "^1.1.8",
+              "semver": "^7.5.3",
+              "simple-update-notifier": "^2.0.0",
+              "supports-color": "^5.5.0",
+              "touch": "^3.1.0",
+              "undefsafe": "^2.0.5"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=10"
+            },
+            "funding": {
+              "type": "opencollective",
+              "url": "https://opencollective.com/nodemon"
+            },
+            "integrity": "sha512-wjPBbFhtpJwmIeY2yP7QF+UKzPfltVGtfce1g/bB15/8vCGZj8uxD62b/b9M9/WVgme0NZudpownKN+c0plXlQ==",
+            "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-3.1.4.tgz",
+            "version": "3.1.4"
+          },
+          "parent_key": "node_modules/nodemon",
+          "parent_pointer": "/packages/node_modules~1nodemon",
+          "resolved_key": "node_modules/chokidar",
+          "resolved_version": "3.6.0",
+          "to_pid": "chokidar@3.6.0"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "picomatch": "^2.2.1"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=8.10.0"
+            },
+            "integrity": "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==",
+            "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "child_key": "node_modules/readdirp",
+          "child_name": "readdirp",
+          "child_pointer": "/packages/node_modules~1readdirp",
+          "declared_range": "~3.6.0",
+          "dep_kind": "dependencies",
+          "edge_index": 2,
+          "from_pid": "chokidar@3.6.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/chokidar/node_modules/readdirp",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/readdirp",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "anymatch": "~3.1.2",
+              "braces": "~3.0.2",
+              "glob-parent": "~5.1.2",
+              "is-binary-path": "~2.1.0",
+              "is-glob": "~4.0.1",
+              "normalize-path": "~3.0.0",
+              "readdirp": "~3.6.0"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">= 8.10.0"
+            },
+            "funding": {
+              "url": "https://paulmillr.com/funding/"
+            },
+            "integrity": "sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==",
+            "optionalDependencies": {
+              "fsevents": "~2.3.2"
+            },
+            "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "parent_key": "node_modules/chokidar",
+          "parent_pointer": "/packages/node_modules~1chokidar",
+          "resolved_key": "node_modules/readdirp",
+          "resolved_version": "3.6.0",
+          "to_pid": "readdirp@3.6.0"
+        },
+        {
+          "child_entry_raw": {
+            "dev": true,
+            "engines": {
+              "node": ">=8.6"
+            },
+            "funding": {
+              "url": "https://github.com/sponsors/jonschlinkert"
+            },
+            "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
+            "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz",
+            "version": "2.3.1"
+          },
+          "child_key": "node_modules/picomatch",
+          "child_name": "picomatch",
+          "child_pointer": "/packages/node_modules~1picomatch",
+          "declared_range": "^2.2.1",
+          "dep_kind": "dependencies",
+          "edge_index": 3,
+          "from_pid": "readdirp@3.6.0",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/readdirp/node_modules/picomatch",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/picomatch",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "picomatch": "^2.2.1"
+            },
+            "dev": true,
+            "engines": {
+              "node": ">=8.10.0"
+            },
+            "integrity": "sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==",
+            "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz",
+            "version": "3.6.0"
+          },
+          "parent_key": "node_modules/readdirp",
+          "parent_pointer": "/packages/node_modules~1readdirp",
+          "resolved_key": "node_modules/picomatch",
+          "resolved_version": "2.3.1",
+          "to_pid": "picomatch@2.3.1"
+        }
+      ],
+      "flagged_record_index": 27,
+      "lockfile_keys": [
+        "",
+        "node_modules/nodemon",
+        "node_modules/chokidar",
+        "node_modules/readdirp",
+        "node_modules/picomatch"
+      ],
+      "package": "readdirp@3.6.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "nodemon@3.1.4",
+        "chokidar@3.6.0",
+        "readdirp@3.6.0",
+        "picomatch@2.3.1"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "integrity": "sha512-uPIAjU2zpyv2QJCZ1zaWZKnPv/5jgkaitE7WHomV4Mxu6kgHY1ruIQ1oTikEta/Sux3E8pZAozzJRsAUu3iDZA==",
+            "license": "MIT",
+            "resolved": "https://registry.npmjs.org/safe-eval/-/safe-eval-0.3.0.tgz",
+            "version": "0.3.0"
+          },
+          "child_key": "node_modules/safe-eval",
+          "child_name": "safe-eval",
+          "child_pointer": "/packages/node_modules~1safe-eval",
+          "declared_range": "0.3.0",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/safe-eval",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/safe-eval",
+          "resolved_version": "0.3.0",
+          "to_pid": "safe-eval@0.3.0"
+        }
+      ],
+      "flagged_record_index": 28,
+      "lockfile_keys": [
+        "",
+        "node_modules/safe-eval"
+      ],
+      "package": "safe-eval@0.3.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "safe-eval@0.3.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "destroy": "1.2.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "mime": "1.6.0",
+              "ms": "2.1.3",
+              "on-finished": "2.4.1",
+              "range-parser": "~1.2.1",
+              "statuses": "2.0.1"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "0.18.0"
+          },
+          "child_key": "node_modules/send",
+          "child_name": "send",
+          "child_pointer": "/packages/node_modules~1send",
+          "declared_range": "0.18.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express/node_modules/send",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/send",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/send",
+          "resolved_version": "0.18.0",
+          "to_pid": "send@0.18.0"
+        }
+      ],
+      "flagged_record_index": 29,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/send"
+      ],
+      "package": "send@0.18.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "send@0.18.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "child_key": "node_modules/express",
+          "child_name": "express",
+          "child_pointer": "/packages/node_modules~1express",
+          "declared_range": "^4.19.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/express",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/express",
+          "resolved_version": "4.19.2",
+          "to_pid": "express@4.19.2"
+        },
+        {
+          "child_entry_raw": {
+            "dependencies": {
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "parseurl": "~1.3.3",
+              "send": "0.18.0"
+            },
+            "engines": {
+              "node": ">= 0.8.0"
+            },
+            "license": "MIT",
+            "version": "1.15.0"
+          },
+          "child_key": "node_modules/serve-static",
+          "child_name": "serve-static",
+          "child_pointer": "/packages/node_modules~1serve-static",
+          "declared_range": "1.15.0",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "express@4.19.2",
+          "lookup_order": [
+            {
+              "exists": false,
+              "key": "node_modules/express/node_modules/serve-static",
+              "resolver_match": false,
+              "winning": false
+            },
+            {
+              "exists": true,
+              "key": "node_modules/serve-static",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "accepts": "~1.3.8",
+              "array-flatten": "1.1.1",
+              "body-parser": "1.20.2",
+              "content-disposition": "0.5.4",
+              "content-type": "~1.0.4",
+              "cookie": "0.6.0",
+              "cookie-signature": "1.0.6",
+              "debug": "2.6.9",
+              "depd": "2.0.0",
+              "encodeurl": "~1.0.2",
+              "escape-html": "~1.0.3",
+              "etag": "~1.8.1",
+              "finalhandler": "1.2.0",
+              "fresh": "0.5.2",
+              "http-errors": "2.0.0",
+              "merge-descriptors": "1.0.1",
+              "methods": "~1.1.2",
+              "on-finished": "2.4.1",
+              "parseurl": "~1.3.3",
+              "path-to-regexp": "0.1.7",
+              "proxy-addr": "~2.0.7",
+              "qs": "6.11.0",
+              "range-parser": "~1.2.1",
+              "safe-buffer": "5.2.1",
+              "send": "0.18.0",
+              "serve-static": "1.15.0",
+              "setprototypeof": "1.2.0",
+              "statuses": "2.0.1",
+              "type-is": "~1.6.18",
+              "utils-merge": "1.0.1",
+              "vary": "~1.1.2"
+            },
+            "engines": {
+              "node": ">= 0.10.0"
+            },
+            "license": "MIT",
+            "version": "4.19.2"
+          },
+          "parent_key": "node_modules/express",
+          "parent_pointer": "/packages/node_modules~1express",
+          "resolved_key": "node_modules/serve-static",
+          "resolved_version": "1.15.0",
+          "to_pid": "serve-static@1.15.0"
+        }
+      ],
+      "flagged_record_index": 30,
+      "lockfile_keys": [
+        "",
+        "node_modules/express",
+        "node_modules/serve-static"
+      ],
+      "package": "serve-static@1.15.0",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "express@4.19.2",
+        "serve-static@1.15.0"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "child_key": "node_modules/swig",
+          "child_name": "swig",
+          "child_pointer": "/packages/node_modules~1swig",
+          "declared_range": "^1.4.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/swig",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/swig",
+          "resolved_version": "1.4.2",
+          "to_pid": "swig@1.4.2"
+        }
+      ],
+      "flagged_record_index": 31,
+      "lockfile_keys": [
+        "",
+        "node_modules/swig"
+      ],
+      "package": "swig@1.4.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "child_key": "node_modules/swig",
+          "child_name": "swig",
+          "child_pointer": "/packages/node_modules~1swig",
+          "declared_range": "^1.4.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/swig",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/swig",
+          "resolved_version": "1.4.2",
+          "to_pid": "swig@1.4.2"
+        },
+        {
+          "child_entry_raw": {
+            "bin": {
+              "uglifyjs": "bin/uglifyjs"
+            },
+            "dependencies": {
+              "async": "~0.2.6",
+              "source-map": "0.1.34",
+              "uglify-to-browserify": "~1.0.0",
+              "yargs": "~3.5.4"
+            },
+            "engines": {
+              "node": ">=0.4.0"
+            },
+            "license": "BSD",
+            "version": "2.4.24"
+          },
+          "child_key": "node_modules/swig/node_modules/uglify-js",
+          "child_name": "uglify-js",
+          "child_pointer": "/packages/node_modules~1swig~1node_modules~1uglify-js",
+          "declared_range": "~2.4",
+          "dep_kind": "dependencies",
+          "edge_index": 1,
+          "from_pid": "swig@1.4.2",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/swig/node_modules/uglify-js",
+              "resolver_match": true,
+              "winning": true
+            },
+            {
+              "exists": true,
+              "key": "node_modules/uglify-js",
+              "resolver_match": true,
+              "winning": false
+            }
+          ],
+          "parent_entry_raw": {
+            "bin": {
+              "swig": "bin/swig.js"
+            },
+            "dependencies": {
+              "optimist": "~0.6",
+              "uglify-js": "~2.4"
+            },
+            "engines": {
+              "node": ">=0.10.0"
+            },
+            "license": "MIT",
+            "version": "1.4.2"
+          },
+          "parent_key": "node_modules/swig",
+          "parent_pointer": "/packages/node_modules~1swig",
+          "resolved_key": "node_modules/swig/node_modules/uglify-js",
+          "resolved_version": "2.4.24",
+          "to_pid": "uglify-js@2.4.24"
+        }
+      ],
+      "flagged_record_index": 32,
+      "lockfile_keys": [
+        "",
+        "node_modules/swig",
+        "node_modules/swig/node_modules/uglify-js"
+      ],
+      "package": "uglify-js@2.4.24",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "swig@1.4.2",
+        "uglify-js@2.4.24"
+      ],
+      "path_index": 0
+    },
+    {
+      "edges": [
+        {
+          "child_entry_raw": {
+            "engines": {
+              "node": ">= 0.10"
+            },
+            "integrity": "sha512-mD45p0rvHVBlY2Zuy3F3ESIe1h5X58GPfAtslBjY7EtTqGquZTj+VX/J4RnHWN8FKq0C9WRVt1oWAcytWRuYLQ==",
+            "license": "MIT",
+            "resolved": "https://registry.npmjs.org/validator/-/validator-13.5.2.tgz",
+            "version": "13.5.2"
+          },
+          "child_key": "node_modules/validator",
+          "child_name": "validator",
+          "child_pointer": "/packages/node_modules~1validator",
+          "declared_range": "13.5.2",
+          "dep_kind": "dependencies",
+          "edge_index": 0,
+          "from_pid": "verademo-javascript@0.0.0",
+          "lookup_order": [
+            {
+              "exists": true,
+              "key": "node_modules/validator",
+              "resolver_match": true,
+              "winning": true
+            }
+          ],
+          "parent_entry_raw": {
+            "dependencies": {
+              "async": "^3.2.5",
+              "axios": "^0.18.0",
+              "cookie-parser": "~1.4.4",
+              "debug": "~2.6.9",
+              "doc-path": "2.1.1",
+              "dotenv": "^16.4.5",
+              "express": "^4.19.2",
+              "express-session": "^1.18.0",
+              "hbs": "^4.2.0",
+              "http-errors": "~1.6.3",
+              "lodash": "4.17.15",
+              "moment": "^2.30.1",
+              "morgan": "~1.9.1",
+              "multer": "^1.4.5-lts.1",
+              "mysql": "^2.18.1",
+              "nodemailer": "^6.9.14",
+              "pyformat": "^1.0.0-0",
+              "safe-eval": "0.3.0",
+              "semver": "^7.6.2",
+              "speakeasy": "^2.0.0",
+              "swig": "^1.4.2",
+              "validator": "13.5.2"
+            },
+            "devDependencies": {
+              "nodemon": "^3.1.4"
+            },
+            "name": "verademo-javascript",
+            "version": "0.0.0"
+          },
+          "parent_key": "",
+          "parent_pointer": "/packages/",
+          "resolved_key": "node_modules/validator",
+          "resolved_version": "13.5.2",
+          "to_pid": "validator@13.5.2"
+        }
+      ],
+      "flagged_record_index": 33,
+      "lockfile_keys": [
+        "",
+        "node_modules/validator"
+      ],
+      "package": "validator@13.5.2",
+      "path": [
+        "verademo-javascript@0.0.0",
+        "validator@13.5.2"
+      ],
+      "path_index": 0
+    }
+  ],
+  "schema": "vulnchain-explorer/edge_evidence/1",
+  "sources": [
+    "demo/sample-lock.json",
+    "proof/out/flagged_packages.json",
+    "proof/verify_paths.py"
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "comparison_items": [
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "axios@0.18.0",
+      "name": "axios",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "body-parser@1.20.2",
+      "name": "body-parser",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "brace-expansion@1.1.11",
+      "name": "brace-expansion",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "UNEXPLAINED",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "cookie-parser@1.4.6",
+      "name": "cookie-parser",
+      "nodes": null,
+      "npm_advisory_ids": [],
+      "range": "1.0.1 - 1.4.6",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "cookie@0.4.1",
+      "name": "cookie",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "cookie@0.6.0",
+      "name": "cookie",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "doc-path@2.1.1",
+      "name": "doc-path",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "version_range_resolution",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "express-session@1.18.0",
+      "name": "express-session",
+      "nodes": null,
+      "npm_advisory_ids": [],
+      "range": "1.0.1 - 1.18.1",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "express@4.19.2",
+      "name": "express",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "follow-redirects@1.15.6",
+      "name": "follow-redirects",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "handlebars@4.7.7",
+      "name": "handlebars",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "advisory_db_differences",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "hbs@4.2.0",
+      "name": "hbs",
+      "nodes": null,
+      "npm_advisory_ids": [
+        "GHSA-7f5c-rpf4-86p8"
+      ],
+      "range": "*",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "lodash@4.17.15",
+      "name": "lodash",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "minimatch@3.1.2",
+      "name": "minimatch",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "minimist@0.0.10",
+      "name": "minimist",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "advisory_db_differences",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "moment@2.30.1",
+      "name": "moment",
+      "nodes": null,
+      "npm_advisory_ids": [
+        "GHSA-4p3w-j4w9-5jqw"
+      ],
+      "range": "2.29.2 - 2.30.1",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "morgan@1.9.1",
+      "name": "morgan",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "version_range_resolution",
+      "comparison_group": "vulnchain_only",
+      "fixAvailable": null,
+      "item": "multer@1.4.5-lts.1",
+      "name": "multer",
+      "nodes": null,
+      "npm_advisory_ids": [],
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "nodemailer@6.9.14",
+      "name": "nodemailer",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "on-headers@1.0.2",
+      "name": "on-headers",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "version_range_resolution",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "optimist@0.6.1",
+      "name": "optimist",
+      "nodes": null,
+      "npm_advisory_ids": [],
+      "range": ">=0.6.0",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "path-to-regexp@0.1.7",
+      "name": "path-to-regexp",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "picomatch@2.3.1",
+      "name": "picomatch",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "advisory_db_differences",
+      "comparison_group": "npm_audit_only",
+      "fixAvailable": null,
+      "item": "proxy-addr@2.0.7",
+      "name": "proxy-addr",
+      "nodes": null,
+      "npm_advisory_ids": [
+        "GHSA-jqcg-44mw-7w3h"
+      ],
+      "range": "1.1.0 - 2.0.7",
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "qs@6.11.0",
+      "name": "qs",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "safe-eval@0.3.0",
+      "name": "safe-eval",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "send@0.18.0",
+      "name": "send",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "serve-static@1.15.0",
+      "name": "serve-static",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "swig@1.4.2",
+      "name": "swig",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "uglify-js@2.4.24",
+      "name": "uglify-js",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    },
+    {
+      "cause": "NOT_A_DISCREPANCY",
+      "comparison_group": "both",
+      "fixAvailable": null,
+      "item": "validator@13.5.2",
+      "name": "validator",
+      "nodes": null,
+      "npm_advisory_ids": null,
+      "range": null,
+      "severity": null,
+      "via": null
+    }
+  ],
+  "entries": null,
+  "label": "presentation layer; no npm audit run",
+  "missing_fields": [
+    "name",
+    "severity",
+    "via",
+    "range",
+    "fixAvailable",
+    "nodes"
+  ],
+  "raw_stdout": null,
+  "raw_stdout_match_reason": null,
+  "reason": "The RAW `npm audit --json` stdout was not saved by proof/compare_npm_audit.py: it records stdout_sha256, stdout_bytes, stderr and derived fields only, and discards run['stdout'] after json.loads. No tracked file contains it. Re-running npm audit is prohibited by this export, so per-entry fields are left null and listed in MISSING.md.",
+  "recorded": {
+    "causes": [
+      {
+        "cause": "version_range_resolution",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 1,
+          "npm_ids": [],
+          "other_version_advisory": true,
+          "range": null,
+          "tool_bug_case_listed": false,
+          "vc_ids": [
+            "GHSA-44fp-w29j-9vj5",
+            "GHSA-4pg4-qvpc-4q3h",
+            "GHSA-535w-7cp7-47q4",
+            "GHSA-5528-5vmv-3xc2",
+            "GHSA-72gw-mp4g-v24j",
+            "GHSA-fjgf-rc76-4x9p",
+            "GHSA-g5hg-p3ph-g8qg",
+            "GHSA-qvfw-j98x-7q72",
+            "GHSA-v52c-386h-88mc",
+            "GHSA-wc9g-mqfw-jrwm",
+            "GHSA-xf7r-hgr6-v32p"
+          ]
+        },
+        "group": "vulnchain_only",
+        "item": "multer@1.4.5-lts.1"
+      },
+      {
+        "cause": "UNEXPLAINED",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 1,
+          "npm_ids": [],
+          "other_version_advisory": false,
+          "range": "1.0.1 - 1.4.6",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "cookie-parser@1.4.6"
+      },
+      {
+        "cause": "version_range_resolution",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 1,
+          "npm_ids": [],
+          "other_version_advisory": false,
+          "range": "1.0.1 - 1.18.1",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "express-session@1.18.0"
+      },
+      {
+        "cause": "advisory_db_differences",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 1,
+          "npm_ids": [
+            "GHSA-7f5c-rpf4-86p8"
+          ],
+          "other_version_advisory": true,
+          "range": "*",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "hbs@4.2.0"
+      },
+      {
+        "cause": "advisory_db_differences",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 1,
+          "npm_ids": [
+            "GHSA-4p3w-j4w9-5jqw"
+          ],
+          "other_version_advisory": true,
+          "range": "2.29.2 - 2.30.1",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "moment@2.30.1"
+      },
+      {
+        "cause": "version_range_resolution",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 2,
+          "npm_ids": [],
+          "other_version_advisory": false,
+          "range": ">=0.6.0",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "optimist@0.6.1"
+      },
+      {
+        "cause": "advisory_db_differences",
+        "evidence": {
+          "all_dev": false,
+          "depth_from_root": 2,
+          "npm_ids": [
+            "GHSA-jqcg-44mw-7w3h"
+          ],
+          "other_version_advisory": false,
+          "range": "1.1.0 - 2.0.7",
+          "tool_bug_case_listed": false,
+          "vc_ids": []
+        },
+        "group": "npm_audit_only",
+        "item": "proxy-addr@2.0.7"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "axios@0.18.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "body-parser@1.20.2"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "brace-expansion@1.1.11"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "cookie@0.4.1"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "cookie@0.6.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "doc-path@2.1.1"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "express@4.19.2"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "follow-redirects@1.15.6"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "handlebars@4.7.7"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "lodash@4.17.15"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "minimatch@3.1.2"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "minimist@0.0.10"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "morgan@1.9.1"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "nodemailer@6.9.14"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "on-headers@1.0.2"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "path-to-regexp@0.1.7"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "picomatch@2.3.1"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "qs@6.11.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "safe-eval@0.3.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "send@0.18.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "serve-static@1.15.0"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "swig@1.4.2"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "uglify-js@2.4.24"
+      },
+      {
+        "cause": "NOT_A_DISCREPANCY",
+        "evidence": {},
+        "group": "found_by_both",
+        "item": "validator@13.5.2"
+      }
+    ],
+    "command": "npm audit --json",
+    "counts": {
+      "cause_counts": {
+        "NOT_A_DISCREPANCY": 24,
+        "UNEXPLAINED": 1,
+        "advisory_db_differences": 3,
+        "version_range_resolution": 3
+      },
+      "discrepancy_items": 7,
+      "found_by_both": 24,
+      "npm_audit_only": 6,
+      "npm_items": 30,
+      "unmatched_npm_nodes": 0,
+      "vc_items": 25,
+      "vulnchain_only": 1
+    },
+    "error": null,
+    "exit_code": 1,
+    "groups": {
+      "found_by_both": [
+        "axios@0.18.0",
+        "body-parser@1.20.2",
+        "brace-expansion@1.1.11",
+        "cookie@0.4.1",
+        "cookie@0.6.0",
+        "doc-path@2.1.1",
+        "express@4.19.2",
+        "follow-redirects@1.15.6",
+        "handlebars@4.7.7",
+        "lodash@4.17.15",
+        "minimatch@3.1.2",
+        "minimist@0.0.10",
+        "morgan@1.9.1",
+        "nodemailer@6.9.14",
+        "on-headers@1.0.2",
+        "path-to-regexp@0.1.7",
+        "picomatch@2.3.1",
+        "qs@6.11.0",
+        "safe-eval@0.3.0",
+        "send@0.18.0",
+        "serve-static@1.15.0",
+        "swig@1.4.2",
+        "uglify-js@2.4.24",
+        "validator@13.5.2"
+      ],
+      "npm_audit_only": [
+        "cookie-parser@1.4.6",
+        "express-session@1.18.0",
+        "hbs@4.2.0",
+        "moment@2.30.1",
+        "optimist@0.6.1",
+        "proxy-addr@2.0.7"
+      ],
+      "vulnchain_only": [
+        "multer@1.4.5-lts.1"
+      ]
+    },
+    "npm_audit_metadata_vulnerabilities": {
+      "critical": 7,
+      "high": 12,
+      "info": 0,
+      "low": 6,
+      "moderate": 4,
+      "total": 29
+    },
+    "resolved_binary": "C:\\Users\\soumy\\.workbuddy-ai\\binaries\\node\\versions\\22.22.2-6\\npm.cmd",
+    "source": "proof/out/npm_audit_comparison.json",
+    "status": "COMPLETED",
+    "stderr": "",
+    "stdout_bytes": 70866,
+    "stdout_sha256": "8fe1e88e0ae3a2e5a65bc4e1399e328cd4a35e6b30965fbaa453fac818427c6c",
+    "unexplained_count": 1,
+    "unmatched_npm_nodes": [],
+    "vulnerability_entries": 29
+  },
+  "schema": "vulnchain-explorer/npm_audit_detail/1",
+  "searched_files": [
+    "phase5/demo/npm_legacy_app.json",
+    "phase5/demo/npm_personal_132pkg.json",
+    "phase5/demo/npm_vuln_test.json"
+  ],
+  "status": "MISSING"
+}

@@ -1,0 +1,2193 @@
+{
+  "advisories": [
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-27904"
+      ],
+      "id": "GHSA-23c5-xmqv-rm74",
+      "packages_offline": [
+        "minimatch@3.1.2"
+      ],
+      "packages_online": [
+        "minimatch@3.1.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-23c5-xmqv-rm74"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82661"
+      ],
+      "id": "GHSA-268h-hp4c-crq3",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-268h-hp4c-crq3"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-27r3-jxmh-p828",
+      "packages_offline": [],
+      "packages_online": [
+        "body-parser@1.20.2"
+      ],
+      "sources": [
+        "osv_cache",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-27r3-jxmh-p828"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2020-28500"
+      ],
+      "id": "GHSA-29mw-wpgm-hmr9",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [
+        "lodash@4.17.15"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-29mw-wpgm-hmr9"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33916"
+      ],
+      "id": "GHSA-2qvq-rjwj-gvw9",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-2qvq-rjwj-gvw9"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2023-25345"
+      ],
+      "id": "GHSA-2rq5-699j-x7p6",
+      "packages_offline": [
+        "swig@1.4.2"
+      ],
+      "packages_online": [
+        "swig@1.4.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-2rq5-699j-x7p6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33937"
+      ],
+      "id": "GHSA-2w6w-674q-4c4q",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-2w6w-674q-4c4q"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-92596"
+      ],
+      "id": "GHSA-2x7j-588g-ccc2",
+      "packages_offline": [
+        "nodemailer@6.9.14"
+      ],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "osv_cache",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-2x7j-588g-ccc2"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-33vh-7x8q-mg35",
+      "packages_offline": [
+        "safe-eval@0.3.0"
+      ],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "osv_cache",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-33vh-7x8q-mg35"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-23337",
+        "CVE-2026-4800",
+        "GHSA-r5fr-rjxr-66jc"
+      ],
+      "id": "GHSA-35jh-r3h4-6jhm",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [
+        "lodash@4.17.15"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-35jh-r3h4-6jhm"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-45296",
+        "CVE-2026-4867",
+        "GHSA-9wv6-86v2-598j"
+      ],
+      "id": "GHSA-37ch-88jc-xwx2",
+      "packages_offline": [
+        "path-to-regexp@0.1.7"
+      ],
+      "packages_online": [
+        "path-to-regexp@0.1.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-37ch-88jc-xwx2"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-39m8-27wv-hr27",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-39m8-27wv-hr27"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-13149"
+      ],
+      "id": "GHSA-3jxr-9vmj-r5cp",
+      "packages_offline": [
+        "brace-expansion@1.1.11"
+      ],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-3jxr-9vmj-r5cp"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33938"
+      ],
+      "id": "GHSA-3mfm-83xf-c92r",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-3mfm-83xf-c92r"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-62718"
+      ],
+      "id": "GHSA-3p68-rc4w-qgx5",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-3p68-rc4w-qgx5"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-26996"
+      ],
+      "id": "GHSA-3ppc-4f35-3m26",
+      "packages_offline": [
+        "minimatch@3.1.2"
+      ],
+      "packages_online": [
+        "minimatch@3.1.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-3ppc-4f35-3m26"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33672"
+      ],
+      "id": "GHSA-3v7f-55p6-f55p",
+      "packages_offline": [
+        "picomatch@2.3.1"
+      ],
+      "packages_online": [
+        "picomatch@2.3.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-3v7f-55p6-f55p"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-42xw-2xvc-qx8m",
+      "packages_offline": [
+        "axios@0.18.0"
+      ],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "osv_cache",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-42xw-2xvc-qx8m"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-25639"
+      ],
+      "id": "GHSA-43fc-jf86-j433",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-43fc-jf86-j433"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-442j-39wm-28r2",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-442j-39wm-28r2"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-47935"
+      ],
+      "id": "GHSA-44fp-w29j-9vj5",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-44fp-w29j-9vj5"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-4ffr-jq9g-5ffx",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4ffr-jq9g-5ffx"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-4g23-2xm8-66gc",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4g23-2xm8-66gc"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82417"
+      ],
+      "id": "GHSA-4mjr-xmp4-gh2g",
+      "packages_offline": [
+        "qs@6.11.0"
+      ],
+      "packages_online": [
+        "qs@6.11.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "osv_cache",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4mjr-xmp4-gh2g"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-4p3w-j4w9-5jqw",
+      "packages_offline": [],
+      "packages_online": [
+        "moment@2.30.1"
+      ],
+      "sources": [
+        "proof/out/npm_audit_comparison.json:evidence.npm_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4p3w-j4w9-5jqw"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-47944"
+      ],
+      "id": "GHSA-4pg4-qvpc-4q3h",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4pg4-qvpc-4q3h"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-5078"
+      ],
+      "id": "GHSA-4vj7-5mj6-jm8m",
+      "packages_offline": [
+        "morgan@1.9.1"
+      ],
+      "packages_online": [
+        "morgan@1.9.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4vj7-5mj6-jm8m"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2020-28168"
+      ],
+      "id": "GHSA-4w2v-q235-vp99",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-4w2v-q235-vp99"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82333"
+      ],
+      "id": "GHSA-535w-7cp7-47q4",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-535w-7cp7-47q4"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-3520"
+      ],
+      "id": "GHSA-5528-5vmv-3xc2",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-5528-5vmv-3xc2"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42034"
+      ],
+      "id": "GHSA-5c9x-8gcm-mpgx",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-5c9x-8gcm-mpgx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42039"
+      ],
+      "id": "GHSA-62hf-57xw-28j9",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-62hf-57xw-28j9"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42035"
+      ],
+      "id": "GHSA-6chq-wfr3-2hj9",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-6chq-wfr3-2hj9"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-6j4f-fj2g-mc7p",
+      "packages_offline": [],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-6j4f-fj2g-mc7p"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-6pq8-jhm2-2vcw",
+      "packages_offline": [],
+      "packages_online": [
+        "qs@6.11.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-6pq8-jhm2-2vcw"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-15284"
+      ],
+      "id": "GHSA-6rw7-vpxm-498p",
+      "packages_offline": [
+        "qs@6.11.0"
+      ],
+      "packages_online": [
+        "qs@6.11.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-6rw7-vpxm-498p"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-6vj9-mwq6-2f5v",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-6vj9-mwq6-2f5v"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-5079"
+      ],
+      "id": "GHSA-72gw-mp4g-v24j",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-72gw-mp4g-v24j"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-7339"
+      ],
+      "id": "GHSA-76c9-3jph-rj3q",
+      "packages_offline": [
+        "on-headers@1.0.2"
+      ],
+      "packages_online": [
+        "on-headers@1.0.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-76c9-3jph-rj3q"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-79xf-67r4-q2jj",
+      "packages_offline": [],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-79xf-67r4-q2jj"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-32822"
+      ],
+      "id": "GHSA-7f5c-rpf4-86p8",
+      "packages_offline": [],
+      "packages_online": [
+        "hbs@4.2.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/npm_audit_comparison.json:evidence.npm_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-7f5c-rpf4-86p8"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-67319"
+      ],
+      "id": "GHSA-7q8q-rj6j-mhjq",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-7q8q-rj6j-mhjq"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-27903"
+      ],
+      "id": "GHSA-7r86-cg39-jmmj",
+      "packages_offline": [
+        "minimatch@3.1.2"
+      ],
+      "packages_online": [
+        "minimatch@3.1.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-7r86-cg39-jmmj"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-7rx3-28cr-v5wh",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-7rx3-28cr-v5wh"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-85x2-q946-cp5h",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-85x2-q946-cp5h"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-44490"
+      ],
+      "id": "GHSA-898c-q2cr-xwhg",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-898c-q2cr-xwhg"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-8c8m-p3m8-cjg8",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-8c8m-p3m8-cjg8"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-92595"
+      ],
+      "id": "GHSA-8m3c-c648-2xjj",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-8m3c-c648-2xjj"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-8r5x-fm3f-whwj",
+      "packages_offline": [],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-8r5x-fm3f-whwj"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-8vvx-rff5-p5rq",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-8vvx-rff5-p5rq"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-56200"
+      ],
+      "id": "GHSA-9965-vmph-33xx",
+      "packages_offline": [
+        "validator@13.5.2"
+      ],
+      "packages_online": [
+        "validator@13.5.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-9965-vmph-33xx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33939"
+      ],
+      "id": "GHSA-9cx6-37pm-9jff",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-9cx6-37pm-9jff"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-9f6g-j8ch-79g4",
+      "packages_offline": [],
+      "packages_online": [
+        "morgan@1.9.1"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-9f6g-j8ch-79g4"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-9pcf-h8q9-63f6",
+      "packages_offline": [],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-9pcf-h8q9-63f6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-45296",
+        "CVE-2026-4867",
+        "GHSA-37ch-88jc-xwx2"
+      ],
+      "id": "GHSA-9wv6-86v2-598j",
+      "packages_offline": [
+        "path-to-regexp@0.1.7"
+      ],
+      "packages_online": [
+        "path-to-regexp@0.1.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-9wv6-86v2-598j"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33671"
+      ],
+      "id": "GHSA-c2c7-rcm5-vvqj",
+      "packages_offline": [
+        "picomatch@2.3.1"
+      ],
+      "packages_online": [
+        "picomatch@2.3.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-c2c7-rcm5-vvqj"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82854"
+      ],
+      "id": "GHSA-c7w3-x93f-qmm8",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-c7w3-x93f-qmm8"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2015-8858"
+      ],
+      "id": "GHSA-c9f4-xj24-8jqx",
+      "packages_offline": [
+        "uglify-js@2.4.24"
+      ],
+      "packages_online": [
+        "uglify-js@2.4.24"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-c9f4-xj24-8jqx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-43800"
+      ],
+      "id": "GHSA-cm22-4g7w-348p",
+      "packages_offline": [
+        "serve-static@1.15.0"
+      ],
+      "packages_online": [
+        "serve-static@1.15.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-cm22-4g7w-348p"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-3749"
+      ],
+      "id": "GHSA-cph5-m8f7-6c5x",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-cph5-m8f7-6c5x"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-13465",
+        "CVE-2026-2950",
+        "GHSA-xxjr-mmjv-4gpg"
+      ],
+      "id": "GHSA-f23m-r3pf-42rh",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-f23m-r3pf-42rh"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33750"
+      ],
+      "id": "GHSA-f886-m6hf-6m8v",
+      "packages_offline": [
+        "brace-expansion@1.1.11"
+      ],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-f886-m6hf-6m8v"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-7338"
+      ],
+      "id": "GHSA-fjgf-rc76-4x9p",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-fjgf-rc76-4x9p"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-40175"
+      ],
+      "id": "GHSA-fvcv-3m26-pcqx",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-fvcv-3m26-pcqx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-48997"
+      ],
+      "id": "GHSA-g5hg-p3ph-g8qg",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-g5hg-p3ph-g8qg"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-g73g-hqqh-jr95",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-g73g-hqqh-jr95"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-gm8g-xhh8-rmwr",
+      "packages_offline": [
+        "doc-path@2.1.1"
+      ],
+      "packages_online": [
+        "doc-path@2.1.1"
+      ],
+      "sources": [
+        "osv_cache",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-gm8g-xhh8-rmwr"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-hcg3-56jf-x4vh",
+      "packages_offline": [],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-hcg3-56jf-x4vh"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-44496"
+      ],
+      "id": "GHSA-hfxv-24rg-xrqf",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-hfxv-24rg-xrqf"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-hrpq-r399-whgw",
+      "packages_offline": [],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-hrpq-r399-whgw"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-44486"
+      ],
+      "id": "GHSA-j5f8-grm9-p9fc",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-j5f8-grm9-p9fc"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-jqcg-44mw-7w3h",
+      "packages_offline": [],
+      "packages_online": [
+        "proxy-addr@2.0.7"
+      ],
+      "sources": [
+        "proof/out/npm_audit_comparison.json:evidence.npm_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-jqcg-44mw-7w3h"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-27152"
+      ],
+      "id": "GHSA-jr5f-v2jv-69x6",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-jr5f-v2jv-69x6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-15603"
+      ],
+      "id": "GHSA-jxfw-x594-9x9m",
+      "packages_offline": [
+        "morgan@1.9.1"
+      ],
+      "packages_online": [
+        "morgan@1.9.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-jxfw-x594-9x9m"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-43799"
+      ],
+      "id": "GHSA-m6fv-jmcg-4jfg",
+      "packages_offline": [
+        "send@0.18.0"
+      ],
+      "packages_online": [
+        "send@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-m6fv-jmcg-4jfg"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42038"
+      ],
+      "id": "GHSA-m7pr-hjqh-92cm",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-m7pr-hjqh-92cm"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-m943-m63m-w62w",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-m943-m63m-w62w"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-14257"
+      ],
+      "id": "GHSA-mh99-v99m-4gvg",
+      "packages_offline": [
+        "brace-expansion@1.1.11"
+      ],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-mh99-v99m-4gvg"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-13033"
+      ],
+      "id": "GHSA-mm7p-fcc7-pg87",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-mm7p-fcc7-pg87"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-67316"
+      ],
+      "id": "GHSA-mmx7-hfxf-jppx",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-mmx7-hfxf-jppx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82659"
+      ],
+      "id": "GHSA-p6gq-j5cr-w38f",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-p6gq-j5cr-w38f"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2020-8203"
+      ],
+      "id": "GHSA-p6mc-m468-83gw",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [
+        "lodash@4.17.15"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-p8wg-vrv2-v86f",
+      "packages_offline": [],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-p8wg-vrv2-v86f"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-44487"
+      ],
+      "id": "GHSA-p92q-9vqr-4j8v",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-p92q-9vqr-4j8v"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42033"
+      ],
+      "id": "GHSA-pf86-5x62-jrwf",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-pf86-5x62-jrwf"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-44492"
+      ],
+      "id": "GHSA-pjwm-pj3p-43mv",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-pjwm-pj3p-43mv"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42043"
+      ],
+      "id": "GHSA-pmwg-cvhr-8vh7",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-pmwg-cvhr-8vh7"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-47764"
+      ],
+      "id": "GHSA-pxg6-pf52-xh8x",
+      "packages_offline": [
+        "cookie@0.4.1",
+        "cookie@0.6.0"
+      ],
+      "packages_online": [
+        "cookie@0.4.1",
+        "cookie@0.6.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-pxg6-pf52-xh8x"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-q2hr-2g5m-vwhr",
+      "packages_offline": [],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-q2hr-2g5m-vwhr"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-3765"
+      ],
+      "id": "GHSA-qgmg-gppg-76g5",
+      "packages_offline": [
+        "validator@13.5.2"
+      ],
+      "packages_online": [
+        "validator@13.5.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-qgmg-gppg-76g5"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-qhr7-859c-m2p7",
+      "packages_offline": [],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-qhr7-859c-m2p7"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-77063"
+      ],
+      "id": "GHSA-qvfw-j98x-7q72",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-qvfw-j98x-7q72"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-43796"
+      ],
+      "id": "GHSA-qw6h-vgh9-j6wx",
+      "packages_offline": [
+        "express@4.19.2"
+      ],
+      "packages_online": [
+        "express@4.19.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-qw6h-vgh9-j6wx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-45590"
+      ],
+      "id": "GHSA-qwcr-r2fm-qrc7",
+      "packages_offline": [
+        "body-parser@1.20.2"
+      ],
+      "packages_online": [
+        "body-parser@1.20.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-qwcr-r2fm-qrc7"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-40895"
+      ],
+      "id": "GHSA-r4q5-vmmm-2653",
+      "packages_offline": [
+        "follow-redirects@1.15.6"
+      ],
+      "packages_online": [
+        "follow-redirects@1.15.6"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-r4q5-vmmm-2653"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-23337",
+        "CVE-2026-4800",
+        "GHSA-35jh-r3h4-6jhm"
+      ],
+      "id": "GHSA-r5fr-rjxr-66jc",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [
+        "lodash@4.17.15"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82662"
+      ],
+      "id": "GHSA-r7g4-qg5f-qqm2",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-r7g4-qg5f-qqm2"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-14874"
+      ],
+      "id": "GHSA-rcmh-qjqh-p98v",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-rcmh-qjqh-p98v"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-69152"
+      ],
+      "id": "GHSA-rgw5-rvv9-x895",
+      "packages_offline": [
+        "brace-expansion@1.1.11"
+      ],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-rgw5-rvv9-x895"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2024-52798"
+      ],
+      "id": "GHSA-rhx6-c78j-4q9w",
+      "packages_offline": [
+        "path-to-regexp@0.1.7"
+      ],
+      "packages_online": [
+        "path-to-regexp@0.1.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-rhx6-c78j-4q9w"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-12590"
+      ],
+      "id": "GHSA-v422-hmwv-36x6",
+      "packages_offline": [
+        "body-parser@1.20.2"
+      ],
+      "packages_online": [
+        "body-parser@1.20.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-v422-hmwv-36x6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-2359"
+      ],
+      "id": "GHSA-v52c-386h-88mc",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-v52c-386h-88mc"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-v53p-9fqp-m79j",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-v53p-9fqp-m79j"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-5889"
+      ],
+      "id": "GHSA-v6h2-p8h4-qcjw",
+      "packages_offline": [
+        "brace-expansion@1.1.11"
+      ],
+      "packages_online": [
+        "brace-expansion@1.1.11"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-v6h2-p8h4-qcjw"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42036"
+      ],
+      "id": "GHSA-vf2m-468p-8v99",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-vf2m-468p-8v99"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-12758"
+      ],
+      "id": "GHSA-vghf-hv5q-vc2g",
+      "packages_offline": [
+        "validator@13.5.2"
+      ],
+      "packages_online": [
+        "validator@13.5.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-vghf-hv5q-vc2g"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2020-7598"
+      ],
+      "id": "GHSA-vh95-rmgr-6w4m",
+      "packages_offline": [
+        "minimist@0.0.10"
+      ],
+      "packages_online": [
+        "minimist@0.0.10"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-vh95-rmgr-6w4m"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82853"
+      ],
+      "id": "GHSA-vvjj-xcjg-gr5g",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-vvjj-xcjg-gr5g"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-2391"
+      ],
+      "id": "GHSA-w7fw-mjwx-w883",
+      "packages_offline": [
+        "qs@6.11.0"
+      ],
+      "packages_online": [
+        "qs@6.11.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-w7fw-mjwx-w883"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42041"
+      ],
+      "id": "GHSA-w9j2-pvgh-6h63",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-w9j2-pvgh-6h63"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-77078"
+      ],
+      "id": "GHSA-wc9g-mqfw-jrwm",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-wc9g-mqfw-jrwm"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2023-45857"
+      ],
+      "id": "GHSA-wf5p-g6vw-rhxx",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-wf5p-g6vw-rhxx"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-92598"
+      ],
+      "id": "GHSA-wmmp-3585-3rmp",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-wmmp-3585-3rmp"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-82660"
+      ],
+      "id": "GHSA-wqvq-jvpq-h66f",
+      "packages_offline": [],
+      "packages_online": [
+        "nodemailer@6.9.14"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-wqvq-jvpq-h66f"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-ww6v-677g-p656",
+      "packages_offline": [],
+      "packages_online": [
+        "safe-eval@0.3.0"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-ww6v-677g-p656"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-3304"
+      ],
+      "id": "GHSA-xf7r-hgr6-v32p",
+      "packages_offline": [
+        "multer@1.4.5-lts.1"
+      ],
+      "packages_online": [
+        "multer@1.4.5-lts.1"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/npm_audit_comparison.json:evidence.vc_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xf7r-hgr6-v32p"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42040"
+      ],
+      "id": "GHSA-xhjh-pmcv-23jw",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xhjh-pmcv-23jw"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33940"
+      ],
+      "id": "GHSA-xhpv-hc6g-r9c6",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xhpv-hc6g-r9c6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-33941"
+      ],
+      "id": "GHSA-xjpj-3mr7-gcpf",
+      "packages_offline": [
+        "handlebars@4.7.7"
+      ],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xjpj-3mr7-gcpf"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2021-44906"
+      ],
+      "id": "GHSA-xvch-5gv4-984h",
+      "packages_offline": [
+        "minimist@0.0.10"
+      ],
+      "packages_online": [
+        "minimist@0.0.10"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xvch-5gv4-984h"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-xw65-4hp5-5hc7",
+      "packages_offline": [],
+      "packages_online": [
+        "handlebars@4.7.7"
+      ],
+      "sources": [
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xw65-4hp5-5hc7"
+    },
+    {
+      "alias_source": null,
+      "aliases": null,
+      "id": "GHSA-xx4c-jj58-r7x6",
+      "packages_offline": [
+        "validator@13.5.2"
+      ],
+      "packages_online": [
+        "validator@13.5.2"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xx4c-jj58-r7x6"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2026-42042"
+      ],
+      "id": "GHSA-xx6v-rp6x-q39c",
+      "packages_offline": [],
+      "packages_online": [
+        "axios@0.18.0"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xx6v-rp6x-q39c"
+    },
+    {
+      "alias_source": "data_pipeline/cve_nodes.json",
+      "aliases": [
+        "CVE-2025-13465",
+        "CVE-2026-2950",
+        "GHSA-f23m-r3pf-42rh"
+      ],
+      "id": "GHSA-xxjr-mmjv-4gpg",
+      "packages_offline": [
+        "lodash@4.17.15"
+      ],
+      "packages_online": [
+        "lodash@4.17.15"
+      ],
+      "sources": [
+        "kb_edge",
+        "proof/out/flagged_packages.json:advisory_ids",
+        "proof/out/offline_online.json:offline_ids",
+        "proof/out/offline_online.json:online_ids"
+      ],
+      "url": "https://osv.dev/vulnerability/GHSA-xxjr-mmjv-4gpg"
+    }
+  ],
+  "counts": {
+    "advisory_ids": 124,
+    "ids_with_recorded_aliases": 92,
+    "ids_without_recorded_aliases": 32
+  },
+  "label": "presentation layer; IDs copied from committed files; aliases only where a committed file already records them",
+  "schema": "vulnchain-explorer/advisories/1",
+  "sources": [
+    "data_pipeline/cve_nodes.json",
+    "phase5/bench_run/osv_cache.json",
+    "phase5/bench_run/vulnchain_graph.json",
+    "proof/out/flagged_packages.json",
+    "proof/out/npm_audit_comparison.json",
+    "proof/out/offline_online.json"
+  ]
+}
