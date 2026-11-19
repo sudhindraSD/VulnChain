@@ -18,7 +18,22 @@ failures = []
 
 
 def read(rel):
-    return (ROOT / rel).read_text(encoding="utf-8")
+    try:
+        return (ROOT / rel).read_text(encoding="utf-8")
+    except (OSError, ValueError) as e:
+        failures.append(f"{rel}: could not read file ({e})")
+        return ""
+
+
+def read_json(rel):
+    txt = read(rel)
+    if not txt:
+        return {}
+    try:
+        return json.loads(txt)
+    except ValueError as e:
+        failures.append(f"{rel}: invalid JSON ({e})")
+        return {}
 
 
 def commit_of(rel):
@@ -123,7 +138,11 @@ def num_in(s, source, label):
 
 
 def fmt6(v):
-    return f"{float(v):.6f}"
+    try:
+        return f"{float(v):.6f}"
+    except (TypeError, ValueError):
+        failures.append("non-numeric value where a formatted number was required")
+        return "UNRESOLVED"
 
 
 def esc(s):
@@ -298,7 +317,7 @@ def main():
     # ------------------------------------------------------------------
     cm_src = "phase5/confirm_metrics.json"
     cr_src = "phase5/CONFIRM_RESULT.md"
-    cm = json.loads(read(cm_src))
+    cm = read_json(cm_src)
     cr_txt = read(cr_src)
     cr_tbls = md_tables(cr_txt)
 
@@ -400,9 +419,9 @@ def main():
     oo_src = "proof/out/offline_online.json"
     pp2_src = "PROOF_POSTHOC2.md"
     pp_src = "PROOF_POSTHOC.md"
-    vr = json.loads(read(vr_src))
-    na = json.loads(read(na_src))
-    oo = json.loads(read(oo_src))
+    vr = read_json(vr_src)
+    na = read_json(na_src)
+    oo = read_json(oo_src)
     pp2_txt = read(pp2_src)
     pp_txt = read(pp_src)
 
